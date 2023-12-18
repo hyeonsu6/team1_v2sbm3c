@@ -27,6 +27,11 @@
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-success btn-sm" onclick="location.href='../freview/list_all.do'"
 			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
+		<c:if test="${sessionScope.admin_id != null }">
+			<button type="submit" class="btn btn-dark btn-sm" onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
+				style="font-weight: bold; text-align: left;">📝 컨텐츠 등록</button>
+		</c:if>
+
 	</aside>
 
 	<aside class="aside_right">
@@ -137,8 +142,9 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-
 	</table>
+	<br> 정보 제공 :
+	<a href="http://www.visitkorea.or.kr">한국관광공사</a>
 
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>

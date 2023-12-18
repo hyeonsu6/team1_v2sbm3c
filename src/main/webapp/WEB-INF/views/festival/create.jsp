@@ -75,8 +75,8 @@
                  class="form-control" style='width: 50%;'>
     </div>   
     <div class="content_body_bottom">
-      <button type="submit" class="btn btn-secondary btn-sm">등록</button>
-      <button type="button" onclick="location.href='./list_by_fcateno_search_paging.do?fcateno=${param.fcateno}'" class="btn btn-secondary btn-sm">목록</button>
+      <button type="submit" class="btn btn-dark btn-sm">등록</button>
+      <button type="button" onclick="location.href='./list_by_fcateno_search_paging.do?fcateno=${param.fcateno}'" class="btn btn-dark btn-sm">목록</button>
     </div>
   
   </form>
