@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
@@ -116,7 +118,7 @@
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>회원 목록</a>
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
-							</div>  
+							</div>
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -130,6 +132,12 @@
 							<a class="nav-link top_menu_link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
 						</c:otherwise>
 					</c:choose>
+				</li>
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">질문 목록</a>
+				</li>
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/chatbot/chatting.do">챗봇</a>
 				</li>
 			</ul>
 		</div>
