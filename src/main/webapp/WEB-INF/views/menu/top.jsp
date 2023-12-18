@@ -116,7 +116,7 @@
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>회원 목록</a>
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
-							</div>
+							</div>  
 						</li>
 					</c:otherwise>
 				</c:choose>
