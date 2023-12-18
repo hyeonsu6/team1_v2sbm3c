@@ -20,18 +20,8 @@
 		SELECT fcateno FROM recommend WHERE memberno=1
 	</select>
 
-	<select id="read" resultType="dev.mvc.frecommend.RecommendVO"
-		parameterType="int">
-		SELECT recommendno, memberno, fcateno, seq, rdate
-		FROM frecommend
-		WHERE memberno = #{memberno}
-		ORDER BY recommendno ASC
-	</select>
-
 	<delete id="delete" parameterType="int">
 		DELETE FROM frecommend
 		WHERE recommendno=#{recommendno}
 	</delete>
-
-
 </mapper>

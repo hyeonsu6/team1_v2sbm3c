@@ -70,7 +70,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav mr-auto">  
+			<ul class="navbar-nav mr-auto">
 				<%-- 게시판 목록 출력 --%>
 				<c:forEach var="fcateVO" items="${list_top}">
 					<c:set var="fcateno" value="${fcateVO.fcateno }" />
@@ -84,6 +84,7 @@
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">전체 카테고리 목록</a>
 				</li>
+
 				<li class="nav-item dropdown">
 					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">회원</a>
 					<div class="dropdown-menu">
@@ -139,6 +140,7 @@
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/chatbot/chatting.do">챗봇</a>
 				</li>
+
 			</ul>
 		</div>
 	</nav>
