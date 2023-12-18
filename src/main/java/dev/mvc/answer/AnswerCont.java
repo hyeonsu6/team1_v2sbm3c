@@ -72,42 +72,45 @@ public class AnswerCont {
     * 
     * @return
     */
-   @RequestMapping(value="/answer/create.do", method = RequestMethod.POST)
-   public ModelAndView create(HttpServletRequest request, HttpSession session, AnswerVO answerVO) {
-     ModelAndView mav = new ModelAndView();
-   
-     if(adminProc.isAdmin(session)) { //관리자 로그인 - 관리자 제작 시 테스트
-       System.out.println("session_admin_id: " + session.getAttribute("admin_id"));
-       System.out.println("session_adminno: " + session.getAttribute("adminno"));
-       System.out.println("session_admin_mname: " + session.getAttribute("admin_mname"));
-       System.out.println("session_admin_grade: " + session.getAttribute("admin_grade"));
-       
-       
-       
-       // Call By Reference: 메모리 공유, Hashcode 전달
-       int adminno = (int)session.getAttribute("adminno"); // adminno FK
-       answerVO.setAdminno(adminno);
-       int cnt = this.answerProc.create(answerVO); 
-       
-       if(cnt == 1) {
-         mav.addObject("code", "create_success");
-       } else {
-         mav.addObject("code", "create_fail");
-       }
-       mav.addObject("cnt", cnt);
-       mav.addObject("ansno", answerVO.getAnsno());
-       
-       mav.addObject("url", "/answer/msg");
-       mav.setViewName("redirect:/answer/msg.do"); 
-     
-     
-     } else {
-       mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
-       mav.setViewName("redirect:/answer/msg.do"); 
-     }
-        
-     return mav;
-   }
+  @RequestMapping(value="/answer/create.do", method = RequestMethod.POST)
+  public ModelAndView create(HttpServletRequest request, HttpSession session, AnswerVO answerVO) {
+    ModelAndView mav = new ModelAndView();
+
+    if(adminProc.isAdmin(session)) { // 관리자 로그인 - 관리자 제작 시 테스트
+      System.out.println("session_admin_id: " + session.getAttribute("admin_id"));
+      System.out.println("session_adminno: " + session.getAttribute("adminno"));
+      System.out.println("session_admin_mname: " + session.getAttribute("admin_mname"));
+      System.out.println("session_admin_grade: " + session.getAttribute("admin_grade"));
+
+      // Call By Reference: 메모리 공유, Hashcode 전달
+      Integer adminno = (Integer) session.getAttribute("adminno");
+      if (adminno != null) { // adminno가 null이 아닌지 확인
+        answerVO.setAdminno(adminno.intValue()); // null이 아닐 때만 intValue() 호출
+        int cnt = this.answerProc.create(answerVO);
+
+        if(cnt == 1) {
+          mav.addObject("code", "create_success");
+        } else {
+          mav.addObject("code", "create_fail");
+        }
+        mav.addObject("cnt", cnt);
+        mav.addObject("ansno", answerVO.getAnsno());
+
+        mav.addObject("url", "/answer/msg");
+        mav.setViewName("redirect:/answer/msg.do");
+      } else {
+        mav.addObject("code", "create_fail");
+        mav.addObject("cnt", 0);
+        mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+        mav.setViewName("redirect:/answer/msg.do");
+      }
+    } else {
+      mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+      mav.setViewName("redirect:/answer/msg.do");
+    }
+
+    return mav;
+  }
  
    
    /**
