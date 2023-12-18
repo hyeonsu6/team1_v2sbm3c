@@ -70,7 +70,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav mr-auto">  
 				<%-- 게시판 목록 출력 --%>
 				<c:forEach var="fcateVO" items="${list_top}">
 					<c:set var="fcateno" value="${fcateVO.fcateno }" />
