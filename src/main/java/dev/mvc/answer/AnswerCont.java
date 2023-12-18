@@ -54,11 +54,13 @@ public class AnswerCont {
   
   //http://localhost:9093/answer/create.do?questno=1
   @RequestMapping(value="/answer/create.do", method = RequestMethod.GET)
-  public ModelAndView create(int questno) {
+  public ModelAndView create(HttpSession session, int questno) {
     ModelAndView mav = new ModelAndView();
 
     AnswerVO answerVO = this.answerProc.read(questno);
     mav.addObject("answerVO", answerVO);
+    
+    System.out.println("-> create get_adminno: " + session.getAttribute("adminno"));
    
     mav.setViewName("/answer/create"); // /webapp/WEB-INF/views/answer/create.jsp
     
@@ -75,7 +77,12 @@ public class AnswerCont {
      ModelAndView mav = new ModelAndView();
    
      if(adminProc.isAdmin(session)) { //관리자 로그인 - 관리자 제작 시 테스트
-       System.out.println("adminno: " + answerVO.getAdminno());
+       System.out.println("session_admin_id: " + session.getAttribute("admin_id"));
+       System.out.println("session_adminno: " + session.getAttribute("adminno"));
+       System.out.println("session_admin_mname: " + session.getAttribute("admin_mname"));
+       System.out.println("session_admin_grade: " + session.getAttribute("admin_grade"));
+       
+       
        
        // Call By Reference: 메모리 공유, Hashcode 전달
        int adminno = (int)session.getAttribute("adminno"); // adminno FK
@@ -90,7 +97,7 @@ public class AnswerCont {
        mav.addObject("cnt", cnt);
        mav.addObject("ansno", answerVO.getAnsno());
        
-       mav.addObject("url", "/answer/msg.do");
+       mav.addObject("url", "/answer/msg");
        mav.setViewName("redirect:/answer/msg.do"); 
      
      

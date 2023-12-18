@@ -88,7 +88,7 @@
             </td>
             <td class="td_bs">
               <c:if test="${isAdmin}">
-                <a href="../answer/create.do?questno=${questno }&now_page=${param.now_page}" title="등록"><img src="/question/images/create.png" class="icon"></a>  
+                <a href="../answer/create.do?questno=${questno }&now_page=${param.now_page}" title="답변 등록"><img src="/question/images/create.png" class="icon"></a>  
               </c:if>
               <a href="/question/update_quest.do?questno=${questno }&tcateno=${tcateno}&now_page=${param.now_page}" title="수정"><img src="/question/images/update.png" class="icon"></a>
               <a href="/question/delete.do?questno=${questno }&tcateno=${tcateno}&now_page=${param.now_page}" title="삭제"><img src="/question/images/delete.png" class="icon"></a>

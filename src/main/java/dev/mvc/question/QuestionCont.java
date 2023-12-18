@@ -93,6 +93,7 @@ public class QuestionCont {
       int cnt = this.questionProc.create(questionVO); 
       
       if(cnt == 1) {
+        mav.addObject("fcateno", questionVO.getFcateno());
         mav.addObject("code", "create_success");
       } else {
         mav.addObject("code", "create_fail");
@@ -138,6 +139,8 @@ public class QuestionCont {
       questionVO.setTitle(title);
       questionVO.setQuest(quest);  
     }
+    
+    System.out.println("-> question_list_all_session_adminno: " + session.getAttribute("adminno"));
     
     mav.addObject("fcatelist", fcatelist);
     mav.addObject("list", list);
@@ -308,6 +311,8 @@ public class QuestionCont {
     if(answerVO != null) {
       mav.addObject("answerVO", answerVO);
     }
+    
+    System.out.println("-> question_read_session_adminno: " + session.getAttribute("adminno"));
     
     return mav;
   }

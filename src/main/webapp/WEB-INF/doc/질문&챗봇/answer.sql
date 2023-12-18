@@ -45,7 +45,7 @@ SELECT ansno, questno, ans, adminno, rdate FROM answer WHERE adminno = 1 ORDER B
 SELECT ansno, questno, ans, adminno, rdate FROM answer WHERE adminno = 1 AND ans LIKE '%수정%' ORDER BY ansno DESC;
 
 -- DELETE
--- DELETE FROM answer WHERE ansno = 1;
+-- DELETE FROM answer WHERE ansno = 8;
 -- DELETE FROM answer;
 -- commit;
 
