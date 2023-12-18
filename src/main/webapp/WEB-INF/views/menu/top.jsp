@@ -45,7 +45,7 @@
 		// 추천을 개발한 사람의 AWS IP
 		// "http://localhost:8000/ais/recommend_form/?memberno=${sessionScope.memberno }"  
 		var url = 'http://15.164.158.111:8000/ais/recommend_form/?memberno=${sessionScope.memberno }';
-		var win = window.open(url, '공지 사항', 'width=1300px, height=850px');
+		var win = window.open(url, '추천', 'width=1300px, height=850px');
 
 		var x = (screen.width - 1300) / 2;
 		var y = (screen.height - 850) / 2;
