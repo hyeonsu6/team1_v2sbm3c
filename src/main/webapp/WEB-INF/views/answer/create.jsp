@@ -34,11 +34,11 @@
     
     <div>
        <label>내용</label>
-       <textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
+       <textarea name='ans' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
     </div>    
     <div class="content_body_bottom">
       <button type="submit" class="btn btn-secondary btn-sm">등록</button>
-      <button type="button" onclick="location.href='./list_all'" class="btn btn-secondary btn-sm">목록</button>
+      <button type="button" onclick="location.href='../question/list_all'" class="btn btn-secondary btn-sm">목록</button>
     </div>
   
   </form>

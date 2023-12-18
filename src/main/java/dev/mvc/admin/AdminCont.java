@@ -137,10 +137,13 @@ public class AdminCont {
     int cnt = adminProc.login(adminVO);
     if (cnt == 1) { // 로그인 성공시 회원 정보 조회
       AdminVO adminVO_read = adminProc.read_by_id(adminVO.getId()); // DBMS에서 id를 이용한 회원 조회
+      // System.out.println("-> adminCont_adminno: " + adminVO_read.getAdminno());
       session.setAttribute("adminno", adminVO_read.getAdminno()); // 서버의 메모리에 기록
       session.setAttribute("admin_id", adminVO_read.getId());
       session.setAttribute("admin_mname", adminVO_read.getMname());
       session.setAttribute("admin_grade", adminVO_read.getGrade());
+      
+      System.out.println("-> adminCont_adminno: " + session.getAttribute("adminno"));
    
       String id = adminVO.getId();                  // 폼에 입력된 id
       String passwd = adminVO.getPasswd();  // 폼에 입력된 passwd 

@@ -2,6 +2,8 @@ package dev.mvc.team1_v2sbm3c;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,12 @@ public class HomeCont {
 
 	// http://localhost:9093
 	@RequestMapping(value = { "/", "/index.do" }, method = RequestMethod.GET)
-	public ModelAndView home() {
+	public ModelAndView home(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/index"); // /WEB-INF/views/index.jsp
 
+		System.out.println("-> HomeCont index_adminno: " + session.getAttribute("adminno"));
+		
 		return mav;
 	}
 

@@ -79,13 +79,11 @@
       <li class='li_none'>
         <br>
         <c:choose>
-            <c:when test="${cnt == 0 }">
-                <button type='button' onclick="history.back()" class="btn btn-dark btn-sm">다시 시도</button>    
-            </c:when>
+          <c:when test="${cnt == 0 }">
+              <button type='button' onclick="history.back()" class="btn btn-dark btn-sm">다시 시도</button>    
+          </c:when>
         </c:choose>
-        
-        <button type='button' onclick="location.href='./create.do?questno=${questno}'" class="btn btn-dark btn-sm">새로운 답변 등록</button>
-        <button type='button' onclick="location.href='./list_all.do?'" class="btn btn-dark btn-sm">목록</button>
+        <button type='button' onclick="location.href='/question/list_all.do?'" class="btn btn-dark btn-sm">목록</button>
       </li>
     </UL>
   </fieldset>
