@@ -31,15 +31,11 @@
 		WHERE ansno = #{ansno}
 	</select>
 
+	<!-- 일반적인 조회 -->
 	<select id="read_questno" resultType="dev.mvc.answer.AnswerVO"
 		parameterType="int">
-  <![CDATA[
-  SELECT ansno, questno, ans, adminno, rdate FROM (
-    SELECT ansno, questno, ans, adminno, rdate FROM answer
-    WHERE questno = #{questno}
-    ORDER BY rdate DESC
-  ) WHERE ROWNUM = 1
-  ]]>
+		SELECT ansno, questno, ans, adminno, rdate FROM answer
+		WHERE questno = #{questno}
 	</select>
 
 
