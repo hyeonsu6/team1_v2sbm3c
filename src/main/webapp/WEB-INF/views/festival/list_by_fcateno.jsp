@@ -73,13 +73,15 @@
 	<table class="table table-hover">
 		<colgroup>
 			<col style="width: 10%;"></col>
-			<col style="width: 80%;"></col>
+			<col style="width: 65%;"></col>
+			<col style="width: 15%;"></col>
 			<col style="width: 10%;"></col>
 		</colgroup>
 		<thead>
 			<tr>
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
+				<th style='text-align: center;'>등록일</th>
 				<th style='text-align: center;'>기타</th>
 			</tr>
 		</thead>
@@ -112,10 +114,13 @@
                   ${festivalVO.content.substring(0, 160) }...
                 </c:when>
 							<c:otherwise>
-                  <span style="font-size: 0.9em;">${festivalVO.content}</span><br>
-                </c:otherwise>
+								<span style="font-size: 0.9em;">${festivalVO.content}</span>
+								<br>
+							</c:otherwise>
 						</c:choose>
-						(${festivalVO.rdate.substring(0, 16) })
+					</td>
+					<td class="td_bs">
+						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
 					<td class="td_bs">
 						<a href="/festival/map.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="지도 설정">

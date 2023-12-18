@@ -103,13 +103,11 @@
 					</td>
 
 					<td class="td_bs">
-						<span style="font-weight: bold;">${freviewVO.rdate }</span>
-						</a>
+						<span style="font-weight: bold;">{${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
 
 					<td class="td_bs">
 						<span style="font-weight: bold;">${freviewVO.nickname }</span>
-						</a>
 					</td>
 
 				</tr>
