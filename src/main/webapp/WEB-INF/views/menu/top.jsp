@@ -113,6 +113,7 @@
 							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">관리자</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
+								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>회원 목록</a>
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
 							</div>
@@ -123,7 +124,7 @@
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <c:choose>
 						<c:when test="${sessionScope.id == null}">
-							<a class="nav-link top_menu_link" href="/member/login.do">로그인</a>
+							<a class="nav-link top_menu_link" href="/member/login.do">회원 로그인</a>
 						</c:when>
 						<c:otherwise>
 							<a class="nav-link top_menu_link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
