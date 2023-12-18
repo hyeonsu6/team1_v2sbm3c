@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: dev.mvc.team10_v2sbm3c.Team10V2sbm3cApplication

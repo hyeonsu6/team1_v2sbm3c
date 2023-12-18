@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.question.QuestionDAOInter">
+
+  <!-- 질문 등록 -->
+  <insert id="create" parameterType="dev.mvc.question.QuestionVO">
+    INSERT INTO question(questno, memberno, fcateno, title, quest, rdate) VALUES (question_seq.nextval, #{memberno}, #{fcateno}, #{title}, #{quest}, sysdate)
+  </insert>
+
+  <!-- 모든 질문목록 -->
+  <select id="list_all" resultType="dev.mvc.question.QuestionVO">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question ORDER BY questno DESC
+  </select>
+  
+  <!-- 특정 카테고리의 등록된 질문목록 -->
+  <select id="list_by_fcateno" resultType="dev.mvc.question.QuestionVO" parameterType="int">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
+    WHERE fcateno = #{fcateno}
+    ORDER BY questno DESC
+  </select> 
+  
+  <!-- 카테고리별 검색 목록 -->
+  <select id="list_by_fcateno_search" resultType="dev.mvc.question.QuestionVO" parameterType="HashMap">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
+    <choose>
+      <when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+        WHERE fcateno=#{fcateno}
+      </when>
+      <otherwise> <!-- 검색하는 경우 -->
+        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+                                      OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
+      </otherwise>
+    </choose>
+    ORDER BY questno DESC   
+  </select>
+  
+    <!-- 카테고리별 검색 레코드 갯수 -->
+  <select id="search_count" resultType="int" parameterType="HashMap">
+    SELECT COUNT(*) as cnt FROM question
+    <choose>
+      <when test="word == null or word == ''"> <!-- 검색하지 않는 경우의 레코드 갯수 -->
+        WHERE fcateno=#{fcateno}
+      </when>
+      <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
+        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+                                      OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
+      </otherwise>
+    </choose>
+  </select>   
+  
+    <!-- 카테고리별 검색 + 페이징 목록 -->
+  <select id="list_by_fcateno_search_paging" resultType="dev.mvc.question.QuestionVO" parameterType="dev.mvc.question.QuestionVO">
+   SELECT questno, memberno, fcateno, title, quest, rdate FROM (
+      SELECT questno, memberno, fcateno, title, quest, rdate, ROWNUM AS r FROM (
+          SELECT questno, memberno, fcateno, title, quest, rdate FROM question
+            <choose>
+              <when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+                WHERE fcateno=#{fcateno}
+              </when>
+              <otherwise>
+                WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+                                              OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
+              </otherwise>
+            </choose>
+            ORDER BY questno DESC
+          )
+      )
+    WHERE <![CDATA[ r >= #{start_num} AND r <= #{end_num} ]]>
+     
+    <!-- 1 page: WHERE r >= 1 AND r <= 10; 
+          2 page: WHERE r >= 11 AND r <= 20;
+          3 page: WHERE r >= 21 AND r <= 30; -->
+  </select>
+  
+  <!-- 특정 회원의 등록된 질문목록, 관리자만 사용 가능 -->
+  <select id="list_by_memberno" resultType="dev.mvc.question.QuestionVO" parameterType="int">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
+    WHERE memberno = #{memberno}
+    ORDER BY questno DESC
+  </select> 
+  
+  <!-- 일반적인 조회 -->
+  <select id="read" resultType="dev.mvc.question.QuestionVO" parameterType="int">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
+    WHERE questno = #{questno}
+  </select>
+    
+  <!-- 글 수정 -->
+  <update id="update_quest" parameterType="dev.mvc.question.QuestionVO">
+    UPDATE question
+    SET title=#{title}, quest=#{quest}
+    WHERE questno = #{questno}
+  </update>
+  
+  <!-- 레코드 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM question
+    WHERE questno=#{questno}
+  </delete>
+  
+  <!-- 특정 카테고리에 속한 모든 레코드 삭제 -->
+  <delete id="delete_by_fcateno" parameterType="int">
+    DELETE FROM question
+    WHERE fcateno=#{fcateno}
+  </delete>
+  
+</mapper>
