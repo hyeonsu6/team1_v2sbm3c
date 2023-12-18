@@ -27,6 +27,11 @@
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-success btn-sm" onclick="location.href='../freview/list_all.do'"
 			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
+		<c:if test="${sessionScope.admin_id != null }">
+			<button type="submit" class="btn btn-dark btn-sm" onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
+				style="font-weight: bold; text-align: left;">📝 컨텐츠 등록</button>
+		</c:if>
+
 	</aside>
 
 	<aside class="aside_right">
@@ -73,13 +78,15 @@
 	<table class="table table-hover">
 		<colgroup>
 			<col style="width: 10%;"></col>
-			<col style="width: 80%;"></col>
+			<col style="width: 65%;"></col>
+			<col style="width: 15%;"></col>
 			<col style="width: 10%;"></col>
 		</colgroup>
 		<thead>
 			<tr>
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
+				<th style='text-align: center;'>등록일</th>
 				<th style='text-align: center;'>기타</th>
 			</tr>
 		</thead>
@@ -112,10 +119,13 @@
                   ${festivalVO.content.substring(0, 160) }...
                 </c:when>
 							<c:otherwise>
-                  <span style="font-size: 0.9em;">${festivalVO.content}</span><br>
-                </c:otherwise>
+								<span style="font-size: 0.9em;">${festivalVO.content}</span>
+								<br>
+							</c:otherwise>
 						</c:choose>
-						(${festivalVO.rdate.substring(0, 16) })
+					</td>
+					<td class="td_bs">
+						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
 					<td class="td_bs">
 						<a href="/festival/map.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="지도 설정">
@@ -132,8 +142,9 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-
 	</table>
+	<br> 정보 제공 :
+	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
 
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>

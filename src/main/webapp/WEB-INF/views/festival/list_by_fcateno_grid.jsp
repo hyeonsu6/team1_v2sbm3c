@@ -25,7 +25,8 @@
 	</div>
 
 	<aside class="aside_left">
-		<button type="submit" class="btn btn-success btn-sm" onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
+		<button type="submit" class="btn btn-success btn-sm"
+			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
 			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
 	</aside>
 
@@ -82,7 +83,7 @@
 			<!-- 5기준 하나의 이미지, 19.2 * 5 = 96% -->
 			<div
 				onclick="location.href='./read.do?contentsno=${contentsno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
-				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #DEB887; text-align: center; color:black; font-size:18px; font-weight:bold; cursor: pointer;'>
+				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #DEB887; text-align: center; color: black; font-size: 18px; font-weight: bold; cursor: pointer;'>
 
 				<c:choose>
 					<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
@@ -107,6 +108,8 @@
 
 		</c:forEach>
 	</div>
+	<br> 정보 제공 :
+	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
 
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>

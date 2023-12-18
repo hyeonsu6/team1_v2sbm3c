@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.freommend.RecommendDAOInter">
+	<!-- 등록한 레코드 갯수 1 리턴 -->
+	<insert id="create"
+		parameterType="dev.mvc.frecommend.RecommendVO">
+		INSERT INTO frecommend(recommendno, memberno, fcateno, seq, rdate)
+		VALUES(recommend_seq.nextval, #{memberno}, #{fcateno}, #{seq}, sysdate)
+	</insert>
+
+	<select id="list_all" resultType="dev.mvc.frecommend.RecommendVO">
+		SELECT recommendno, memberno, fcateno, seq, rdate
+		FROM frecommend
+		ORDER BY recommendno ASC
+	</select>
+
+	<select id="recom_by_memberno">
+		SELECT fcateno FROM recommend WHERE memberno=1
+	</select>
+
+	<select id="read" resultType="dev.mvc.frecommend.RecommendVO"
+		parameterType="int">
+		SELECT recommendno, memberno, fcateno, seq, rdate
+		FROM frecommend
+		WHERE memberno = #{memberno}
+		ORDER BY recommendno ASC
+	</select>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM frecommend
+		WHERE recommendno=#{recommendno}
+	</delete>
+
+
+</mapper>
