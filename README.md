@@ -21,3 +21,4 @@
 <br><br>
 ## 물리적 모델링
 ![ex_screenshot](./img/스크린샷2.png)
+ 
