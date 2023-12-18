@@ -138,7 +138,6 @@ public class AnswerCont {
        mav.addObject("answerVO", answerVO);
        
        mav.setViewName("/answer/update_answer"); // /WEB-INF/views/answer/update_quest.jsp
-  
      } else {
        mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/member/login_need.jsp
        mav.setViewName("redirect:/answer/msg.do"); 
@@ -155,17 +154,21 @@ public class AnswerCont {
     */
    @RequestMapping(value = "/answer/update_answer.do", method = RequestMethod.POST)
    public ModelAndView update_answer(HttpSession session, AnswerVO answerVO) {
+     System.out.println("-> answer update");
      ModelAndView mav = new ModelAndView();
-     
+     // System.out.println("-> answer update");
      if (this.adminProc.isAdmin(session)) { // 회원 로그인 확인
        HashMap<String, Object> hashMap = new HashMap<String, Object>();
        hashMap.put("ansno", answerVO.getAnsno());
        
-       this.answerProc.update_answer(answerVO); // 글수정  
+       QuestionVO questionVO = questionProc.read(answerVO.getQuestno());
+       mav.addObject("questionVO", questionVO);
        
+       this.answerProc.update_answer(answerVO); // 글수정  
+       // System.out.println("-> answer update");
        // mav 객체 이용
        mav.addObject("ansno", answerVO.getAnsno());
-       mav.setViewName("redirect:/question/list_all.do"); // 페이지 자동 이동
+       mav.setViewName("redirect:/question/list_all.do");  //답변 수정 후 해당 질문 글로 이동
      } else { // 정상적인 로그인이 아닌 경우 로그인 유도
        mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
        mav.setViewName("redirect:/answer/msg.do"); 

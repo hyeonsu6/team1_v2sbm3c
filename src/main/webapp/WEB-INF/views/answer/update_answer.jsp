@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<c:set var="title" value="${questionVO.title }" />
+
 <c:set var="ansno" value="${answerVO.ansno }" />
 <c:set var="questno" value="${answerVO.questno }" />
 <c:set var="adminno" value="${answerVO.adminno }" />
@@ -24,7 +26,7 @@
 <body>
 <c:import url="/menu/top.do" />
 
-  <DIV class='title_line'> ${questionVO.title } > 답변 수정</DIV>
+  <DIV class='title_line'> ${title } > 답변 수정</DIV>
   <aside class="aside_right">
     <a href="./create.do?questno=${questionVO.questno }">등록</a>
     <span class='menu_divide' >│</span>
@@ -32,10 +34,11 @@
   </aside>
   <div class='menu_line'></div>
   
-  <form name='frm' method='post' action='./update_text.do'>
-    <input type="hidden" name="questno" value="${questno }">
+  <form name='frm' method='post' action='./update_answer.do'>
+<%--     <input type="hidden" name="questno" value="${questno }">
     <input type="hidden" name="ansno" value="${ansno }">
-    <input type="hidden" name="now_page" value="${param.now_page }">
+    <input type="hidden" name="now_page" value="${param.now_page }"> --%>
+    <input type="hidden" name="ansno" value="${ansno }">
  
     <div>
        <label>내용</label>
