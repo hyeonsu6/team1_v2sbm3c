@@ -109,7 +109,7 @@
 		</c:forEach>
 	</div>
 	<br> 정보 제공 :
-	<a href="http://www.visitkorea.or.kr">한국관광공사</a>
+	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
 
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>
