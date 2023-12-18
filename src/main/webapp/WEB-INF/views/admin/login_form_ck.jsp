@@ -6,19 +6,10 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Resort world</title>
-<link rel="shortcut icon" href="/images/star.png" />
-<%-- /static 기준 --%>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
+<title>Festival world</title>
+<link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
-
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -33,22 +24,15 @@
 			<div style='width: 40%; margin: 50px -50px 0px auto;'>
 				<FORM name='frm' method='POST' action='./login.do'>
 					<div class="form_input">
-						<input type='text' class="form-control" name='id' id='id'
-							value="${cookie.ck_admin_id.value}" required="required"
-							style='width: 53%;' placeholder="아이디" autofocus="autofocus">
-						<Label> <input type='checkbox' name='id_save' value='Y'
-							${cookie.ck_admin_id.value == 'Y' ? "checked='checked'" : "" }>
-							저장
+						<input type='text' class="form-control" name='id' id='id' value="${cookie.ck_admin_id.value}" required="required"
+							style='width: 53%;' placeholder="아이디" autofocus="autofocus"> <Label> <input type='checkbox'
+							name='id_save' value='Y' ${cookie.ck_admin_id.value == 'Y' ? "checked='checked'" : "" }> 저장
 						</Label>
 					</div>
 					<div class="form_input">
-						<input type='password' class="form-control" name='passwd'
-							id='passwd' value='${cookie.ck_admin_passwd.value}'
-							required="required" style='width: 53%;' placeholder="패스워드">
-						<Label> <input type='checkbox' name='passwd_save'
-							value='Y'
-							${cookie.ck_admin_passwd.value == 'Y' ? "checked='checked'" : "" }>
-							저장
+						<input type='password' class="form-control" name='passwd' id='passwd' value='${cookie.ck_admin_passwd.value}'
+							required="required" style='width: 53%;' placeholder="패스워드"> <Label> <input type='checkbox'
+							name='passwd_save' value='Y' ${cookie.ck_admin_passwd.value == 'Y' ? "checked='checked'" : "" }> 저장
 						</Label>
 					</div>
 					<div class="login_bottom_menu">
