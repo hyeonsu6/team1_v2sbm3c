@@ -627,8 +627,8 @@
                               <indices/>
                               <backgroundColor>
                                 <red>255</red>
-                                <green>255</green>
-                                <blue>185</blue>
+                                <green>160</green>
+                                <blue>122</blue>
                               </backgroundColor>
                               <sql></sql>
                             </target>
@@ -1237,7 +1237,11 @@
               </net.java.amateras.db.visual.model.ColumnModel>
             </columns>
             <indices/>
-            <backgroundColor reference="../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel[2]/source/sourceConnections/net.java.amateras.db.visual.model.ForeignKeyModel/target/sourceConnections/net.java.amateras.db.visual.model.ForeignKeyModel[2]/target/backgroundColor"/>
+            <backgroundColor>
+              <red>213</red>
+              <green>210</green>
+              <blue>255</blue>
+            </backgroundColor>
             <sql></sql>
           </target>
           <foreignKeyName>QNA_FK_1</foreignKeyName>
