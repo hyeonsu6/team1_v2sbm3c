@@ -49,6 +49,12 @@
           </LI>                                                                      
         </c:when>
         
+        <c:when test="${code == 'create_fail_existing_answer'}"> <%-- Java if --%>
+          <LI class='li_none'>
+            <span class="span_fail">기존 답변이 이미 존재합니다. 수정 또는 삭제 후 재등록을 진행해주세요.</span>
+          </LI>                                                                      
+        </c:when>
+        
         <c:when test="${code == 'update_fail'}"> <%-- Java if --%>
           <LI class='li_none'>
             <span class="span_fail">컨텐츠 수정에 실패했습니다.</span>

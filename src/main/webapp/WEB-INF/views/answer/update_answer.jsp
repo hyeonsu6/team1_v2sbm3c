@@ -39,7 +39,7 @@
  
     <div>
        <label>내용</label>
-       <textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'>${ans }</textarea>
+       <textarea name='ans' required="required" class="form-control" rows="12" style='width: 100%;'>${ans }</textarea>
     </div>    
 
     <div class="content_body_bottom">

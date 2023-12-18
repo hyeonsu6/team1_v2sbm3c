@@ -10,10 +10,7 @@
 <title>Festival Question</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
-<<<<<<< HEAD
-  
-=======
->>>>>>> 3bd32260ef3d3a596ddb469553116791264949bd
+
 </head>
 <body>
 <c:import url="/menu/top.do" />

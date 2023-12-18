@@ -140,9 +140,6 @@ public class QuestionCont {
       questionVO.setTitle(title);
       questionVO.setQuest(quest);
     }
-
-    System.out.println("-> question_list_all_session_adminno: " + session.getAttribute("adminno"));
-
     mav.addObject("fcatelist", fcatelist);
     mav.addObject("list", list);
 
@@ -317,9 +314,10 @@ public class QuestionCont {
 
     AnswerVO answerVO = answerProc.read_questno(questno); // 질문에 대한 답변 읽기
     if(answerVO != null) { mav.addObject("answerVO", answerVO); }
-
-    System.out.println("-> question_read_session_adminno: " + session.getAttribute("adminno"));
-
+    
+    boolean answerExist = (answerVO != null);
+    mav.addObject("answerExist", answerExist);
+    
     return mav;
   }
 

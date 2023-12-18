@@ -19,14 +19,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" /> 
 <title>Festival Question</title>
-<<<<<<< HEAD
+
 <link rel="shortcut icon" href="/images/star.png" /> <%-- /static 기준 --%>
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
-  
-=======
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> 
->>>>>>> 3bd32260ef3d3a596ddb469553116791264949bd
+
 </head>
 <body>
 <c:import url="/menu/top.do" />
@@ -41,14 +39,24 @@
     <a href="./update_quest.do?questno=${questno}&now_page=${param.now_page}">수정</a>
     <span class='menu_divide'>│</span>
     <a href="./delete.do?questno=${questno}&now_page=${param.now_page}&fcateno=${fcateno}">삭제</a>
-    
+ 
     <c:if test="${isAdmin}">
-      <span class='menu_divide'>│</span>
-      <a href="../answer/create.do?questno=${questno}&now_page=${param.now_page}">답변 등록</a>
-      <span class='menu_divide'>│</span>
-      <a href="../answer/update.do?questno=${questno}&now_page=${param.now_page}">답변 수정</a>
-      <span class='menu_divide'>│</span>
-      <a href="../answer/delete.do?questno=${questno}&now_page=${param.now_page}">답변 삭제</a>
+      <c:choose>
+        <c:when test="${answerExist}">
+          <span class='menu_divide'>│</span>
+          <a href="../answer/update_answer.do?ansno=${ansno}&now_page=${param.now_page}">답변 수정</a>
+          <span class='menu_divide'>│</span>
+          <a href="../answer/delete.do?ansno=${ansno}&now_page=${param.now_page}">답변 삭제</a>
+        </c:when>
+        <c:otherwise>
+          <span class='menu_divide'>│</span>
+          <a href="../answer/create.do?questno=${questno}&now_page=${param.now_page}">답변 등록</a>
+          <span class='menu_divide'>│</span>
+          <a href="../answer/update_answer.do?ansno=${ansno}&now_page=${param.now_page}">답변 수정</a>
+          <span class='menu_divide'>│</span>
+          <a href="../answer/delete.do?ansno=${ansno}&now_page=${param.now_page}">답변 삭제</a>
+        </c:otherwise>
+      </c:choose>
     </c:if>
     
     <span class='menu_divide'>│</span>

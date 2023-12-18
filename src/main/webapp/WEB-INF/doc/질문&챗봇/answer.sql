@@ -48,7 +48,8 @@ SELECT ansno, questno, ans, adminno, rdate FROM answer WHERE adminno = 1 AND ans
 -- DELETE FROM answer WHERE ansno = 8;
 -- DELETE FROM answer;
 -- commit;
-
+DELETE FROM answer WHERE ansno = 11;
+commit;
 
 -- COUNT
 SELECT COUNT(*) as cnt FROM answer WHERE ansno = 1;
