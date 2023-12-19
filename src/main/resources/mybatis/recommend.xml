@@ -9,20 +9,6 @@
 		ORDER BY recommendno DESC
 	</select>
 
-	<!-- 추천 조회 -->
-	<select id="read" resultType="dev.mvc.recommend.RecommendVO" parameterType="int">
-		SELECT recommendno, memberno, fcateno, seq, rdate
-		FROM frecommend
-		WHERE recommendno = #{recommendno}
-	</select>
-
-	<!-- 회원을 이용한 조회 -->
-	<select id="read_by_memberno" resultType="dev.mvc.recommend.RecommendVO" parameterType="int">
-		SELECT recommendno, memberno, fcateno, seq, rdate
-		FROM frecommend
-		WHERE memberno = #{memberno}
-	</select>
-
 	<!-- 추천 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM frecommend
