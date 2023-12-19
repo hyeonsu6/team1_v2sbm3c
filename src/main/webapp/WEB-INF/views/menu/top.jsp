@@ -35,7 +35,7 @@
 	function chatbot() {
 		// 챗봇을 개발한 사람의 AWS IP
 		// "http://localhost:5000/chatbot/?memberno=${sessionScope.memberno }"  
-    // http://50.17.195.113:5000/chatbot?memberno=9
+		// http://50.17.195.113:5000/chatbot?memberno=9
 		var url = 'http://50.17.195.113:5000/chatbot?memberno=${sessionScope.memberno }';
 		var win = window.open(url, '챗봇', 'width=1300px, height=850px');
 
@@ -118,11 +118,11 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
-<!-- 								<a class="dropdown-item" href='/frecommend/list_all.do'>[회원] 추천지 목록</a>
- -->									<a class="dropdown-item" href='/member/list.do'>[회원] 목록</a>
- 								<a class="dropdown-item" href='/login/list_alogin.do'>[관리자] 로그인 내역</a>
- 
-									<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
+								<a class="dropdown-item" href='/recommend/list_all.do'>[회원] 추천 페스티벌 목록</a>
+								<a class="dropdown-item" href='/member/list.do'>[회원] 목록</a>
+								<a class="dropdown-item" href='/alogin/list_all.do'>[관리자] 로그인 내역</a>
+
+								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
 							</div>
 						</li>
 					</c:otherwise>
