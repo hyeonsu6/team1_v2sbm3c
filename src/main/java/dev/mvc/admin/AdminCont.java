@@ -130,8 +130,13 @@ public class AdminCont {
 	 */
 	// http://localhost:9093/admin/login.do
 	@RequestMapping(value = "/admin/login.do", method = RequestMethod.POST)
-	public ModelAndView login_proc(HttpServletResponse response, HttpSession session, AdminVO adminVO, String id_save,
-			String passwd_save) {
+	public ModelAndView login_proc(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			AdminVO adminVO, String id_save, String passwd_save) {
+		
+		// admin ip
+		String ip = request.getRemoteAddr();
+		System.out.println("-> ip: " + ip); // 자기자신은 0.0.0.0 으로 출력되고 외부 접속은 정상적으로 ip가 나옴
+
 		ModelAndView mav = new ModelAndView();
 
 		int cnt = adminProc.login(adminVO);
