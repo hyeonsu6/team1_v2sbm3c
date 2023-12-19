@@ -1,4 +1,4 @@
-package dev.mvc.recommend;
+package dev.mvc.frecommend;
 
 public class RecommendVO {
 	private int recommendno;

@@ -1,4 +1,4 @@
-package dev.mvc.recommend;
+package dev.mvc.frecommend;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import dev.mvc.member.MemberProcInter;
 @Controller
 public class RecommendCont {
 	@Autowired
-	@Qualifier("dev.mvc.recommend.RecommendProc")
+	@Qualifier("dev.mvc.frecommend.RecommendProc")
 	private RecommendProcInter recommendProc;
 
 	@Autowired
@@ -28,12 +28,12 @@ public class RecommendCont {
 	}
 
 	/**
-	 * 전체 목록 조회
+	 * 전체 목록
 	 * 
 	 * @param session
 	 * @return ModelAndView 객체
 	 */
-	@RequestMapping(value = "/recommend/list_all.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/frecommend/list_all.do", method = RequestMethod.GET)
 	public ModelAndView list_all(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
@@ -44,38 +44,53 @@ public class RecommendCont {
 	}
 
 	/**
-	 * 전체 조회 http://localhost:9093/recommend/read.do?recommendno=1
+	 * 전체 조회 http://localhost:9093/frecommend/read.do?recommendno=1
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/recommend/read.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/frecommend/read.do", method = RequestMethod.GET)
 	public ModelAndView read(int recommendno) {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("/recommend/read");
+		mav.setViewName("/frecommend/read");
 
 		RecommendVO recommendVO = this.recommendProc.read(recommendno);
 		mav.addObject("recommendVO", recommendVO);
 
 		return mav;
-	}  
+	}
 
 	/**
-	 * 삭제 폼 http://localhost:9093/recommend/delete.do?recommendno=1
+	 * 회원을 이용한 조회 http://localhost:9093/frecommend/read_memberno.do?memberno=1
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/recommend/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/frecommend/read_memberno.do", method = RequestMethod.GET)
+	public ModelAndView read_memberno(int memberno) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/frecommend/read");
+
+		RecommendVO recommendVO = this.recommendProc.read_memberno(memberno);
+
+		mav.addObject("recommendVO", recommendVO);
+
+		return mav;
+	}
+
+	/**
+	 * 삭제 폼 http://localhost:9093/frecommend/delete.do?recommendno=1
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.GET)
 	public ModelAndView delete(HttpSession session, int recommendno) {
-		System.out.println("-> delete");
 		ModelAndView mav = new ModelAndView();
 
 		if (memberProc.isMember(session)) {
-			System.out.println("-> member");
 			RecommendVO recommendVO = this.recommendProc.read(recommendno);
 			mav.addObject("recommendVO", recommendVO);
 
-			mav.setViewName("/recommend/delete"); // /WEB-INF/views/recommend/delete.jsp
+			mav.setViewName("/frecommend/delete"); // /WEB-INF/views/frecommend/delete.jsp
 
 		} else {
 			mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
@@ -85,23 +100,22 @@ public class RecommendCont {
 		return mav;
 	}
 
-	/**
-	 * 삭제 처리 http://localhost:9093/recommend/delete.do
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/recommend/delete.do", method = RequestMethod.POST)
-	public ModelAndView delete(RecommendVO recommendVO) {
-		System.out.println("-> delete");
-		ModelAndView mav = new ModelAndView();
-
-		RecommendVO recommendVO_read = this.recommendProc.read(recommendVO.getRecommendno());
-		this.recommendProc.delete(recommendVO.getRecommendno()); // DBMS 삭제
-
-		mav.addObject("recommendno", recommendVO.getRecommendno());
-		mav.setViewName("redirect:/recommend/list_all.do"); // /WEB-INF/views/recommend/list_all.jsp
-
-		return mav;
-	}
+//	/**
+//	 * 삭제 처리 http://localhost:9093/frecommend/delete.do
+//	 * 
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.POST)
+//	public ModelAndView delete(RecommendVO recommendVO) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		RecommendVO recommendVO_read = this.recommendProc.read(recommendVO.getRecommendno());
+//		this.recommendProc.delete(recommendVO.getRecommendno()); // DBMS 삭제
+//
+//		mav.addObject("recommendno", recommendVO.getRecommendno());
+//		mav.setViewName("redirect:/frecommend/list_all.do"); // /WEB-INF/views/frecommend/list_all.jsp
+//
+//		return mav;
+//	}
 
 }

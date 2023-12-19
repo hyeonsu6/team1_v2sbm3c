@@ -1,11 +1,11 @@
-package dev.mvc.recommend;
+package dev.mvc.frecommend;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("dev.mvc.recommend.RecommendProc")
+@Component("dev.mvc.frecommend.RecommendProc")
 public class RecommendProc implements RecommendProcInter {
 	@Autowired // RecommendDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
 	private RecommendDAOInter recommendDAO;
@@ -19,6 +19,12 @@ public class RecommendProc implements RecommendProcInter {
 	@Override
 	public RecommendVO read(int recommendno) {
 		RecommendVO recommendVO = this.recommendDAO.read(recommendno);
+		return recommendVO;
+	}
+
+	@Override
+	public RecommendVO read_memberno(int memberno) {
+		RecommendVO recommendVO = this.recommendDAO.read_memberno(memberno);
 		return recommendVO;
 	}
 
