@@ -2,26 +2,54 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dev.mvc.freommend.RecommendDAOInter">
-	<!-- 등록한 레코드 갯수 1 리턴 -->
+<mapper namespace="dev.mvc.frecommend.RecommendDAOInter">
+
+	<!-- 등록 -->
 	<insert id="create"
 		parameterType="dev.mvc.frecommend.RecommendVO">
-		INSERT INTO frecommend(recommendno, memberno, fcateno, seq, rdate)
-		VALUES(recommend_seq.nextval, #{memberno}, #{fcateno}, #{seq}, sysdate)
+		INSERT INTO frecommend(recommendno, memberno, fcateno,
+		seq, rdate)
+		VALUES(FRECOMMEND_SEQ.nextval, #{memberno}, #{fcateno},
+		#{seq},
+		sysdate);
 	</insert>
 
+	<!-- 전체 조회 -->
 	<select id="list_all" resultType="dev.mvc.frecommend.RecommendVO">
 		SELECT recommendno, memberno, fcateno, seq, rdate
 		FROM frecommend
-		ORDER BY recommendno ASC
+		ORDER BY recommendno DESC;
 	</select>
 
-	<select id="recom_by_memberno">
-		SELECT fcateno FROM recommend WHERE memberno=1
+	<!-- 조회 by memberno -->
+	<select id="list_by_memberno"
+		resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
+		SELECT
+		recommendno, memberno, fcateno, seq, rdate
+		FROM frecommend
+		WHERE
+		memberno = #{memberno};
 	</select>
 
-	<delete id="delete" parameterType="int">
-		DELETE FROM frecommend
-		WHERE recommendno=#{recommendno}
+	<!-- 조회 by recommendno -->
+	<select id="read" resultType="dev.mvc.frecommend.RecommendVO"
+		parameterType="int">
+		SELECT recommendno, memberno, fcateno, seq, rdate
+		FROM
+		frecommend
+		WHERE recommendno = #{recommendno};
+	</select>
+
+	<!-- 삭제 all -->
+	<delete id="delete">
+		DELETE FROM frecommend;
 	</delete>
+
+	<!-- 삭제 by memberno -->
+	<delete id="delete_by_memberno" parameterType="int">
+		DELETE FROM
+		frecommend WHERE memberno = #{memberno};
+	</delete>
+
 </mapper>
+
