@@ -13,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
+import dev.mvc.festival.FestivalVO;
 import dev.mvc.member.MemberProcInter;
+import dev.mvc.tool.Tool;
 
 public class RecommendCont {
 	@Autowired
@@ -26,7 +28,7 @@ public class RecommendCont {
 
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
-	private AdminProcInter AaminProc;
+	private AdminProcInter adminProc;
 
 	@Autowired
 	@Qualifier("dev.mvc.frecommend.RecommendProc") // @Component("dev.mvc.frecommend.RecommendProc")
@@ -66,7 +68,7 @@ public class RecommendCont {
 	}
 
 	/**
-	 * 등록 처리 http://localhost:9093/frecommend/create.do?fcateno=1
+	 * 등록 처리 http://localhost:9093/frecommend/create.do
 	 * 
 	 * @return
 	 */
@@ -93,73 +95,18 @@ public class RecommendCont {
 	 * @return
 	 */
 	@RequestMapping(value = "/frecommend/list_all.do", method = RequestMethod.GET)
-	public ModelAndView list(HttpSession session) {
+	public ModelAndView list_all(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("/frecommend/list_all"); // /WEB-INF/views/frecommend/list_all.jsp
+		if (this.adminProc.isAdmin(session) == true) {
+			mav.setViewName("/frecommend/list_all"); // /WEB-INF/views/frecommend/list_all.jsp
 
-		ArrayList<RecommendVO> list = this.recommendProc.list_all();
-		mav.addObject("list", list);
-
-		return mav;
-	}
-
-	/**
-	 * 파일 삭제 폼 http://localhost:9093/frecommend/delete.do?recommendno=1
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.GET)
-	public ModelAndView delete(HttpSession session, int recommendno) {
-		ModelAndView mav = new ModelAndView();
-
-		if (memberProc.isMember(session)) { // 회원으로 로그인한경우
-			RecommendVO recommendVO = this.recommendProc.read(recommendno);
-			mav.addObject("recommendVO", recommendVO);
-
-			FcateVO fcateVO = this.fcateProc.read(recommendVO.getFcateno());
-			mav.addObject("fcateVO", fcateVO);
-
-			mav.setViewName("/frecommend/delete"); // /WEB-INF/views/frecommend/delete.jsp
-
-		} else {
-			mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
-			mav.setViewName("redirect:/frecommend/msg.do");
-		}
-
-		return mav; // forward
-	}
-
-	// 삭제 처리, 수정 처리를 복사하여 개발
-	// 자식 테이블 레코드 삭제 -> 부모 테이블 레코드 삭제
-	/**
-	 * 카테고리 삭제
-	 * 
-	 * @param session
-	 * @param fcateno 삭제할 카테고리 번호
-	 * @return
-	 */
-	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.POST)
-	public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
-		ModelAndView mav = new ModelAndView();
-
-		if (this.memberProc.isMember(session) == true) {
 			ArrayList<RecommendVO> list = this.recommendProc.list_all();
-
-			int cnt = this.fcateProc.delete(fcateno);
-
-			if (cnt == 1) {
-				mav.setViewName("redirect:/index.do");
-
-			} else {
-				mav.addObject("code", "delete_fail");
-				mav.setViewName("/frecommend/msg");
-			}
-
-			mav.addObject("cnt", cnt);
+			mav.addObject("list", list);
 
 		} else {
-			mav.setViewName("/member/login_need");
+			mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+
 		}
 
 		return mav;
