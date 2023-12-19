@@ -27,13 +27,26 @@ CREATE SEQUENCE ALOGIN_SEQ
   NOCYCLE;                      -- 다시 1부터 생성되는 것을 방지
   
 -- INSERT
+INSERT INTO alogin (aloginno, adminno, ip, logindate)
+VALUES (ALOGIN_SEQ.NEXTVAL, 1, '192.168.2.2', SYSDATE);
 
 commit;
 
 -- LIST
+SELECT * FROM alogin;
 
--- READ
+-- 모든 관리자 로그인 전체 목록
+SELECT * FROM alogin WHERE adminno = 1;
 
--- UPDATE
+-- 특정 관리자 로그인 목록
+DELETE FROM alogin WHERE aloginno = 2;
 
 -- DELETE
+DELETE FROM alogin WHERE aloginno = 1;
+
+
+
+
+
+
+

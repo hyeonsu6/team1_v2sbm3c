@@ -27,13 +27,19 @@ CREATE SEQUENCE MLOGIN_SEQ
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
   
 -- INSERT
+INSERT INTO mlogin (mloginno, memberno, ip, logindate)
+VALUES (ALOGIN_SEQ.NEXTVAL, 1, '192.168.2.2', SYSDATE);
 
 commit;
 
 -- LIST
+SELECT * FROM mlogin;
 
--- READ
+-- 모든 회원 로그인 전체 목록
+SELECT * FROM mlogin WHERE memberno = 4;
 
--- UPDATE
+-- 특정 회원 로그인 목록
+DELETE FROM mlogin WHERE memberno = 4;
 
 -- DELETE
+DELETE FROM mlogin WHERE memberno = 4;
