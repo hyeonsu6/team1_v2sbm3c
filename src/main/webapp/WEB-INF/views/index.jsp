@@ -16,16 +16,14 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='content_body'>
-		<!-- <div class="login_container">
-			<div class="login_image"> -->
-		<!-- <img src="/images/index_img.jpg" alt="메인 이미지"> -->
-		<!-- <div class="login_image">
+		<div class="login_container">
+			<div class="login_image">
+				-->
 				<img src="/images/index_img.jpg" alt="메인 이미지">
-			</div> -->
-
-		<div style="width: 60%; margin: 10px auto;">
-			<img src="/images/index_img.jpg" style="width: 100%;">
-		</div>
-		<jsp:include page="./menu/bottom.jsp" flush='false' />
+				<div class="login_image">
+					<img src="/images/index_img.jpg" alt="메인 이미지">
+				</div>
+			</div>
+			<jsp:include page="./menu/bottom.jsp" flush='false' />
 </body>
 </html>

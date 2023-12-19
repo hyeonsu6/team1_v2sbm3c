@@ -2,7 +2,7 @@ package dev.mvc.alogin;
 
 import java.util.ArrayList;
 
-public interface AloginDAOInter {
+public interface AloginProcInter {
 	/** 
 	 * 등록, 추상 메소드 -> Spring Boot이 구현함.
 	 * 

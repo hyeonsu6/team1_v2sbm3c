@@ -23,11 +23,10 @@
 		WHERE adminno = #{adminno}
 		ORDER BY adminno DESC
 	</select>
-
-	<delete id="delete_by_fcateno" parameterType="int">
-		DELETE FROM festival
-		WHERE fcateno=#{fcateno}
+	
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM alogin
+		WHERE aloginno=#{aloginno}
 	</delete>
-
-
 </mapper>
