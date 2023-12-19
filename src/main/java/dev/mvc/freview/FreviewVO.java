@@ -196,13 +196,12 @@ public class FreviewVO {
 		return now_page;
 	}
 
-//	public void setNow_page(int now_page) {
-//		this.now_page = now_page;
-//	}
 	public void setNow_page(String now_page) {
-	    if (!now_page.isEmpty()) {
-	        this.now_page = Integer.parseInt(now_page);
-	    }
+		if (now_page != null && !now_page.isEmpty()) {
+			this.now_page = Integer.parseInt(now_page);
+		} else {
+			this.now_page = 1; // 기본값 설정
+		}
 	}
 
 	public void setReviewno(int reviewno) {
@@ -240,9 +239,6 @@ public class FreviewVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public void setNow_page(int now_page) {
-		this.now_page = now_page;
-	}
 
 	@Override
 	public String toString() {
@@ -254,5 +250,4 @@ public class FreviewVO {
 				+ now_page + "]";
 	}
 
-	
 }
