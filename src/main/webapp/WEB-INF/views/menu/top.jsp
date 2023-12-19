@@ -35,7 +35,8 @@
 	function chatbot() {
 		// 챗봇을 개발한 사람의 AWS IP
 		// "http://localhost:5000/chatbot/?memberno=${sessionScope.memberno }"  
-		var url = 'http://50.17.195.113:5000/chatbot/?memberno=${sessionScope.memberno }';
+    // http://50.17.195.113:5000/chatbot?memberno=9
+		var url = 'http://50.17.195.113:5000/chatbot?memberno=${sessionScope.memberno }';
 		var win = window.open(url, '챗봇', 'width=1300px, height=850px');
 
 		var x = (screen.width - 1300) / 2;
