@@ -117,8 +117,9 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
-								<a class="dropdown-item" href='/member/list.do'>회원 목록</a>
-								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
+								<a class="dropdown-item" href='/frecommend/list_all.do'>[회원] 추천지 목록</a>
+									<a class="dropdown-item" href='/member/list.do'>회원 목록</a>
+									<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
 							</div>
 						</li>
 					</c:otherwise>
@@ -138,7 +139,8 @@
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">질문 목록</a>
 				</li>
 				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/chatbot/chatting.do">챗봇 adminno: ${sessionScope.adminno }</a>
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/chatbot/chatting.do">챗봇 adminno:
+						${sessionScope.adminno }</a>
 				</li>
 
 			</ul>
