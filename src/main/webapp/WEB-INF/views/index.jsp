@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,7 +14,7 @@
  -->
 </head>
 <body>
-	<jsp:include page="./menu/top.jsp" flush='false' />
+	<c:import url="/menu/top.do" />
 	<div class='content_body'>
 		<!-- <div class="login_container">
 			<div class="login_image"> -->
