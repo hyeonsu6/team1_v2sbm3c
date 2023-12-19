@@ -5,8 +5,9 @@
 <mapper namespace="dev.mvc.fcate.FcateDAOInter">
 	<!-- return: 등록한 레코드 갯수를 1을 리턴, parameterType: 전달받는 데이터 -->
 	<insert id="create" parameterType="dev.mvc.fcate.FcateVO">
-		INSERT INTO fcate(fcateno, name, cnt, rdate) VALUES(fcate_seq.nextval, #{name},
-		0, sysdate) 
+		INSERT INTO fcate(fcateno,
+		name, cnt, rdate) VALUES(fcate_seq.nextval, #{name},
+		0, sysdate)
 	</insert>
 
 	<!-- 전체 목록, SQL -> fcateVO -> ArrayList<fcateVO> return -->
@@ -19,16 +20,19 @@
 
 	<!-- 출력 모드 적용 -->
 	<select id="list_all" resultType="dev.mvc.fcate.FcateVO">
-		SELECT fcateno, name, cnt, rdate, seqno, visible FROM fcate ORDER BY seqno ASC
+		SELECT fcateno, name, cnt,
+		rdate, seqno, visible FROM fcate ORDER BY seqno ASC
 	</select>
-	
+
 	<!-- 전체 목록, SQL -> fcateVO -> ArrayList<fcateVO> return -->
-	<select id="list_all_member" resultType="dev.mvc.fcate.FcateVO"> SELECT fcateno, 
-		name, cnt, rdate FROM fcate ORDER BY fcateno ASC </select>
+	<select id="list_all_member" resultType="dev.mvc.fcate.FcateVO"> SELECT fcateno,
+		name, cnt, rdate FROM fcate ORDER BY fcateno ASC
+	</select>
 
 	<!-- 비회원/회원 SELECT LIST -->
 	<select id="list_all_y" resultType="dev.mvc.fcate.FcateVO">
-		SELECT fcateno, name, cnt, rdate, seqno, visible
+		SELECT fcateno, name, cnt,
+		rdate, seqno, visible
 		FROM fcate
 		WHERE visible='Y'
 		ORDER BY seqno ASC
@@ -37,38 +41,45 @@
 	<!-- 읽기, SQL -> FcateVO return -->
 	<select id="read" resultType="dev.mvc.fcate.FcateVO"
 		parameterType="int">
-		SELECT fcateno, name, cnt, rdate FROM fcate WHERE fcateno=#{fcateno}
+		SELECT fcateno, name, cnt, rdate FROM fcate WHERE
+		fcateno=#{fcateno}
 	</select>
 
 	<!-- return: 수정한 레코드 갯수 리턴, parameterType: 수정할 레코드 정보 -->
 	<update id="update" parameterType="dev.mvc.fcate.FcateVO">
-		UPDATE fcate SET name=#{name}, cnt=#{cnt}
+		UPDATE fcate SET name=#{name},
+		cnt=#{cnt}
 		WHERE fcateno=#{fcateno}
 	</update>
 
 	<!-- return: 삭제한 레코드 갯수 리턴, parameterType: 삭제할 레코드 정보 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM fcate WHERE fcateno=#{fcateno}		
+		DELETE FROM fcate WHERE
+		fcateno=#{fcateno}
 	</delete>
 
 	<!-- 우선 순위 높임, 10 등 -> 1 등 -->
 	<update id="update_seqno_forward" parameterType="int">
-		UPDATE fcate SET seqno = seqno - 1 WHERE fcateno=#{fcateno}
+		UPDATE fcate SET
+		seqno = seqno - 1 WHERE fcateno=#{fcateno}
 	</update>
 
 	<!-- 우선 순위 낮춤, 1 등 -> 10 등 -->
 	<update id="update_seqno_backward" parameterType="int">
-		UPDATE fcate SET seqno = seqno + 1 WHERE fcateno=#{fcateno}
+		UPDATE fcate
+		SET seqno = seqno + 1 WHERE fcateno=#{fcateno}
 	</update>
 
 	<!-- 카테고리 공개 설정 -->
 	<update id="update_visible_y" parameterType="int">
-		UPDATE fcate SET visible='Y' WHERE fcateno=#{fcateno}
+		UPDATE fcate SET
+		visible='Y' WHERE fcateno=#{fcateno}
 	</update>
 
 	<!-- 카테고리 비공개 설정 -->
 	<update id="update_visible_n" parameterType="int">
-		UPDATE fcate SET visible='N' WHERE fcateno=#{fcateno}
+		UPDATE fcate SET
+		visible='N' WHERE fcateno=#{fcateno}
 	</update>
 
 </mapper>

@@ -39,4 +39,4 @@ SELECT * FROM mlogin;
 SELECT * FROM mlogin WHERE memberno = 4;
 
 -- 로그인 내역 삭제
-DELETE FROM mlogin WHERE mloginno = 4;
+DELETE FROM mlogin WHERE mloginno = 1;

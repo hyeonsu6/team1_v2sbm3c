@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.alogin.AloginDAOInter">
+	<!-- 등록 -->
+	<insert id="create" parameterType="dev.mvc.alogin.AloginVO">
+		INSERT INTO alogin (aloginno, adminno, ip, logindate)
+		VALUES (ALOGIN_SEQ.NEXTVAL, #{adminno}, #{ip},
+		SYSDATE)
+	</insert>
+
+	<!-- 전체 로그인 내역, SQL -> AloginVO -> ArrayList<AloginVO> return -->
+	<select id="list_all" resultType="dev.mvc.alogin.AloginVO">
+		SELECT alogin (aloginno, adminno, ip, logindate
+		FROM alogin ORDER BY
+		aloginno
+	</select>
+
+	<!-- 특정 관리자의 로그인 내역 -->
+	<select id="list_by_adminno" resultType="dev.mvc.alogin.AloginVO" parameterType="int">
+		SELECT aloginno, adminno, ip, logindate
+		FROM alogin
+		WHERE adminno = #{adminno}
+		ORDER BY adminno DESC
+	</select>
+
+	<delete id="delete_by_fcateno" parameterType="int">
+		DELETE FROM festival
+		WHERE fcateno=#{fcateno}
+	</delete>
+
+
+</mapper>
