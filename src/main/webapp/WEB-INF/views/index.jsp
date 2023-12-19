@@ -8,25 +8,23 @@
 <title>Festival Blog</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ -->
 </head>
 <body>
 	<jsp:include page="./menu/top.jsp" flush='false' />
 	<div class='content_body'>
-		<div class="login_container">
-			<div class="login_image">
+		<!-- <div class="login_container">
+			<div class="login_image"> -->
+		<!-- <img src="/images/index_img.jpg" alt="메인 이미지"> -->
+	</div>
+	<!-- <div class="login_image">
 				<img src="/images/index_img.jpg" alt="메인 이미지">
-			</div>
-			<div class="login_image">
-				<img src="/images/index_img.jpg" alt="메인 이미지">
-			</div>
-		</div>
-		<jsp:include page="./menu/bottom.jsp" flush='false' />
+			</div> -->
+
+	<div style="width: 100%; margin: 50px auto;">
+		<img src="/images/index_img.jpg" style="width: 100%;">
+	</div>
+	<jsp:include page="./menu/bottom.jsp" flush='false' />
 </body>
 </html>
