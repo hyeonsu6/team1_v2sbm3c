@@ -118,7 +118,7 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
-								<a class="dropdown-item" href='/recommend/list_all.do'>[회원] 추천 페스티벌 목록</a>
+								<a class="dropdown-item" href='/frecommend/list_all.do'>[회원] 추천 페스티벌 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>[회원] 목록</a>
 								<a class="dropdown-item" href='/alogin/list_all.do'>[관리자] 로그인 내역</a>
 

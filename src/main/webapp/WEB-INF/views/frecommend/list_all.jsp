@@ -78,8 +78,8 @@
 
 				<td class="td_bs">${recommendVO.rdate.substring(0, 16)}</td>
 				<td class="td_bs">
-					<a href="./delete.do?memberno=${memberno }" title="삭제">
-						<img src="/festival/images/delete.png" class="icon">
+					<a href="./delete.do?recommendno=${recommendno}" title="삭제">
+						<img src="/frecommend/images/delete.png" class="icon">
 					</a>
 				</td>
 			</tr>
