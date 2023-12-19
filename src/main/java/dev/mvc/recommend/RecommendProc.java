@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("dev.mvc.frecommend.RecommendProc")
+@Component("dev.mvc.recommend.RecommendProc")
 public class RecommendProc implements RecommendProcInter {
 	@Autowired // RecommendDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
 	private RecommendDAOInter recommendDAO;
