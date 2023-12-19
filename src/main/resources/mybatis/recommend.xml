@@ -9,7 +9,7 @@
 		ORDER BY recommendno DESC
 	</select>
 
-	<!-- 추천 차종 조회 -->
+	<!-- 추천 조회 -->
 	<select id="read" resultType="dev.mvc.recommend.RecommendVO" parameterType="int">
 		SELECT recommendno, memberno, fcateno, seq, rdate
 		FROM recommend
