@@ -35,7 +35,7 @@ commit;
 -- LIST
 SELECT * FROM alogin;
 
--- 모든 관리자 로그인 전체 목록
+-- 특정 관리자 로그인 전체 목록
 SELECT * FROM alogin WHERE adminno = 1;
 
 -- 특정 관리자 로그인 목록

@@ -35,7 +35,7 @@ commit;
 -- LIST
 SELECT * FROM mlogin;
 
--- 모든 회원 로그인 전체 목록
+-- 특정 회원 로그인 전체 목록
 SELECT * FROM mlogin WHERE memberno = 4;
 
 -- 특정 회원 로그인 목록
