@@ -6,7 +6,6 @@ public class RecommendVO {
 	private int fcateno;
 	private int seq;
 	private String rdate;
-	private String mname;
 
 	public int getRecommendno() {
 		return recommendno;
@@ -48,18 +47,10 @@ public class RecommendVO {
 		this.rdate = rdate;
 	}
 
-	public String getMname() {
-		return mname;
-	}
-
-	public void setMname(String mname) {
-		this.mname = mname;
-	}
-
 	@Override
 	public String toString() {
 		return "RecommendVO [recommendno=" + recommendno + ", memberno=" + memberno + ", fcateno=" + fcateno + ", seq="
-				+ seq + ", rdate=" + rdate + ", mname=" + mname + "]";
+				+ seq + ", rdate=" + rdate + "]";
 	}
 
 }

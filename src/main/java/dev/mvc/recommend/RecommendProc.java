@@ -11,12 +11,6 @@ public class RecommendProc implements RecommendProcInter {
 	private RecommendDAOInter recommendDAO;
 
 	@Override
-	public int create(RecommendVO recommendVO) {
-		int cnt = this.recommendDAO.create(recommendVO);
-		return cnt;
-	}
-
-	@Override
 	public ArrayList<RecommendVO> list_all() {
 		ArrayList<RecommendVO> list = this.recommendDAO.list_all();
 		return list;
@@ -25,12 +19,6 @@ public class RecommendProc implements RecommendProcInter {
 	@Override
 	public RecommendVO read(int recommendno) {
 		RecommendVO recommendVO = this.recommendDAO.read(recommendno);
-		return recommendVO;
-	}
-
-	@Override
-	public RecommendVO read_by_memberno(int memberno) {
-		RecommendVO recommendVO = this.recommendDAO.read_by_memberno(memberno);
 		return recommendVO;
 	}
 
