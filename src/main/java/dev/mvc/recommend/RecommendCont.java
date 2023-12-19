@@ -58,7 +58,7 @@ public class RecommendCont {
 		mav.addObject("recommendVO", recommendVO);
 
 		return mav;
-	}
+	}  
 
 	/**
 	 * 삭제 폼 http://localhost:9093/recommend/delete.do?recommendno=1
