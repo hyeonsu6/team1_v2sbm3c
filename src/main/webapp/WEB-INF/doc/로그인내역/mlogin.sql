@@ -35,11 +35,8 @@ commit;
 -- LIST
 SELECT * FROM mlogin;
 
--- 특정 회원 로그인 전체 목록
+-- 특정 회원의 로그인 전체 목록
 SELECT * FROM mlogin WHERE memberno = 4;
 
--- 특정 회원 로그인 목록
-DELETE FROM mlogin WHERE memberno = 4;
-
--- DELETE
+-- 특정 회원의 로그인 내역 삭제
 DELETE FROM mlogin WHERE memberno = 4;
