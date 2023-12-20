@@ -9,13 +9,12 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" /> 
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
-<link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
+<link href="/css/style.css" rel="Stylesheet" type="text/css"> 
 
 <!-- Fotorama -->
 <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="/jquery/fotorama/fotorama.css" rel="stylesheet"> <!-- /static 기준 -->
+<link href="/jquery/fotorama/fotorama.css" rel="stylesheet"> 
 <script src="/jquery/fotorama/fotorama.js"></script>
-    
 </head>
 <body>
 <c:import url="/menu/top.do" />

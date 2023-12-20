@@ -8,30 +8,31 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
-<link href="/css/style.css" rel="Stylesheet" type="text/css"> 
+<link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
+
 </head> 
 <body>
 <c:import url="/menu/top.do" />
 
-<DIV class='title_line'>알림</DIV>
+<div class='title_line'>알림</div>
 
 <c:set var="code" value="${param.code }" /> <%--mav.addObject("code", "create_success"); --%>
 <c:set var="cnt" value="${param.cnt }" />     <%-- mav.addObject("cnt", cnt); --%>
 <c:set var="contentsno" value="${param.contentsno }" /> <%-- mav.addObject("fcateno", contentsVO.getCateno()); // redirect parameter 적용 --%>
 
-<DIV class='message'>
+<div class='message'>
   <fieldset class='fieldset_basic'>
-    <UL>
+    <ul>
       <c:choose>
         <c:when test="${code == 'passwd_fail'}">
-          <LI class='li_none'>
+          <li class='li_none'>
             <span class="span_fail">패스워드가 일치하지 않습니다.</span>
-          </LI> 
+          </li> 
         </c:when>
         
         <c:when test="${code == 'create_success'}"> <%-- Java if --%>
           <li class='li_none'>
-            <span class="span_success">새로운 리뷰를 등록했습니다.</span>
+            <span class="span_success">새로운 추천 페스티벌을 등록했습니다.</span>
           </li> 
         </c:when>
 
@@ -43,37 +44,35 @@
         </c:when>
                 
         <c:when test="${code == 'create_fail'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_fail">새로운 리뷰 등록에 실패했습니다.</span>
-          </LI>                                                                      
+          <li class='li_none'>
+            <span class="span_fail">새로운 추천 페스티벌 등록에 실패했습니다.</span>
+          </li>                                                                      
         </c:when>
         
         <c:when test="${code == 'update_fail'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_fail">리뷰 수정에 실패했습니다.</span>
-          </LI>                                                                      
+          <li class='li_none'>
+            <span class="span_fail">새로운 추천 페스티벌 수정에 실패했습니다.</span>
+          </li>                                                                      
         </c:when>
         
         <c:when test="${code == 'delete_success'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_success">리뷰 삭제에 성공했습니다.</span>
-          </LI>                                                                      
+          <li class='li_none'>
+            <span class="span_success">새로운 추천 페스티벌 삭제에 성공했습니다.</span>
+          </li>                                                                      
         </c:when>        
         
         <c:when test="${code == 'delete_fail'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_fail">리뷰 삭제에 실패했습니다.</span>
-          </LI>                                                                      
+          <li class='li_none'>
+            <span class="span_fail">새로운 추천 페스티벌 삭제에 실패했습니다.</span>
+          </li>                                                                      
         </c:when> 
         
         <c:otherwise>
-          <LI class='li_none_left'>
+          <li class='li_none_left'>
             <span class="span_fail">알 수 없는 에러로 작업에 실패했습니다.</span>
-          </LI>
-          <LI class='li_none_left'>
-            <span class="span_fail">다시 시도해주세요.</span>
-          </LI>
-        </c:otherwise>
+          </li>
+						<li class='li_none_left'><span class="span_fail">다시 시도해주세요.</span></li>
+					</c:otherwise>
         
        
       </c:choose>
@@ -81,16 +80,16 @@
         <br>
         <c:choose>
             <c:when test="${cnt == 0 }">
-                <button type='button' onclick="history.back()" class="btn btn-primary btn-sm">다시 시도</button>    
+                <button type='button' onclick="history.back()" class="btn btn-primary btn-sm">다시시도</button>    
             </c:when>
         </c:choose>
         
-        <button type='button' onclick="location.href='./list_by_contentsno.do?contentsno=${param.contentsno}'" class="btn btn-primary btn-sm">리뷰 목록</button>
+        <button type='button' onclick="location.href='./list_all.do'" class="btn btn-primary btn-sm">추천 페스티벌 목록</button>
       </li>
-    </UL>
+    </ul>
   </fieldset>
 
-</DIV>
+</div>
 
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>

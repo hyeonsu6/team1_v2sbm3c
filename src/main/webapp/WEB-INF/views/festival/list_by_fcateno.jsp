@@ -11,9 +11,8 @@
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
-
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 
@@ -28,7 +27,8 @@
 		<button type="submit" class="btn btn-success btn-sm" onclick="location.href='../freview/list_all.do'"
 			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
 		<c:if test="${sessionScope.admin_id != null }">
-			<button type="submit" class="btn btn-dark btn-sm" onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
+			<button type="submit" class="btn btn-dark btn-sm"
+				onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
 				style="font-weight: bold; text-align: left;">📝 컨텐츠 등록</button>
 		</c:if>
 
@@ -135,9 +135,11 @@
 							title="Youtube 설정">
 							<img src="/festival/images/youtube.png" class="icon">
 						</a>
-						<a href="/festival/delete.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="삭제">
-							<img src="/festival/images/delete.png" class="icon">
-						</a>
+						<c:if test="${sessionScope.admin_id != null }">
+							<a href="/festival/delete.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="삭제">
+								<img src="/festival/images/delete.png" class="icon">
+							</a>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>

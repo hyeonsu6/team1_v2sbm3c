@@ -1,4 +1,4 @@
-package dev.mvc.recommend;
+package dev.mvc.frecommend;
 
 import java.util.ArrayList;
 
@@ -9,12 +9,6 @@ import org.springframework.stereotype.Component;
 public class RecommendProc implements RecommendProcInter {
 	@Autowired // RecommendDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
 	private RecommendDAOInter recommendDAO;
-
-	@Override
-	public int create(RecommendVO recommendVO) {
-		int cnt = this.recommendDAO.create(recommendVO);
-		return cnt;
-	}
 
 	@Override
 	public ArrayList<RecommendVO> list_all() {
@@ -29,8 +23,8 @@ public class RecommendProc implements RecommendProcInter {
 	}
 
 	@Override
-	public RecommendVO read_by_memberno(int memberno) {
-		RecommendVO recommendVO = this.recommendDAO.read_by_memberno(memberno);
+	public RecommendVO read_memberno(int memberno) {
+		RecommendVO recommendVO = this.recommendDAO.read_memberno(memberno);
 		return recommendVO;
 	}
 

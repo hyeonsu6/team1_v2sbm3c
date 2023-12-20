@@ -9,19 +9,23 @@
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel='Stylesheet' type='text/css'>
-
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 	<DIV class='title_line'>
-		<A href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</A> >
-		${festivalVO.title } > Youtube 등록/수정/삭제
+		<A href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</A>
+		> ${festivalVO.title } > Youtube 등록/수정/삭제
 	</DIV>
 
 	<ASIDE class="aside_right">
-		<A href="javascript:location.reload();">새로고침</A> <span class='menu_divide'>│</span> <A
+		<A href="javascript:location.reload();">새로고침</A>
+		<span class='menu_divide'>│</span>
+		<A
 			href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page}&word=${param.word }">기본
-			목록형</A> <span class='menu_divide'>│</span> <A
+			목록형</A>
+		<span class='menu_divide'>│</span>
+		<A
 			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page}&word=${param.word }">갤러리형</A>
 
 	</ASIDE>
@@ -60,8 +64,8 @@
 		</div>
 		<div class="content_body_bottom">
 			<button type="submit" class="btn btn-dark btn-sm">저장</button>
-			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();"
-				class="btn btn-dark btn-sm">Youtube 삭제</button>
+			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();" class="btn btn-dark btn-sm">Youtube
+				삭제</button>
 			<button type="button" onclick="history.back();" class="btn btn-dark btn-sm">취소</button>
 		</div>
 
@@ -70,8 +74,10 @@
 	<HR>
 	<DIV style="text-align: center;">
 		<H5>[참고] Youtube의 등록 방법</H5>
-		<IMG src='/festival/images/youtube01.jpg' style='width: 60%;'><br>
-		<br> <IMG src='/festival/images/youtube02.jpg' style='width: 60%;'><br>
+		<IMG src='/festival/images/youtube01.jpg' style='width: 60%;'>
+		<br> <br>
+		<IMG src='/festival/images/youtube02.jpg' style='width: 60%;'>
+		<br>
 	</DIV>
 
 

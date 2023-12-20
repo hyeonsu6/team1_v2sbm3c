@@ -1,15 +1,8 @@
-package dev.mvc.recommend;
+package dev.mvc.frecommend;
 
 import java.util.ArrayList;
 
 public interface RecommendDAOInter {
-	/**
-	 * 등록
-	 * 
-	 * @return
-	 */
-	public int create(RecommendVO recommendVO);
-
 	/**
 	 * 전체 목록
 	 * 
@@ -18,7 +11,7 @@ public interface RecommendDAOInter {
 	public ArrayList<RecommendVO> list_all();
 
 	/**
-	 * 조회
+	 * 전체 조회
 	 * 
 	 * @param recommendno
 	 * @return
@@ -26,12 +19,12 @@ public interface RecommendDAOInter {
 	public RecommendVO read(int recommendno);
 
 	/**
-	 * memberno 조회
+	 * 회원을 이용한 조회
 	 * 
-	 * @param recommendno
+	 * @param memberno
 	 * @return
 	 */
-	public RecommendVO read_by_memberno(int memberno);
+	public RecommendVO read_memberno(int memberno);
 
 	/**
 	 * 삭제

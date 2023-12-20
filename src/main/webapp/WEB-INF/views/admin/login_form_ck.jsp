@@ -37,7 +37,6 @@
 					</div>
 					<div class="login_bottom_menu">
 						<button type="submit" class="btn btn-dark btn-sm">로그인</button>
-						<button type='button' id='btn_create' class="btn btn-dark btn-sm">회원가입</button>
 					</div>
 				</FORM>
 			</div>
