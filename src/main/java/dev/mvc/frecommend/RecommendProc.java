@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dev.mvc.fcate.FcateVO;
+
 @Component("dev.mvc.frecommend.RecommendProc")
 public class RecommendProc implements RecommendProcInter {
 	@Autowired // RecommendDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
@@ -17,14 +19,14 @@ public class RecommendProc implements RecommendProcInter {
 	}
 
 	@Override
-	public RecommendVO read(int recommendno) {
-		RecommendVO recommendVO = this.recommendDAO.read(recommendno);
+	public RecommendVO list_by_memberno(int memberno) {
+		RecommendVO recommendVO = this.recommendDAO.list_by_memberno(memberno);
 		return recommendVO;
 	}
 
 	@Override
-	public RecommendVO read_memberno(int memberno) {
-		RecommendVO recommendVO = this.recommendDAO.read_memberno(memberno);
+	public RecommendVO read(int recommendno) {
+		RecommendVO recommendVO = this.recommendDAO.read(recommendno);
 		return recommendVO;
 	}
 
