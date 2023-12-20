@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;  // 구현 클래스를 교체하기 쉬운 구조 지원
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public interface MemberProcInter {
@@ -89,6 +90,21 @@ public interface MemberProcInter {
    */
   public int login(HashMap<String, Object> map);
   
+  /**
+   * 회원 탈퇴 -> grade = 99
+   * @param map
+   * @return
+   */
+  public int unsubscribe(HashMap<String, Object> map);
+  
+  /**
+   * 로그인 시 탈퇴 회원인지 확인
+   * @param id
+   * @return
+   */
+  //public int check_unsubscribe(String id);
+  //public int check_unsubscribe(HttpSession session);
+  public int check_unsubscribe(HttpServletRequest request, HttpSession session);
 }
 
 

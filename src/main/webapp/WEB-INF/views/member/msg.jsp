@@ -58,6 +58,30 @@
                          class="btn btn-primary btn-sm">회원 목록</button>                   
           </li>                                                                       
         </c:when>
+        
+        <c:when test="${param.code == 'grade_99'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_success">탈퇴 완료되었습니다.</span>
+          </li> 
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/logout.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                                      
+        </c:when> 
+        
+        <c:when test="${param.code == 'grade_fail'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_fail">회원 탈퇴에 실패했습니다.</span>
+          </li>                                                                      
+        </c:when> 
+        
+        <c:when test="${param.code == 'login_fail_grade99_msg'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_fail">탈퇴된 회원입니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/login.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                               
+        </c:when> 
                 
         <c:when test="${param.code == 'update_fail'}"> <%-- Java if --%>
           <li class='li_none'>

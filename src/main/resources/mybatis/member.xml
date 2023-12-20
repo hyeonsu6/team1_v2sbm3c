@@ -65,7 +65,23 @@
 		SET passwd=#{passwd}
 		WHERE memberno=#{memberno}
 	</update>
-
+  
+  <!-- 회원 탈퇴 -> grade = 99 -->
+  <update id="unsubscribe" parameterType="HashMap">
+    UPDATE member
+    SET grade=99
+    WHERE memberno=#{memberno}
+  </update>
+  
+  <!-- 로그인 시 탈퇴 회원인지 확인 -->
+<!--   <select id="check_unsubscribe" resultType="int" parameterType="String">
+    SELECT COUNT(*) as cnt
+    FROM member
+    WHERE id=#{id} AND grade = 99
+  </select> -->
+  
+  <!-- 로그인 시 정지 회원인지 확인 -->
+  
 </mapper> 
 
 

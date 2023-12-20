@@ -10,7 +10,10 @@ import java.util.List;
 // Payend pay = new Payend2023();
 // Payend pay = new Payend2024();
 // pay.calc();
-import java.util.Map;         
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;         
 
 public interface MemberDAOInter {
   /**
@@ -80,6 +83,21 @@ public interface MemberDAOInter {
    */
   public int login(HashMap<String, Object> map);
   
+  /**
+   * 회원 탈퇴 -> grade = 99
+   * @param map
+   * @return
+   */
+  public int unsubscribe(HashMap<String, Object> map);
+  
+  /**
+   * 로그인 시 탈퇴 회원인지 확인
+   * @param id
+   * @return
+   */
+  //public int check_unsubscribe(String id);
+  //public int check_unsubscribe(HttpSession session);
+  public int check_unsubscribe(HttpServletRequest request, HttpSession session);
 }
  
 

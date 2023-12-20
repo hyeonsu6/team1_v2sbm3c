@@ -103,7 +103,7 @@
 								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
 								<a class="dropdown-item" href="javascript: alert('개발 예정')">[회원] 로그인 내역</a>
-								<a class="dropdown-item" href="#">회원 탈퇴</a>
+								<a class="dropdown-item" href="/member/unsubscribe.do">회원 탈퇴</a>
 							</c:otherwise>
 						</c:choose>
 					</div>
