@@ -12,6 +12,7 @@
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 
@@ -78,9 +79,11 @@
 						<a href="/festival/youtube.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="유튜브">
 							<img src="/festival/images/youtube.png" class="icon">
 						</a>
-						<a href="/festival/delete.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="삭제">
-							<img src="/festival/images/delete.png" class="icon">
-						</a>
+						<c:if test="${sessionScope.admin_id != null }">
+							<a href="/festival/delete.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="삭제">
+								<img src="/festival/images/delete.png" class="icon">
+							</a>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>

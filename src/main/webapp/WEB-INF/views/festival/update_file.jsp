@@ -19,9 +19,8 @@
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
-
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 	<DIV class='title_line'>${fcateVO.name } > ${title } >파일 수정</DIV>
