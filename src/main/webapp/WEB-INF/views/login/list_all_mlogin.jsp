@@ -33,10 +33,10 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th class="th_bs">회원 번호</th>
 				<th class="th_bs">로그인 번호</th>
+				<th class="th_bs">회원 번호</th>
 				<th class="th_bs">IP</th>
-				<th class="th_bs">등록일</th>
+				<th class="th_bs">로그인 일자</th>
 				<th class="th_bs">삭제</th>
 			</tr>
 		</thead>
@@ -44,9 +44,10 @@
 			<c:forEach var="mloginVO" items="${list }" varStatus="info">
 				<c:set var="mloginno" value="${mloginVO.mloginno }" />
 
+
 				<tr>
-					<td class="td_bs">${mloginVO.memberno }</td>
 					<td class="td_bs">${mloginno }</td>
+					<td class="td_bs">${mloginVO.memberno }</td>
 					<td class="td_bs">${mloginVO.ip }</td>
 					<td class="td_bs">${mloginVO.logindate.substring(0,16) }</td>
 					<td class="td_bs">
@@ -56,9 +57,7 @@
 					</td>
 			</c:forEach>
 		</tbody>
-
 	</table>
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>
