@@ -447,7 +447,7 @@ a:active { /* A 태그를 클릭한 상태 */
 /* 처리 성공 메시지 */
 .span_success {
 	font-weight: bold;
-	background: url('/css/images/url5.png') left center no-repeat;
+	background: url('/css/images/url5.png') left center no-repeat; 
 	background-size: 10px;
 	padding-top: 0px;
 	padding-left: 20px;
@@ -479,7 +479,11 @@ a:active { /* A 태그를 클릭한 상태 */
 }
 
 .icon {
-	width: 16px;
+	width: 18px;
+}
+
+.icon_New {
+	width: 28px;
 }
 
 .form_input {

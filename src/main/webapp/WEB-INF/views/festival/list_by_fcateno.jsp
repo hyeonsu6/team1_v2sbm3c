@@ -74,7 +74,6 @@
 	</div>
 
 	<div class="menu_line"></div>
-
 	<table class="table table-hover">
 		<colgroup>
 			<col style="width: 10%;"></col>
@@ -87,7 +86,7 @@
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
 				<th style='text-align: center;'>등록일</th>
-				<th style='text-align: center;'>기타</th>
+				<th style='text-align: center;'>비고</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -124,35 +123,21 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
+
 					<td class="td_bs">
 						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
-					<td class="td_bs">
-						<a href="/festival/map.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="지도 설정">
-							<img src="/festival/images/map.png" class="icon">
-						</a>
-						<a href="/festival/youtube.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}"
-							title="Youtube 설정">
-							<img src="/festival/images/youtube.png" class="icon">
-						</a>
-						<c:if test="${sessionScope.admin_id != null }">
-							<a href="/festival/delete.do?fcateno=${fcateno }&contentsno=${contentsno}&now_page=${param.now_page}" title="삭제">
-								<img src="/festival/images/delete.png" class="icon">
-							</a>
-						</c:if>
-					</td>
+					<td class="td_bs"></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<br> 정보 제공 :
-	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
-
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
-
+	<br> 정보 제공 :
+	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>
