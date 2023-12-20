@@ -413,7 +413,7 @@ public class MemberCont {
 		map.put("id", id);
 		map.put("passwd", passwd);
 		
-		int check_unsubscribe = memberProc.check_unsubscribe(request, session);
+		int check_unsubscribe = memberProc.check_unsubscribe(id);
 		if(check_unsubscribe == 1) { // grade != 99, 40 ~ 49
 		  
 		  int cnt = memberProc.login(map);

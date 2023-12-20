@@ -95,9 +95,7 @@ public interface MemberDAOInter {
    * @param id
    * @return
    */
-  //public int check_unsubscribe(String id);
-  //public int check_unsubscribe(HttpSession session);
-  public int check_unsubscribe(HttpServletRequest request, HttpSession session);
+  public int check_unsubscribe(String id);
 }
  
 

@@ -128,34 +128,18 @@ public class MemberProc implements MemberProcInter {
   }
 
   @Override
-  public int check_unsubscribe(HttpServletRequest request, HttpSession session) {
+  public int check_unsubscribe(String id) {
     //System.out.println("-> check_unsubscribe");
-    
-    Cookie[] cookies = request.getCookies();
-    Cookie cookie = null;
-
-    String ck_id = ""; // id 저장
-    
-    if (cookies != null) { // 쿠키가 존재한다면
-      for (int i = 0; i < cookies.length; i++) {
-        cookie = cookies[i]; // 쿠키 객체 추출
-
-        if (cookie.getName().equals("ck_id")) {
-          ck_id = cookie.getValue();
-        }
-        
-      }
-    }
     
     int check_unsubscribe;
     //String id = (String)session.getAttribute("id");
-    
+    System.out.println("-> id: " + id);
     //System.out.println("-> ck_id: " + ck_id);
     
-    MemberVO memberVO = this.memberDAO.readById(ck_id);
+    MemberVO memberVO = this.memberDAO.readById(id);
     int grade = memberVO.getGrade();
     
-    //System.out.println("-> grade: " + grade);
+    System.out.println("-> grade: " + grade);
     
     if(grade == 99) { // 탈퇴 회원 로그인 불가
       check_unsubscribe = 0;
