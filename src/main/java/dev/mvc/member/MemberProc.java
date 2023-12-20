@@ -144,12 +144,18 @@ public class MemberProc implements MemberProcInter {
     if(grade == 99) { // 탈퇴 회원 로그인 불가
       check_unsubscribe = 0;
     } else if (grade >= 40 && grade <= 49) { // 정지 회원 로그인 불가
-      check_unsubscribe = 0;
+      check_unsubscribe = -1;
     } else { // 로그인 가능
       check_unsubscribe = 1;
     }
     
     return check_unsubscribe;
+  }
+
+  @Override
+  public int update_grade(MemberVO memberVO) {
+    int cnt = this.memberDAO.update_grade(memberVO);
+    return cnt;
   }
 
 }

@@ -82,6 +82,51 @@
             <button type='button' onclick="location.href='/member/login.do'" class="btn btn-primary btn-sm">확인</button>
           </li>                                                               
         </c:when> 
+        
+        <c:when test="${param.code == 'login_fail_grade49_msg'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_fail">정지된 회원입니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/login.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                               
+        </c:when> 
+        
+        <c:when test="${param.code == 'update_lock_success'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_success">${param.mname }님(${param.id }) 회원 정지에 성공했습니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/list.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                                    
+        </c:when>
+        
+        <c:when test="${param.code == 'update_lock_fail'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_fail">${param.mname }님(${param.id }) 회원 정지에 실패했습니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/list.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                                       
+        </c:when>
+        
+        <c:when test="${param.code == 'update_unlock_success'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_success">${param.mname }님(${param.id }) 일반 회원 설정 성공했습니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/list.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                                    
+        </c:when>
+        
+        <c:when test="${param.code == 'update_unlock_fail'}"> <%-- Java if --%>
+          <li class='li_none'>
+            <span class="span_fail">${param.mname }님(${param.id }) 일반 회원 설정 실패했습니다.</span>
+          </li>
+          <li class='li_none'>
+            <button type='button' onclick="location.href='/member/list.do'" class="btn btn-primary btn-sm">확인</button>
+          </li>                                                                       
+        </c:when>
                 
         <c:when test="${param.code == 'update_fail'}"> <%-- Java if --%>
           <li class='li_none'>

@@ -66,8 +66,8 @@
         <c:choose>
           <c:when test="${grade >= 1 and grade <= 10}"><img src='/member/images/admin.png' title="관리자" class="icon"></c:when>    
           <c:when test="${grade >= 11 and grade <= 20}"><img src='/member/images/user.png' title="회원" class="icon"></c:when>
-          <c:when test="${grade >= 30 and grade <= 39}"><img src='/member/images/pause.png' title="정지 회원" class="icon"></c:when>
-          <c:when test="${grade >= 40 and grade <= 49}"><img src='/member/images/x.png' title="탈퇴 회원" class="icon"></c:when>
+          <c:when test="${grade >= 40 and grade <= 49}"><img src='/member/images/pause.png' title="정지 회원" class="icon"></c:when>
+          <c:when test="${grade == 99}"><img src='/member/images/x.png' title="탈퇴 회원" class="icon"></c:when>
         </c:choose>  
       </TD>
       <TD class='td_left'><A href="./read.do?memberno=${memberno}">${id}</A></TD>
@@ -85,6 +85,7 @@
       </TD>
       <TD class='td_basic'>${mdate.substring(0, 10)}</TD> <%-- 년월일 --%>
       <TD class='td_basic'>
+        <A href="./lock.do?memberno=${memberno}"><IMG src='/member/images/lock.png' title='정지' class="icon"></A>
         <A href="./read.do?memberno=${memberno}"><IMG src='/member/images/update.png' title='수정' class="icon"></A>
         <A href="./delete.do?memberno=${memberno}"><IMG src='/member/images/delete.png' title='삭제' class="icon"></A>
       </TD>
