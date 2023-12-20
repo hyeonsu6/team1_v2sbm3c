@@ -98,7 +98,7 @@
 							<c:otherwise>
 								<a class="dropdown-item" href="javascript: chatbot();">[문의] 챗봇</a>
 								<a class="dropdown-item" href="javascript: recommend();">[추천] 관심분야 등록하고 추천받기</a>
-								<a class="dropdown-item" href='/frecommend/list_by_memberno.do'>[회원] 나의 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href='#'>[회원] 나의 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
