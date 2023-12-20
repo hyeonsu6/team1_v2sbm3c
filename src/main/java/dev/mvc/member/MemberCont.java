@@ -412,7 +412,7 @@ public class MemberCont {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("passwd", passwd);
-
+  
 		int check_unsubscribe = memberProc.check_unsubscribe(id);
 		if (check_unsubscribe == 1) { // grade != 99, 40 ~ 49
 
