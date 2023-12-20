@@ -57,13 +57,22 @@ public class AnswerCont {
   public ModelAndView create(HttpSession session, int questno) {
     ModelAndView mav = new ModelAndView();
 
-    AnswerVO answerVO = this.answerProc.read(questno);
+    AnswerVO answerVO = this.answerProc.read_questno(questno);
     mav.addObject("answerVO", answerVO);
     
-    // System.out.println("-> create get_adminno: " + session.getAttribute("adminno"));
-   
-    mav.setViewName("/answer/create"); // /webapp/WEB-INF/views/answer/create.jsp
+    // System.out.println("-> answerVO: " + answerVO);
     
+    if(answerVO != null) {
+      mav.addObject("code", "create_fail_existing_answer");
+      mav.addObject("cnt", 0);
+      mav.addObject("url", "/answer/msg");
+      mav.setViewName("redirect:/answer/msg.do");
+    } else {
+      mav.setViewName("/answer/create"); // /webapp/WEB-INF/views/answer/create.jsp
+    }
+    
+    // System.out.println("-> create get_adminno: " + session.getAttribute("adminno"));
+
     return mav;
   }
  
@@ -87,7 +96,8 @@ public class AnswerCont {
       // Call By Reference: 메모리 공유, Hashcode 전달
       Integer adminno = (Integer) session.getAttribute("adminno");
       if (adminno != null) { // adminno가 null이 아닌지 확인
-        AnswerVO existAnswer = this.answerProc.read(answerVO.getQuestno());
+        AnswerVO existAnswer = this.answerProc.read_questno(answerVO.getQuestno());
+        System.out.println("-> existAnswer: " + existAnswer);
         if(existAnswer == null) {
           answerVO.setAdminno(adminno.intValue()); // null이 아닐 때만 intValue() 호출
           int cnt = this.answerProc.create(answerVO);

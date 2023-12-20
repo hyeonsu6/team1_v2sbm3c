@@ -124,10 +124,11 @@ public class QuestionCont {
 
     ArrayList<FcateVO> fcatelist = this.fcateProc.list_all();
     ArrayList<QuestionVO> list = this.questionProc.list_all();
+    
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
 
     boolean isAdmin = adminProc.isAdmin(session); 
     mav.addObject("isAdmin", isAdmin);
-
 
     // for문을 사용하여 객체를 추출, Call By Reference 기반의 원본 객체 값 변경
     for (QuestionVO questionVO : list) {
@@ -139,7 +140,17 @@ public class QuestionCont {
 
       questionVO.setTitle(title);
       questionVO.setQuest(quest);
+      
+      hashMap.put("fcateno", questionVO.getFcateno());
+      hashMap.put("quest", questionVO.getQuest());
+      
+      int search_count = this.questionProc.search_count(hashMap); // 검색된 레코드 갯수 -> 전체 페이지 규모 파악
+      mav.addObject("search_count", search_count);
+
+      String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), questionVO.getQuest(), "list_by_fcateno.do", search_count);
+      mav.addObject("paging", paging);
     }
+    
     mav.addObject("fcatelist", fcatelist);
     mav.addObject("list", list);
 
@@ -184,7 +195,7 @@ public class QuestionCont {
 
     HashMap<String, Object> hashMap = new HashMap<String, Object>();
     hashMap.put("fcateno", questionVO.getFcateno());
-    // hashMap.put("word", questionVO.getWord());
+    hashMap.put("quest", questionVO.getQuest());
 
     int search_count = this.questionProc.search_count(hashMap); // 검색된 레코드 갯수 -> 전체 페이지 규모 파악
     mav.addObject("search_count", search_count);
@@ -203,8 +214,7 @@ public class QuestionCont {
      * 
      * @return 페이징용으로 생성된 HTML/CSS tag 문자열
      */
-    String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), "list_by_fcateno.do",
-        search_count);
+    String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), questionVO.getQuest(), "list_by_fcateno.do", search_count);
     mav.addObject("paging", paging);
 
     // mav.addObject("now_page", now_page);
@@ -252,7 +262,7 @@ public class QuestionCont {
 
     HashMap<String, Object> hashMap = new HashMap<String, Object>();
     hashMap.put("fcateno", questionVO.getFcateno());
-    // hashMap.put("word", questionVO.getWord());
+    hashMap.put("quest", questionVO.getQuest());
 
     int search_count = this.questionProc.search_count(hashMap); // 검색된 레코드 갯수 -> 전체 페이지 규모 파악
     mav.addObject("search_count", search_count);
@@ -271,7 +281,7 @@ public class QuestionCont {
      * 
      * @return 페이징용으로 생성된 HTML/CSS tag 문자열
      */
-    String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), "list_by_fcateno_grid.do",
+    String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), questionVO.getQuest(), "list_by_fcateno_grid.do",
         search_count);
     mav.addObject("paging", paging);
 

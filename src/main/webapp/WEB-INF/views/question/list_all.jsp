@@ -48,8 +48,7 @@
 			</c:choose>
 			<button type='submit' class='btn btn-dark btn-sm'>검색</button>
 			<c:if test="${param.quest.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
-					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
+				<button type='button' class='btn btn-dark btn-sm' onclick="location.href='./list_all.do'">검색 취소</button>
 			</c:if>
 		</form>
 	</div>

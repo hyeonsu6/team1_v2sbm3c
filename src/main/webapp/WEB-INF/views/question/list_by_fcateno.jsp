@@ -28,6 +28,22 @@
   <div style="text-align: right; clear: both;">  
     <form name='frm' id='frm' method='get' action='./list_by_fcateno.do'>
       <input type='hidden' name='fcateno' value='${param.fcateno }'>  <%-- 게시판의 구분 --%>
+      
+      <c:choose>
+        <c:when test="${param.quest != '' }">
+          <%-- 검색하는 경우 --%>
+          <input type='text' name='quest' id='quest' value='${param.quest }' class='input_word'>
+        </c:when>
+        <c:otherwise>
+          <%-- 검색하지 않는 경우 --%>
+          <input type='text' name='quest' id='quest' value='' class='input_word'>
+        </c:otherwise>
+      </c:choose>
+      <button type='submit' class='btn btn-dark btn-sm'>검색</button>
+      <c:if test="${param.quest.length() > 0 }">
+        <button type='button' class='btn btn-dark btn-sm' onclick="location.href='./list_all.do'">검색 취소</button>
+      </c:if>
+      
     </form>
   </div>
     

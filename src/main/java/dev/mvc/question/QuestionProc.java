@@ -70,7 +70,7 @@ public class QuestionProc implements QuestionProcInter {
    * @return 페이징 생성 문자열
    */ 
   @Override
-  public String pagingBox(int fcateno, int now_page, String list_file, int search_count){
+  public String pagingBox(int fcateno, int now_page, String quest, String list_file, int search_count){
     
     // 전체 페이지 수: (double)1/10 -> 0.1 -> 1 페이지, (double)12/10 -> 1.2 페이지 -> 2 페이지
     int total_page = (int)(Math.ceil((double)search_count / Questions.RECORD_PER_PAGE));
@@ -125,7 +125,7 @@ public class QuestionProc implements QuestionProcInter {
     // 현재 3그룹일 경우: (3 - 1) * 10 = 2그룹의 마지막 페이지 20
     int _now_page = (now_grp - 1) * Questions.PAGE_PER_BLOCK;  
     if (now_grp >= 2){ // 현재 그룹번호가 2이상이면 페이지수가 11페이지 이상임으로 이전 그룹으로 갈수 있는 링크 생성 
-      str.append("<span class='span_box_1'><A href='"+list_file+"&now_page="+_now_page+"&fcateno="+fcateno+"'>이전</A></span>"); 
+      str.append("<span class='span_box_1'><A href='"+list_file+"?&quest="+quest+"&now_page="+_now_page+"&fcateno="+fcateno+"'>이전</A></span>"); 
     } 
  
     // 중앙의 페이지 목록
@@ -138,7 +138,7 @@ public class QuestionProc implements QuestionProcInter {
         str.append("<span class='span_box_2'>"+i+"</span>"); // 현재 페이지, 강조 
       }else{
         // 현재 페이지가 아닌 페이지는 이동이 가능하도록 링크를 설정
-        str.append("<span class='span_box_1'><A href='"+list_file+"&now_page="+_now_page+"&fcateno="+fcateno+"'>"+i+"</A></span>");   
+        str.append("<span class='span_box_1'><A href='"+list_file+"?&quest="+quest+"&now_page="+_now_page+"&fcateno="+fcateno+"'>"+i+"</A></span>");   
       } 
     } 
  
@@ -149,7 +149,7 @@ public class QuestionProc implements QuestionProcInter {
     // 현재 페이지 25일경우 -> 현재 3그룹: (3 * 10) + 1 = 4그룹의 시작페이지 31
     _now_page = (now_grp * Questions.PAGE_PER_BLOCK)+1; //  최대 페이지수 + 1 
     if (now_grp < total_grp){ 
-      str.append("<span class='span_box_1'><A href='"+list_file+"&now_page="+_now_page+"&fcateno="+fcateno+"'>다음</A></span>"); 
+      str.append("<span class='span_box_1'><A href='"+list_file+"?&quest="+quest+"&now_page="+_now_page+"&fcateno="+fcateno+"'>다음</A></span>"); 
     } 
     str.append("</DIV>"); 
      
@@ -178,6 +178,12 @@ public class QuestionProc implements QuestionProcInter {
   public int update_quest(QuestionVO questionVO) {
     int cnt = this.questionDAO.update_quest(questionVO);
     return cnt;
+  }
+
+  @Override
+  public ArrayList<QuestionVO> list_all_search(HashMap<String, Object> hashMap) {
+    ArrayList<QuestionVO> list = this.questionDAO.list_all_search(hashMap);
+    return list;
   }
 
 }

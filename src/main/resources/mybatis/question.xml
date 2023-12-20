@@ -21,15 +21,29 @@
     ORDER BY questno DESC
   </select> 
   
+  <!-- 모든 질문 검색 목록 -->
+  <select id="list_all_search" resultType="dev.mvc.question.QuestionVO" parameterType="HashMap">
+    SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
+    <choose>
+      <when test="quest == null or quest == ''"> <!-- 검색하지 않는 경우 -->
+      </when>
+      <otherwise> <!-- 검색하는 경우 -->
+        WHERE (UPPER(title) LIKE '%' || UPPER(#{quest}) || '%' 
+               OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
+      </otherwise>
+    </choose>
+    ORDER BY questno DESC
+  </select>
+  
   <!-- 카테고리별 검색 목록 -->
   <select id="list_by_fcateno_search" resultType="dev.mvc.question.QuestionVO" parameterType="HashMap">
     SELECT questno, memberno, fcateno, title, quest, rdate FROM question 
     <choose>
-      <when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+      <when test="quest == null or quest == ''"> <!-- 검색하지 않는 경우 -->
         WHERE fcateno=#{fcateno}
       </when>
       <otherwise> <!-- 검색하는 경우 -->
-        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{quest}) || '%' 
                                       OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
       </otherwise>
     </choose>
@@ -40,11 +54,11 @@
   <select id="search_count" resultType="int" parameterType="HashMap">
     SELECT COUNT(*) as cnt FROM question
     <choose>
-      <when test="word == null or word == ''"> <!-- 검색하지 않는 경우의 레코드 갯수 -->
+      <when test="quest == null or quest == ''"> <!-- 검색하지 않는 경우의 레코드 갯수 -->
         WHERE fcateno=#{fcateno}
       </when>
       <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
-        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+        WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{quest}) || '%' 
                                       OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
       </otherwise>
     </choose>
@@ -56,11 +70,11 @@
       SELECT questno, memberno, fcateno, title, quest, rdate, ROWNUM AS r FROM (
           SELECT questno, memberno, fcateno, title, quest, rdate FROM question
             <choose>
-              <when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+              <when test="quest == null or quest == ''"> <!-- 검색하지 않는 경우 -->
                 WHERE fcateno=#{fcateno}
               </when>
               <otherwise>
-                WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%' 
+                WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{quest}) || '%' 
                                               OR UPPER(quest) LIKE '%' || UPPER(#{quest}) || '%')
               </otherwise>
             </choose>

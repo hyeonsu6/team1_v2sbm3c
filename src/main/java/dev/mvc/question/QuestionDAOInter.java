@@ -33,6 +33,13 @@ public interface QuestionDAOInter {
   public ArrayList<QuestionVO> list_by_memberno(int memberno);
   
   /**
+   * 전체 질문 검색 목록
+   * @param map
+   * @return
+   */
+  public ArrayList<QuestionVO> list_all_search(HashMap<String, Object> hashMap);
+  
+  /**
    * 카테고리별 검색 목록
    * @param map
    * @return

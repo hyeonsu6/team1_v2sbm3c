@@ -33,6 +33,13 @@ public interface QuestionProcInter {
   public ArrayList<QuestionVO> list_by_memberno(int memberno);
   
   /**
+   * 전체 질문 검색 목록
+   * @param map
+   * @return
+   */
+  public ArrayList<QuestionVO> list_all_search(HashMap<String, Object> hashMap);
+  
+  /**
    * 카테고리별 검색 목록
    * @param map
    * @return
@@ -64,7 +71,7 @@ public interface QuestionProcInter {
    * @param search_count 검색 레코드수   
    * @return 페이징 생성 문자열
    */ 
-  public String pagingBox(int fcateno, int now_page, String list_file, int search_count);
+  public String pagingBox(int fcateno, int now_page, String quest, String list_file, int search_count);
   
   /**
    * 조회

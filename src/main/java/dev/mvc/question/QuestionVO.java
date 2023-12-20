@@ -19,7 +19,6 @@ public class QuestionVO {
   private String title = "";
   private String quest = "";
   private String rdate = "";
-  private String word = "";
   
   //페이징 관련
   // -----------------------------------------------------------------------------------
@@ -85,17 +84,11 @@ public class QuestionVO {
   public void setNow_page(int now_page) {
     this.now_page = now_page;
   }
-  public String getWord() {
-    return word;
-  }
-  public void setWord(String word) {
-    this.word = word;
-  }
   
   @Override
   public String toString() {
     return "QuestionVO [questno=" + questno + ", memberno=" + memberno + ", fcateno=" + fcateno + ", title=" + title
-        + ", quest=" + quest + ", rdate=" + rdate + ", word=" + word + ", start_num=" + start_num + ", end_num="
+        + ", quest=" + quest + ", rdate=" + rdate + ", start_num=" + start_num + ", end_num="
         + end_num + ", now_page=" + now_page + "]";
   }
 }
