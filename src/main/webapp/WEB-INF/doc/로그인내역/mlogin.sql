@@ -28,7 +28,7 @@ CREATE SEQUENCE MLOGIN_SEQ
   
 -- INSERT
 INSERT INTO mlogin (mloginno, memberno, ip, logindate)
-VALUES (ALOGIN_SEQ.NEXTVAL, 1, '192.168.2.2', SYSDATE);
+VALUES (ALOGIN_SEQ.NEXTVAL, 3, '192.168.2.2', SYSDATE);
 
 commit;
 

@@ -1,8 +1,18 @@
 package dev.mvc.mlogin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface MloginDAOInter {
+
+	/**
+	 * 로그인 내역 등록
+	 *
+	 * @param mloginVO
+	 * @return
+	 */
+	public int create(MloginVO mloginVO);
+
 	/**
 	 * 로그인 내역
 	 * 

@@ -269,8 +269,6 @@ public class MemberCont {
 
 		return mav;
 	}
-	
-	
 
 //  /**
 //   * 로그인 폼
@@ -406,7 +404,7 @@ public class MemberCont {
 
 		// client ip
 		String ip = request.getRemoteAddr();
-		System.out.println("-> ip: " + ip); // 자기자신은 0.0.0.0 으로 출력되고 외부 접속은 정상적으로 ip가 나옴
+		System.out.println("-> ip: " + ip); // 자기 자신은 0.0.0.0 으로 출력되고 외부 접속은 정상적으로 ip가 나옴
 
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> map = new HashMap<String, Object>();
