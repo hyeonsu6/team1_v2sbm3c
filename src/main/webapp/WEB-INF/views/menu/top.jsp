@@ -102,14 +102,8 @@
 								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
-<<<<<<< HEAD
-								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 회원 탈퇴</a>
 								<a class="dropdown-item" href="/login/list_all_mlogin.do">[회원] 로그인 내역</a>
-=======
 								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 탈퇴</a>
-								<a class="dropdown-item" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
-								<a class="dropdown-item" href="#">회원 탈퇴</a>
->>>>>>> adfe04bea161e95c7f2f11da740eb5fd56f85460
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -129,7 +123,6 @@
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
 								<a class="dropdown-item" href='/alogin/list_all.do'>[관리자] 로그인 내역</a>
 								<a class="dropdown-item" href="/login/list_all_mlogin.do">[회원] 로그인 내역</a>
-
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
 							</div>
 						</li>
