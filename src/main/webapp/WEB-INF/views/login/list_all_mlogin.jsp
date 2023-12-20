@@ -43,15 +43,13 @@
 		<tbody>
 			<c:forEach var="mloginVO" items="${list }" varStatus="info">
 				<c:set var="mloginno" value="${mloginVO.mloginno }" />
-
-
 				<tr>
 					<td class="td_bs">${mloginno }</td>
 					<td class="td_bs">${mloginVO.memberno }</td>
 					<td class="td_bs">${mloginVO.ip }</td>
 					<td class="td_bs">${mloginVO.logindate.substring(0,16) }</td>
 					<td class="td_bs">
-						<a href="./delete.do?mloginno=${mloginno}">
+						<a href="./delete_mlogin.do?mloginno=${mloginno}">
 							<IMG src='/login/images/delete.png' title='삭제' class="icon">
 						</a>
 					</td>

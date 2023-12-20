@@ -102,13 +102,9 @@
 								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
-<<<<<<< HEAD
-								<a class="dropdown-item" href="javascript: alert('개발 예정')">[회원] 로그인 내역</a>
 								<a class="dropdown-item" href="/member/unsubscribe.do">회원 탈퇴</a>
-=======
 								<a class="dropdown-item" href="/login/list_all_mlogin.do">[회원] 로그인 내역</a>
 								<a class="dropdown-item" href="#">회원 탈퇴</a>
->>>>>>> 3b1060d6c29058bfb0e4c4b2dcbed51f104ac6ff
 							</c:otherwise>
 						</c:choose>
 					</div>

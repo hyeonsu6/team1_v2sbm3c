@@ -8,14 +8,15 @@
 		INSERT INTO mlogin(mloginno, memberno, ip, logindate)
 		VALUES(mlogin_seq.nextval, #{memberno}, #{ip}, sysdate)
 	</insert>
-	
+
+
 	<!-- 로그인 내역 -->
-	<select id="list_all_mlogin" parameterType="dev.mvc.mlogin.MloginVO"
-		resultType="dev.mvc.mlogin.MloginVO">
+	<select id="list_all_mlogin" resultType="dev.mvc.mlogin.MloginVO">
 		SELECT mloginno, memberno, ip, logindate
 		FROM mlogin
 		ORDER BY mloginno DESC
 	</select>
+
 
 	<!-- 조회 -->
 	<select id="read_mlogin" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
