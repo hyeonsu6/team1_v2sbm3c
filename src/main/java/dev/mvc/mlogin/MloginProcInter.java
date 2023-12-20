@@ -10,7 +10,7 @@ public interface MloginProcInter {
 	 */
 	// MloginVO mloginVO
 
-	public ArrayList<MloginVO> list_all();
+	public ArrayList<MloginVO> list_all_mlogin();
 
 	/**
 	 * 조회
@@ -18,7 +18,7 @@ public interface MloginProcInter {
 	 * @param mloginno
 	 * @return
 	 */
-	public MloginVO read(int mloginno);
+	public MloginVO read_mlogin(int mloginno);
 
 	/**
 	 * 삭제
@@ -26,6 +26,6 @@ public interface MloginProcInter {
 	 * @param mloginno
 	 * @return
 	 */
-	public int delete(int mloginno);
+	public int delete_mlogin(int mloginno);
 
 }

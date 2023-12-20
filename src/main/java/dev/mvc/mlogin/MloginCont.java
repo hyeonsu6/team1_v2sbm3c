@@ -29,13 +29,13 @@ public class MloginCont {
 	}
 
 	/**
-	 * 전체 목록 http://localhost:9093/mlogin/list_all.do
+	 * 전체 목록 http://localhost:9093/login/list_all_mlogin.do
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/mlogin/list_all.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login/list_all_mlogin.do", method = RequestMethod.GET)
 	public ModelAndView list_all(HttpSession session, HttpServletRequest request) {
-		System.out.println("-> mlogin_list_all");
+		System.out.println("-> list_all_mlogin");
 		ModelAndView mav = new ModelAndView();
 
 		int memberno = (int) (session.getAttribute("memberno"));
@@ -44,8 +44,8 @@ public class MloginCont {
 		System.out.println("-> ip: " + ip);
 
 		if (this.memberProc.isMember(session) == true) {
-			mav.setViewName("/mlogin/list_all"); // /WEB-INF/views/mlogin/list_all.jsp
-			ArrayList<MloginVO> list = this.mloginProc.list_all();
+			mav.setViewName("/login/list_all_mlogin"); // /WEB-INF/views/login/list_all_mlogin.jsp
+			ArrayList<MloginVO> list = this.mloginProc.list_all_mlogin();
 			list.forEach(mloginVO -> mloginVO.setIp(ip));
 			mav.addObject("list", list);
 		} else {

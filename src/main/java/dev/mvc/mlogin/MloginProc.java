@@ -10,24 +10,21 @@ public class MloginProc implements MloginProcInter {
 	@Autowired
 	private MloginDAOInter mloginDAO;
 
-	// 로그인 내역
 	@Override
-	public ArrayList<MloginVO> list_all() {
-		ArrayList<MloginVO> list = this.mloginDAO.list_all();
+	public ArrayList<MloginVO> list_all_mlogin() {
+		ArrayList<MloginVO> list = this.mloginDAO.list_all_mlogin();
 		return list;
 	}
 
-	// 조회
 	@Override
-	public MloginVO read(int mloginno) {
-		MloginVO cloginVO = this.mloginDAO.read(mloginno);
-		return cloginVO;
+	public MloginVO read_mlogin(int mloginno) {
+		MloginVO mloginVO = this.mloginDAO.read_mlogin(mloginno);
+		return mloginVO;
 	}
 
-	// 삭제
 	@Override
-	public int delete(int mloginno) {
-		int cnt = this.mloginDAO.delete(mloginno);
+	public int delete_mlogin(int mloginno) {
+		int cnt = this.mloginDAO.delete_mlogin(mloginno);
 		return cnt;
 	}
 
