@@ -1,7 +1,9 @@
 # <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=team1_v3sbm3c&fontSize=90" />
 <br>
+<br>
 
 # 프로젝트 주제 및 소개
+<br>
 
 ### 국내 지역 축제/행사를 추천해주는 시스템과 AI챗봇 개발.
 
