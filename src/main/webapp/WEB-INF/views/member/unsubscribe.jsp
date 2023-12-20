@@ -10,9 +10,6 @@
 <title>Fesrival Unsubscribe</title>
 <link rel="shortcut icon" href="/images/star.png" /> <%-- /static 기준 --%>
 <link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   
 </head>
 <body>
@@ -37,7 +34,7 @@
       <input type='hidden' name='memberno' value='${memberVO.memberno}'>     
           
       <button type="submit" class="btn btn-primary btn-sm">탈퇴</button>
-      <button type="button" onclick="location.href='../index.do'" class="btn btn-primary btn-sm">취소(목록)</button>
+      <button type="button" onclick="location.href='../index.do'" class="btn btn-primary btn-sm">취소</button>
    
     </form>
   </div>

@@ -471,9 +471,14 @@ public class MemberCont {
 	      mav.addObject("url", "/member/login_fail_msg");
 	      mav.setViewName("redirect:/member/msg.do");
 	    }
-		} else {
+		} else if (check_unsubscribe == 0) {
 		  mav.addObject("code", "login_fail_grade99_msg"); // 패스워드 변경 성공
 		  mav.addObject("url", "/member/msg"); // /member/msg -> /member/msg.jsp
+
+      mav.setViewName("redirect:/member/msg.do");
+		} else {
+      mav.addObject("code", "login_fail_grade49_msg"); // 패스워드 변경 성공
+      mav.addObject("url", "/member/msg"); // /member/msg -> /member/msg.jsp
 
       mav.setViewName("redirect:/member/msg.do");
 		}
@@ -624,6 +629,107 @@ public class MemberCont {
     mav.addObject("url", "/member/msg"); // /member/msg -> /member/msg.jsp
     mav.setViewName("redirect:/member/msg.do");
 
+    return mav;
+  }
+  
+  /**
+  * 회원 정지 -> 40 <= grade <= 49 http://localhost:9093/member/lock.do
+  * 
+  * @param memberno
+  * @return
+  */
+ @RequestMapping(value = "/member/lock.do", method = RequestMethod.GET)
+ public ModelAndView lock(HttpSession session, HttpServletRequest request) {
+   ModelAndView mav = new ModelAndView();
+   
+   Integer memberno = 0;
+   if(this.adminProc.isAdmin(session)) {
+     System.out.println("-> lock memberno: " + request.getParameter("memberno"));
+     memberno = Integer.parseInt(request.getParameter("memberno"));
+     
+     session.setAttribute("memberno", memberno);
+     
+     MemberVO memberVO = this.memberProc.read(memberno);
+     mav.addObject("memberVO", memberVO);
+     mav.addObject("mname", memberVO.getMname());
+     mav.addObject("id", memberVO.getId());
+     
+     mav.addObject("memberno", memberno);
+     
+     if(memberVO.getGrade() == 45) {
+       mav.setViewName("/member/unlock"); // lock.jsp
+     } else {
+       mav.setViewName("/member/lock"); // lock.jsp
+     }
+   } else {
+     mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+   }
+
+   return mav;
+ }
+
+   /**
+   * 회원 정지 -> 40 <= grade <= 49
+   * 
+   * @param HashMap
+   * @return
+   */
+  @RequestMapping(value = "/member/lock.do", method = RequestMethod.POST)
+  public ModelAndView lock(HttpSession session) {
+    ModelAndView mav = new ModelAndView();
+    
+    Integer memberno = (Integer)session.getAttribute("memberno");
+    if(this.adminProc.isAdmin(session)) {
+      System.out.println("-> lock memberno: " + memberno);
+      //System.out.println("-> lock memberno: " + request.getParameter("memberno"));
+      //memberno = Integer.parseInt(request.getParameter("memberno"));
+      
+      MemberVO memberVO = this.memberProc.read(memberno);
+      System.out.println("-> lock grade: " + memberVO.getGrade());
+      if(memberVO.getGrade() == 45) { // 일반 회원으로 변경
+        System.out.println("-> 일반 회원 변경");
+        memberVO.setGrade(15);
+        
+        int cnt = this.memberProc.update_grade(memberVO);
+        
+        mav.addObject("memberVO", memberVO);
+        mav.addObject("mname", memberVO.getMname());
+        mav.addObject("id", memberVO.getId());
+        
+        //System.out.println("-> lock mname: " + memberVO.getMname());
+        //System.out.println("-> lock id: " + memberVO.getId());
+        System.out.println("-> change lock grade: " + memberVO.getGrade());
+        mav.setViewName("/member/unlock"); // unlock.jsp
+        if (cnt == 1) {
+          mav.addObject("code", "update_unlock_success");
+        } else {
+          mav.addObject("code", "update_unlock_fail");
+        }
+      } else { // 정지 회원 설정
+        memberVO.setGrade(45);
+        int cnt = this.memberProc.update_grade(memberVO);
+        
+        mav.addObject("memberVO", memberVO);
+        mav.addObject("mname", memberVO.getMname());
+        mav.addObject("id", memberVO.getId());
+        
+        //System.out.println("-> lock mname: " + memberVO.getMname());
+        //System.out.println("-> lock id: " + memberVO.getId());
+        
+        mav.setViewName("/member/lock"); // lock.jsp
+        if (cnt == 1) {
+          mav.addObject("code", "update_lock_success");
+        } else {
+          mav.addObject("code", "update_lock_fail");
+        }
+      }
+      
+      mav.addObject("url", "/member/msg"); // /member/msg -> /member/msg.jsp
+      mav.setViewName("redirect:/member/msg.do"); // POST -> GET -> /member/msg.jsp
+    } else {
+      mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+    }
+    
     return mav;
   }
 	

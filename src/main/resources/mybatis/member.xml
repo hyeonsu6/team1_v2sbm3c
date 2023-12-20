@@ -73,14 +73,12 @@
     WHERE memberno=#{memberno}
   </update>
   
-  <!-- 로그인 시 탈퇴 회원인지 확인 -->
-<!--   <select id="check_unsubscribe" resultType="int" parameterType="String">
-    SELECT COUNT(*) as cnt
-    FROM member
-    WHERE id=#{id} AND grade = 99
-  </select> -->
-  
-  <!-- 로그인 시 정지 회원인지 확인 -->
+  <!-- 회원 정지 -> grade 40 ~ 49 -->
+  <update id="update_grade" parameterType="dev.mvc.member.MemberVO">
+    UPDATE member
+    SET grade=#{grade}
+    WHERE memberno=#{memberno}
+  </update>
   
 </mapper> 
 

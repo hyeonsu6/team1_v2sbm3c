@@ -103,6 +103,13 @@ public interface MemberProcInter {
    * @return
    */
   public int check_unsubscribe(String id);
+  
+  /**
+   * 회원 정지 -> 40 <= grade <= 49 
+   * @param map
+   * @return
+   */
+  public int update_grade(MemberVO memberVO);
 }
 
 
