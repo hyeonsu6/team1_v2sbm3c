@@ -87,6 +87,9 @@ VALUES (member_seq.nextval, 'team2', '1234', '웹퍼블리셔팀', '000-0000-000
 INSERT INTO member(memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade)
 VALUES (member_seq.nextval, 'team3', '1234', '디자인팀', '000-0000-0000', '12345', '서울시 종로구', '관철동', sysdate, 15);
 
+INSERT INTO member(memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade)
+VALUES (member_seq.nextval, 'unsub', '1234', '탈퇴용', '000-0000-0000', '12345', '서울시 종로구', '관철동', sysdate, 15);
+
 COMMIT;
  
 2. 목록
@@ -145,3 +148,15 @@ SET passwd='0000'
 WHERE memberno=1;
 
 COMMIT;
+
+
+8. 회원 탈퇴
+UPDATE member
+SET grade=99
+WHERE memberno=14;
+
+UPDATE member
+SET grade=15
+WHERE memberno=14;
+
+commit;

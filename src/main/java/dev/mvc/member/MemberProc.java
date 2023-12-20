@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,5 +120,52 @@ public class MemberProc implements MemberProcInter {
 		int cnt = this.memberDAO.login(map);
 		return cnt;
 	}
+
+  @Override
+  public int unsubscribe(HashMap<String, Object> map) {
+    int cnt = this.memberDAO.unsubscribe(map);
+    return cnt;
+  }
+
+  @Override
+  public int check_unsubscribe(HttpServletRequest request, HttpSession session) {
+    //System.out.println("-> check_unsubscribe");
+    
+    Cookie[] cookies = request.getCookies();
+    Cookie cookie = null;
+
+    String ck_id = ""; // id 저장
+    
+    if (cookies != null) { // 쿠키가 존재한다면
+      for (int i = 0; i < cookies.length; i++) {
+        cookie = cookies[i]; // 쿠키 객체 추출
+
+        if (cookie.getName().equals("ck_id")) {
+          ck_id = cookie.getValue();
+        }
+        
+      }
+    }
+    
+    int check_unsubscribe;
+    //String id = (String)session.getAttribute("id");
+    
+    //System.out.println("-> ck_id: " + ck_id);
+    
+    MemberVO memberVO = this.memberDAO.readById(ck_id);
+    int grade = memberVO.getGrade();
+    
+    //System.out.println("-> grade: " + grade);
+    
+    if(grade == 99) { // 탈퇴 회원 로그인 불가
+      check_unsubscribe = 0;
+    } else if (grade >= 40 && grade <= 49) { // 정지 회원 로그인 불가
+      check_unsubscribe = 0;
+    } else { // 로그인 가능
+      check_unsubscribe = 1;
+    }
+    
+    return check_unsubscribe;
+  }
 
 }
