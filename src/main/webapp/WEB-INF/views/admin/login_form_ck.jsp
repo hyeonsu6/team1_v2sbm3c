@@ -24,13 +24,13 @@
 			<div style='width: 40%; margin: 50px -50px 0px auto;'>
 				<FORM name='frm' method='POST' action='./login.do'>
 					<div class="form_input">
-						<input type='text' class="form-control" name='id' id='id' value="${cookie.ck_admin_id.value}" required="required"
+						<input type='text' class="form-control" name='id' id='id' value="${cookie.admin_id.value}" required="required"
 							style='width: 53%;' placeholder="아이디" autofocus="autofocus"> <Label> <input type='checkbox'
 							name='id_save' value='Y' ${cookie.ck_admin_id.value == 'Y' ? "checked='checked'" : "" }> 저장
 						</Label>
 					</div>
 					<div class="form_input">
-						<input type='password' class="form-control" name='passwd' id='passwd' value='${cookie.ck_admin_passwd.value}'
+						<input type='password' class="form-control" name='passwd' id='passwd' value='${cookie.admin_passwd.value}'
 							required="required" style='width: 53%;' placeholder="패스워드"> <Label> <input type='checkbox'
 							name='passwd_save' value='Y' ${cookie.ck_admin_passwd.value == 'Y' ? "checked='checked'" : "" }> 저장
 						</Label>

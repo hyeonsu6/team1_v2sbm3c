@@ -14,7 +14,7 @@
 </head>
 <body>
 	<c:import url="/menu/top.do" />
-	<div class='title_line'>[회원] 추천 페스티벌</div>
+	<div class='title_line'>[관리자 모드] 추천 페스티벌</div>
 
 	<aside class="aside_right">
 		<button type="submit" class="btn btn-dark btn-sm" onclick="javascript:location.reload();"
@@ -38,7 +38,7 @@
 				<th class="th_bs">회원 번호</th>
 				<th class="th_bs">추천 페스티벌</th>
 				<th class="th_bs">등록일</th>
-				<th class="th_bs">삭제</th>
+				<th class="th_bs">비고</th>
 			</tr>
 		</thead>
 		<c:forEach var="recommendVO" items="${list }" varStatus="info">
@@ -50,25 +50,25 @@
 				<td class="td_bs">
 					<c:choose>
 						<c:when test="${recommendVO.fcateno eq 1}">
-							<a href="#" style="display: block;">음식(국내/해외) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=2" style="display: block;">음식(국내/해외) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 2}">
-							<a href="#" style="display: block;">계절(겨울) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=3" style="display: block;">계절(겨울) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 3}">
-							<a href="#" style="display: block;">문화관광 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=4" style="display: block;">문화관광 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 4}">
-							<a href="#" style="display: block;">예술(춤/무용/전통공연) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=5" style="display: block;">예술(춤/무용/전통공연) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 5}">
-							<a href="#" style="display: block;">체험(과학/스포츠) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=6" style="display: block;">체험(과학/스포츠) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 6}">
-							<a href="#" style="display: block;">인생샷(꽃/빛) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=7" style="display: block;">인생샷(꽃/빛) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 7}">
-							<a href="#" style="display: block;">뮤직(재즈, K-POP) 페스티벌</a>
+							<a href="../festival/list_by_fcateno.do?fcateno=8" style="display: block;">뮤직(재즈, K-POP) 페스티벌</a>
 						</c:when>
 						<c:otherwise>
 							<a href="./read.do?recommendno=${recommendno}" style="display: block;">${recommendVO.fcateno}</a>
@@ -77,11 +77,13 @@
 				</td>
 
 				<td class="td_bs">${recommendVO.rdate.substring(0, 16)}</td>
-				<td class="td_bs">
+				<td class="td_bs"></td>
+
+				<%-- <td class="td_bs">
 					<a href="./delete.do?recommendno=${recommendno}" title="삭제">
 						<img src="/frecommend/images/delete.png" class="icon">
 					</a>
-				</td>
+				</td> --%>
 			</tr>
 		</c:forEach>
 		</tbody>

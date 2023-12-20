@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.alogin.AloginDAOInter">
+	<!-- 로그인 내역 -->
+	<select id="list_all" parameterType="dev.mvc.alogin.AloginVO">
+		SELECT aloginno, memberno, ip, logindate ORDER BY alogin DESC
+	</select>
+
+	<!-- 조회 -->
+	<select id="read" resultType="dev.mvc.alogin.AloginVO" parameterType="int">
+		SELECT aloginno, memberno, ip,
+		logindate
+		FROM alogin
+		WHERE aloginno =#{aloginno}
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM alogin
+		WHERE aloginno=#{aloginno}
+	</delete>
+
+</mapper>

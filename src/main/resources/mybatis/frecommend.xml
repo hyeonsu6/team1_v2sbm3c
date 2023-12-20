@@ -8,10 +8,11 @@
 		FROM frecommend
 		ORDER BY recommendno DESC
 	</select>
-	
+
 	<!-- 회원 번호를 이용한 조회 -->
 	<select id="list_by_memberno" resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
-		SELECT recommendno, memberno, fcateno, seq, rdate
+		SELECT
+		recommendno, memberno, fcateno, seq, rdate
 		FROM frecommend
 		WHERE memberno = #{memberno}
 	</select>
