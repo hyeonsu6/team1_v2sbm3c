@@ -36,14 +36,37 @@ public class MloginCont {
 	@RequestMapping(value = "/login/list_all_mlogin.do", method = RequestMethod.GET)
 	public ModelAndView list_all_mlogin(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		int memberno = 0;
-		
-		if (this.memberProc.isMember(session) == true) {
+
+		if (this.memberProc.isMember(session)) {
 			mav.setViewName("/login/list_all_mlogin"); // /WEB-INF/views/login/list_all_mlogin.jsp
 
-			memberno = (int) session.getAttribute("memberno");
+			int memberno = (int) session.getAttribute("memberno");
 
 			ArrayList<MloginVO> list = this.mloginProc.list_all_mlogin(memberno);
+			mav.addObject("list", list);
+
+		} else {
+			mav.setViewName("member/login_need");
+		}
+
+		return mav; // forward
+	}
+
+	/**
+	 * 특정 회원의 목록 http://localhost:9093/login/list_mlogin_by_memberno.do
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/login/list_mlogin_by_memberno.do", method = RequestMethod.GET)
+	public ModelAndView list_mlogin_by_memberno(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		if (this.memberProc.isMember(session) == true) {
+			mav.setViewName("/login/list_mlogin_by_memberno"); // /WEB-INF/views/login/list_mlogin_by_memberno.jsp
+
+			int memberno = (int) session.getAttribute("memberno");
+
+			ArrayList<MloginVO> list = this.mloginProc.list_mlogin_by_memberno(memberno);
 			mav.addObject("list", list);
 
 		} else {

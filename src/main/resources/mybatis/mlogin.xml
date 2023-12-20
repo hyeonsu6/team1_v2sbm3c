@@ -14,6 +14,12 @@
 	<select id="list_all_mlogin" resultType="dev.mvc.mlogin.MloginVO">
 		SELECT mloginno, memberno, ip, logindate
 		FROM mlogin
-		ORDER BY mloginno DESC
+		ORDER BY
+		mloginno DESC
 	</select>
+
+	<select id="list_mlogin_by_memberno" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
+		SELECT * FROM mlogin WHERE memberno = #{memberno}
+	</select>
+
 </mapper>

@@ -51,8 +51,7 @@
 					<td class="td_bs">${memberno }</td>
 					<td class="td_bs">${ip }</td>
 					<td class="td_bs">${logindate.substring(0,16) }</td>
-					<td class="td_bs">
-					</td>
+					<td class="td_bs"></td>
 				</tr>
 			</c:forEach>
 
