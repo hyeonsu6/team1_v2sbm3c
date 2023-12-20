@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("dev.mvc.mlogin.MloginProc")
 public class MloginProc implements MloginProcInter {
 	@Autowired
 	private MloginDAOInter mloginDAO;
