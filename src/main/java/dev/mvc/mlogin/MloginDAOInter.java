@@ -20,22 +20,6 @@ public interface MloginDAOInter {
 	 */
 	// MloginVO mloginVO
 
-	public ArrayList<MloginVO> list_all_mlogin();
-
-	/**
-	 * 조회
-	 * 
-	 * @param mloginno
-	 * @return
-	 */
-	public MloginVO read_mlogin(int mloginno);
-
-	/**
-	 * 삭제
-	 * 
-	 * @param mloginno
-	 * @return
-	 */
-	public int delete_mlogin(int mloginno);
+	public ArrayList<MloginVO> list_all_mlogin(int memberno);
 
 }
