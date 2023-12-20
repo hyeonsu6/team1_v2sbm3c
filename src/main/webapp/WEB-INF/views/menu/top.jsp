@@ -96,12 +96,13 @@
 								<a class="dropdown-item" href="#">비밀번호 찾기</a>
 							</c:when>
 							<c:otherwise>
-								<a class="dropdown-item" href="javascript: chatbot();">챗봇</a>
-								<a class="dropdown-item" href="javascript: recommend();">관심분야 등록하고 추천받기</a>
-								<a class="dropdown-item" href="/member/read.do">가입 정보</a>
-								<a class="dropdown-item" href="/member/passwd_update.do">비밀번호 변경</a>
-								<a class="dropdown-item" href="/member/read.do">회원 정보 수정</a>
-								<a class="dropdown-item" href="javascript: alert('개발 예정')">로그인 내역</a>
+								<a class="dropdown-item" href="javascript: chatbot();">[문의] 챗봇</a>
+								<a class="dropdown-item" href="javascript: recommend();">[추천] 관심분야 등록하고 추천받기</a>
+								<a class="dropdown-item" href='/frecommend/list_by_memberno.do'>[회원] 나의 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
+								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
+								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
+								<a class="dropdown-item" href="javascript: alert('개발 예정')">[회원] 로그인 내역</a>
 								<a class="dropdown-item" href="#">회원 탈퇴</a>
 							</c:otherwise>
 						</c:choose>
@@ -118,8 +119,8 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
-								<a class="dropdown-item" href='/frecommend/list_all.do'>[회원] 추천 페스티벌 목록</a>
-								<a class="dropdown-item" href='/member/list.do'>[회원] 목록</a>
+								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자 모드] 회원 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
 								<a class="dropdown-item" href='/alogin/list_all.do'>[관리자] 로그인 내역</a>
 
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
