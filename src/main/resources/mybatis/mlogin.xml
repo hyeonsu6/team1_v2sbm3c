@@ -14,21 +14,12 @@
 	<select id="list_all_mlogin" resultType="dev.mvc.mlogin.MloginVO">
 		SELECT mloginno, memberno, ip, logindate
 		FROM mlogin
-		ORDER BY mloginno DESC
+		ORDER BY
+		mloginno DESC
 	</select>
 
-
-	<!-- 조회 -->
-	<select id="read_mlogin" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
-		SELECT mloginno, memberno,
-		ip, logindate
-		FROM mlogin
-		WHERE mloginno =#{mloginno}
+	<select id="list_mlogin_by_memberno" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
+		SELECT * FROM mlogin WHERE memberno = #{memberno}
 	</select>
 
-	<!-- 삭제 -->
-	<delete id="delete_mlogin" parameterType="int">
-		DELETE FROM mlogin
-		WHERE mloginno=#{mloginno}
-	</delete>
 </mapper>
