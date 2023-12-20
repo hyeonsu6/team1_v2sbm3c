@@ -16,19 +16,4 @@
 		FROM mlogin
 		ORDER BY mloginno DESC
 	</select>
-
-
-	<!-- 조회 -->
-	<select id="read_mlogin" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
-		SELECT mloginno, memberno,
-		ip, logindate
-		FROM mlogin
-		WHERE mloginno =#{mloginno}
-	</select>
-
-	<!-- 삭제 -->
-	<delete id="delete_mlogin" parameterType="int">
-		DELETE FROM mlogin
-		WHERE mloginno=#{mloginno}
-	</delete>
 </mapper>
