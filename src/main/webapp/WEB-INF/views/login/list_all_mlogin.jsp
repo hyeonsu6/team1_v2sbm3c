@@ -35,7 +35,7 @@
 			<tr>
 				<th class="th_bs">로그인 번호</th>
 				<th class="th_bs">회원 번호</th>
-				<th class="th_bs">IP</th>
+				<th class="th_bs">IP 주소</th>
 				<th class="th_bs">로그인 일자</th>
 				<th class="th_bs">삭제</th>
 			</tr>
@@ -43,15 +43,18 @@
 		<tbody>
 			<c:forEach var="mloginVO" items="${list }" varStatus="info">
 				<c:set var="mloginno" value="${mloginVO.mloginno }" />
+				<c:set var="memberno" value="${mloginVO.memberno }" />
+				<c:set var="ip" value="${mloginVO.ip }" />
+				<c:set var="logindate" value="${mloginVO.logindate }" />
 				<tr>
 					<td class="td_bs">${mloginno }</td>
-					<td class="td_bs">${mloginVO.memberno }</td>
-					<td class="td_bs">${mloginVO.ip }</td>
-					<td class="td_bs">${mloginVO.logindate.substring(0,16) }</td>
+					<td class="td_bs">${memberno }</td>
+					<td class="td_bs">${ip }</td>
+					<td class="td_bs">${logindate.substring(0,16) }</td>
 					<td class="td_bs">
-						<a href="./delete_mlogin.do?mloginno=${mloginno}">
+						<%-- <a href="./delete_mlogin.do?mloginno=${mloginno}">
 							<IMG src='/login/images/delete.png' title='삭제' class="icon">
-						</a>
+						</a> --%>
 					</td>
 			</c:forEach>
 		</tbody>
