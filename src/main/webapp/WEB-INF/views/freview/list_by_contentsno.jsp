@@ -11,7 +11,6 @@
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
 </head>
 <body>
 	<c:import url="/menu/top.do" />
@@ -103,7 +102,7 @@
 					</td>
 
 					<td class="td_bs">
-						<span style="font-weight: bold;">{${festivalVO.rdate.substring(0, 10)}</span>
+						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
 
 					<td class="td_bs">
