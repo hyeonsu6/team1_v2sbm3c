@@ -104,7 +104,6 @@
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
 								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 탈퇴</a>
 								<a class="dropdown-item" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
-								<a class="dropdown-item" href="#">회원 탈퇴</a>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -122,8 +121,7 @@
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자 모드] 회원 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
-								<a class="dropdown-item" href='/alogin/list_all.do'>[관리자] 로그인 내역</a>
-								<a class="dropdown-item" href="/login/list_all_mlogin.do">[회원] 로그인 내역</a>
+								<a class="dropdown-item" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
 
 								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
 							</div>

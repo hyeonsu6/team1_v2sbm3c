@@ -16,7 +16,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>회원 로그인 내역</div>
+	<div class='title_line'>관리자 로그인 내역</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -34,25 +34,25 @@
 		<thead>
 			<tr>
 				<th class="th_bs">로그인 번호</th>
-				<th class="th_bs">회원 번호</th>
+				<th class="th_bs">관리자 번호</th>
 				<th class="th_bs">IP 주소</th>
 				<th class="th_bs">로그인 일자</th>
 				<th class="th_bs">삭제</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="mloginVO" items="${list }" varStatus="info">
-				<c:set var="mloginno" value="${mloginVO.mloginno }" />
-				<c:set var="memberno" value="${mloginVO.memberno }" />
-				<c:set var="ip" value="${mloginVO.ip }" />
-				<c:set var="logindate" value="${mloginVO.logindate }" />
+			<c:forEach var="aloginVO" items="${list }" varStatus="info">
+				<c:set var="aloginno" value="${aloginVO.aloginno }" />
+				<c:set var="adminno" value="${aloginVO.adminno }" />
+				<c:set var="ip" value="${aloginVO.ip }" />
+				<c:set var="logindate" value="${aloginVO.logindate }" />
 				<tr>
-					<td class="td_bs">${mloginno }</td>
-					<td class="td_bs">${memberno }</td>
+					<td class="td_bs">${aloginno }</td>
+					<td class="td_bs">${adminno }</td>
 					<td class="td_bs">${ip }</td>
 					<td class="td_bs">${logindate.substring(0,16) }</td>
 					<td class="td_bs">
-						<a href="./delete_mlogin.do?mloginno=${mloginno}">
+						<a href="./delete_alogin.do?aloginno=${aloginno}">
 							<img src='/login/images/delete.png' title='삭제' class="icon">
 						</a>
 					</td>

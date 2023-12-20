@@ -9,7 +9,6 @@
 		VALUES(mlogin_seq.nextval, #{memberno}, #{ip}, sysdate)
 	</insert>
 
-
 	<!-- 로그인 내역 -->
 	<select id="list_all_mlogin" resultType="dev.mvc.mlogin.MloginVO">
 		SELECT mloginno, memberno, ip, logindate
@@ -18,8 +17,31 @@
 		mloginno DESC
 	</select>
 
+	<!-- 특정 회원의 로그인 기록 -->
 	<select id="list_mlogin_by_memberno" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
-		SELECT * FROM mlogin WHERE memberno = #{memberno}
+		SELECT * FROM mlogin
+		WHERE memberno = #{memberno}
+		ORDER BY mloginno DESC
 	</select>
 
+	<!-- 조회 -->
+	<select id="read_mlogin" resultType="dev.mvc.mlogin.MloginVO" parameterType="int">
+		SELECT mloginno, memberno,
+		ip, logindate
+		FROM mlogin
+		WHERE mloginno =#{mloginno}
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="delete_mlogin" parameterType="int">
+		DELETE FROM mlogin
+		WHERE mloginno=#{mloginno}
+	</delete>
 </mapper>
+
+
+
+
+
+
+

@@ -2,10 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:set var="mloginno" value="${mloginVO.mloginno }" />
-<c:set var="memberno" value="${mloginVO.memberno }" />
-<c:set var="ip" value="${mloginVO.ip }" />
-<c:set var="logindate" value="${mloginVO.logindate }" />
+<c:set var="aloginno" value="${aloginVO.aloginno }" />
+<c:set var="adminno" value="${aloginVO.adminno }" />
+<c:set var="ip" value="${aloginVO.ip }" />
+<c:set var="logindate" value="${aloginVO.logindate }" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,8 +36,8 @@
 				<div style='text-align: center; width: 100%;'>
 
 					<br>
-					<form name='frm' method='post' action='./delete_mlogin.do'>
-						<input type='hidden' name='mloginno' value='${mloginno}'> <br> <br>
+					<form name='frm' method='post' action='./delete_alogin.do'>
+						<input type='hidden' name='aloginno' value='${aloginno}'> <br> <br>
 						<div style='text-align: center; margin: 10px auto;'>
 							<span style="color: #800000; font-weight: bold;"> 삭제를 진행 하시겠습니까? </span>
 							<br> <br> <br> <br>

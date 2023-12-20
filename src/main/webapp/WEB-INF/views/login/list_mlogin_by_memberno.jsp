@@ -37,7 +37,7 @@
 				<th class="th_bs">회원 번호</th>
 				<th class="th_bs">IP 주소</th>
 				<th class="th_bs">로그인 일자</th>
-				<th class="th_bs">비고</th>
+				<th class="th_bs">삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,10 +51,13 @@
 					<td class="td_bs">${memberno }</td>
 					<td class="td_bs">${ip }</td>
 					<td class="td_bs">${logindate.substring(0,16) }</td>
-					<td class="td_bs"></td>
+					<td class="td_bs">
+						<a href="./delete_mlogin.do?mloginno=${mloginno}">
+							<img src='/login/images/delete.png' title='삭제' class="icon">
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
 	</table>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />

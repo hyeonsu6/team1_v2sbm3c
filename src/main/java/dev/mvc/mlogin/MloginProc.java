@@ -22,10 +22,22 @@ public class MloginProc implements MloginProcInter {
 		ArrayList<MloginVO> list = this.mloginDAO.list_all_mlogin(memberno);
 		return list;
 	}
-	
+
 	@Override
 	public ArrayList<MloginVO> list_mlogin_by_memberno(int memberno) {
-	    ArrayList<MloginVO> list = this.mloginDAO.list_mlogin_by_memberno(memberno);
-	    return list;
+		ArrayList<MloginVO> list = this.mloginDAO.list_mlogin_by_memberno(memberno);
+		return list;
+	}
+
+	@Override
+	public MloginVO read_mlogin(int mloginno) {
+		MloginVO mloginVO = this.mloginDAO.read_mlogin(mloginno);
+		return mloginVO;
+	}
+
+	@Override
+	public int delete_mlogin(int mloginno) {
+		int cnt = this.mloginDAO.delete_mlogin(mloginno);
+		return cnt;
 	}
 }

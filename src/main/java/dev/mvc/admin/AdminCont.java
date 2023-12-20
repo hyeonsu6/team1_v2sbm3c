@@ -12,10 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.alogin.AloginProcInter;
+import dev.mvc.alogin.AloginVO;
 import dev.mvc.tool.Tool;
 
 @Controller
 public class AdminCont {
+	@Autowired
+	@Qualifier("dev.mvc.alogin.AloginProc")
+	private AloginProcInter aloginProc; 
+
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc") // "dev.mvc.admin.AdminProc"라고 명명된 클래스
 	private AdminProcInter adminProc; // AdminProcInter를 구현한 AdminProc 클래스의 객체를 자동으로 생성하여 할당
@@ -38,52 +44,6 @@ public class AdminCont {
 
 		return mav; // forward
 	}
-
-//  /**
-//   * 로그인 폼
-//   * http://localhost:9093/admin/login.do
-//   * @return
-//   */
-//  @RequestMapping(value="/admin/login.do", method=RequestMethod.GET)
-//  public ModelAndView login() {
-//    ModelAndView mav = new ModelAndView();
-//    
-//    mav.setViewName("/admin/login_form"); // /WEB-INF/views/admin/login_form.jsp
-//    
-//    return mav;
-//  }
-
-//  /**
-//   * 로그인 처리
-//   * http://localhost:9093/admin/login.do
-//   * @return
-//   */
-//  @RequestMapping(value="/admin/login.do", method=RequestMethod.POST)
-//  public ModelAndView login(HttpSession session, AdminVO adminVO) {
-//    ModelAndView mav = new ModelAndView();
-//    
-//    int cnt = this.adminProc.login(adminVO);
-//    
-//    if (cnt == 1) { // 로그인 성공, 관리자는 id를 입력하여 로그인하였음으로 id를 가지고 관리자 정보를 조회
-//      AdminVO adminVO_read = this.adminProc.read_by_id(adminVO.getId()); // 관리자 정보 읽기
-//      // session:  website 전체에서 공유되는 변수로 서버의 메모리상에 로그아웃 시점까지 유지됨.
-//      session.setAttribute("adminno", adminVO_read.getAdminno()); // 서버의 메모리에 기록
-//      session.setAttribute("admin_id", adminVO_read.getId());
-//      session.setAttribute("admin_mname", adminVO_read.getMname());
-//      session.setAttribute("admin_grade", adminVO_read.getGrade());
-//
-//      mav.setViewName("redirect:/index.do"); // 시작 페이지
-//    } else {  // 로그인 실패
-//      // /WEB-INF/views/admin/login_fail_msg.jsp
-//      // POST 방식에서는 jsp에서 <c:import 태그가 실행이 안됨.
-//      // mav.setViewName("/admin/login_fail_msg");   
-//
-//      mav.addObject("url", "/admin/login_fail_msg"); // /WEB-INF/views/admin/login_fail_msg.jsp
-//      mav.setViewName("redirect:/admin/msg.do");   // POST -> url -> GET
-//    }
-//        
-//    return mav;
-//  }
 
 	/**
 	 * 로그아웃 처리
@@ -132,11 +92,9 @@ public class AdminCont {
 	@RequestMapping(value = "/admin/login.do", method = RequestMethod.POST)
 	public ModelAndView login_proc(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			AdminVO adminVO, String id_save, String passwd_save) {
-		
-		// admin ip
-		String ip = request.getRemoteAddr();
-		System.out.println("-> ip: " + ip); // 자기자신은 0.0.0.0 으로 출력되고 외부 접속은 정상적으로 ip가 나옴
 
+		String ip = request.getRemoteAddr();
+		System.out.println("-> ip: " + ip);
 		ModelAndView mav = new ModelAndView();
 
 		int cnt = adminProc.login(adminVO);
@@ -150,9 +108,14 @@ public class AdminCont {
 
 			System.out.println("-> adminCont_adminno: " + session.getAttribute("adminno"));
 
-			String id = adminVO.getId(); // 폼에 입력된 id
-			String passwd = adminVO.getPasswd(); // 폼에 입력된 passwd
+			AloginVO aloginVO = new AloginVO();
+	        aloginVO.setAdminno(adminVO_read.getAdminno());
+	        aloginVO.setIp(ip);
+	        cnt = this.aloginProc.create(aloginVO); // aloginProc.create 메소드로 수정
 
+	        String id = adminVO.getId(); // 폼에 입력된 id
+	        String passwd = adminVO.getPasswd(); // 폼에 입력된 passwd
+	        
 			// -------------------------------------------------------------------
 			// id 관련 쿠기 저장
 			// -------------------------------------------------------------------
