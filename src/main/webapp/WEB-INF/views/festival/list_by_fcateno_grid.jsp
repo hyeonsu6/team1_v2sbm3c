@@ -26,7 +26,7 @@
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-success btn-sm"
 			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
-			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
+			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 모든 리뷰 보러가기</button>
 	</aside>
 
 	<aside class="aside_right">
@@ -82,7 +82,7 @@
 			<!-- 5기준 하나의 이미지, 19.2 * 5 = 96% -->
 			<div
 				onclick="location.href='./read.do?contentsno=${contentsno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
-				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #DEB887; text-align: center; color: black; font-size: 18px; font-weight: bold; cursor: pointer;'>
+				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #540B0E; text-align: center; color: #FFF3B0; font-size: 16px; font-weight: bold; cursor: pointer;'>
 
 				<c:choose>
 					<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
@@ -95,7 +95,7 @@
 						<IMG src="/festival/images/none1.png" style="width: 100%; height: 120px;">
 					</c:otherwise>
 				</c:choose>
-				${title }
+				<br> <br> ${title }
 
 			</div>
 
@@ -108,13 +108,15 @@
 		</c:forEach>
 	</div>
 
+	<div class="menu_line">
+		<br> <br> <br> <br>
+	</div>
+	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
+	<jsp:include page="../menu/bottom.jsp" flush='false' />
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
-	<br>정보 제공 :
-	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

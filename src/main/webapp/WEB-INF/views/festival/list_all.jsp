@@ -89,9 +89,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<br> 정보 제공 :
-	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
-
+	<br>
+	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

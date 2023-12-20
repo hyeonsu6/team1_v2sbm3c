@@ -38,9 +38,9 @@
           <input type='text' name='word' id='word' value='' class='input_word'>
         </c:otherwise>
       </c:choose>
-      <button type='submit' class='btn btn-info btn-sm'>검색</button>
+      <button type='submit' class='btn btn-dark btn-sm'>검색</button>
       <c:if test="${param.word.length() > 0 }">
-        <button type='button' class='btn btn-info btn-sm' 
+        <button type='button' class='btn btn-dark btn-sm' 
                     onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>  
       </c:if>    
     </form>

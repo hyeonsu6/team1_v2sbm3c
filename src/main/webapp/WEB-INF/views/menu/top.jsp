@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 .icon_n {
-	width: 22px;
+	width: 28px;
 }
 
 .top_menu_link:link { /* 방문전 상태 */
@@ -25,10 +25,10 @@
 }
 
 .top_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	text-decoration: none; /* 밑줄 출력 */
-	color: #5A7696;
-	font-size: 1.05em;
-	font-size: 14px;
+	text-decoration: blink; /* 밑줄 출력 */
+	color: #9E2A2B;
+	font-weight: bold;
+	font-size: 15px;
 }
 </style>
 <script type="text/javascript">
@@ -56,6 +56,7 @@
 		win.moveTo(x, y); // 화면 중앙으로 이동
 	}
 </script>
+
 <div class='container_main'>
 	<div class='top_img'>
 		<div class="top_menu_label">Festival Blog version 4.0</div>
@@ -70,8 +71,12 @@
 			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">Q&A 🐚</a>
+				</li>
 				<%-- 게시판 목록 출력 --%>
 				<c:forEach var="fcateVO" items="${list_top}">
 					<c:set var="fcateno" value="${fcateVO.fcateno }" />
@@ -119,10 +124,10 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
-								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자 모드] 회원 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
 								<a class="dropdown-item" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
-								<a class="dropdown-item" href='/admin/logout.do'>관리자 ${sessionScope.admin_id } 로그아웃</a>
+								<a class="dropdown-item" href='/admin/logout.do'>[관리자] '${sessionScope.admin_id }' 로그아웃</a>
 							</div>
 						</li>
 					</c:otherwise>
@@ -137,9 +142,6 @@
 							<a class="nav-link top_menu_link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
 						</c:otherwise>
 					</c:choose>
-				</li>
-				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">Q&A</a>
 				</li>
 			</ul>
 		</div>

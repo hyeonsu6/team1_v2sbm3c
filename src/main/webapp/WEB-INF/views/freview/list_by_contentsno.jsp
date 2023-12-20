@@ -24,7 +24,7 @@
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-success btn-sm"
 			onclick="location.href='./create.do?contentsno=${festivalVO.contentsno}'"
-			style="font-weight: bold; text-align: left;">📰 리뷰 등록하기</button>
+			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;"">📰 리뷰 등록하기</button>
 	</aside>
 
 	<aside class="aside_right">
@@ -64,7 +64,10 @@
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
 				<th style='text-align: center;'>등록일</th>
-				<th style='text-align: center;'>작성자</th>
+				<th style='text-align: center;'>
+					<img src="/member/images/user.png" style="width: 40px;">
+					작성자
+				</th>
 			</tr>
 		</thead>
 		<tbody>

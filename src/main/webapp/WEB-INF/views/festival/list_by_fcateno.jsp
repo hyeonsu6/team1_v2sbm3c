@@ -24,12 +24,12 @@
 	</div>
 
 	<aside class="aside_left">
-		<button type="submit" class="btn btn-success btn-sm" onclick="location.href='../freview/list_all.do'"
-			style="font-weight: bold; text-align: left;">📰 모든 리뷰 보러가기</button>
+		<button type="submit" class="btn btn-sm" onclick="location.href='../freview/list_all.do'"
+			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 모든 리뷰 보러가기</button>
 		<c:if test="${sessionScope.admin_id != null }">
 			<button type="submit" class="btn btn-dark btn-sm"
 				onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
-				style="font-weight: bold; text-align: left;">📝 컨텐츠 등록</button>
+				style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📝 컨텐츠 등록</button>
 		</c:if>
 
 	</aside>
@@ -86,7 +86,7 @@
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
 				<th style='text-align: center;'>등록일</th>
-				<th style='text-align: center;'>비고</th>
+				<th style='text-align: center;'>보러가기</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -127,17 +127,19 @@
 					<td class="td_bs">
 						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
 					</td>
-					<td class="td_bs"></td>
+					<td class="td_bs">
+						<img src="/festival/images/see.png" style="width: 40px;">
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
+	<jsp:include page="../menu/bottom.jsp" flush='false' />
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
-	<br> 정보 제공 :
-	<a href="https://korean.visitkorea.or.kr/main/main.do">한국관광공사</a>
-	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

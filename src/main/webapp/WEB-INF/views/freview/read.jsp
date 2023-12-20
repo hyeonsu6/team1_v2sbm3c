@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:set var="name" value="${festivalVO.title }" />
+<c:set var="title" value="${festivalVO.title }" />
 
 <c:set var="contentsno" value="${freviewVO.contentsno }" />
 <c:set var="reviewno" value="${freviewVO.reviewno }" />
@@ -29,7 +29,10 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<div class='title_line'>${festivalVO.title } > 리뷰</div>
+	<div class='title_line'>
+		<A href="../festival/list_by_fcateno.do?fcateno=${festivalVO.fcateno }" class='title_link'>${festivalVO.title }</A>
+		> 리뷰
+	</div>
 
 	<aside class="aside_right">
 		<%-- 회원으로 로그인해야 메뉴가 출력됨 --%>

@@ -38,18 +38,18 @@
           <label>관련 카테고리 이름</label>:  ${fcateVO.name } 
           <a href="../festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }&now_page=1" title="관련 카테고리로 이동"><img src='/fcate/images/link.png' class="icon"></a>
           &nbsp;      
-          <button type="submit" id='submit' class='btn btn-danger btn-sm' style='height: 28px; margin-bottom: 5px;'>관련 자료와 함게 카테고리 삭제</button>
+          <button type="submit" id='submit' class='btn btn-dark btn-sm' style='height: 28px; margin-bottom: 5px;'>관련 자료와 함게 카테고리 삭제</button>
           
         </c:when>
         <c:otherwise> <%-- 자식 레코드가 없는 상황 --%>
           <div class="msg_warning">카테고리를 삭제하면 복구 할 수 없습니다.</div>
-          <label>카테고리 이름</label>: ${fcateVO.name }
+          <label>카테고리 이름</label>: [${fcateVO.name }]
       
-          <button type="submit" id='submit' class='btn btn-warning btn-sm' style='height: 28px; margin-bottom: 5px;'>삭제</button>          
+          <button type="submit" id='submit' class='btn btn-dark btn-sm' style='height: 28px; margin-bottom: 5px;'>삭제</button>          
         </c:otherwise>
       </c:choose>      
 
-      <button type="button" onclick="location.href='/fcate/list_all.do'" class='btn btn-info btn-sm' style='height: 28px; margin-bottom: 5px;'>취소</button>
+      <button type="button" onclick="location.href='/fcate/list_all.do'" class='btn btn-dark btn-sm' style='height: 28px; margin-bottom: 5px;'>취소</button>
     </form>
   </div>
   

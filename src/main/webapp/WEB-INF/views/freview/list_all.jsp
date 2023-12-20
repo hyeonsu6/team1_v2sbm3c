@@ -34,7 +34,10 @@
 				<th style='text-align: center;'>파일</th>
 				<th style='text-align: center;'>제목</th>
 				<th style='text-align: center;'>등록일</th>
-				<th style='text-align: center;'>작성자</th>
+				<th style='text-align: center;'>
+					<img src="/member/images/user.png" style="width: 40px;">
+					작성자
+				</th>
 			</tr>
 		</thead>
 		<tbody>

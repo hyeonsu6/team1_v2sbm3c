@@ -39,7 +39,7 @@
 					<form name='frm' method='post' action='./delete_mlogin.do'>
 						<input type='hidden' name='mloginno' value='${mloginno}'> <br> <br>
 						<div style='text-align: center; margin: 10px auto;'>
-							<span style="color: #800000; font-weight: bold;"> 삭제를 진행 하시겠습니까? </span>
+							<span class="span_success" style="color: #800000; font-weight: bold;"> 삭제를 진행 하시겠습니까? </span>
 							<br> <br> <br> <br>
 							<button type="submit" class="btn btn-dark btn-sm">삭제하기</button>
 							<button type="button" onclick="history.back()" class="btn btn-dark btn-sm">취소</button>
