@@ -36,7 +36,6 @@ SELECT likesno, contentsno, memberno, rdate FROM likes ORDER BY likesno ASC;
 SELECT COUNT(*) as cnt FROM likes
 WHERE contentsno=1;
 
--- 1번 회원이 2번 상품을 좋아요 클릭했는지 카운트, 1: 좋아요했음, 0은 자료 없음
 SELECT COUNT(*) as cnt 
 FROM likes
 WHERE contentsno=1 AND memberno=3;
