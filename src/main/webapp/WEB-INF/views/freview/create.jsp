@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${festivalVO.title } > 리뷰 등록하기</div>
+	<div class='title_line'>🟡 ${festivalVO.title } > 리뷰 등록하기</div>
 
 	<aside class="aside_right">
 		<a href="./list_by_contentsno.do?contentsno=${param.contentsno}">리뷰 목록</a>
