@@ -55,14 +55,16 @@
 
 	<table class="table table-hover">
 		<colgroup>
-			<col style="width: 10%;"></col>
-			<col style="width: 80%;"></col>
-			<col style="width: 10%;"></col>
+			<col style="width: 20%;"></col>
+			<col style="width: 50%;"></col>
+			<col style="width: 15%;"></col>
+			<col style="width: 15%;"></col>
 		</colgroup>
 		<thead>
 			<tr>
 				<th style='text-align: center;'>제목</th>
 				<th style='text-align: center;'>내용</th>
+				<th style='text-align: center;'>등록일</th>
 				<th style='text-align: center;'>기타</th>
 			</tr>
 		</thead>
@@ -72,7 +74,7 @@
 				<c:set var="title" value="${questionVO.title }" />
 
 				<tr onclick="location.href='./read.do?questno=${questno}'" style="cursor: pointer;">
-					<td class="td_bs">
+					<td class=td_bs_left>
 						<span style="font-weight: bold;">${questionVO.title }</span>
 						<br>
 					</td>
@@ -85,8 +87,8 @@
                   ${questionVO.quest }
                 </c:otherwise>
 						</c:choose>
-						(${questionVO.rdate.substring(0, 16) })
 					</td>
+					<td class="td_bs">${questionVO.rdate.substring(0, 10) }</td>
 					<td class="td_bs">
 						<c:if test="${isAdmin}">
 							<a href="../answer/create.do?questno=${questno }&now_page=${param.now_page}" title="답변 등록">
