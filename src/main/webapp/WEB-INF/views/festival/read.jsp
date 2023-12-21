@@ -130,13 +130,9 @@
 
 			<c:if test="${map.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV>
+					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV><br>
 				</li>
 			</c:if>
-
-			<br>
-			<br>
-			<br>
 
 			<li class="li_none" style="clear: both;">
 				<DIV style='text-decoration: none;'>
