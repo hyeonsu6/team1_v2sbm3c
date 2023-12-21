@@ -407,6 +407,11 @@ public class MemberCont {
 	public ModelAndView login_cookie_proc(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			String id, String passwd, @RequestParam(value = "id_save", defaultValue = "") String id_save,
 			@RequestParam(value = "passwd_save", defaultValue = "") String passwd_save) {
+		
+		//client ip
+		  String ip = request.getRemoteAddr();
+		  System.out.println("-> ip: " + ip); // 자기 자신은 0.0.0.0 으로 출력되고 외부 접속은 정상적으로 ip가 나옴
+
 		ModelAndView mav = new ModelAndView();
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -425,6 +430,11 @@ public class MemberCont {
 	      session.setAttribute("id", id);
 	      session.setAttribute("mname", memberVO.getMname());
 	      session.setAttribute("grade", memberVO.getGrade());
+	      
+	      MloginVO mloginVO = new MloginVO();
+	      mloginVO.setMemberno(memberVO.getMemberno());
+	      mloginVO.setIp(ip);
+	      cnt = this.mloginProc.create(mloginVO);
 
 	      // -------------------------------------------------------------------
 	      // id 관련 쿠기 저장
