@@ -112,9 +112,9 @@
 					</c:choose>
 
 
-					<span style="font-size: 1.5em; font-weight: bold;">${title}</span>
+					<span style="font-size: 1.5em; font-weight: bold;">🟡 ${title}</span>
 					<br>
-					<span style="font-size: 0.7em;">(${rdate})</span>
+					<span style="font-size: 0.7em;">- 등록일: (${rdate.substring(0, 10)})</span>
 					<br> <br>
 					<span style="font-size: 0.9em;">${content}</span>
 					<br>
