@@ -123,8 +123,8 @@
 						<li class="nav-item dropdown">
 							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">관리자</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
-								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
+								<a class="dropdown-item" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
+								<a class="dropdown-item" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
