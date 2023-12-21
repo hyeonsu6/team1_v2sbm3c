@@ -64,7 +64,13 @@
       <c:set var="quest" value="${QuestionVO.quest }" />
       <c:set var="questno" value="${QuestionVO.questno }" />
       <c:set var="fcateno" value="${QuestionVO.fcateno }" />
-      <br> <br> ${title }
+      <c:set var="rdate" value="${QuestionVO.rdate }" />
+      
+      <div onclick="location.href='./read.do?questno=${questno}&quest=${param.quest }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
+        style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #FAEED1; text-align: center; color: #607274; font-size: 20px; font-weight: bold; cursor: pointer; border: 3px solid #B2A59B;'>
+        <br> <br> ${title }
+        <br> <br> <span style="font-size: 16px; color: #607274;">${rdate }</span>
+      </div>
       
       <%-- 하나의 행에 이미지를 5개씩 출력후 행 변경, index는 0부터 시작 --%>
       <c:if test="${status.count % 5 == 0}">
