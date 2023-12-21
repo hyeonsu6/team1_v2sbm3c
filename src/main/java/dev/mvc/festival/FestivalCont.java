@@ -20,6 +20,7 @@ import dev.mvc.admin.AdminProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
 import dev.mvc.freview.FreviewProc;
+import dev.mvc.freview.FreviewProcInter;
 import dev.mvc.freview.FreviewVO;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
@@ -34,6 +35,10 @@ public class FestivalCont {
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
 	private AdminProcInter adminProc;
+	
+	@Autowired
+	@Qualifier("dev.mvc.freview.FreviewProc") 
+	private FreviewProcInter freviewProc;
 
 	@Autowired
 	@Qualifier("dev.mvc.festival.FestivalProc") // @Component("dev.mvc.festival.festivalProc")
@@ -272,7 +277,7 @@ public class FestivalCont {
 		for (FestivalVO vo : list) {
 			String title = vo.getTitle();
 			String content = vo.getContent();
-
+			
 			title = Tool.convertChar(title); // 특수 문자 처리
 			content = Tool.convertChar(content);
 
