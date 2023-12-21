@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="dev.mvc.freview_reply.Freview_replyDAOInter">
+  <!-- 댓글 등록 -->
+  <insert id="create" parameterType="dev.mvc.freview_reply.Freview_replyVO">
+    INSERT INTO FREVIEW_REPLY(REPLYNO, reviewno, MEMBERNO, REPLY, PASSWD, RDATE)
+    VALUES (FREVIEW_REPLY_SEQ.nextval, #{reviewno}, #{memberno}, #{reply}, #{passwd}, sysdate) 
+  </insert>
+  
+  <!-- 댓글 목록 -->
+  <select id="list_all" resultType="dev.mvc.freview_reply.Freview_replyVO">
+    SELECT REPLYNO, reviewno, MEMBERNO, REPLY, PASSWD, RDATE
+    FROM FREVIEW_REPLY
+    ORDER BY REPLYNO ASC
+  </select>
+  
+  <!-- 리뷰 별 댓글 -->
+  <select id="list_by_reviewno" resultType="dev.mvc.freview_reply.Freview_replyVO" parameterType ="int" >
+    SELECT REPLYNO, reviewno, MEMBERNO, REPLY, PASSWD, RDATE
+    FROM FREVIEW_REPLY
+    WHERE reviewno = #{reviewno}
+    ORDER BY REPLYNO ASC
+  </select>
+  
+  <!-- 댓글 조회 -->
+  <select id="read" resultType="dev.mvc.freview_reply.Freview_replyVO" parameterType="int">
+    SELECT REPLYNO, reviewno, MEMBERNO, REPLY, PASSWD, RDATE ROM FREVIEW_REPLY
+    WHERE REPLYNO = #{REPLYNO}
+  </select>
+  
+  <!-- 댓글 수정 -->
+  <update id="update_reply" parameterType="dev.mvc.freview_reply.Freview_replyVO">
+    UPDATE FREVIEW_REPLY
+    SET REPLY = #{reply}
+    WHERE REPLYNO=#{REPLYNO}
+  </update>
+  
+  <!-- 댓글 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM FREVIEW_REPLY WHERE replyno = #{replyno};
+  </delete>
+  
+</mapper>

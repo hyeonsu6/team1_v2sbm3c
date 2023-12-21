@@ -157,9 +157,25 @@
 				</div>
 			</li>
 		</ul>
+    
+    <br><div class='menu_line'></div>
+    <div><span style="font-size: 20px; font-weight: bold;">댓글</span></div>
+    <div style='height: 120px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
+                
+      <c:if test="${isMember}">
+        <div style='margin-left: 10px; font-size: 20px; '>${id }</div>
+        <div style='color: #B6BBC4; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
+        댓글을 남겨보세요
+        </div>
+        <button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-top: -8px;">등록</button>
+      </c:if>
+      
+    </div>
+    
 	</fieldset>
-
+  
 	</div>
+  
 
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>

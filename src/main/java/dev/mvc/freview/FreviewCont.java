@@ -11,16 +11,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.admin.AdminProcInter;
+import dev.mvc.admin.AdminVO;
 import dev.mvc.fcate.FcateProcInter;
-import dev.mvc.fcate.FcateVO;
-import dev.mvc.festival.Festival;
 import dev.mvc.festival.FestivalProcInter;
 import dev.mvc.festival.FestivalVO;
 import dev.mvc.member.MemberProcInter;
+import dev.mvc.member.MemberVO;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
 
@@ -41,6 +41,10 @@ public class FreviewCont {
 	@Autowired
 	@Qualifier("dev.mvc.member.MemberProc") // @Component("dev.mvc.member.MemberProc")
 	private MemberProcInter memberProc;
+	
+  @Autowired
+  @Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
+  private AdminProcInter adminProc;
 
 	public FreviewCont() {
 		System.out.println("-> FreviewCont created.");
@@ -280,7 +284,7 @@ public class FreviewCont {
 	 * @return
 	 */
 	@RequestMapping(value = "/freview/read.do", method = RequestMethod.GET)
-	public ModelAndView read(int reviewno) { // int reviewno = (int)request.getParameter("reviewno");
+	public ModelAndView read(HttpSession session, int reviewno) { // int reviewno = (int)request.getParameter("reviewno");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/freview/read"); // /WEB-INF/views/freview/read.jsp
 
@@ -306,6 +310,25 @@ public class FreviewCont {
 
 		FestivalVO festivalVO = this.festivalProc.read(freviewVO.getContentsno());
 		mav.addObject("festivalVO", festivalVO);
+		
+		
+    if(memberProc.isMember(session) || adminProc.isAdmin(session)) { // 로그인 한 경우
+        if (this.memberProc.isMember(session)) { // 회원으로 로그인
+          boolean isMember = memberProc.isMember(session);
+          mav.addObject("isMember", isMember);
+          
+          int memberno = (int) session.getAttribute("memberno");
+          MemberVO memberVO = this.memberProc.read(memberno);
+          mav.addObject("id", memberVO.getId());
+      } else if (this.adminProc.isAdmin(session)) { // 관리자로 로그인
+          boolean isAdmin = adminProc.isAdmin(session);
+          mav.addObject("isAdmin", isAdmin);
+          
+          int adminno = (int) session.getAttribute("adminno");
+          AdminVO adminVO = this.adminProc.read(adminno);
+          mav.addObject("id", adminVO.getId());
+      }
+    }
 
 		return mav;
 	}
