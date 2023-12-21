@@ -61,7 +61,7 @@ public class MloginCont {
 	public ModelAndView list_mlogin_by_memberno(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
-		if (this.memberProc.isMember(session) == true) {
+		if (this.memberProc.isMember(session)) {
 			mav.setViewName("/login/list_mlogin_by_memberno"); // /WEB-INF/views/login/list_mlogin_by_memberno.jsp
 
 			int memberno = (int) session.getAttribute("memberno");
