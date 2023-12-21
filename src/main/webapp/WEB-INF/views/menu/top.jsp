@@ -86,10 +86,11 @@
 							href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }&now_page=1">${fcateVO.name }</a>
 					</li>
 				</c:forEach>
-
+				
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">전체 카테고리 목록</a>
 				</li>
+
 
 				<li class="nav-item dropdown">
 					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">회원</a>
@@ -125,7 +126,9 @@
 								<a class="dropdown-item" href='/fcate/list_all.do'>[전체] 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[전체] 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
+								<a class="dropdown-item" href='/freview/list.do'>[관리자] 모든 리뷰</a>
 								<a class="dropdown-item" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
 								<a class="dropdown-item" href='/admin/logout.do'>[관리자] '${sessionScope.admin_id }' 로그아웃</a>
 							</div>
