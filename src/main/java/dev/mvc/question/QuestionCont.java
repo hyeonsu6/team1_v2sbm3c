@@ -140,19 +140,12 @@ public class QuestionCont {
 
       questionVO.setTitle(title);
       questionVO.setQuest(quest);
-      
-      hashMap.put("fcateno", questionVO.getFcateno());
-      hashMap.put("quest", questionVO.getQuest());
-      
-      int search_count = this.questionProc.search_count(hashMap); // 검색된 레코드 갯수 -> 전체 페이지 규모 파악
-      mav.addObject("search_count", search_count);
-
-      String paging = questionProc.pagingBox(questionVO.getFcateno(), questionVO.getNow_page(), questionVO.getQuest(), "list_by_fcateno.do", search_count);
-      mav.addObject("paging", paging);
     }
     
     mav.addObject("fcatelist", fcatelist);
     mav.addObject("list", list);
+    
+    //mav.setViewName("/question/list_all"); // /question/list_by_fcateno.jsp
 
     return mav;
   }
@@ -174,7 +167,7 @@ public class QuestionCont {
 
     // 검색 목록
     ArrayList<QuestionVO> list = questionProc.list_by_fcateno_search_paging(questionVO);
-    System.out.println("list: " + list);
+    // System.out.println("list: " + list);
 
     // for문을 사용하여 객체를 추출, Call By Reference 기반의 원본 객체 값 변경
     for (QuestionVO vo : list) {
@@ -208,7 +201,7 @@ public class QuestionCont {
      * 
      * @param now_page 현재 페이지
      * 
-     * @param word 검색어 -> quest 내용 내 해당 단어
+     * @param quest 검색어 -> quest 내용 내 해당 단어
      * 
      * @param list_file 목록 파일명
      * 

@@ -17,12 +17,19 @@
 
   <div class='title_line'>
     ${fcateVO.name } 질문 목록
+    <c:if test="${param.quest.length() > 0 }">
+      > 「${param.quest }」 검색 ${search_count } 건
+    </c:if>
   </div>
   
   <aside class="aside_right">
     <a href="./create.do?fcateno=${fcateVO.fcateno }">등록</a>
     <span class='menu_divide' >│</span>
     <a href="javascript:location.reload();">새로고침</a>
+    <span class='menu_divide'>│</span>
+    <a href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">목록형</a>
+    <span class='menu_divide'>│</span>
+    <a href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">갤러리형</a>
   </aside>
   
   <div style="text-align: right; clear: both;">  
@@ -39,11 +46,12 @@
           <input type='text' name='quest' id='quest' value='' class='input_word'>
         </c:otherwise>
       </c:choose>
-      <button type='submit' class='btn btn-dark btn-sm'>검색</button>
+      <button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
       <c:if test="${param.quest.length() > 0 }">
-        <button type='button' class='btn btn-dark btn-sm' onclick="location.href='./list_all.do'">검색 취소</button>
+        <button type='button' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
+        onclick="location.href='./list_by_fcateno.do?fcateno=${param.fcateno}'">검색 취소</button>
       </c:if>
-      
+    
     </form>
   </div>
     

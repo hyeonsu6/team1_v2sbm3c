@@ -17,64 +17,63 @@
 
   <div class='title_line'>
     ${fcateVO.name } 질문 목록
+    <c:if test="${param.quest.length() > 0 }">
+      > 「${param.quest }」 검색 ${search_count } 건
+    </c:if>
   </div>
   
   <aside class="aside_right">
     <a href="./create.do?fcateno=${fcateVO.fcateno }">등록</a>
     <span class='menu_divide' >│</span>
     <a href="javascript:location.reload();">새로고침</a>
+    <span class='menu_divide'>│</span>
+    <a href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">목록형</a>
+    <span class='menu_divide'>│</span>
+    <a href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">갤러리형</a>
   </aside>
   
   <div style="text-align: right; clear: both;">  
     <form name='frm' id='frm' method='get' action='./list_by_fcateno.do'>
       <input type='hidden' name='fcateno' value='${param.fcateno }'>  <%-- 게시판의 구분 --%>
+      
+      <c:choose>
+        <c:when test="${param.quest != '' }">
+          <%-- 검색하는 경우 --%>
+          <input type='text' name='quest' id='quest' value='${param.quest }' class='input_word'>
+        </c:when>
+        <c:otherwise>
+          <%-- 검색하지 않는 경우 --%>
+          <input type='text' name='quest' id='quest' value='' class='input_word'>
+        </c:otherwise>
+      </c:choose>
+      <button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
+      <c:if test="${param.quest.length() > 0 }">
+        <button type='button' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
+        onclick="location.href='./list_by_fcateno_grid.do?fcateno=${param.fcateno}'">검색 취소</button>
+      </c:if>
+    
     </form>
   </div>
     
   <div class="menu_line"></div> 
   
-  <table class="table table-hover">
-    <colgroup>
-      <col style="width: 10%;"></col>
-      <col style="width: 80%;"></col>
-      <col style="width: 10%;"></col>
-    </colgroup>
-    <thead>
-      <tr>
-        <th style='text-align: center;'>제목</th>
-        <th style='text-align: center;'>내용</th>
-        <th style='text-align: center;'>기타</th>
-      </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="questionVO" items="${list }" varStatus="info">
-          <c:set var="questno" value="${contentsVO.questno }" />
-          <c:set var="title" value="${contentsVO.title }" />
-    
-          <tr onclick="location.href='./read.do?questno=${questno}&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'" style="cursor: pointer;">
-            <td class="td_bs">
-              <span style="font-weight: bold;">${contentsVO.title }</span><br>
-            </td>
-            <td class="td_bs">
-              <c:choose>
-                <c:when test="${questionVO.quest.length() > 160 }">
-                  ${questionVO.quest.substring(0, 160) }...
-                </c:when>
-                <c:otherwise>
-                  ${questionVO.quest }
-                </c:otherwise>
-              </c:choose>
-              (${questionVO.rdate.substring(0, 16) })
-            </td>
-            <td class="td_bs">
-              <a href="/question/update_quest.do?questno=${questno }&tcateno=${tcateno}&now_page=${param.now_page}" title="수정"><img src="/question/images/update.png" class="icon"></a>
-              <a href="/question/delete.do?questno=${questno }&tcateno=${tcateno}&now_page=${param.now_page}" title="삭제"><img src="/question/images/delete.png" class="icon"></a>
-            </td>
-          </tr>
-        </c:forEach>
-    </tbody>
+  <div style='width: 100%;'>
+    <%-- 갤러리 Layout 시작 --%>
+    <c:forEach var="QuestionVO" items="${list }" varStatus="status">
+      <c:set var="title" value="${QuestionVO.title }" />
+      <c:set var="quest" value="${QuestionVO.quest }" />
+      <c:set var="questno" value="${QuestionVO.questno }" />
+      <c:set var="fcateno" value="${QuestionVO.fcateno }" />
+      <br> <br> ${title }
       
-  </table>
+      <%-- 하나의 행에 이미지를 5개씩 출력후 행 변경, index는 0부터 시작 --%>
+      <c:if test="${status.count % 5 == 0}">
+        <HR class='menu_line'>
+        <%-- 줄바꿈 --%>
+      </c:if>
+      
+    </c:forEach>
+  </div>
   
   <!-- 페이지 목록 출력 부분 시작 -->
   <DIV class='bottom_menu'>${paging }</DIV> <%-- 페이지 리스트 --%>
