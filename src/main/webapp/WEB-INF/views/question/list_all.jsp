@@ -10,11 +10,9 @@
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
 <title>Festival Question</title>
 <link rel="shortcut icon" href="/images/festival.png" />
-<link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
-
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 
@@ -22,7 +20,7 @@
 
 	<div>
 		<c:forEach var="fcateVO" items="${fcatelist}">
-			<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno}" class='title_link' style="font-weight: bold; font-size: 18px; color: #B8860B">${fcateVO.name}</a>
+			<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno}" class='title_link Q_menu_link'>${fcateVO.name}</a>
 			<c:if test="${not loop.last}"> | </c:if>
 		</c:forEach>
 	</div>
