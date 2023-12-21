@@ -19,7 +19,7 @@
 <body>
 <c:import url="/menu/top.do" />
 
-  <div class='title_line'>Gallery</div>
+  <div class='title_line'>관리자 컨텐츠 Gallery</div>
   
   <aside class="aside_right">
     <a href="javascript:location.reload();">새로고침</a>
@@ -39,7 +39,7 @@
         
         <c:if test="${file1saved.endsWith('jpg') || file1saved.endsWith('png') || file1saved.endsWith('gif')}"> <%-- 이미지인지 검사 --%>
           <%-- registry.addResourceHandler("/contents/storage/**").addResourceLocations("file:///" +  Contents.getUploadDir()); --%>
-          <img src="/contents/storage/${file1saved }">
+          <img src="/festival/storage/${file1saved }">
         </c:if>  
       
       </c:forEach>

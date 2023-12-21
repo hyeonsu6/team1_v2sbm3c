@@ -24,14 +24,11 @@
 	</div>
 
 	<aside class="aside_left">
-		<button type="submit" class="btn btn-sm" onclick="location.href='../freview/list_all.do'"
-			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 모든 리뷰 보러가기</button>
 		<c:if test="${sessionScope.admin_id != null }">
 			<button type="submit" class="btn btn-dark btn-sm"
 				onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
 				style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📝 컨텐츠 등록</button>
 		</c:if>
-
 	</aside>
 
 	<aside class="aside_right">
@@ -136,10 +133,10 @@
 	</table>
 	<br>
 	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
-	<jsp:include page="../menu/bottom.jsp" flush='false' />
 	<!-- 페이지 목록 출력 부분 시작 -->
 	<DIV class='bottom_menu'>${paging }</DIV>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
+	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

@@ -21,8 +21,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
 <title>Festival world</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
@@ -30,17 +29,16 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<DIV class='title_line'>
-		<A href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }"
-			class='title_link'>${fcateVO.name }</A>
+		<A href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class='title_link'>${fcateVO.name }</A>
 	</DIV>
 
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-success btn-sm"
-			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
-			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 리뷰 보러가기</button>
-		<button type="submit" class="btn btn-success btn-sm"
 			onclick="location.href='../freview/create.do?contentsno=${param.contentsno}'"
 			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📝 리뷰 등록하기</button>
+		<button type="submit" class="btn btn-success btn-sm"
+			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
+			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 리뷰 보러가기</button>
 	</aside>
 
 	<aside class="aside_right">
@@ -53,30 +51,23 @@
       --%>
 			<a href="./create.do?fcateno=${fcateno }">등록</a>
 			<span class='menu_divide'>│</span>
-			<a
-				href="./update_text.do?contentsno=${contentsno}&now_page=${param.now_page}&word=${param.word }">글
-				수정</a>
+			<a href="./update_text.do?contentsno=${contentsno}&now_page=${param.now_page}&word=${param.word }">글 수정</a>
 			<span class='menu_divide'>│</span>
-			<a
-				href="./update_file.do?contentsno=${contentsno}&now_page=${param.now_page}">파일
-				수정</a>
+			<a href="./update_file.do?contentsno=${contentsno}&now_page=${param.now_page}">파일 수정</a>
 			<span class='menu_divide'>│</span>
 			<a href="./map.do?fcateno=${fcateno }&contentsno=${contentsno}">지도</a>
 			<span class='menu_divide'>│</span>
 			<a href="./youtube.do?fcateno=${fcateno }&contentsno=${contentsno}">Youtube</a>
 			<span class='menu_divide'>│</span>
-			<a
-				href="./delete.do?contentsno=${contentsno}&now_page=${param.now_page}&fcateno=${fcateno}">삭제</a>
+			<a href="./delete.do?contentsno=${contentsno}&now_page=${param.now_page}&fcateno=${fcateno}">삭제</a>
 			<span class='menu_divide'>│</span>
 		</c:if>
 
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
-		<a
-			href="./list_by_fcateno.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">목록형</a>
+		<a href="./list_by_fcateno.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">목록형</a>
 		<span class='menu_divide'>│</span>
-		<a
-			href="./list_by_fcateno_grid.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">갤러리형</a>
+		<a href="./list_by_fcateno_grid.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">갤러리형</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
@@ -94,14 +85,11 @@
 					<input type='text' name='word' id='word' value=''>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm'
-				style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
+			<button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<%-- 검색 상태하면 '검색 취소' 버튼을 출력 --%>
-				<button type='button' class='btn btn-dark btn-sm'
-					style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
-					onclick="location.href='./list_by_fcateno.do?fcateno=${param.fcateno}&word='">검색
-					취소</button>
+				<button type='button' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${param.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
@@ -113,16 +101,13 @@
 			<li class="li_none">
 				<DIV style="width: 100%; word-break: break-all;">
 					<c:choose>
-						<c:when
-							test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
+						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 							<%-- /static/festival/storage/ --%>
-							<img src="/festival/storage/${file1saved }"
-								style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
+							<img src="/festival/storage/${file1saved }" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
 						</c:when>
 						<c:otherwise>
 							<!-- 기본 이미지 출력 -->
-							<img src="/festival/images/none1.png"
-								style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
+							<img src="/festival/images/none1.png" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
 						</c:otherwise>
 					</c:choose>
 
@@ -138,17 +123,14 @@
 			</li>
 
 			<c:if test="${youtube.trim().length() > 0 }">
-				<li class="li_none"
-					style="clear: both; padding-top: 5px; padding-bottom: 5px;">
+				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
 					<DIV style="text-align: center;">${youtube }</DIV>
 				</li>
 			</c:if>
 
 			<c:if test="${map.trim().length() > 0 }">
-				<li class="li_none"
-					style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<DIV
-						style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV>
+				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
+					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV>
 				</li>
 			</c:if>
 
@@ -165,10 +147,8 @@
 			<li class="li_none">
 				<div>
 					<c:if test="${file1.trim().length() > 0 }">
-            첨부 파일: <a
-							href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>${file1}</a> (${size1_label}) 
-            <a
-							href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
+            첨부 파일: <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>${file1}</a> (${size1_label}) 
+            <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
 							<img src="/festival/images/download.png" class="icon">
 						</a>
 					</c:if>
