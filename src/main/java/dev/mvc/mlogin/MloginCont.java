@@ -46,7 +46,7 @@ public class MloginCont {
 			mav.addObject("list", list);
 
 		} else {
-			mav.setViewName("member/login_need");
+			mav.setViewName("/member/login_need");
 		}
 
 		return mav; // forward
@@ -70,7 +70,7 @@ public class MloginCont {
 			mav.addObject("list", list);
 
 		} else {
-			mav.setViewName("member/login_need");
+			mav.setViewName("/member/login_need");
 		}
 
 		return mav; // forward
