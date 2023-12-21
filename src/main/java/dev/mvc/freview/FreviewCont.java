@@ -19,6 +19,8 @@ import dev.mvc.admin.AdminVO;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.festival.FestivalProcInter;
 import dev.mvc.festival.FestivalVO;
+import dev.mvc.freview_reply.Freview_replyProcInter;
+import dev.mvc.freview_reply.Freview_replyVO;
 import dev.mvc.member.MemberProcInter;
 import dev.mvc.member.MemberVO;
 import dev.mvc.tool.Tool;
@@ -45,6 +47,10 @@ public class FreviewCont {
   @Autowired
   @Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
   private AdminProcInter adminProc;
+  
+  @Autowired
+  @Qualifier("dev.mvc.freview_reply.Freview_replyProc")
+  private Freview_replyProcInter freview_replyProc;
 
 	public FreviewCont() {
 		System.out.println("-> FreviewCont created.");
@@ -312,24 +318,31 @@ public class FreviewCont {
 		mav.addObject("festivalVO", festivalVO);
 		
 		
+		// 회원/관리자 로그인 -> 댓글 등록 가능
     if(memberProc.isMember(session) || adminProc.isAdmin(session)) { // 로그인 한 경우
+      boolean isMember = memberProc.isMember(session);
+      mav.addObject("isMember", isMember);
+      
         if (this.memberProc.isMember(session)) { // 회원으로 로그인
-          boolean isMember = memberProc.isMember(session);
-          mav.addObject("isMember", isMember);
-          
           int memberno = (int) session.getAttribute("memberno");
           MemberVO memberVO = this.memberProc.read(memberno);
           mav.addObject("id", memberVO.getId());
       } else if (this.adminProc.isAdmin(session)) { // 관리자로 로그인
-          boolean isAdmin = adminProc.isAdmin(session);
-          mav.addObject("isAdmin", isAdmin);
-          
           int adminno = (int) session.getAttribute("adminno");
           AdminVO adminVO = this.adminProc.read(adminno);
           mav.addObject("id", adminVO.getId());
       }
     }
-
+    
+    // 등록된 댓글
+    ArrayList<Freview_replyVO> list = this.freview_replyProc.list_by_reviewno(reviewno);
+    for (Freview_replyVO replyVO : list) {
+      String reply = replyVO.getReply();
+      reply = Tool.convertChar(reply); // 특수 문자 처리
+      replyVO.setReply(reply);
+    }
+    mav.addObject("list", list);
+    
 		return mav;
 	}
 

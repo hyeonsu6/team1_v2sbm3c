@@ -169,7 +169,15 @@
         </div>
         <button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-top: -8px;">등록</button>
       </c:if>
-      
+      <c:if test="${not isMember }">
+        <div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px; '>로그인하여 댓글을 남겨보세요</div>
+      </c:if>
+    </div>
+    
+    <div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
+
+    <div style='color: #000000; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
+     ${list }
     </div>
     
 	</fieldset>
