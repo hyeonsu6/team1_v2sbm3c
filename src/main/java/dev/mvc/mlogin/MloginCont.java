@@ -126,7 +126,7 @@ public class MloginCont {
 		ModelAndView mav = new ModelAndView();
 
 		MloginVO mloginVO_read = this.mloginProc.read_mlogin(mloginVO.getMloginno());
-		this.mloginProc.delete_mlogin(mloginVO.getMloginno()); 
+		this.mloginProc.delete_mlogin(mloginVO.getMloginno());
 
 		mav.addObject("mloginno", mloginVO.getMloginno());
 		mav.setViewName("redirect:/login/list_mlogin_by_memberno.do");
