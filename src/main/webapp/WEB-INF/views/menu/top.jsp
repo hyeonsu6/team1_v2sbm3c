@@ -10,27 +10,30 @@
 	width: 28px;
 }
 
-.top_menu_link:link { /* 방문전 상태 */
-	text-decoration: none; /* 밑줄 삭제 */
+.top_menu_link:link, .top_menu_link:visited {
+	text-decoration: none;
 	color: #5A7696;
 	font-weight: bold;
 	font-size: 13.5px;
 }
 
-.top_menu_link:visited { /* 방문후 상태 */
-	text-decoration: none; /* 밑줄 삭제 */
-	color: #5A7696;
-	font-weight: bold;
-	font-size: 13.5px;
-}
-
-.top_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	text-decoration: blink; /* 밑줄 출력 */
+.top_menu_link:hover {
+	text-decoration: blink;
 	color: #9E2A2B;
 	font-weight: bold;
 	font-size: 14.5px;
 }
+
+.navbar-brand img {
+	transform: rotate(-15deg);
+	transition: transform 0.5s ease-in-out;
+}
+
+.navbar-brand img:hover {
+	transform: rotate(15deg);
+}
 </style>
+
 <script type="text/javascript">
 	function chatbot() {
 		// 챗봇을 개발한 사람의 AWS IP
@@ -61,11 +64,10 @@
 	<div class='top_img'>
 		<div class="top_menu_label">Festival Blog version 4.0</div>
 	</div>
-	<!-- <div class='top_img'></div> 종료 -->
 
 	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #EEE8AA;">
 		<a class="navbar-brand" href="/">
-			<img src='/css/images/home.png' title="시작페이지" style='display: block; padding-left: 5px;' class='icon_n'>
+			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left:15px;  padding-left: 3px;' class='icon_n'>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
 			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
@@ -86,7 +88,7 @@
 							href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }&now_page=1">${fcateVO.name }</a>
 					</li>
 				</c:forEach>
-				
+
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">전체 카테고리 목록</a>
 				</li>
