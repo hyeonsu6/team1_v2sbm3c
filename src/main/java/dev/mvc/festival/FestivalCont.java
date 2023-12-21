@@ -8,20 +8,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
-import dev.mvc.freview.FreviewProc;
 import dev.mvc.freview.FreviewProcInter;
-import dev.mvc.freview.FreviewVO;
+import dev.mvc.likes.LikesProcInter;
+import dev.mvc.member.MemberVO;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
 
@@ -39,6 +37,10 @@ public class FestivalCont {
 	@Autowired
 	@Qualifier("dev.mvc.freview.FreviewProc") 
 	private FreviewProcInter freviewProc;
+	
+	@Autowired
+	@Qualifier("dev.mvc.likes.LikesProc") 
+	private LikesProcInter likesProc;
 
 	@Autowired
 	@Qualifier("dev.mvc.festival.FestivalProc") // @Component("dev.mvc.festival.festivalProc")
@@ -397,31 +399,42 @@ public class FestivalCont {
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/read.do", method = RequestMethod.GET)
-	public ModelAndView read(int contentsno) { // int fcateno = (int)request.getParameter("fcateno");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/festival/read"); // /WEB-INF/views/festival/read.jsp
+	public ModelAndView read(int contentsno, HttpSession session) {
+	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("/festival/read"); // /WEB-INF/views/festival/read.jsp
 
-		FestivalVO festivalVO = this.festivalProc.read(contentsno);
+	    FestivalVO festivalVO = this.festivalProc.read(contentsno);
 
-		String title = festivalVO.getTitle();
-		String content = festivalVO.getContent();
+	    String title = festivalVO.getTitle();
+	    String content = festivalVO.getContent();
 
-		title = Tool.convertChar(title); // 특수 문자 처리
-		content = Tool.convertChar(content);
+	    title = Tool.convertChar(title); // 특수 문자 처리
+	    content = Tool.convertChar(content);
 
-		festivalVO.setTitle(title);
-		festivalVO.setContent(content);
+	    festivalVO.setTitle(title);
+	    festivalVO.setContent(content);
 
-		long size1 = festivalVO.getSize1();
-		String size1_label = Tool.unit(size1);
-		festivalVO.setSize1_label(size1_label);
+	    long size1 = festivalVO.getSize1();
+	    String size1_label = Tool.unit(size1);
+	    festivalVO.setSize1_label(size1_label);
 
-		mav.addObject("festivalVO", festivalVO);
+	    mav.addObject("festivalVO", festivalVO);
 
-		FcateVO fcateVO = this.fcateProc.read(festivalVO.getFcateno());
-		mav.addObject("fcateVO", fcateVO);
+	    FcateVO fcateVO = this.fcateProc.read(festivalVO.getFcateno());
+	    mav.addObject("fcateVO", fcateVO);
 
-		return mav;
+	    // 좋아요 수 조회
+	    int likeCnt = likesProc.cnt(contentsno);
+
+	    // 좋아요 정보 조회 (현재 로그인한 회원의 좋아요 여부 확인)
+	    MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
+	    int memberno = (memberVO != null) ? memberVO.getMemberno() : 0;
+	    int likes_memberno = likesProc.likes_memberno(contentsno, memberno);
+
+	    mav.addObject("likeCnt", likeCnt);
+	    mav.addObject("likes_memberno", likes_memberno);
+
+	    return mav;
 	}
 
 	/**

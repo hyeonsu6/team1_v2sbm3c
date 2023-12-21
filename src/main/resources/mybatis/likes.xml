@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 자식 XML 태그들은 dev.mvc.likes.LikesDAOInter.java interface와 연결됨 -->
+<!-- 자식 XML 태그들은 dev.mvc.likes.LikesDAOInter.java interface와 연결됨 -->
 <mapper namespace="dev.mvc.likes.LikesDAOInter">
 
 	<!-- 등록 -->
 	<insert id="create" parameterType="dev.mvc.likes.LikesVO">
-		INSERT INTO likes(likesno, contentsno, memberno, rdate) 
-		VALUES (likes_seq.nextval, #{contentsno}, #{memberno}, sysdate)
+		INSERT INTO likes(likesno, contentsno, memberno, rdate)
+		VALUES
+		(likes_seq.nextval, #{contentsno}, #{memberno}, sysdate)
 	</insert>
-	
+
 	<!-- 회원을 이용한 좋아요 -->
-	<select id="likes_memberno" resultType="int" parameterType="dev.mvc.likes.LikesVO">
-		SELECT COUNT(*) as cnt 
+	<select id="likes_memberno" resultType="int" parameterType="map">
+		SELECT COUNT(*) as cnt
 		FROM likes
 		WHERE contentsno=#{contentsno} AND memberno=#{memberno}
 	</select>
 
-	<!-- 조회수 -->
+	<!-- 게시물의 좋아요 수 조회 -->
 	<select id="cnt" resultType="int" parameterType="int">
 		SELECT COUNT(*) as cnt FROM likes
-		WHERE contentsno=#{contentsno}
+		WHERE
+		contentsno=#{contentsno}
 	</select>
-	
+
+	<!-- 좋아요 수 증가 -->
+	<update id="increaseCnt" parameterType="int">
+		UPDATE likes
+		SET cnt = (SELECT COUNT(*) FROM likes WHERE
+		contentsno = #{contentsno})
+		WHERE contentsno = #{contentsno}
+	</update>
+
 	<!-- 삭제 -->
 	<delete id="delete" parameterType="dev.mvc.likes.LikesVO">
-		DELETE FROM likes 
-		WHERE contentsno=#{contentsno} and memberno=#{memberno}
+		DELETE FROM likes
+		WHERE contentsno=#{contentsno} and
+		memberno=#{memberno}
 	</delete>
 </mapper>
