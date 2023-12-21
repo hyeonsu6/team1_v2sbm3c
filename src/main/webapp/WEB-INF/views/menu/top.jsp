@@ -14,21 +14,21 @@
 	text-decoration: none; /* 밑줄 삭제 */
 	color: #5A7696;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 13.5px;
 }
 
 .top_menu_link:visited { /* 방문후 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
 	color: #5A7696;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 13.5px;
 }
 
 .top_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
 	text-decoration: blink; /* 밑줄 출력 */
 	color: #9E2A2B;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 14.5px;
 }
 </style>
 <script type="text/javascript">
