@@ -927,7 +927,7 @@
                                     <targetConnections/>
                                     <error></error>
                                     <linkedPath></linkedPath>
-                                    <tableName>LIKES</tableName>
+                                    <tableName>festival_likes</tableName>
                                     <logicalName>축제 컨텐츠 추천</logicalName>
                                     <description></description>
                                     <columns>
