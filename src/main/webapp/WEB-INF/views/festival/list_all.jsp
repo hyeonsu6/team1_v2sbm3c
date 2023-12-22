@@ -21,6 +21,7 @@
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
+	
 	<div class="menu_line"></div>
 
 	<table class="table table-hover">

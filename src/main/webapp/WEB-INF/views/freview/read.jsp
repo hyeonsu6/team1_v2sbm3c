@@ -182,10 +182,6 @@
 			${list }</div>
 
 	</fieldset>
-
-	</div>
-
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

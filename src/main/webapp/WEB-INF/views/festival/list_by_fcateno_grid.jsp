@@ -84,7 +84,7 @@
 			<!-- 5기준 하나의 이미지, 19.2 * 5 = 96% -->
 			<div
 				onclick="location.href='./read.do?contentsno=${contentsno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
-				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #540B0E; text-align: center; color: #FFF3B0; font-size: 16px; font-weight: bold; cursor: pointer;'>
+				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #FFF8DC; text-align: center; color: #556B2F; font-size: 14px; cursor: pointer; border: 3px solid #8B4513; border-radius: 10px;'>
 
 				<c:choose>
 					<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
