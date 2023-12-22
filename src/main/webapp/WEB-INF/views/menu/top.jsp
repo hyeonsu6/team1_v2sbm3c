@@ -12,14 +12,14 @@
 
 .top_menu_link:link, .top_menu_link:visited {
 	text-decoration: none;
-	color: #5A7696;
+	color: #F8F8FF;
 	font-weight: bold;
 	font-size: 13.5px;
 }
 
 .top_menu_link:hover {
 	text-decoration: blink;
-	color: #9E2A2B;
+	color: #F8F8FF;
 	font-weight: bold;
 	font-size: 14.5px;
 }
@@ -65,7 +65,7 @@
 		<div class="top_menu_label">Festival Blog version 4.0</div>
 	</div>
 
-	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #EEE8AA;">
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #a39485;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left:15px;  padding-left: 3px;' class='icon_n'>
 		</a>
