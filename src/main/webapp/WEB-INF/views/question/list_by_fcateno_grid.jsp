@@ -24,7 +24,7 @@
 	</div>
 
 	<aside class="aside_right">
-		<a href="./create.do?fcateno=${fcateVO.fcateno }">등록</a>
+		<a href="./create.do?fcateno=${fcateVO.fcateno }">질문 등록</a>
 		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
@@ -34,7 +34,7 @@
 		<a
 			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">갤러리형</a>
 	</aside>
-
+	<br>
 	<div style="text-align: right; clear: both;">
 		<form name='frm' id='frm' method='get' action='./list_by_fcateno.do'>
 			<input type='hidden' name='fcateno' value='${param.fcateno }'>

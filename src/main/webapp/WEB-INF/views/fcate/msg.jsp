@@ -21,7 +21,7 @@
 	int cnt = (int) request.getAttribute("cnt");
 	String name = (String) request.getAttribute("name");
 	%>
-	<div class='title_line'>카테고리 > 알림</div>
+	<div class='title_line'>알림</div>
 	<div class='message'>
 		<fieldset class='fieldset_basic'>
 			<ul>
