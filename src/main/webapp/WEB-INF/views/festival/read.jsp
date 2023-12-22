@@ -39,26 +39,6 @@
 			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
 			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📰 리뷰 보러가기</button>
 	</aside>
-	<br>
-	<br>
-	<aside class="aside_left">
-		<form action="/likes/create.do" method="post">
-			<input type="hidden" name="contentsno" value="${contentsno}">
-			<input type="hidden" name="memberno" value="1">
-			<!-- 예시로 임의의 회원 번호 사용, 실제로는 세션 등을 이용하여 동적으로 설정 -->
-			<p>${likeCnt}</p>
-			<c:choose>
-				<c:when test="${likes_memberno > 0}">
-					<!-- 이미 좋아요를 했을 경우 -->
-					<button type="submit" class="btn btn-dark btn-sm">좋아요 완료</button>
-				</c:when>
-				<c:otherwise>
-					<!-- 아직 좋아요를 하지 않은 경우 -->
-					<button type="submit" class="btn btn-dark btn-sm">좋아요</button>
-				</c:otherwise>
-			</c:choose>
-		</form>
-	</aside>
 
 	<aside class="aside_right">
 		<%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
