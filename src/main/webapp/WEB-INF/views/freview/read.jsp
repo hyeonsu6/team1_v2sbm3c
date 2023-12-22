@@ -116,7 +116,7 @@
 					<c:choose>
 						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 							<%-- /static/festival/storage/ --%>
-							<img src="/freview/storage/${file1saved }" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
+							<img src="/freview/storage/${file1saved }" style='width: 35%; float: left; margin-top: 0.5%; margin-right: 1%;'>
 						</c:when>
 						<c:otherwise>
 							<!-- 기본 이미지 출력 -->
@@ -125,9 +125,10 @@
 					</c:choose>
 
 
-					<span style="font-size: 1.5em; font-weight: bold;">${title}</span>
+					<span style="font-size: 1.7em; font-weight: bold;">${title}</span>
 					<br>
-					<span style="font-size: 0.9em; font-weight: bold;"> 작성자: ${nickname} </span>
+					<span style="font-size: 1.0em; font-weight: bold;"> 작성자: ${nickname} </span>
+					<span style="font-size: 1.0em; font-weight: bold;"> | 등록일: ${rdate.substring(0, 10)}</span>
 					<br> <br>${content}
 				</div>
 			</li>
@@ -137,16 +138,6 @@
 					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div>
 				</li>
 			</c:if>
-
-			<br>
-
-			<li class="li_none" style="clear: both;">
-				<div style='text-decoration: none;'>
-					<span style="font-size: 1em;">
-						<br> <br>등록일: ${{rdate.substring(0, 10)}
-					</span>
-				</div>
-			</li>
 
 			<li class="li_none" style="clear: both;">
 				<div style='text-decoration: none;'>검색어(키워드): ${word }</div>
