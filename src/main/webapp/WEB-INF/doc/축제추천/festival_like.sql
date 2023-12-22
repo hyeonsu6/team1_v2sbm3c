@@ -1,10 +1,11 @@
 DROP TABLE FESTIVAL_LIKES;   
 
 CREATE TABLE FESTIVAL_LIKES(
-        likesno                 NUMBER(10)         NOT NULL         PRIMARY KEY,
-        contentsno           NUMBER(10)         NULL ,
-        memberno             NUMBER(10)         NULL ,
-        rdate                DATE         NOT NULL,
+        likesno           NUMBER(10)         NOT NULL         PRIMARY KEY,
+        contentsno        NUMBER(10)         NULL ,
+        memberno          NUMBER(10)         NULL ,
+        point             NUMBER(1)  NOT NULL,
+        rdate             DATE         NOT NULL,
   FOREIGN KEY (contentsno) REFERENCES festival (contentsno),
   FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
@@ -13,6 +14,7 @@ COMMENT ON TABLE FESTIVAL_LIKES is '축제 컨텐츠 추천';
 COMMENT ON COLUMN FESTIVAL_LIKES.likesno is '좋아요 번호';
 COMMENT ON COLUMN FESTIVAL_LIKES.contentsno is '회원 번호';
 COMMENT ON COLUMN FESTIVAL_LIKES.memberno is '축제 컨텐츠 번호';
+COMMENT ON COLUMN FESTIVAL_LIKES.point is '싫어요 번호';
 COMMENT ON COLUMN FESTIVAL_LIKES.rdate is '등록일';
 
 DROP SEQUENCE FESTIVAL_LIKES_SEQ;

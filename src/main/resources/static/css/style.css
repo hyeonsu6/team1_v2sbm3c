@@ -1,17 +1,20 @@
 /* ver 2.0 */
 /* 모든 태그에 적용 */
-@import
-	url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap')
-	;
+@font-face {
+	font-family: 'WarhavenB';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2')
+		format('woff2');
+	font-style: normal;
+	font-weight: 700;
+}
 
 * {
-	font-family: Nanum Myeongjo;
-	font-weight: 700px;
-	font-size: 16px;
-	margin: 0px; /* top right bottom left */
+	margin: 0px;
 	padding: 0px;
 	color: #555555;
 	font-size: 16px;
+	font-family: 'WarhavenB', sans-serif; /* WarhavenB 폰트를 사용하도록 추가 */
 }
 
 .container_main {
@@ -27,10 +30,10 @@
 	width: 100%;
 	height: 150px;
 	background-image: url('/css/images/top_img.png');
-	/* 	background-repeat: no-repeat;*/
 	background-position: center; /* 이미지를 가운데로 정렬 */
 	margin-bottom: 2px;
 	text-align: center;
+	border: 2px solid #8B4513;
 }
 
 .top_menu_label {
@@ -68,8 +71,8 @@
 
 .menu_line {
 	width: 100%;
-	border-bottom: dotted 1px #777777;
-	margin: 20px 0px 10px 0px; /* top -> right -> bottom -> left */
+	border-bottom: 1px dotted #4682B4;
+	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
 
@@ -108,6 +111,13 @@
 	text-align: center;
 	margin: 20px auto;
 	clear: both; /* 앞쪽 태그의 float 효과를 제거함. */
+}
+
+.bottom_line {
+	width: 100%;
+	border-bottom: 2px dotted #4682B4;
+	margin: 10px 0; /* 상단과 하단만 지정 */
+	clear: both;
 }
 
 .aside_left {
@@ -208,10 +218,14 @@
 
 .title_line {
 	text-align: left;
-	border-bottom: solid 3px #555555;
 	width: 100%;
 	margin: 20px auto;
-	font-size: 20px;
+	font-size: 21px;
+	font-weight: 700;
+	border-bottom: 5px solid #CD853F;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-size: 21px;
 }
 
 .title_link:link { /* 방문전 상태 */
@@ -297,12 +311,12 @@ a:visited { /* 방문후 상태 */
 
 a:hover { /* A 태그에 마우스가 올라간 상태 */
 	text-decoration: underline; /* 밑줄 출력 */
-	color: #7777FF;
+	color: #1E90FF;
 }
 
 a:active { /* A 태그를 클릭한 상태 */
 	text-decoration: underline; /* 밑줄 출력 */
-	color: #7777FF;
+	color: #1E90FF;
 }
 
 .menu_link:link { /* 방문전 상태 */
@@ -339,13 +353,13 @@ a:active { /* A 태그를 클릭한 상태 */
 
 .recom_link:hover { /* A 태그에 마우스가 올라간 상태 */
 	text-decoration: none; /* 밑줄 출력 */
-	color: #7777FF;
+	color: #1E90FF;
 	font-size: 0.8em;
 }
 
 .recom_link:active { /* A 태그를 클릭한 상태 */
 	text-decoration: none; /* 밑줄 출력 */
-	color: #7777FF;
+	color: #1E90FF;
 	font-size: 0.8em;
 }
 
@@ -436,11 +450,11 @@ a:active { /* A 태그를 클릭한 상태 */
 .msg_warning {
 	font-weight: bold;
 	color: #FFFFFF;
-	background-color: rgba(255, 0, 0, 0.6);
-	padding: 2px;
+	background-color: #FF4500;
+	padding: 3px;
 	margin: 10px auto;
 	text-align: center;
-	width: 80%;
+	width: 70%;
 	margin-top: 2px;
 }
 
@@ -480,6 +494,7 @@ a:active { /* A 태그를 클릭한 상태 */
 
 .icon {
 	width: 18px;
+	margin-right: 3px;
 }
 
 .icon_New {
@@ -500,7 +515,7 @@ a:active { /* A 태그를 클릭한 상태 */
 .login_container {
 	display: flex;
 	align-items: center; /* 이미지와 폼을 수직 가운데 정렬합니다. */
-	background-color: rgba(210, 105, 30, 0.7);
+	background-color: #73685d;
 }
 
 .login_image {
@@ -514,11 +529,14 @@ a:active { /* A 태그를 클릭한 상태 */
 }
 
 .login_bottom_menu {
-	display: flex;
+	margin-left: 50px;
+	justify-content: center; /* 가로 중앙 정렬을 위한 추가 속성 */
 }
 
 .login_bottom_menu button {
-	margin-right: 10px; /* 버튼 사이의 간격을 조절 (선택적) */
+	text-align: center;
+	width: 150px; /* 원하는 폭으로 조절하세요 */
+	height: 40px; /* 원하는 높이로 조절하세요 */
 }
 
 .b_menu_link:link { /* 방문전 상태 */
@@ -561,4 +579,79 @@ a:active { /* A 태그를 클릭한 상태 */
 	color: #B8860B;
 	font-weight: bold;
 	font-size: 19px;
+}
+
+body {
+	padding: 0.5em;
+	background: #f5f5f5;
+}
+
+table {
+	border: 1px #a39485 solid;
+	font-size: .9em;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+th {
+	color: #FFFAFA;
+}
+
+thead {
+	font-weight: bold;
+	color: #F8F8FF;
+	background: #73685d;
+}
+
+td, th {
+	padding: 0.8em 0.5em;
+	vertical-align: middle;
+}
+
+td {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	background: #FFFAFA;
+}
+
+a {
+	color: #73685d;
+}
+
+@media all and (max-width: 768px) {
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+	th {
+		text-align: right;
+	}
+	table {
+		position: relative;
+		padding-bottom: 0;
+		border: none;
+		box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	}
+	thead {
+		float: left;
+		white-space: nowrap;
+	}
+	tbody {
+		overflow-x: auto;
+		overflow-y: hidden;
+		position: relative;
+		white-space: nowrap;
+	}
+	tr {
+		display: inline-block;
+		vertical-align: top;
+	}
+	th {
+		border-bottom: 1px solid #a39485;
+		color: #FFFAFA;
+	}
+	td {
+		border-bottom: 1px solid #e5e5e5;
+	}
 }
