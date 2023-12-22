@@ -12,14 +12,14 @@
 
 .top_menu_link:link, .top_menu_link:visited {
 	text-decoration: none;
-	color: #F8F8FF;
+	color: #800000;
 	font-weight: bold;
-	font-size: 13.5px;
+	font-size: 12px;
 }
 
 .top_menu_link:hover {
 	text-decoration: blink;
-	color: #F8F8FF;
+	color: black;
 	font-weight: bold;
 	font-size: 14.5px;
 }
@@ -65,9 +65,10 @@
 		<div class="top_menu_label">Festival Blog version 4.0</div>
 	</div>
 
-	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #a39485;">
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #FFF5EE; border: 2px solid #8B4513;">
 		<a class="navbar-brand" href="/">
-			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left:15px;  padding-left: 3px;' class='icon_n'>
+			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
+				class='icon_n'>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
 			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
@@ -95,8 +96,8 @@
 
 
 				<li class="nav-item dropdown">
-					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">회원</a>
-					<div class="dropdown-menu">
+					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #800000;">회원</a>
+					<div class="dropdown-menu" style="font-size: 14px;">
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
 								<a class="dropdown-item" href="/member/create.do">회원 가입</a>
@@ -123,8 +124,8 @@
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item dropdown">
-							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">관리자</a>
-							<div class="dropdown-menu">
+							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #800000;">관리자</a>
+							<div class="dropdown-menu" style="font-size: 14px;">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
