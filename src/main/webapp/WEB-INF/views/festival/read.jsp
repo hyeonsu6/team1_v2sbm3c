@@ -28,9 +28,9 @@
 </head>
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>
-		<A href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class='title_link'>${fcateVO.name }</A>
-	</DIV>
+	<div class='title_line'>
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class='title_link'>${fcateVO.name }</a>
+	</div>
 
 	<aside class="aside_left">
 		<button type="submit" class="btn btn-sm" onclick="location.href='../freview/create.do?contentsno=${param.contentsno}'"
@@ -93,12 +93,24 @@
 		</form>
 	</div>
 
-	<DIV class='menu_line'></DIV>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th>
+					좋아요 기능 테스트(삭제예정)</th>
+				<td>
+					<a type="submit" class="btn btn-sm" onclick="if (confirm('추천하시겠습니까?') == false ) { return false; }"
+						style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">❤️ 좋아요</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+
 
 	<fieldset class="fieldset_basic">
 		<ul>
 			<li class="li_none">
-				<DIV style="width: 100%; word-break: break-all;">
+				<div style="width: 100%; word-break: break-all;">
 					<c:choose>
 						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 							<%-- /static/festival/storage/ --%>
@@ -118,32 +130,32 @@
 					<span style="font-size: 0.9em;">${content}</span>
 					<br>
 
-				</DIV>
+				</div>
 			</li>
 
 			<c:if test="${youtube.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<DIV style="text-align: center;">${youtube }</DIV>
+					<div style="text-align: center;">${youtube }</div>
 				</li>
 			</c:if>
 
 			<c:if test="${map.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV> <br>
+					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div> <br>
 				</li>
 			</c:if>
 
 			<li class="li_none" style="clear: both;">
-				<DIV style='text-decoration: none;'>
+				<div style='text-decoration: none;'>
 					<br> <br> <br> 검색어(키워드): ${word }
-				</DIV>
+				</div>
 			</li>
 
 			<li class="li_none">
 				<div>
 					<c:if test="${file1.trim().length() > 0 }">
             첨부 파일: <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>${file1}</a> (${size1_label}) 
-            <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
+            <a onclick="if (confirm('이미지 다운로드 하시겠습니까?') == false ) { return false; }" href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
 							<img src="/festival/images/download.png" class="icon">
 						</a>
 					</c:if>
