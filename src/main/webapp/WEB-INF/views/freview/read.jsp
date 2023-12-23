@@ -154,7 +154,7 @@
 				</div>
 			</li>
 		</ul>
-<<<<<<< HEAD
+
     
     <br><div class='menu_line'></div>
     <form name='frm' id='frm' method='post' action='<%=request.getContextPath() %>/freview_reply/create.do'>
@@ -183,10 +183,9 @@
             <div style='float: right;'>
               <a href="">수정</a>
               <span class='menu_divide'>│</span>
-              <a href="">삭제</a>
+              <a href="../freview_reply/delete.do?reviewno=${reviewno}">삭제</a>
             </div>
-          </c:if>        
-  
+          </c:if>
           <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; font-weight: bold;'>
               ${replyVO.id}
           </div>
@@ -199,37 +198,8 @@
       </c:forEach>
 
 	</fieldset>
-  
-=======
->>>>>>> d0bc0842246f13031edb214270c8b795cf29c64a
 
-		<br>
-		<div class='menu_line'></div>
-		<div>
-			<span style="font-size: 20px; font-weight: bold;">댓글</span>
-		</div>
-		<div
-			style='height: 120px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
 
-			<c:if test="${isMember}">
-				<div style='margin-left: 10px; font-size: 20px;'>${id }</div>
-				<div
-					style='color: #B6BBC4; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
-					댓글을 남겨보세요</div>
-				<button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-top: -8px;">등록</button>
-			</c:if>
-			<c:if test="${not isMember }">
-				<div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px;'>로그인하여 댓글을 남겨보세요</div>
-			</c:if>
-		</div>
-
-		<div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
-
-		<div
-			style='color: #000000; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
-			${list }</div>
-
-	</fieldset>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

@@ -11,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.answer.AnswerVO;
+import dev.mvc.fcate.FcateVO;
 import dev.mvc.freview.FreviewProcInter;
 import dev.mvc.member.MemberProcInter;
+import dev.mvc.question.QuestionVO;
 
 public class Freview_replyCont {
   @Autowired
@@ -98,6 +100,52 @@ public class Freview_replyCont {
       mav.setViewName("redirect:/freview_reply/msg.do");
     }
 
+    return mav;
+  }
+  
+  
+  /**
+   * 파일 삭제 폼 http://localhost:9093/freview_reply/delete.do?questno=17
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.GET)
+  public ModelAndView delete(HttpSession session, int reviewno) {
+    ModelAndView mav = new ModelAndView();
+
+    if (memberProc.isMember(session)) { // 회원 로그인 경우
+      Freview_replyVO freview_replyVO = this.freview_replyProc.read(reviewno);
+      mav.addObject("freview_replyVO", freview_replyVO);
+
+      mav.setViewName("/freview_reply/delete"); // /WEB-INF/views/question/delete.jsp
+
+    } else {
+      mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
+      mav.setViewName("redirect:/freview_reply/msg.do");
+    }
+
+    return mav; // forward
+  }
+
+  /**
+   * 삭제 처리 http://localhost:9093/freview_reply/delete.do
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.POST)
+  public ModelAndView delete(Freview_replyVO freview_replyVO) {
+    ModelAndView mav = new ModelAndView();
+
+    // QuestionVO questionVO_read = questionProc.read(questionVO.getQuestno());
+    this.freview_replyProc.delete(freview_replyVO.getReplyno()); // DBMS 삭제
+
+    mav.addObject("replyno", freview_replyVO.getReplyno());
+
+    // mav.addObject("now_page", now_page);
+    // mav.setViewName("redirect:/question/list_by_tcateno.do");
+
+    mav.setViewName("redirect:/freview/read.do?reviewno=" + freview_replyVO.getReviewno());
+    
     return mav;
   }
   
