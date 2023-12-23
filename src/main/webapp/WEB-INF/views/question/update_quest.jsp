@@ -23,7 +23,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${title }>질문수정</div>
+	<div class='title_line'>${title } > 질문 수정</div>
 	<aside class="aside_right">
 		<a href="./create.do?questno=${questno }&now_page=${param.now_page}&fcateno=${fcateno}">질문 등록</a>
 		<span class='menu_divide'>│</span>

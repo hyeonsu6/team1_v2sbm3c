@@ -13,24 +13,24 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>
-		<A href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</A>
-		> ${festivalVO.title } > Youtube 등록/수정/삭제
-	</DIV>
+	<div class='title_line'>
+		<a href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		> ${festivalVO.title } > Youtube 등록|수정|삭제
+	</div>
 
-	<ASIDE class="aside_right">
-		<A href="javascript:location.reload();">새로고침</A>
+	<aside class="aside_right">
+		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
-		<A
+		<a
 			href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page}&word=${param.word }">기본
-			목록형</A>
+			목록형</a>
 		<span class='menu_divide'>│</span>
-		<A
-			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page}&word=${param.word }">갤러리형</A>
+		<a
+			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page}&word=${param.word }">갤러리형</a>
 
-	</ASIDE>
+	</aside>
 
-	<DIV style="text-align: right; clear: both;">
+	<div style="text-align: right; clear: both;">
 		<form name='frm' id='frm' method='get' action='./list_by_fcateno.do'>
 			<input type='hidden' name='fcateno' value='${fcateVO.fcateno }'>
 			<%-- 게시판의 구분 --%>
@@ -45,42 +45,33 @@
 					<input type='text' name='word' id='word' value='' class='input_word'>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm'>검색</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
-	</DIV>
+	</div>
 
-	<DIV class='menu_line'></DIV>
+	<div class='menu_line'></div>
 	<%--등록 폼 --%>
-	<FORM name='frm_youtube' method='POST' action='./youtube.do'>
+	<form name='frm_youtube' method='POST' action='./youtube.do'>
 		<input type="hidden" name="contentsno" value="${param.contentsno }">
 
 		<div>
 			<label>Youtube 스크립트</label>
-			<textarea name='youtube' class="form-control" rows="12" style='width: 100%;'>${festivalVO.youtube }</textarea>
+			<textarea name='youtube' class="form-control" rows="5" style='width: 100%;'>${festivalVO.youtube }</textarea>
 		</div>
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-dark btn-sm">저장</button>
-			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();" class="btn btn-dark btn-sm">Youtube
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">유튜브 저장</button>
+			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">유튜브
 				삭제</button>
-			<button type="button" onclick="history.back();" class="btn btn-dark btn-sm">취소</button>
+			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">삭제 취소</button>
 		</div>
 
-	</FORM>
-
-	<HR>
-	<DIV style="text-align: center;">
-		<H5>[참고] Youtube의 등록 방법</H5>
-		<IMG src='/festival/images/youtube01.jpg' style='width: 60%;'>
-		<br> <br>
-		<IMG src='/festival/images/youtube02.jpg' style='width: 60%;'>
-		<br>
-	</DIV>
-
-
+	</form>
 	<jsp:include page="../menu/bottom.jsp" />
 </body>
 

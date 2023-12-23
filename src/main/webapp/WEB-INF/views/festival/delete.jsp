@@ -23,7 +23,7 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>${fcateVO.name }>${title }>콘텐츠삭제</DIV>
+	<DIV class='title_line'>${fcateVO.name } > ${title } > 콘텐츠 삭제</DIV>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -70,12 +70,13 @@
 						</c:when>
 						<c:otherwise>
 							<!-- 이미지가 없는 경우 -->
-							"페스티벌 콘텐츠 이미지가 없습니다."</c:otherwise>
+							<img src="/festival/images/none1.png" style="width: 90%;">
+						</c:otherwise>
 					</c:choose>
 				</div>
 
 				<div style='text-align: center; width: 100%; margin-top: 10px;'>
-					<br> <br> <br> <br>
+					<br>
 					<span style='font-size: 1.5em;'> 콘텐츠 이름: ${title} </span>
 					<br> <br>
 					<c:if test="${size1 > 0 }">

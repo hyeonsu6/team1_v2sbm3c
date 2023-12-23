@@ -56,7 +56,7 @@
 
 		<div>
 			<label>지도 스크립트 추가</label>
-			<textarea name='map' class="form-control" rows="5" style='width: 100%;'>${festivalVOVO.map }</textarea>
+			<textarea name='map' class="form-control" rows="5" style='width: 100%;'>${festivalVO.map }</textarea>
 		</div>
 		<div class="content_body_bottom">
 			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">지도 저장</button>
@@ -65,9 +65,7 @@
 			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
 				style="background-color: #B8860B;">취소</button>
 		</div>
-
 	</form>
-
 	<jsp:include page="../menu/bottom.jsp" />
 </body>
 

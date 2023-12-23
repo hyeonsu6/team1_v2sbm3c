@@ -27,7 +27,7 @@
 		<c:if test="${sessionScope.admin_id != null }">
 			<button type="submit" class="btn btn-outline-warning btn-sm"
 				onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
-				style="background-color: #006400;">📝 컨텐츠 등록</button>
+				style="background-color: #8B0000;">📝 컨텐츠 등록</button>
 		</c:if>
 	</aside>
 

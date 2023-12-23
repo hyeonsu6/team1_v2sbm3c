@@ -16,7 +16,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>페스티벌 콘텐츠 목록 (전체)</div>
+	<div class='title_line'>[관리자] 페스티벌 콘텐츠 목록 (전체)</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
