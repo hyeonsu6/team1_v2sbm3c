@@ -148,13 +148,16 @@
 
 			<li class="li_none">
 				<div>
-					<c:if test="${file1.trim().length() > 0 }">
-            첨부 파일: <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>${file1}</a> (${size1_label}) 
+					<span style="font-size: 0.4em;">
+						<c:if test="${file1.trim().length() > 0 }">
+            첨부 파일: <a href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'
+								style="color: #9ACD32;">${file1}</a> (${size1_label}) 
             <a onclick="if (confirm('이미지 다운로드 하시겠습니까?') == false ) { return false; }"
-							href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
-							<img src="/festival/images/download.png" class="icon">
-						</a>
-					</c:if>
+								href='/download?dir=/festival/storage&filename=${file1saved}&downname=${file1}'>
+								<img src="/festival/images/download.png" style="margin-left: 10px; margin-bottom: 5px; width: 20px;">
+							</a>
+						</c:if>
+					</span>
 				</div>
 			</li>
 		</ul>
