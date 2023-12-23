@@ -91,7 +91,7 @@
 				</c:forEach>
 
 				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">전체 카테고리 목록</a>
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
 				</li>
 
 
