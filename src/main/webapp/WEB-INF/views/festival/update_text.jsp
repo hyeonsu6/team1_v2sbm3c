@@ -21,7 +21,7 @@
 <body>
 <c:import url="/menu/top.do" />
  
-  <DIV class='title_line'> ${fcateVO.name } > ${title } > 콘텐츠 수정</DIV>
+  <div class='title_line'> ${fcateVO.name } > ${title } > 콘텐츠 수정</div>
   
   <aside class="aside_right">
     <a href="./create.do?fcateno=${fcateno }">콘텐츠 등록</a>
@@ -66,21 +66,25 @@
        <label>제목</label>
        <input type='text' name='title' value='${title }' required="required" 
                  autofocus="autofocus" class="form-control" style='width: 100%;'>
+                 <br>
     </div>
     <div>
        <label>내용</label>
        <textarea name='content' required="required" class="form-control" rows="25" style='width: 100%;'>${content }</textarea>
+       <br>
     </div>
     <div>
        <label>검색어</label>
        <input type='text' name='word' value="${word }" required="required" 
                  class="form-control" style='width: 100%;'>
+                 <br>
     </div>   
     
     <div>
       <label>패스워드</label>
       <input type='password' name='passwd' value='' required="required" 
                 class="form-control" style='width: 50%;'>
+                
     </div>
        
     <div class="content_body_bottom">

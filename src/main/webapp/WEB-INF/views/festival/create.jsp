@@ -20,7 +20,7 @@
 	</div>
 
 	<aside class="aside_right">
-		<a href="./create.do?fcateno=${fcateVO.fcateno }">등록</a>
+		<a href="./create.do?fcateno=${fcateVO.fcateno }">콘텐츠 등록</a>
 		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
@@ -65,18 +65,25 @@
 				style='width: 100%;'>
 		</div>
 		<div>
+			<br>
 			<label>내용</label>
 			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
 		</div>
 		<div>
+			<br>
+
 			<label>검색어</label>
 			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%;'>
 		</div>
 		<div>
+			<br>
+
 			<label>이미지</label>
 			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
 		</div>
 		<div>
+			<br>
+
 			<label>패스워드</label>
 			<input type='password' name='passwd' value='' required="required" class="form-control" style='width: 50%;'>
 		</div>
