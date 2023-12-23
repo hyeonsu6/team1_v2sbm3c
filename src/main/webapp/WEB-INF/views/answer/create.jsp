@@ -31,12 +31,11 @@
 			<label style="margin: 15px auto; font-size: 18px;">답변 내용</label>
 			<textarea name='ans' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
 		</div>
-		
+
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">답변 등록</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">답변 등록</button>
 			<button type="button" onclick="location.href='../question/list_all.do'" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">질문 목록</button>
+				style="background-color: #B8860B;">질문 목록</button>
 		</div>
 
 	</form>

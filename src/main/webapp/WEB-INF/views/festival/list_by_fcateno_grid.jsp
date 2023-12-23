@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Contents</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -25,16 +25,16 @@
 
 	<aside class="aside_left">
 		<c:if test="${sessionScope.admin_id != null }">
-			<button type="submit" class="btn btn-dark btn-sm"
+			<button type="submit" class="btn btn-outline-warning btn-sm"
 				onclick="location.href='./create.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }'"
-				style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">📝 컨텐츠 등록</button>
+				style="background-color: #006400;">📝 컨텐츠 등록</button>
 		</c:if>
 	</aside>
 
 	<aside class="aside_right">
 		<%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
 		<c:if test="${sessionScope.admin_id != null }">
-			<a href="./create.do?fcateno=${fcateVO.fcateno }">등록</a>
+			<a href="./create.do?fcateno=${fcateVO.fcateno }">콘텐츠 등록</a>
 			<span class='menu_divide'>│</span>
 		</c:if>
 		<a href="javascript:location.reload();">새로고침</a>
@@ -59,10 +59,12 @@
 					<input type='text' name='word' id='word' value=''>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<%-- 검색 상태하면 '검색 취소' 버튼을 출력 --%>
-				<button type='button' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${param.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
@@ -110,12 +112,12 @@
 		</c:forEach>
 	</div>
 
-	<div class="menu_line">
-		<br> <br> <br> <br>
+	<div class="content_line">
+		<br>
 	</div>
 	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
 	<!-- 페이지 목록 출력 부분 시작 -->
-	<DIV class='bottom_menu'>${paging }</DIV>
+	<div class='bottom_menu'>${paging }</DIV>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
 	<jsp:include page="../menu/bottom.jsp" flush='false' />

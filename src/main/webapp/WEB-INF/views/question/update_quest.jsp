@@ -46,10 +46,9 @@
 		</div>
 
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">질문 수정</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">질문 수정</button>
 			<button type="button" onclick="location.href='./list_all'" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">질문 목록</button>
+				style="background-color: #B8860B;">질문 목록</button>
 		</div>
 
 	</form>

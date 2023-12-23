@@ -23,7 +23,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<DIV class='title_line'>${fcateVO.name } > ${title } > 삭제</DIV>
+	<DIV class='title_line'>${fcateVO.name }>${title } > 콘텐츠 삭제</DIV>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -41,14 +41,13 @@
 						<br>
 
 						<div style='text-align: center;'>
-							<span style="color: #FF0000; font-weight: bold;">
+							<span style="color: #FF4500;">
 								삭제를 진행 하시겠습니까? <br> 삭제하시면 복구 할 수 없습니다.
 							</span>
 							<br> <br>
-							<button type="submit" class="btn btn-outline-warning btn-sm"
-								style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">답변 삭제</button>
+							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">답변 삭제</button>
 							<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm"
-								style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">취소</button>
+								style="background-color: #B8860B;">답변 취소</button>
 						</div>
 					</form>
 				</div>

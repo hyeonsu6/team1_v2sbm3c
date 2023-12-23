@@ -58,7 +58,7 @@
 				<th>질문 제목</th>
 				<th>질문 내용</th>
 				<th>등록일</th>
-				<th>비고</th>
+				<th></th>
 			</tr>
 		</thead>
 

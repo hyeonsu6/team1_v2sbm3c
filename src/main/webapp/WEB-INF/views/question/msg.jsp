@@ -78,10 +78,9 @@
 					<button type='button' onclick="location.href='./create.do?fcateno=${fcateno}'" class="btn btn-dark btn-sm">새로운
 						질문 등록</button>
 					<button type='button' onclick="location.href='./list_all.do?'" class="btn btn-outline-warning btn-sm"
-						style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">목록</button>
+						style="background-color: #B8860B;">목록</button>
 					<button type='button' onclick="location.href='./list_by_fcateno.do?fcateno=${fcateno}'"
-						class="btn btn-outline-warning btn-sm" style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">
-						카테고리별 질문 목록</button></li>
+						class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">카테고리별 질문 목록</button></li>
 			</ul>
 		</fieldset>
 

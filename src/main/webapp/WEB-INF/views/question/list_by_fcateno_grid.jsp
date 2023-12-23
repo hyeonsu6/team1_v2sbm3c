@@ -83,7 +83,7 @@
 
 			<%-- 하나의 행에 이미지를 5개씩 출력후 행 변경, index는 0부터 시작 --%>
 			<c:if test="${status.count % 5 == 0}">
-				<hr class='menu_line'>
+				<hr class='content_line'>
 				<%-- 줄바꿈 --%>
 			</c:if>
 

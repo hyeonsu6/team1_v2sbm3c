@@ -56,7 +56,8 @@
 				<li class="li_none"><br> <%
  	if (cnt == 0) {
  %>
-					<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm">다시 시도</button> <%
+					<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm"
+						style="background-color: #B8860B;">다시 시도</button> <%
  	}
  %>
 			</ul>

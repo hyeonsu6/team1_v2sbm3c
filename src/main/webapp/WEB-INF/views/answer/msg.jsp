@@ -72,11 +72,11 @@
 				<li class='li_none'><br> <c:choose>
 						<c:when test="${cnt == 0 }">
 							<button type='button' onclick="history.back()" class="btn btn-outline-warning btn-sm"
-								style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">다시 시도</button>
+								style="background-color: #B8860B;">다시 시도</button>
 						</c:when>
 					</c:choose>
 					<button type='button' onclick="location.href='/question/list_all.do?'" class="btn btn-outline-warning btn-sm"
-						style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">답변 목록</button></li>
+						style="background-color: #B8860B;">답변 목록</button></li>
 			</ul>
 		</fieldset>
 	</div>

@@ -16,7 +16,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>🟦 [Q&A] 질문 등록</div>
+	<div class='title_line'>[Q&A] 질문 등록</div>
 
 	<aside class="aside_right" style="margin-bottom: 10px;">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -62,10 +62,8 @@
 			<textarea name='quest' required="required" class="form-control" rows="8" style='width: 100%;'></textarea>
 		</div>
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">질문 등록</button>
-			<button type="button" onclick="location.href='./list_all'" class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">질문 목록</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">질문 등록</button>
+			<button type="button" onclick="location.href='./list_all'" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">질문 목록</button>
 		</div>
 
 	</form>
