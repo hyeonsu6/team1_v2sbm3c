@@ -24,7 +24,7 @@
 
 	<div class='title_line'>${questionVO.title }> [Q&A] 답변 삭제</div>
 
-	<aside class="aside_right">
+	<aside class="aside_right"> 
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
 

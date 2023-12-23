@@ -32,6 +32,9 @@
 	</div>
 
 	<aside class="aside_right">
+		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+
 		<c:if test="${questionVO.memberno eq sessionScope.memberno}">
 			<a href="./create.do?questno=${questno }&now_page=${param.now_page}&fcateno=${fcateno}">질문 등록</a>
 			<span class='menu_divide'>│</span>
@@ -55,8 +58,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:if>
-		<span class='menu_divide'>│</span>
-		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
 
 	<div class='menu_line'></div>

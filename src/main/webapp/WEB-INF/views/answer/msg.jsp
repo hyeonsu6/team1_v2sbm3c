@@ -14,7 +14,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>알림</div>
+	<div class='title_line'>답변</div>
 
 	<c:set var="code" value="${param.code }" />
 	<c:set var="cnt" value="${param.cnt }" />

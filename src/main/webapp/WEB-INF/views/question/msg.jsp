@@ -14,7 +14,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>알림</div>
+	<div class='title_line'>질문 문의</div>
 
 	<c:set var="code" value="${param.code }" />
 	<%--mav.addObject("code", "create_success"); --%>

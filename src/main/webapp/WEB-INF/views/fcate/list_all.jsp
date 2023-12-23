@@ -16,7 +16,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>[관리자 모드] 페스티벌 카테고리</div>
+	<div class='title_line'>[관리자 모드] 페스티벌 카테고리</div> 
 
 	<form name='frm' method='post' action='/fcate/create.do'>
 		<br>

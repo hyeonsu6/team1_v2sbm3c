@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Review</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -22,9 +22,9 @@
 	</div>
 
 	<aside class="aside_right">
-		<a href="./list_by_contentsno.do?contentsno=${param.contentsno}">리뷰 목록</a>
-		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+		<a href="./list_by_contentsno.do?contentsno=${param.contentsno}">리뷰 목록</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
@@ -42,10 +42,12 @@
 					<input type='text' name='word' id='word' value='' class='input_word'>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm'>검색</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
-					onclick="location.href='./list_by_contentsno.do?contentsno=${festivalVO.contentsno}&word='">검색 취소</button>
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
@@ -56,41 +58,40 @@
 		<input type="hidden" name="contentsno" value="${param.contentsno }">
 
 		<div>
-			<label>작성자</label>
+			<label style="margin-bottom: 15px;">작성자</label>
 			<input type='text' name='nickname' value='' required="required" autofocus="autofocus" class="form-control"
-				style='width: 100%; font-weight: bold; color: blue;'>
+				style='width: 100%; font-weight: bold; color: blue; margin-bottom: 15px;'>
 		</div>
 		<div>
-
-			<label>제목</label>
-			<input type='text' name='title' value='축제 이름을 적어주세요!' required="required" autofocus="autofocus" class="form-control"
-				style='width: 100%; color: #8B4513;'>
+			<label style="margin-bottom: 15px;">제목</label>
+			<input type='text' name='title' value='' required="required" placeholder="축제 이름을 적어주세요!" autofocus="autofocus" class="form-control"
+				style='width: 100%; color: #8B4513; margin-bottom: 15px;'>
 		</div>
 		<div>
-			<label>리뷰(리뷰)</label>
-			<textarea name='content' required="required" class="form-control" rows="5" style='width: 100%;'></textarea>
+			<label style="margin-bottom: 15px;">리뷰(후기)</label>
+			<textarea name='content' required="required" class="form-control" rows="3" style='width: 100%; margin-bottom: 15px;'></textarea>
 		</div>
 		<div>
-			<label>검색어</label>
-			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%;'>
+			<label style="margin-bottom: 15px;">검색어</label>
+			<input type='text' name='word' value='' required="required" class="form-control"
+				style='width: 100%; margin-bottom: 15px;'>
 		</div>
 		<div>
-			<label>이미지</label>
-			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
+			<label style="margin-bottom: 15px;">이미지</label>
+			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택"
+				style="margin-bottom: 15px;">
 		</div>
 		<div>
-			<label>패스워드</label>
-			<input type='password' name='pwd' value='' required="required" class="form-control" style='width: 50%;'>
+			<label style="margin-bottom: 15px;">패스워드</label>
+			<input type='password' name='pwd' value='' required="required" class="form-control"
+				style='width: 50%;'>
 		</div>
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-dark btn-sm">등록하기</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">등록하기</button>
 			<button type="button" onclick="location.href='./list_by_contentsno.do?contentsno=${param.contentsno}'"
-				class="btn btn-dark btn-sm">목록(취소)</button>
+				class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">리뷰 목록</button>
 		</div>
-
 	</form>
-
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

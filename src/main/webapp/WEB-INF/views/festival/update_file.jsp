@@ -24,7 +24,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${fcateVO.name } > ${title } > 콘텐츠 파일 수정</div>
+	<div class='title_line'>${fcateVO.name }> ${title } > 콘텐츠 파일 수정</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -52,10 +52,10 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
@@ -80,21 +80,23 @@
 				</div>
 
 				<div style='text-align: center; width: 100%; margin-top: 10px;'>
-										<br>
+					<br>
 					<span style='font-size: 1.5em;'> 콘텐츠 이름: ${title} </span>
-					<br><br>
+					<br>
+					<br>
 					<form name='frm' method='POST' action='./update_file.do' enctype="multipart/form-data">
 						<input type="hidden" name="contentsno" value="${contentsno }">
 						<input type="hidden" name="now_page" value="${param.now_page }">
-						<input type='file' name='file1MF' id='file1MF' value='' placeholder="파일 선택" style="text-align: center; margin-left: 150px;">
+						<input type='file' name='file1MF' id='file1MF' value='' placeholder="파일 선택"
+							style="text-align: center; margin-left: 150px;">
 						<div style='text-align: center; margin: 10px auto;'>
-						<br>
+							<br>
 							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">콘텐츠 파일
 								변경 처리</button>
 							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">콘텐츠 파일
 								삭제</button>
 							<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
-								style="background-color: #B8860B;">삭제 취소</button>
+								style="background-color: #B8860B;">변경 취소</button>
 						</div>
 					</form>
 				</div>

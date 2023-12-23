@@ -7,10 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Member</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-<!-- /static 기준 -->
 
 <script type="text/javascript">
 window.onload = function() {
@@ -85,7 +84,7 @@ window.onload = function() {
           }
           
         },
-        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+        // ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
         error: function(request, status, error) { // callback 함수
           console.log(error);
         }
@@ -126,74 +125,80 @@ window.onload = function() {
 </script>
 </head>
 
-
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>회원 정보 조회 및 수정(*: 필수)</DIV>
+	<div class='title_line'>회원 정보 조회 및 수정(*: 필수)</div>
 
-	<DIV class='content_body'>
+	<div class='content_body'>
 
-		<ASIDE class="aside_right">
-			<A href="javascript:location.reload();">새로고침</A>
-			<span class='menu_divide'>│</span>
-			<A href='./create.do'>회원 가입</A>
-			<span class='menu_divide'>│</span>
-			<A href='./list.do'>목록</A>
-		</ASIDE>
+		<aside class="aside_right">
+			<a href="javascript:location.reload();">새로고침</a>
+		</aside>
 
 		<div class='menu_line'></div>
 
 		<div style="width: 60%; margin: 0px auto">
-			<FORM name='frm' id='frm' method='POST' action='./update.do' class="">
+			<form name='frm' id='frm' method='POST' action='./update.do' class="">
 				<input type="hidden" name="memberno" value="${memberVO.memberno }">
 
-				<div class="form-group">
+				<div class="form-group" style="margin-bottom: 15px;">
 					<%-- 줄이 변경되지 않는 패턴 --%>
-					<label>아이디*: <input type='text' class="form-control form-control-sm" name='id' id='id'
-						value='${memberVO.id }' required="required" placeholder="아이디*" autofocus="autofocus">
+					<label style="margin-right: 15px;">
+						아이디 *:
+						<input type='text' class="form-control form-control-sm" name='id' id='id' value='${memberVO.id }'
+							required="required" placeholder="아이디*" autofocus="autofocus">
 					</label>
-					<button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-primary btn-sm">중복확인</button>
+					<button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-outline-warning btn-sm"
+						style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">중복확인</button>
 					<span id='id_msg'></span>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group" style="margin-bottom: 15px;">
 					<%-- label의 크기에따라 input 태그의 크기가 지정되는 형태 --%>
-					<label>성명*: <input type='text' class="form-control form-control-sm" name='mname' id='mname'
-						value='${memberVO.mname }' required="required" placeholder="성명">
+					<label style="margin-right: 15px;">
+						성명 *:
+						<input type='text' class="form-control form-control-sm" name='mname' id='mname' value='${memberVO.mname }'
+							required="required" placeholder="성명">
 					</label>
 					<span id='mname_msg'></span>
 				</div>
 
-				<div class="form-group">
-					<%-- label의 크기에따라 input 태그의 크기가 지정되는 형태, 줄이 변경되지 않는 패턴 --%>
-					<label>전화 번호: <input type='text' class="form-control form-control-sm" name='tel' id='tel'
-						value='${memberVO.tel }' required="required" placeholder="전화번호">
-					</label> 예) 010-0000-0000
-				</div>
-
-				<div class="form-group">
-					<label>우편 번호: <input type='text' class="form-control form-control-sm" name='zipcode' id='zipcode'
-						value='${memberVO.zipcode }' placeholder="우편번호">
+				<div class="form-group" style="margin-bottom: 15px;">
+					<label style="margin-right: 15px;">
+						<%-- label의 크기에따라 input 태그의 크기가 지정되는 형태, 줄이 변경되지 않는 패턴 --%>
+						전화 번호:
+						<input type='text' class="form-control form-control-sm" name='tel' id='tel' value='${memberVO.tel }'
+							required="required" placeholder="전화번호">
 					</label>
-					<button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-primary btn-sm">우편번호
-						찾기</button>
+					예) 010-0000-0000
 				</div>
 
-				<div class="form-group">
+				<div class="form-group" style="margin-bottom: 15px;">
+					<label style="margin-right: 15px;">
+						우편 번호:
+						<input type='text' class="form-control form-control-sm" name='zipcode' id='zipcode' value='${memberVO.zipcode }'
+							placeholder="우편번호">
+					</label>
+					<button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-outline-warning btn-sm"
+						style="height: 30px; margin-bottom: 5px; margin-bottom: 5px; background-color: #B8860B;">우편번호 찾기</button>
+				</div>
+
+				<div class="form-group" style="margin-bottom: 15px;">
 					<label style="width: 100%;">주소:</label>
 					<%-- label의 크기를 변경하여 주소를 많이 입력받는 패턴 --%>
 					<input type='text' class="form-control form-control-sm" name='address1' id='address1' value='${memberVO.address1 }'
 						placeholder="주소">
 				</div>
 
-				<div class="form-group">
-					<label style="width: 100%;">상세 주소:</label> <input type='text' class="form-control form-control-sm" name='address2'
-						id='address2' value='${memberVO.address2 }' placeholder="상세 주소">
+				<div class="form-group" style="margin-bottom: 15px;">
+					<label style="width: 100%;">상세 주소:</label>
+					<input type='text' class="form-control form-control-sm" name='address2' id='address2' value='${memberVO.address2 }'
+						placeholder="상세 주소">
 				</div>
 
 				<div>
 
-					<!-- ------------------------------ DAUM 우편번호 API 시작 ------------------------------ -->
+					<!-- ------------------------------ DaUM 우편번호 aPI 시작 ------------------------------ -->
 					<div id="wrap"
 						style="display: none; border: 1px solid; width: 500px; height: 300px; margin: 5px 0; position: relative">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
@@ -221,13 +226,13 @@ window.onload = function() {
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+                var extraaddr = ''; // 참고항목 변수
 
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
+                    addr = data.roadaddress;
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
+                    addr = data.jibunaddress;
                 }
 
                 /*
@@ -236,21 +241,21 @@ window.onload = function() {
                     // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                     // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                     if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
+                        extraaddr += data.bname;
                     }
                     // 건물명이 있고, 공동주택일 경우 추가한다.
                     if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        extraaddr += (extraaddr !== '' ? ', ' + data.buildingName : data.buildingName);
                     }
                     // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
+                    if(extraaddr !== ''){
+                        extraaddr = ' (' + extraaddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample3_extraAddress").value = extraAddr;
+                    document.getElementById("sample3_extraaddress").value = extraaddr;
                 
                 } else {
-                    document.getElementById("sample3_extraAddress").value = '';
+                    document.getElementById("sample3_extraaddress").value = '';
                 }
                 */
 
@@ -281,19 +286,19 @@ window.onload = function() {
         element_wrap.style.display = 'block';
     }
 </script>
-					<!-- ------------------------------ DAUM 우편번호 API 종료 ------------------------------ -->
+					<!-- ------------------------------ DaUM 우편번호 aPI 종료 ------------------------------ -->
 
 				</div>
 
-				<div class="form_input">
-					<button type="button" id='btn_send' onclick="send()" class="btn btn-primary btn-sm">저장</button>
-					<button type="button" onclick="history.back()" class="btn btn-primary btn-sm">취소</button>
+				<div class="bottom_menu">
+					<button type="button" id='btn_send' onclick="send()" class="btn btn-outline-warning btn-sm"
+						style="background-color: #B8860B;">저장</button>
+					<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm"
+						style="background-color: #B8860B;">취소</button>
 				</div>
-			</FORM>
-		</DIV>
-
-	</DIV>
-
+			</form>
+		</div>
+	</div>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

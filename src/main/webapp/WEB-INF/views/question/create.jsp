@@ -38,10 +38,10 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.quest.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					style="height: 30px; margin-bottom: 5px;background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>

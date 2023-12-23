@@ -31,16 +31,16 @@
     <a href="javascript:location.reload();">새로고침</a>
   </aside>
 
-  <DIV class='menu_line'></DIV>
+  <div class='menu_line'></div>
 
   <fieldset class="fieldset_basic">
     <ul>
       <li class="li_none">
-        <DIV style="width: 100%; word-break: break-all;">
+        <div style="width: 100%; word-break: break-all;">
           <span style="font-size: 1.5em; font-weight: bold;">${questionVO.title}</span> <span style="font-size: 1em;"></span>
           <br> ${ans}
           <br><br><br> ${rdate}
-        </DIV>
+        </div>
       </li>
     </ul>
   </fieldset>

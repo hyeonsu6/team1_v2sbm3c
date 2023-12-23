@@ -50,11 +50,11 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 27px; background-color: #B8860B; padding: 2px 8px 3px 8px; margin: 0px 0px 5px 0px;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.quest.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 27px; background-color: #B8860B; padding: 2px 8px 3px 8px; margin: 0px 0px 5px 0px;"
-					onclick="location.href='./list_by_fcateno_grid.do?fcateno=${param.fcateno}'">검색 취소</button>
+					style="height: 30px; margin-bottom: 5px;background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>

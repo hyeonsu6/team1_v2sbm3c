@@ -16,17 +16,17 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Review</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>${festivalVO.title }> 파일 수정</DIV>
+	
+	<div class='title_line'>${festivalVO.title }>리뷰 파일 수정</div>
 
 	<aside class="aside_right">
-		<a href="./create.do?contentsno=${contentsno }">등록</a>
-		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
 
@@ -45,11 +45,12 @@
 					<input type='text' name='word' id='word' value='' class='input_word'>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
-					onclick="location.href='./list_by_contentsno.do?contentsno=${festivalVO.contentsno}&word='"
-					style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색 취소</button>
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
@@ -59,37 +60,41 @@
 	<fieldset class="fieldset_basic">
 		<ul>
 			<li class="li_none">
-				<DIV style='text-align: center; width: 50%; float: left;'>
+				<div style='text-align: center; width: 30%; margin-top: 10px; float: left;'>
 					<c:choose>
 						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
-							<IMG src="/freview/storage/${file1saved }" style='width: 90%;'>
+							<img src="/freview/storage/${file1saved }" style='width: 90%;'>
 						</c:when>
 						<c:otherwise>
 							<!-- 이미지가 없음 -->
-							<IMG src="/freview//images/none1.png" style="width: 90%;">
+							<img src="/freview//images/none1.png" style="width: 90%;">
 						</c:otherwise>
 					</c:choose>
 
-				</DIV>
+				</div>
 
-				<DIV style='text-align: left; width: 47%; float: left;'>
-					<span style='font-size: 1.5em;'>${title}</span>
+				<div style='text-align: center; width: 100%; margin-top: 10px;'>
 					<br>
-					<FORM name='frm' method='POST' action='./update_file.do' enctype="multipart/form-data">
-						<input type="hidden" name="reviewno" value="${reviewno }"> <input type="hidden" name="now_page"
-							value="${param.now_page }"> <br> <br> 변경 이미지 선택<br> <input type='file' name='file1MF'
-							id='file1MF' value='' placeholder="파일 선택"><br> <br>
-						<div style='margin-top: 20px; clear: both;'>
-							<button type="submit" class="btn btn-dark btn-sm">파일 변경 처리</button>
-							<button type="submit" class="btn btn-dark btn-sm">파일 삭제</button>
-							<button type="button" onclick="history.back();" class="btn btn-dark btn-sm">취소</button>
+					<span style='font-size: 1.5em;'>리뷰 제목: ${title}</span>
+					<br> <br>
+					<form name='frm' method='POST' action='./update_file.do' enctype="multipart/form-data">
+						<input type="hidden" name="reviewno" value="${reviewno }">
+						<input type="hidden" name="now_page" value="${param.now_page }">
+						<input type='file' name='file1MF' id='file1MF' value='' placeholder="파일 선택"
+							style="text-align: center; margin-left: 150px;">
+						<div style='text-align: center; margin: 10px auto;'>
+							<br>
+							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">리뷰 파일 변경
+								처리</button>
+							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">리뷰 파일 삭제</button>
+							<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
+								style="background-color: #B8860B;">변경 취소</button>
 						</div>
-					</FORM>
-				</DIV>
+					</form>
+				</div>
 			</li>
 		</ul>
 	</fieldset>
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

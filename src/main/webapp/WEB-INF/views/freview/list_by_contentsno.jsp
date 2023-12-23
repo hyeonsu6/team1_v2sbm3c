@@ -8,10 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Review</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 
@@ -22,14 +23,15 @@
 	</div>
 
 	<aside class="aside_left">
-		<button type="submit" class="btn btn-success btn-sm"
-			onclick="location.href='./create.do?contentsno=${festivalVO.contentsno}'"
-			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;"">📰 리뷰 등록하기</button>
+		<button type="submit" class="btn btn-outline-warning btn-sm"
+			onclick="location.href='./create.do?contentsno=${festivalVO.contentsno}'" style="background-color: #8B0000;">📰
+			리뷰 등록하기</button>
 	</aside>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
+
 	<div style="text-align: right; clear: both;">
 		<form name='frm' id='frm' method='get' action='./list_by_contentsno.do'>
 			<input type='hidden' name='contentsno' value='${param.contentsno }'>
@@ -42,17 +44,20 @@
 					<input type='text' name='word' id='word' value=''>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
-			<c:if test="${param.word.length() > 0}">
-				<button type='button' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;"
-					onclick="location.href='./list_by_contentsno.do?contentsno=${param.contentsno}&word='">검색 취소</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+			<c:if test="${param.word.length() > 0 }">
+				<%-- 검색 상태하면 '검색 취소' 버튼을 출력 --%>
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${param.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
 
 	<div class="menu_line"></div>
 
-	<table class="table table-hover">
+	<table>
 		<colgroup>
 			<col style="width: 20%;"></col>
 			<col style="width: 45%;"></col>
@@ -60,16 +65,18 @@
 			<col style="width: 15%;"></col>
 		</colgroup>
 		<thead>
-			<tr>
-				<th style='text-align: center;'>파일</th>
-				<th style='text-align: center;'>제목</th>
-				<th style='text-align: center;'>등록일</th>
+
+			<tr style="text-align: center;">
+				<th>🖼️</th>
+				<th>제목</th>
+				<th>등록일</th>
 				<th style='text-align: center;'>
 					<img src="/member/images/user.png" style="width: 40px;">
 					작성자
 				</th>
 			</tr>
 		</thead>
+
 		<tbody>
 			<c:forEach var="freviewVO" items="${list }" varStatus="info">
 				<c:set var="reviewno" value="${freviewVO.reviewno }" />
@@ -77,7 +84,8 @@
 
 				<tr
 					onclick="location.href='./read.do?reviewno=${reviewno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&contentsno=${param.contentsno }'"
-					style="cursor: pointer;">
+					style="cursor: pointer; text-align: center;">
+
 					<td>
 						<c:choose>
 							<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
@@ -91,25 +99,23 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
+
 					<td class="td_bs_left">
-						<span style="font-weight: bold;">${freviewVO.title }</span>
+						<a
+							href="./read.do?reviewno=${reviewno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&contentsno=${param.contentsno }">${freviewVO.title }</a>
 						<br>
 						<c:choose>
-							<c:when test="${freviewVO.content.length() > 160 }">
-                  ${freviewVO.content.substring(0, 160) }...
-                </c:when>
+							<c:when test="${freviewVO.content.length() > 50 }">${freviewVO.content.substring(0, 50) }...</c:when>
 							<c:otherwise>
-                  ${freviewVO.content }
-                </c:otherwise>
+								<span style="font-size: 0.9em;">${freviewVO.content }</span>
+							</c:otherwise>
 						</c:choose>
 					</td>
 
-					<td class="td_bs">
-						<span style="font-weight: bold;">${festivalVO.rdate.substring(0, 10)}</span>
-					</td>
+					<td>${freviewVO.rdate.substring(0, 10) }</td>
 
-					<td class="td_bs">
-						<span style="font-weight: bold;">${freviewVO.nickname }</span>
+					<td>
+						<span>${freviewVO.nickname }</span>
 					</td>
 
 				</tr>

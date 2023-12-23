@@ -40,10 +40,10 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.quest.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
@@ -55,9 +55,10 @@
 		<input type="hidden" name="contentsno" value="${param.contentsno }">
 
 		<div>
-			<label>지도 스크립트 추가</label>
-			<textarea name='map' class="form-control" rows="5" style='width: 100%;'>${festivalVO.map }</textarea>
+			<label>지도 스크립트</label>
+			<textarea name='map' class="form-control" rows="3" style='width: 100%;'>${festivalVO.map }</textarea>
 		</div>
+		
 		<div class="content_body_bottom">
 			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">지도 저장</button>
 			<button type="button" onclick="frm_map.map.value=''; frm_map.submit();" class="btn btn-outline-warning btn-sm"

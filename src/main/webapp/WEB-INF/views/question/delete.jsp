@@ -10,7 +10,7 @@
 <c:set var="rdate" value="${questionVO.rdate }" />
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"> 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"

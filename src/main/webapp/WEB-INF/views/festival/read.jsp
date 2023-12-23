@@ -22,7 +22,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Contents</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -33,13 +33,11 @@
 	</div>
 
 	<aside class="aside_left">
-		<button type="submit" class="btn btn-outline-warning btn-sm"
-			onclick="location.href='../freview/create.do?contentsno=${param.contentsno}'" style="background-color: #8B0000;">
-			📝 리뷰 등록하기</button>
+		<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #8B0000;"
+			onclick="location.href='../freview/create.do?contentsno=${param.contentsno}'">📝 리뷰 등록하기</button>
 
-		<button type="submit" class="btn btn-outline-warning btn-sm"
-			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'"
-			style="background-color: #8B0000;">📰 리뷰 보러가기</button>
+		<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #8B0000;"
+			onclick="location.href='../freview/list_by_contentsno.do?contentsno=${param.contentsno}'">📰 리뷰 보러가기</button>
 	</aside>
 
 	<aside class="aside_right">
@@ -48,7 +46,6 @@
 		<a href="./list_by_fcateno.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">목록형</a>
 		<span class='menu_divide'>│</span>
 		<a href="./list_by_fcateno_grid.do?fcateno=${fcateno }&now_page=${param.now_page}&word=${param.word }">갤러리형</a>
-		<span class='menu_divide'>│</span>
 
 		<%-- 관리자로 로그인해야 메뉴가 출력됨 --%>
 		<c:if test="${sessionScope.admin_id != null }">
@@ -57,6 +54,7 @@
       http://localhost:9093/festival/create.do?fcateno=2
       http://localhost:9093/festival/create.do?fcateno=3
       --%>
+			<span class='menu_divide'>│</span>
 			<a href="./create.do?fcateno=${fcateno }">콘텐츠 등록</a>
 			<span class='menu_divide'>│</span>
 			<a href="./update_text.do?contentsno=${contentsno}&now_page=${param.now_page}&word=${param.word }">콘텐츠 수정</a>
@@ -87,10 +85,10 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
@@ -120,14 +118,14 @@
 						</c:when>
 						<c:otherwise>
 							<!-- 기본 이미지 출력 -->
-							<img src="/festival/images/none1.png" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 5%;'>
+							<img src="/festival/images/none1.png" style='width: 35%; float: left; margin-top: 0.5%; margin-right: 5%;'>
 						</c:otherwise>
 					</c:choose>
 
-					<span style="font-size: 1.5em; margin-right: 5px;">🟡 ${title}</span>
-					<span style="font-size: 0.7em;">🔔 등록일: (${rdate.substring(0, 10)})</span>
+					<span style="font-size: 1.2em; margin-right: 5px;">🟡 ${title}</span>
+					<span style="font-size: 0.6em;">🔔 등록일: (${rdate.substring(0, 10)})</span>
 					<br> <br>
-					<span style="font-size: 0.9em;">${content}</span>
+					<span style="font-size: 0.8em;">${content}</span>
 				</div>
 			</li>
 
@@ -143,7 +141,8 @@
 
 			<li class="li_none" style="clear: both;">
 				<div style='text-decoration: none;'>
-					<br> <br> <br> <br>검색어(키워드): ${word }
+					<br> <br> <br> <br>
+					<span style="font-size: 0.4em;">검색어(키워드): ${word }</span>
 				</div>
 			</li>
 

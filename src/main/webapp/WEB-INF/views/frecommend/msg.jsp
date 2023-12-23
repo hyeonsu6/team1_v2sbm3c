@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Festival Blog Recommend</title>
+<title>Festival Blog Recommend Message</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -14,7 +14,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>알림</div>
+	<div class='title_line'>관심 페스티벌 추천 알림</div>
 
 	<c:set var="code" value="${param.code }" />
 	<%--mav.addObject("code", "create_success"); --%>

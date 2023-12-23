@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>추천 페스티벌</div>
-
+ 
 	<aside class="aside_right">
 		<button type="submit" class="btn btn-outline-warning btn-sm" onclick="javascript:location.reload();"
 			style="background-color: #8B0000;">🔃 새로고침</button>

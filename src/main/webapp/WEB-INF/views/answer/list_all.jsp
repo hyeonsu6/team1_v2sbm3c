@@ -19,9 +19,9 @@
 	<div class='title_line'>답변 목록(전체)</div>
 
 	<aside class="aside_right">
-		<a href="./create.do?questno=${questionVO.questno }">등록</a>
-		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+		<a href="./create.do?questno=${questionVO.questno }">답변 등록</a>
 	</aside>
 
 	<div class="menu_line"></div>

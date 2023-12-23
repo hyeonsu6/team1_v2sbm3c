@@ -11,7 +11,7 @@
 <title>Festival Blog CateGory</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-</head>
+</head> 
 
 <body>
 	<c:import url="/menu/top.do" />

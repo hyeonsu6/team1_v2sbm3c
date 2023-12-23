@@ -8,7 +8,7 @@
 <c:set var="logindate" value="${mloginVO.logindate }" />
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"> 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"

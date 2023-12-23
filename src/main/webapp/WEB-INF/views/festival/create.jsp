@@ -45,10 +45,10 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
@@ -60,31 +60,24 @@
 		<input type="hidden" name="fcateno" value="${param.fcateno }">
 
 		<div>
-			<label>제목</label>
+			<label style="margin-bottom: 15px;">제목</label>
 			<input type='text' name='title' value='' required="required" autofocus="autofocus" class="form-control"
 				style='width: 100%;'>
 		</div>
 		<div>
-			<br>
-			<label>내용</label>
+			<label style="margin-bottom: 15px;">내용</label>
 			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
 		</div>
 		<div>
-			<br>
-
-			<label>검색어</label>
+			<label style="margin-bottom: 15px;">검색어</label>
 			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%;'>
 		</div>
 		<div>
-			<br>
-
-			<label>이미지</label>
+			<label style="margin-bottom: 15px;">이미지</label>
 			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
 		</div>
 		<div>
-			<br>
-
-			<label>패스워드</label>
+			<label style="margin-bottom: 15px;">패스워드</label>
 			<input type='password' name='passwd' value='' required="required" class="form-control" style='width: 50%;'>
 		</div>
 		<div class="content_body_bottom">
@@ -92,10 +85,7 @@
 			<button type="button" onclick="location.href='./list_by_fcateno_search_paging.do?fcateno=${param.fcateno}'"
 				class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">콘텐츠 목록</button>
 		</div>
-
 	</form>
-
-
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

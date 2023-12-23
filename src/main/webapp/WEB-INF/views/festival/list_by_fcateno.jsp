@@ -90,12 +90,15 @@
 				<th></th>
 			</tr>
 		</thead>
+		
 		<tbody>
 			<c:forEach var="festivalVO" items="${list }" varStatus="info">
 				<c:set var="contentsno" value="${festivalVO.contentsno }" />
 				<c:set var="thumb1" value="${festivalVO.thumb1 }" />
 
-				<tr>
+				<tr
+					onclick="location.href='./read.do?contentsno=${contentsno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
+					style="cursor: pointer; text-align: center;">
 					<td>
 						<c:choose>
 							<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
@@ -126,7 +129,7 @@
 						</c:choose>
 					</td>
 
-					<td style="text-align: center;">${festivalVO.rdate.substring(0, 10)}</td>
+					<td>${festivalVO.rdate.substring(0, 10)}</td>
 
 					<td style="cursor: pointer; text-align: center;">
 						<a
