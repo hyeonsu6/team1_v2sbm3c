@@ -73,27 +73,25 @@ public class Freview_replyCont {
   public ModelAndView create(HttpServletRequest request, HttpSession session, Freview_replyVO freview_replyVO) {
     ModelAndView mav = new ModelAndView();
     
+    System.out.println("--> reply create");
+    
     int memberno = 0;
-    if(memberProc.isMember(session) || adminProc.isAdmin(session)) { // 로그인 한 경우
-      if (this.memberProc.isMember(session)) { // 회원으로 로그인
-        memberno = (int) session.getAttribute("memberno");
-      } else if (this.adminProc.isAdmin(session)) { // 관리자로 로그인
-        memberno = (int) session.getAttribute("adminno");
-      }
+    if(memberProc.isMember(session)) { // 로그인 한 경우
+      memberno = (int)session.getAttribute("memberno");
       
       int cnt = this.freview_replyProc.create(freview_replyVO);
       
       if(cnt == 1) {
-        mav.addObject("code", "create_success");
+        mav.addObject("code", "reply_success");
       } else {
-        mav.addObject("code", "create_fail");
+        mav.addObject("code", "reply_fail");
       }
       
       mav.addObject("cnt", cnt);
       mav.addObject("replyno", freview_replyVO.getReplyno());
-
-      mav.addObject("url", "/freview_reply/msg");
-      mav.setViewName("redirect:/freview_reply/msg.do");
+        
+      //mav.addObject("url", "/freview_reply/msg");
+      mav.setViewName("redirect:/freview/read.do?reviewno=" + freview_replyVO.getReviewno());
       
     } else {
       mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp

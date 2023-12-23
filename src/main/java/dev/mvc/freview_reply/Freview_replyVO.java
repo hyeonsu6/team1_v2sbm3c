@@ -3,17 +3,17 @@ package dev.mvc.freview_reply;
 /*CREATE TABLE FREVIEW_REPLY(
     REPLYNO NUMERIC(10) NOT NULL PRIMARY KEY,
     reviewno NUMBER(10),
-    MEMBERNO NUMERIC(10) NOT NULL,
+    id VARCHAR(30) NOT NULL,
     REPLY VARCHAR(150) NOT NULL,
     PASSWD VARCHAR(10) NOT NULL,
     RDATE DATE NOT NULL,
-  FOREIGN KEY (MEMBERNO) REFERENCES MEMBER (MEMBERNO),
+  FOREIGN KEY (id) REFERENCES MEMBER (id),
   FOREIGN KEY (reviewno) REFERENCES FREVIEW (reviewno)
 );*/
 public class Freview_replyVO {
   private int replyno;
   private int reviewno;
-  private int memberno;
+  private String id = "";
   private String reply = "";
   private String passwd = "";
   private String rdate = "";
@@ -30,11 +30,11 @@ public class Freview_replyVO {
   public void setReviewno(int reviewno) {
     this.reviewno = reviewno;
   }
-  public int getMemberno() {
-    return memberno;
+  public String getId() {
+    return id;
   }
-  public void setMemberno(int memberno) {
-    this.memberno = memberno;
+  public void setId(String id) {
+    this.id = id;
   }
   public String getReply() {
     return reply;
@@ -57,7 +57,7 @@ public class Freview_replyVO {
   
   @Override
   public String toString() {
-    return "Freview_replyVO [replyno=" + replyno + ", reviewno=" + reviewno + ", memberno=" + memberno + ", reply="
+    return "Freview_replyVO [replyno=" + replyno + ", reviewno=" + reviewno + ", id=" + id + ", reply="
         + reply + ", passwd=" + passwd + ", rdate=" + rdate + "]";
   }
 }

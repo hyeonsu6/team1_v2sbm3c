@@ -285,7 +285,7 @@ public class FreviewCont {
 	}
 
 	/**
-	 * 조회 http://localhost:9093/freview/read.do?reviewno=17
+	 * 조회 http://localhost:9093/freview/read.do?reviewno=6
 	 * 
 	 * @return
 	 */
@@ -317,29 +317,37 @@ public class FreviewCont {
 		FestivalVO festivalVO = this.festivalProc.read(freviewVO.getContentsno());
 		mav.addObject("festivalVO", festivalVO);
 		
-		
-		// 회원/관리자 로그인 -> 댓글 등록 가능
-    if(memberProc.isMember(session) || adminProc.isAdmin(session)) { // 로그인 한 경우
+		String memberid = "";
+		// 회원 로그인 -> 댓글 등록 가능
+    if(memberProc.isMember(session)) { // 로그인 한 경우
       boolean isMember = memberProc.isMember(session);
       mav.addObject("isMember", isMember);
       
-        if (this.memberProc.isMember(session)) { // 회원으로 로그인
-          int memberno = (int) session.getAttribute("memberno");
-          MemberVO memberVO = this.memberProc.read(memberno);
-          mav.addObject("id", memberVO.getId());
-      } else if (this.adminProc.isAdmin(session)) { // 관리자로 로그인
-          int adminno = (int) session.getAttribute("adminno");
-          AdminVO adminVO = this.adminProc.read(adminno);
-          mav.addObject("id", adminVO.getId());
-      }
+      int memberno = (int) session.getAttribute("memberno");
+      
+      MemberVO memberVO = this.memberProc.read(memberno);
+      memberid = memberVO.getId();
+      
+      mav.addObject("id", memberVO.getId());
     }
     
     // 등록된 댓글
     ArrayList<Freview_replyVO> list = this.freview_replyProc.list_by_reviewno(reviewno);
-    for (Freview_replyVO replyVO : list) {
+    
+    for (Freview_replyVO replyVO : list) {   
+      String id = replyVO.getId();
       String reply = replyVO.getReply();
+      String rdate = replyVO.getRdate();
+      
+      id = Tool.convertChar(id);
       reply = Tool.convertChar(reply); // 특수 문자 처리
+      rdate = Tool.convertChar(rdate);
+      
+      replyVO.setId(id);
       replyVO.setReply(reply);
+      replyVO.setRdate(rdate);
+      
+      //mav.addObject("replyVO", replyVO);
     }
     mav.addObject("list", list);
     

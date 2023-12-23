@@ -159,30 +159,48 @@
 		</ul>
     
     <br><div class='menu_line'></div>
-    <div><span style="font-size: 20px; font-weight: bold;">댓글</span></div>
-    <div style='height: 120px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
-                
-      <c:if test="${isMember}">
-        <div style='margin-left: 10px; font-size: 20px; '>${id }</div>
-        <div style='color: #B6BBC4; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
-        댓글을 남겨보세요
-        </div>
-        <button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-top: -8px;">등록</button>
-      </c:if>
-      <c:if test="${not isMember }">
-        <div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px; '>로그인하여 댓글을 남겨보세요</div>
-      </c:if>
-    </div>
-    
-    <div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
-
-    <div style='color: #000000; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
-     ${list }
-    </div>
-    
-	</fieldset>
+    <form name='frm' id='frm' method='post' action='<%=request.getContextPath() %>/freview_reply/create.do'>
+      <div><span style="font-size: 20px; font-weight: bold;">댓글</span></div>
+      <div style='height: 150px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
+                  
+        <c:if test="${isMember}">
+          <div style='margin-left: 10px; font-size: 20px; '>${id }</div>
+          <input type='text' name='reply' id='reply' placeholder='댓글을 남겨보세요'
+                 style='float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 90%; ' 
+                 onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';" >
+          <input type='text' name='passwd' id='passwd' placeholder='패스워드'
+                 style='float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;' 
+                 onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';" >
+          <button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-right: 6px; margin-top: 15px;">등록</button>
+        </c:if>
+        <c:if test="${not isMember }">
+          <div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px;'>로그인하여 댓글을 남겨보세요</div>
+        </c:if>
+      </div>
+    </form>
+      
+      <c:forEach var="replyVO" items="${list}">
+          <div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
+          <c:if test="${replyVO.id eq id}">
+            <div style='float: right;'>
+              <a href="">수정</a>
+              <span class='menu_divide'>│</span>
+              <a href="">삭제</a>
+            </div>
+          </c:if>        
   
-	</div>
+          <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; font-weight: bold;'>
+              ${replyVO.id}
+          </div>
+          <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; margin-left: 10px;'>
+              ${replyVO.reply}
+          </div>
+          <div style='color: #B6BBC4; font-size: 13px; float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; margin-left: 10px;'>
+              ${replyVO.rdate}
+          </div>
+      </c:forEach>
+
+	</fieldset>
   
 
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
