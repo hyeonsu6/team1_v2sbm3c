@@ -98,7 +98,7 @@
 				<li class="nav-item dropdown">
 					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 						style="color: #800000;">회원</a>
-					<div class="dropdown-menu" style="font-size: 14px;">
+					<div class="dropdown-menu" style="font-size: 17px;">
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
 								<a class="dropdown-item" href="/member/create.do">회원 가입</a>
