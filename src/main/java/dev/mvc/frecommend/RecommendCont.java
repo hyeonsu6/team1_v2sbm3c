@@ -61,10 +61,36 @@ public class RecommendCont {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/frecommend/list_all"); // WEB-INF/views/frecommend/list_all.jsp
 
-		if (this.memberProc.isMember(session) == true) {
+		if (this.adminProc.isAdmin(session) == true) {
 			mav.setViewName("/frecommend/list_all"); // /WEB-INF/views/frecommend/list_all.jsp
 			ArrayList<RecommendVO> list = this.recommendProc.list_all();
 
+			mav.addObject("list", list);
+
+		} else {
+			mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+
+		}
+
+		return mav;
+	}
+
+	/**
+	 * 회원을 이용한 목록 http://localhost:9093/frecommend/list_by_memberno.do?memberno=3
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/list_by_memberno.do", method = RequestMethod.GET)
+	public ModelAndView list_by_memberno(HttpSession session) {
+		System.out.println("-> list_by_memberno");
+		ModelAndView mav = new ModelAndView();
+
+		if (this.memberProc.isMember(session)) {
+			mav.setViewName("/frecommend/list_by_memberno"); // /WEB-INF/views/frecommend/list_by_memberno.jsp
+			
+			int memberno = (int) session.getAttribute("memberno");
+			
+			ArrayList<RecommendVO> list = this.recommendProc.list_by_memberno(memberno);
 			mav.addObject("list", list);
 
 		} else {
@@ -74,23 +100,6 @@ public class RecommendCont {
 
 		return mav;
 	}
-
-//	/**
-//	 * 회원을 이용한 조회 http://localhost:9093/frecommend/list_by_memberno.do?memberno=3
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/frecommend/list_by_memberno.do", method = RequestMethod.GET)
-//	public ModelAndView list_by_memberno(int memberno) {
-//		System.out.println("-> list_by_memberno");
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("/frecommend/list_by_memberno");
-//
-//		RecommendVO recommendVO = this.recommendProc.list_by_memberno(memberno);
-//		mav.addObject("recommendVO", recommendVO);
-//
-//		return mav;
-//	}
 
 //	/**
 //	 * 전체 조회 http://localhost:9093/frecommend/read.do?recommendno=7

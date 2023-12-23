@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dev.mvc.fcate.FcateVO;
+import dev.mvc.mlogin.MloginVO;
 
 @Component("dev.mvc.frecommend.RecommendProc")
 public class RecommendProc implements RecommendProcInter {
@@ -18,10 +19,9 @@ public class RecommendProc implements RecommendProcInter {
 		return list;
 	}
 
-	@Override
-	public RecommendVO list_by_memberno(int memberno) {
-		RecommendVO recommendVO = this.recommendDAO.list_by_memberno(memberno);
-		return recommendVO;
+	public ArrayList<RecommendVO> list_by_memberno(int memberno) {
+		ArrayList<RecommendVO> list = this.recommendDAO.list_by_memberno(memberno);
+		return list;
 	}
 
 	@Override
