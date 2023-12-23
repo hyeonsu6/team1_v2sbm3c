@@ -19,7 +19,7 @@ public interface RecommendProcInter {
 	 * @param memberno
 	 * @return
 	 */
-	public RecommendVO list_by_memberno(int memberno);
+	public ArrayList<RecommendVO> list_by_memberno(int memberno);
 
 	/**
 	 * recommendno 조회

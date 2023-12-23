@@ -30,9 +30,15 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
-		<A href="../festival/list_by_fcateno.do?fcateno=${festivalVO.fcateno }" class='title_link'>${festivalVO.title }</A>
+		<a href="./list_by_contentsno.do?contentsno=${festivalVO.contentsno }" class='title_link'>${festivalVO.title }</a>
 		> 리뷰
 	</div>
+	<aside class="aside_left">
+		<button type="submit" class="btn btn-sm"
+			onclick="location.href='../festival/read.do?contentsno=${contentsno}&word=${festivalVO.word}&now_page=${festivalVO.now_page}&fcateno=${festivalVO.fcateno}'"
+			style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">${festivalVO.title }
+			보러가기 ✨</button>
+	</aside>
 
 	<aside class="aside_right">
 		<%-- 회원으로 로그인해야 메뉴가 출력됨 --%>
@@ -110,7 +116,7 @@
 					<c:choose>
 						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 							<%-- /static/festival/storage/ --%>
-							<img src="/freview/storage/${file1saved }" style='width: 50%; float: left; margin-top: 0.5%; margin-right: 1%;'>
+							<img src="/freview/storage/${file1saved }" style='width: 35%; float: left; margin-top: 0.5%; margin-right: 1%;'>
 						</c:when>
 						<c:otherwise>
 							<!-- 기본 이미지 출력 -->
@@ -119,9 +125,10 @@
 					</c:choose>
 
 
-					<span style="font-size: 1.5em; font-weight: bold;">${title}</span>
+					<span style="font-size: 1.7em; font-weight: bold;">${title}</span>
 					<br>
-					<span style="font-size: 0.9em; font-weight: bold;"> 작성자: ${nickname} </span>
+					<span style="font-size: 1.0em; font-weight: bold;"> 작성자: ${nickname} </span>
+					<span style="font-size: 1.0em; font-weight: bold;"> | 등록일: ${rdate.substring(0, 10)}</span>
 					<br> <br>${content}
 				</div>
 			</li>
@@ -131,16 +138,6 @@
 					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div>
 				</li>
 			</c:if>
-
-			<br>
-
-			<li class="li_none" style="clear: both;">
-				<div style='text-decoration: none;'>
-					<span style="font-size: 1em;">
-						<br> <br>등록일: ${rdate}
-					</span>
-				</div>
-			</li>
 
 			<li class="li_none" style="clear: both;">
 				<div style='text-decoration: none;'>검색어(키워드): ${word }</div>
@@ -157,6 +154,7 @@
 				</div>
 			</li>
 		</ul>
+<<<<<<< HEAD
     
     <br><div class='menu_line'></div>
     <form name='frm' id='frm' method='post' action='<%=request.getContextPath() %>/freview_reply/create.do'>
@@ -202,7 +200,36 @@
 
 	</fieldset>
   
+=======
+>>>>>>> d0bc0842246f13031edb214270c8b795cf29c64a
 
+		<br>
+		<div class='menu_line'></div>
+		<div>
+			<span style="font-size: 20px; font-weight: bold;">댓글</span>
+		</div>
+		<div
+			style='height: 120px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
+
+			<c:if test="${isMember}">
+				<div style='margin-left: 10px; font-size: 20px;'>${id }</div>
+				<div
+					style='color: #B6BBC4; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
+					댓글을 남겨보세요</div>
+				<button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-top: -8px;">등록</button>
+			</c:if>
+			<c:if test="${not isMember }">
+				<div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px;'>로그인하여 댓글을 남겨보세요</div>
+			</c:if>
+		</div>
+
+		<div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
+
+		<div
+			style='color: #000000; float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 70px;'>
+			${list }</div>
+
+	</fieldset>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

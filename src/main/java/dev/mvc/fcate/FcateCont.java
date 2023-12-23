@@ -186,89 +186,92 @@ public class FcateCont {
 	}
 
 	/**
-	   * 삭제폼
-	   * http://localhost:9093/fcate/delete.do?fcateno=1
-	   * @return
-	   */
-	  @RequestMapping(value="/fcate/delete.do", method = RequestMethod.GET)
-	  public ModelAndView delete(HttpSession session, int fcateno) { // int fcateno = (int)request.getParameter("fcateno");
-	    ModelAndView mav = new ModelAndView();
-	    
-	    if (this.adminProc.isAdmin(session) == true) {
-	      // mav.setViewName("/fcate/delete"); // /WEB-INF/views/fcate/delete.jsp
-	      mav.setViewName("/fcate/list_all_delete"); // /WEB-INF/views/fcate/list_all_delete.jsp
-	      
-	      FcateVO fcateVO = this.fcateProc.read(fcateno);
-	      mav.addObject("fcateVO", fcateVO);
-	      
-	      ArrayList<FcateVO> list = this.fcateProc.list_all();
-	      mav.addObject("list", list);
-	      
-	      // 특정 카테고리에 속한 레코드 갯수를 리턴
-	      int count_by_fcateno = this.festivalProc.count_by_fcateno(fcateno);
-	      mav.addObject("count_by_fcateno", count_by_fcateno);
-	      
-	    } else {
-	      mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
-	   
-	    }
-	    
-	    return mav;
-	  }
-	  
-	 // 삭제 처리, 수정 처리를 복사하여 개발
-	 // 자식 테이블 레코드 삭제 -> 부모 테이블 레코드 삭제
-	 /**
-	  * 카테고리 삭제
-	  * @param session
-	  * @param fcateno 삭제할 카테고리 번호
-	  * @return
-	  */
-	 @RequestMapping(value="/fcate/delete.do", method=RequestMethod.POST)
-	 public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
-	//   System.out.println("-> fcateno: " + fcateVO.getCateno());
-	//   System.out.println("-> name: " + fcateVO.getName());
-	   
-	   ModelAndView mav = new ModelAndView();
-	   
-	   if (this.adminProc.isAdmin(session) == true) {
-	     ArrayList<FestivalVO> list = this.festivalProc.list_by_fcateno(fcateno); // 자식 레코드 목록 읽기
-	     
-	     for(FestivalVO festivalVO : list) { // 자식 레코드 관련 파일 삭제
-	       // -------------------------------------------------------------------
-	       // 파일 삭제 시작
-	       // -------------------------------------------------------------------
-	       String file1saved = festivalVO.getFile1saved();
-	       String thumb1 = festivalVO.getThumb1();
-	       
-	       String uploadDir = Festival.getUploadDir();
-	       Tool.deleteFile(uploadDir, file1saved);  // 실제 저장된 파일삭제
-	       Tool.deleteFile(uploadDir, thumb1);     // preview 이미지 삭제
-	       // -------------------------------------------------------------------
-	       // 파일 삭제 종료
-	       // -------------------------------------------------------------------
-	     }
-	     
-	     this.festivalProc.delete_by_fcateno(fcateno); // 자식 레코드 삭제     
-	           
-	     int cnt = this.fcateProc.delete(fcateno); // 카테고리 삭제
-	     
-	     if (cnt == 1) {
-	       mav.setViewName("redirect:/fcate/list_all.do");       // 자동 주소 이동, Spring 재호출
-	       
-	     } else {
-	       mav.addObject("code", "delete_fail");
-	       mav.setViewName("/fcate/msg"); // /WEB-INF/views/fcate/msg.jsp
-	     }
-	     
-	     mav.addObject("cnt", cnt);
-	     
-	   } else {
-	     mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
-	   }
-	   
-	   return mav;
-	 }
+	 * 삭제폼 http://localhost:9093/fcate/delete.do?fcateno=1
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.GET)
+	public ModelAndView delete(HttpSession session, int fcateno) { // int fcateno =
+																	// (int)request.getParameter("fcateno");
+		ModelAndView mav = new ModelAndView();
+
+		if (this.adminProc.isAdmin(session) == true) {
+			// mav.setViewName("/fcate/delete"); // /WEB-INF/views/fcate/delete.jsp
+			mav.setViewName("/fcate/list_all_delete"); // /WEB-INF/views/fcate/list_all_delete.jsp
+
+			FcateVO fcateVO = this.fcateProc.read(fcateno);
+			mav.addObject("fcateVO", fcateVO);
+
+			ArrayList<FcateVO> list = this.fcateProc.list_all();
+			mav.addObject("list", list);
+
+			// 특정 카테고리에 속한 레코드 갯수를 리턴
+			int count_by_fcateno = this.festivalProc.count_by_fcateno(fcateno);
+			mav.addObject("count_by_fcateno", count_by_fcateno);
+
+		} else {
+			mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+
+		}
+
+		return mav;
+	}
+
+	// 삭제 처리, 수정 처리를 복사하여 개발
+	// 자식 테이블 레코드 삭제 -> 부모 테이블 레코드 삭제
+	/**
+	 * 카테고리 삭제
+	 * 
+	 * @param session
+	 * @param fcateno 삭제할 카테고리 번호
+	 * @return
+	 */
+	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.POST)
+	public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
+		// System.out.println("-> fcateno: " + fcateVO.getCateno());
+		// System.out.println("-> name: " + fcateVO.getName());
+
+		ModelAndView mav = new ModelAndView();
+
+		if (this.adminProc.isAdmin(session) == true) {
+			ArrayList<FestivalVO> list = this.festivalProc.list_by_fcateno(fcateno); // 자식 레코드 목록 읽기
+
+			for (FestivalVO festivalVO : list) { // 자식 레코드 관련 파일 삭제
+				// -------------------------------------------------------------------
+				// 파일 삭제 시작
+				// -------------------------------------------------------------------
+				String file1saved = festivalVO.getFile1saved();
+				String thumb1 = festivalVO.getThumb1();
+
+				String uploadDir = Festival.getUploadDir();
+				Tool.deleteFile(uploadDir, file1saved); // 실제 저장된 파일삭제
+				Tool.deleteFile(uploadDir, thumb1); // preview 이미지 삭제
+				// -------------------------------------------------------------------
+				// 파일 삭제 종료
+				// -------------------------------------------------------------------
+			}
+
+			this.festivalProc.delete_by_fcateno(fcateno); // 자식 레코드 삭제
+
+			int cnt = this.fcateProc.delete(fcateno); // 카테고리 삭제
+
+			if (cnt == 1) {
+				mav.setViewName("redirect:/fcate/list_all.do"); // 자동 주소 이동, Spring 재호출
+
+			} else {
+				mav.addObject("code", "delete_fail");
+				mav.setViewName("/fcate/msg"); // /WEB-INF/views/fcate/msg.jsp
+			}
+
+			mav.addObject("cnt", cnt);
+
+		} else {
+			mav.setViewName("/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp
+		}
+
+		return mav;
+	}
+	 
 	/**
 	 * 우선 순위 높임, 10 등 -> 1 등,
 	 * http://localhost:9093/fcate/update_seqno_forward.do?fcateno=1

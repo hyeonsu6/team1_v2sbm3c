@@ -18,7 +18,7 @@
 
 	<aside class="aside_right">
 		<button type="submit" class="btn btn-outline-warning btn-sm" onclick="javascript:location.reload();"
-			style="background-color: #B8860B;">🔃 새로고침</button>
+			style="background-color: #8B0000;">🔃 새로고침</button>
 	</aside>
 	<br>
 

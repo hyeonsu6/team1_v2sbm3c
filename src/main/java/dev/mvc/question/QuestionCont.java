@@ -20,6 +20,7 @@ import dev.mvc.member.MemberProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
 import dev.mvc.festival.FestivalVO;
+import dev.mvc.freview.FreviewVO;
 import dev.mvc.tool.Tool;
 
 @Controller
@@ -126,7 +127,7 @@ public class QuestionCont {
     ArrayList<QuestionVO> list = this.questionProc.list_all();
     
     HashMap<String, Object> hashMap = new HashMap<String, Object>();
-
+    
     boolean isAdmin = adminProc.isAdmin(session); 
     mav.addObject("isAdmin", isAdmin);
 

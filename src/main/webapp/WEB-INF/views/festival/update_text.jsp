@@ -21,10 +21,10 @@
 <body>
 <c:import url="/menu/top.do" />
  
-  <DIV class='title_line'> ${fcateVO.name } > ${title } > 수정</DIV>
+  <div class='title_line'> ${fcateVO.name } > ${title } > 콘텐츠 수정</div>
   
   <aside class="aside_right">
-    <a href="./create.do?fcateno=${fcateno }">등록</a>
+    <a href="./create.do?fcateno=${fcateno }">콘텐츠 등록</a>
     <span class='menu_divide' >│</span>
     <a href="javascript:location.reload();">새로고침</a>
     <span class='menu_divide' >│</span>    
@@ -45,11 +45,13 @@
           <input type='text' name='word' id='word' value='' class='input_word'>
         </c:otherwise>
       </c:choose>
-      <button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
-      <c:if test="${param.word.length() > 0 }">
-        <button type='button' class='btn btn-dark btn-sm' 
-                    onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='" style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색 취소</button>  
-      </c:if>    
+      <button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+			<c:if test="${param.word.length() > 0 }">
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
+			</c:if>  
     </form>
   </div>
   
@@ -64,26 +66,30 @@
        <label>제목</label>
        <input type='text' name='title' value='${title }' required="required" 
                  autofocus="autofocus" class="form-control" style='width: 100%;'>
+                 <br>
     </div>
     <div>
        <label>내용</label>
-       <textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'>${content }</textarea>
+       <textarea name='content' required="required" class="form-control" rows="25" style='width: 100%;'>${content }</textarea>
+       <br>
     </div>
     <div>
        <label>검색어</label>
        <input type='text' name='word' value="${word }" required="required" 
                  class="form-control" style='width: 100%;'>
+                 <br>
     </div>   
     
     <div>
       <label>패스워드</label>
       <input type='password' name='passwd' value='' required="required" 
                 class="form-control" style='width: 50%;'>
+                
     </div>
        
     <div class="content_body_bottom">
-      <button type="submit" class="btn btn-dark btn-sm">저장</button>
-      <button type="button" onclick="history.back();" class="btn btn-dark btn-sm">취소</button>
+      <button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">저장</button>
+      <button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">취소</button>
     </div>
   
   </FORM>

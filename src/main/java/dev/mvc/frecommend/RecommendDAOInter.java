@@ -3,6 +3,7 @@ package dev.mvc.frecommend;
 import java.util.ArrayList;
 
 import dev.mvc.fcate.FcateVO;
+import dev.mvc.mlogin.MloginVO;
 
 public interface RecommendDAOInter {
 	/**
@@ -18,7 +19,7 @@ public interface RecommendDAOInter {
 	 * @param memberno
 	 * @return
 	 */
-	public RecommendVO list_by_memberno(int memberno);
+	public ArrayList<RecommendVO> list_by_memberno(int memberno);
 
 	/**
 	 * 전체 조회

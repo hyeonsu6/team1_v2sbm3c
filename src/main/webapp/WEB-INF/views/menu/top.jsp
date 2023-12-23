@@ -12,14 +12,14 @@
 
 .top_menu_link:link, .top_menu_link:visited {
 	text-decoration: none;
-	color: #5A7696;
+	color: #800000;
 	font-weight: bold;
-	font-size: 13.5px;
+	font-size: 12px;
 }
 
 .top_menu_link:hover {
 	text-decoration: blink;
-	color: #9E2A2B;
+	color: black;
 	font-weight: bold;
 	font-size: 14.5px;
 }
@@ -65,9 +65,10 @@
 		<div class="top_menu_label">Festival Blog version 4.0</div>
 	</div>
 
-	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #EEE8AA;">
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #FFF5EE; border: 2px solid #8B4513;">
 		<a class="navbar-brand" href="/">
-			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left:15px;  padding-left: 3px;' class='icon_n'>
+			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
+				class='icon_n'>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
 			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
@@ -95,8 +96,9 @@
 
 
 				<li class="nav-item dropdown">
-					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">회원</a>
-					<div class="dropdown-menu">
+					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+						style="color: #800000;">회원</a>
+					<div class="dropdown-menu" style="font-size: 14px;">
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
 								<a class="dropdown-item" href="/member/create.do">회원 가입</a>
@@ -106,7 +108,7 @@
 							<c:otherwise>
 								<a class="dropdown-item" href="javascript: chatbot();">[문의] 챗봇</a>
 								<a class="dropdown-item" href="javascript: recommend();">[추천] 관심분야 등록하고 추천받기</a>
-								<a class="dropdown-item" href='#'>[회원] 나의 관심 페스티벌 목록</a>
+								<a class="dropdown-item" href='/frecommend/list_by_memberno.do'>[회원] 나의 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
 								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
@@ -123,14 +125,15 @@
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item dropdown">
-							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#">관리자</a>
-							<div class="dropdown-menu">
+							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+								style="color: #800000;">관리자</a>
+							<div class="dropdown-menu" style="font-size: 14px;">
 								<a class="dropdown-item" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
 								<a class="dropdown-item" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
 								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
 								<a class="dropdown-item" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
 								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
-								<a class="dropdown-item" href='/freview/list.do'>[관리자] 모든 리뷰</a>
+								<a class="dropdown-item" href='/freview/list_all.do'>[관리자] 모든 리뷰</a>
 								<a class="dropdown-item" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
 								<a class="dropdown-item" href='/admin/logout.do'>[관리자] '${sessionScope.admin_id }' 로그아웃</a>
 							</div>
@@ -151,6 +154,5 @@
 			</ul>
 		</div>
 	</nav>
-
 	<div class='content_body'>
 		<!--  내용 시작 -->
