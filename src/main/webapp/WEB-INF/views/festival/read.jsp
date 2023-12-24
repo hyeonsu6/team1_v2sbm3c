@@ -94,19 +94,6 @@
 		</form>
 	</div>
 
-	<form action="" method="post">
-		<table>
-			<tr>
-				<th>좋아요 기능 테스트(삭제예정)</th>
-				<td>
-					<a type="submit" class="btn btn-sm" onclick="if (confirm('추천하시겠습니까?') == false ) { return false; }"
-						style="font-weight: bold; text-align: left; background-color: #5A7696; color: #FFEFD5;">❤️ 좋아요</a>
-				</td>
-			</tr>
-		</table>
-	</form>
-
-
 	<fieldset class="fieldset_basic">
 		<ul>
 			<li class="li_none">
@@ -124,6 +111,109 @@
 
 					<span style="font-size: 1.2em; margin-right: 5px;">🟡 ${title}</span>
 					<span style="font-size: 0.6em;">🔔 등록일: (${rdate.substring(0, 10)})</span>
+					<!-- 좋아요 버튼 -->
+					<button id="likeBtn" class="btn btn-outline-warning btn-sm"
+						style="margin-left: 100px; padding: 5px 30px 5px 30px;">
+						🩵
+						<div id="totalLikeCount" style="color: black;"></div>
+					</button>
+
+					<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+					<script>
+						$(document)
+								.ready(
+										function() {
+											var contentsno = ${contentsno}; // 콘텐츠 번호는 적절하게 수정
+
+											// 페이지 로딩 시 좋아요 상태 확인 및 총 좋아요 개수 가져오기
+											getLikeCount();
+											getTotalLikeCount();
+
+											// 좋아요 버튼 클릭 시 이벤트 처리
+											$("#likeBtn").click(function() {
+												doLike();
+											});
+
+											// 좋아요 상태 확인 함수
+											function getLikeCount() {
+												$
+														.ajax({
+															type : "POST",
+															url : "/festival_likes/get_likecount.do",
+															data : {
+																contentsno : contentsno
+															},
+															success : function(
+																	data) {
+																if (data === "1") {
+																	// 좋아요가 눌려있는 상태
+																	$(
+																			"#likeBtn")
+																			.text(
+																					"좋아요 취소");
+																} else {
+																	// 좋아요가 안 눌려있는 상태
+																	$(
+																			"#likeBtn")
+																			.text(
+																					"좋아요");
+																}
+															},
+															error : function() {
+																console
+																		.error("좋아요 상태 확인 에러");
+															}
+														});
+											}
+
+											// 좋아요 실행 함수
+											function doLike() {
+												$
+														.ajax({
+															type : "POST",
+															url : "/festival_likes/do_like.do",
+															data : {
+																contentsno : contentsno
+															},
+															success : function() {
+																// 좋아요 상태 갱신
+																getLikeCount();
+																// 총 좋아요 개수 갱신
+																getTotalLikeCount();
+															},
+															error : function() {
+																console
+																		.error("좋아요 실행 에러");
+															}
+														});
+											}
+
+											// 총 좋아요 개수 확인 함수
+											function getTotalLikeCount() {
+												$
+														.ajax({
+															type : "POST",
+															url : "/festival_likes/get_total_likecount.do",
+															data : {
+																contentsno : contentsno
+															},
+															success : function(
+																	data) {
+																// 총 좋아요 개수 업데이트
+																$(
+																		"#totalLikeCount")
+																		.text(
+																				""
+																						+ data);
+															},
+															error : function() {
+																console
+																		.error("총 좋아요 개수 확인 에러");
+															}
+														});
+											}
+										});
+					</script>
 					<br> <br>
 					<span style="font-size: 0.8em;">${content}</span>
 				</div>

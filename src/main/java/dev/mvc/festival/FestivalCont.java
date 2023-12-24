@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
+import dev.mvc.festival_likes.Festival_likeProcInter;
+import dev.mvc.festival_likes.Festival_likeVO;
 import dev.mvc.freview.FreviewProcInter;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
@@ -35,6 +38,10 @@ public class FestivalCont {
 	@Autowired
 	@Qualifier("dev.mvc.freview.FreviewProc")
 	private FreviewProcInter freviewProc;
+
+	@Autowired
+	@Qualifier("dev.mvc.festival_likes.Festival_likeProc")
+	private Festival_likeProcInter festival_likeProc;
 
 	@Autowired
 	@Qualifier("dev.mvc.festival.FestivalProc") // @Component("dev.mvc.festival.festivalProc")

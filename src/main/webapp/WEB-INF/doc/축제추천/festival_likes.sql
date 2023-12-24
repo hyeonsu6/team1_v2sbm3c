@@ -9,6 +9,9 @@ CREATE TABLE FESTIVAL_LIKES(
   FOREIGN KEY (contentsno) REFERENCES festival (contentsno)
 );
 
+ALTER TABLE FESTIVAL_LIKES
+ADD likescheck NUMBER DEFAULT 0 NOT NULL;
+
 COMMENT ON TABLE FESTIVAL_LIKES is '축제 컨텐츠 추천';
 COMMENT ON COLUMN FESTIVAL_LIKES.likesno is '좋아요 번호';
 COMMENT ON COLUMN FESTIVAL_LIKES.memberno is '회원 번호';
@@ -23,3 +26,5 @@ CREATE SEQUENCE FESTIVAL_LIKES_SEQ
   MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
   CACHE 2                       -- 2번은 메모리에서만 계산
   NOCYCLE;                     -- 다시 1부터 생성되는 것을 방지
+
+COMMIT;
