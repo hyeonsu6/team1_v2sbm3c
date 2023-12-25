@@ -183,7 +183,7 @@
             <div style='float: right;'>
               <a href="">수정</a>
               <span class='menu_divide'>│</span>
-              <a href="../freview_reply/delete.do?reviewno=${reviewno}">삭제</a>
+              <a href="javascript:confirmDelete(${replyVO.replyno});">삭제</a>
             </div>
           </c:if>
           <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; font-weight: bold;'>
@@ -197,6 +197,32 @@
           </div>
       </c:forEach>
 
+      <script>
+          function confirmDelete(replyno) {
+              var result = confirm("댓글을 삭제하시겠습니까?");
+              if (result) {
+                  // 사용자가 확인을 눌렀을 때의 동작
+                  console.log("--> reply delete 1");
+            	    deleteAndReload(replyno);
+              } else {
+                  // 사용자가 취소를 눌렀을 때의 동작
+                  window.close(); // 현재 창 닫기
+                  window.opener.location.reload(); // 부모 창 새로고침
+              }
+          }
+
+          function deleteAndReload(replyno) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", "../freview_reply/delete.do?replyno=" + replyno, true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                      // 삭제가 완료된 후의 동작
+                      location.reload(); // 현재 페이지 새로고침
+                  }
+              };
+              xhr.send();
+          }
+      </script>
 	</fieldset>
 
 

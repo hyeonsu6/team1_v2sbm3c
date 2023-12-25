@@ -110,11 +110,11 @@ public class Freview_replyCont {
    * @return
    */
   @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.GET)
-  public ModelAndView delete(HttpSession session, int reviewno) {
+  public ModelAndView delete(HttpSession session, int replyno) {
     ModelAndView mav = new ModelAndView();
 
     if (memberProc.isMember(session)) { // 회원 로그인 경우
-      Freview_replyVO freview_replyVO = this.freview_replyProc.read(reviewno);
+      Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
       mav.addObject("freview_replyVO", freview_replyVO);
 
       mav.setViewName("/freview_reply/delete"); // /WEB-INF/views/question/delete.jsp
@@ -133,9 +133,15 @@ public class Freview_replyCont {
    * @return
    */
   @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.POST)
-  public ModelAndView delete(Freview_replyVO freview_replyVO) {
+  public ModelAndView delete(int replyno) {
+    //public ModelAndView delete(Freview_replyVO freview_replyVO) {
+    
+    System.out.println("--> reply delete");
+    
     ModelAndView mav = new ModelAndView();
-
+    
+    Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno); 
+    
     // QuestionVO questionVO_read = questionProc.read(questionVO.getQuestno());
     this.freview_replyProc.delete(freview_replyVO.getReplyno()); // DBMS 삭제
 
