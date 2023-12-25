@@ -122,6 +122,7 @@
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
 								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 탈퇴</a>
 								<a class="dropdown-item" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
+                <a class="dropdown-item" href="/freview_reply/list_by_id.do?id=${sessionScope.id}">[회원] 내가 쓴 댓글</a>
 							</c:otherwise>
 						</c:choose>
 					</div>

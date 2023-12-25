@@ -24,22 +24,30 @@
     ORDER BY REPLYNO ASC
   </select>
   
+  <!-- 회원 별 댓글 -->
+  <select id="list_by_id" resultType="dev.mvc.freview_reply.Freview_replyVO" parameterType ="String" >
+    SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY
+    WHERE id = #{id}
+    ORDER BY REPLYNO ASC
+  </select>
+  
   <!-- 댓글 조회 -->
   <select id="read" resultType="dev.mvc.freview_reply.Freview_replyVO" parameterType="int">
-    SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE ROM FREVIEW_REPLY
-    WHERE REPLYNO = #{REPLYNO}
+    SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY
+    WHERE REPLYNO = #{replyno}
   </select>
   
   <!-- 댓글 수정 -->
   <update id="update_reply" parameterType="dev.mvc.freview_reply.Freview_replyVO">
     UPDATE FREVIEW_REPLY
     SET REPLY = #{reply}
-    WHERE REPLYNO=#{REPLYNO}
+    WHERE REPLYNO=#{replyno} AND PASSWD=#{passwd}
   </update>
-  
+
   <!-- 댓글 삭제 -->
-  <delete id="delete" parameterType="int">
-    DELETE FROM FREVIEW_REPLY WHERE replyno = #{replyno};
+  <delete id="delete" parameterType="HashMap">
+    DELETE FROM FREVIEW_REPLY
+    WHERE REPLYNO=#{replyno} AND PASSWD=#{passwd}
   </delete>
   
 </mapper>

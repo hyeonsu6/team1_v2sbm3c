@@ -48,6 +48,7 @@ VALUES (FREVIEW_REPLY_SEQ.nextval, 6, 'user1@gmail.com', '사람 엄청 많아�
 -- READ
 SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY ORDER BY REPLYNO ASC;
 SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY WHERE reviewno = 6 ORDER BY REPLYNO ASC;
+SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY WHERE id = 'user2@gmail.com' ORDER BY REPLYNO ASC;
 
 
 -- UPDATE
@@ -55,7 +56,7 @@ UPDATE FREVIEW_REPLY SET REPLY = '리뷰보고 다녀왔는데 너무 재밌었�
 
 
 -- DELETE
-DELETE FROM FREVIEW_REPLY WHERE REPLY = 1;
+DELETE FROM FREVIEW_REPLY WHERE REPLYNO = 8 AND PASSWD = '1234';
 
 
 /*******************************************************************************/
