@@ -156,7 +156,7 @@
 						style='float: center; font-size: 13px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;'
 						onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';">
 					<button type='submit' class="btn btn-outline-warning btn-sm"
-						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;" onclick="submitComment();">댓글 등록</button>
+						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;" onclick="submitReply();">댓글 등록</button>
 				</c:if>
 				<c:if test="${not isMember }">
 					<div style="margin-top: 50px; text-align: center;">
@@ -170,9 +170,10 @@
 			<div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
 			<c:if test="${replyVO.id eq id}">
 				<div style='float: right;'>
-					<a href="#" class="R_menu_link:link" style="color: #696969; font-size: 14px;">댓글 수정</a>
+					<a href="#" onclick="editReply(${replyVO.replyno}, '${replyVO.reply}');"
+            style="color: #696969; font-size: 14px;">댓글 수정</a>
 					<span class='menu_divide'>│</span>
-					<a href="#" onclick="deleteAndReload(${replyVO.replyno}, '${replyVO.passwd}');"
+					<a href="#" onclick="deleteReply(${replyVO.replyno}, '${replyVO.passwd}');"
 						style="color: #696969; font-size: 14px; margin-right: 15px;">댓글 삭제</a>
 				</div>
 			</c:if>
@@ -183,14 +184,14 @@
 					style='float: center; color: #B6BBC4; color: #B6BBC4; font-size: 12px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>(${replyVO.rdate})</span>
 			</div>
 			<div
-				style='float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
+				id = "reply_${replyVO.replyno}" style='float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
 				ㄴ ${replyVO.reply}</div>
 
 		</c:forEach>
     
     <script>
       //댓글 등록 함수
-      function submitComment() {
+      function submitReply() {
           var reply = document.getElementById('reply').value;
           var passwd = document.getElementById('passwd').value;
   
@@ -213,35 +214,98 @@
               }
           });
       }
+
+      //댓글 수정 함수
+      function editReply(replyno, existingReply) {
+          var changeReply = document.getElementById('reply_' + replyno);
+      
+          changeReply.innerHTML = '';
+      
+          // 수정할 내용 입력란 생성
+          var inputElement = document.createElement('input');
+          inputElement.id = 'editReply_' + replyno;
+          inputElement.type = 'text';
+          inputElement.style = 'float: center; font-size: 14px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px; width: 90%;';
+          inputElement.placeholder = existingReply;
+      
+          // 패스워드 입력란 생성
+          var passwordElement = document.createElement('input');
+          passwordElement.type = 'password';
+          passwordElement.id = 'editReplyPasswd_' + replyno;
+          passwordElement.placeholder = '패스워드';
+          passwordElement.style = 'float: center; font-size: 14px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px; width: 40%;';
+      
+          // 저장 버튼 생성
+          var saveButton = document.createElement('button');
+          saveButton.type = 'button'; // submit 대신 button으로 변경
+          saveButton.className = 'btn btn-outline-warning btn-sm';
+          saveButton.style = 'background-color: #B8860B; float: right; margin-right: 10px; margin-top: 5px;';
+          saveButton.innerText = '저장';
+          saveButton.onclick = function() {
+              savedEditedReply(replyno);
+          };
+      
+          // DOM에 추가
+          changeReply.appendChild(inputElement);
+          changeReply.appendChild(document.createElement('br'));
+          changeReply.appendChild(passwordElement);
+          changeReply.appendChild(saveButton);
+      }
+
+
+      function savedEditedReply(replyno) {
+          console.log("--> replyno: " + replyno);
+          var editedReply = document.getElementById('editReply_' + replyno).value;
+          var editedPasswd = document.getElementById('editReplyPasswd_' + replyno).value;
+
+          // 서버에서 댓글을 업데이트하기 위한 AJAX 요청
+          $.ajax({
+              type: "POST",
+              url: "../freview_reply/update_reply.do",
+              data: {
+                  replyno: replyno,
+                  reply: editedReply,
+                  passwd: editedPasswd
+              },
+              success: function (response) {
+                  document.getElementById('reply_' + replyno).innerText = editedReply;
+                  alert("댓글이 수정되었습니다.");
+                  location.reload(); // 현재 페이지 새로고침
+              },
+              error: function (error) {
+                  console.error("Error:", error);
+              }
+          });
+      }
   
       //댓글 삭제 함수
-      function deleteAndReload(replyno, passwd) {
-          var isPasswd = prompt("댓글을 삭제하려면 비밀번호를 입력하세요.");
-          if (isPasswd !== null) {
-              // 입력된 비밀번호와 삭제 대상 댓글의 비밀번호 비교
-              if (isPasswd === passwd) {
-                  var result = confirm("댓글을 삭제하시겠습니까?");
-                  if (result) {
-                      $.ajax({
-                          type: "POST",
-                          url: "../freview_reply/delete.do",
-                          data: {
-                              replyno: replyno,
-                              passwd: passwd
-                          },
-                          success: function(response) {
-                        	    alert("댓글이 삭제되었습니다.");
-                              location.reload(); // 현재 페이지 새로고침
-                          },
-                          error: function(error) {
-                              console.error("Error:", error);
-                          }
-                      });
+      function deleteReply(replyno, passwd) {
+        var isPasswd = prompt("댓글을 삭제하려면 비밀번호를 입력하세요.");
+        if (isPasswd !== null) {
+          // 입력된 비밀번호와 삭제 대상 댓글의 비밀번호 비교
+          if (isPasswd === passwd) {
+            var result = confirm("댓글을 삭제하시겠습니까?");
+            if (result) {
+              $.ajax({
+                  type: "POST",
+                  url: "../freview_reply/delete.do",
+                  data: {
+                      replyno: replyno,
+                      passwd: passwd
+                  },
+                  success: function(response) {
+                	    alert("댓글이 삭제되었습니다.");
+                      location.reload(); // 현재 페이지 새로고침
+                  },
+                  error: function(error) {
+                      console.error("Error:", error);
                   }
-              } else {
-                  alert("비밀번호가 일치하지 않습니다.");
-              }
+              });
+            }
+          } else {
+              alert("비밀번호가 일치하지 않습니다.");
           }
+        }
       }
     </script>
 

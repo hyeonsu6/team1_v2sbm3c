@@ -130,6 +130,42 @@ public class Freview_replyCont {
     
     return mav;
   }
+  
+  /**
+   * 수정 처리 http://localhost:9093/freview_reply/update_reply.do?replyno=1
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/freview_reply/update_reply.do", method = RequestMethod.POST)
+  //public ModelAndView update_reply(HttpSession session, Freview_replyVO freview_replyVO) {
+  public ModelAndView update_reply(HttpSession session, int replyno, String reply, String passwd) {
+    ModelAndView mav = new ModelAndView();
+    Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
+    freview_replyVO.setReply(reply);
+    freview_replyVO.setPasswd(passwd);
+    
+    if (this.memberProc.isMember(session)) { // 회원 로그인 확인
+      HashMap<String, Object> hashMap = new HashMap<String, Object>();
+      hashMap.put("replyno", freview_replyVO.getReplyno());
+
+      int cnt = this.freview_replyProc.update_reply(freview_replyVO); // 글 수정
+      
+      //System.out.println("-> freview_replyVO.getReviewno(): " + freview_replyVO.getReviewno());
+
+      // mav 객체 이용
+      mav.addObject("replyno", freview_replyVO.getReplyno());
+      mav.addObject("reply", freview_replyVO.getReply());
+      mav.setViewName("redirect:/freview/read.do?reviewno=" + freview_replyVO.getReviewno());
+    } else { // 정상적인 로그인이 아닌 경우 로그인 유도
+      mav.addObject("url", "/member/login_need"); // /WEB-INF/views/admin/login_need.jsp
+      mav.setViewName("redirect:/question/msg.do");
+    }
+
+    // mav.addObject("now_page", questionVO.getNow_page()); // POST -> GET: 데이터 분실이
+    // 발생함으로 다시하번 데이터 저장
+
+    return mav; // forward
+  }
 
   /**
    * 삭제 처리 http://localhost:9093/freview_reply/delete.do
@@ -140,9 +176,9 @@ public class Freview_replyCont {
   public ModelAndView delete(int replyno, String passwd) {
     //public ModelAndView delete(Freview_replyVO freview_replyVO) {
     
-    System.out.println("--> reply delete");
-    System.out.println("--> replyno: " + replyno);
-    System.out.println("--> passwd: " + passwd);
+    //System.out.println("--> reply delete");
+    //System.out.println("--> replyno: " + replyno);
+    //System.out.println("--> passwd: " + passwd);
     
     ModelAndView mav = new ModelAndView();
     
@@ -151,11 +187,11 @@ public class Freview_replyCont {
     hashMap.put("passwd", passwd);
     
     Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
-    System.out.println("-> replyVO" + freview_replyVO);
+    //System.out.println("-> replyVO" + freview_replyVO);
     
     boolean isPasswd = this.freview_replyProc.passwdCheck(replyno, passwd);
     int cnt = 0;
-    System.out.println("--> isPasswd: " + isPasswd);
+    //System.out.println("--> isPasswd: " + isPasswd);
     
     if(isPasswd) {
       //cnt = this.freview_replyProc.delete(replyno, passwd); // DBMS 삭제

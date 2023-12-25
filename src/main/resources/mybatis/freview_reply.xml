@@ -39,7 +39,7 @@
   </select>
   
   <!-- 댓글 수정 -->
-  <update id="update_reply" parameterType="HashMap">
+  <update id="update_reply" parameterType="dev.mvc.freview_reply.Freview_replyVO">
     UPDATE FREVIEW_REPLY
     SET REPLY = #{reply}
     WHERE REPLYNO=#{replyno} AND PASSWD=#{passwd}
