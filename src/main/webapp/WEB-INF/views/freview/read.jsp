@@ -136,7 +136,11 @@
 		</ul>
     
     <br><div class='content_line'></div>
-		<form name='frm' id='frm' method='post' action='../freview_reply/create.do'>
+		<form name='frm' id='frm' method='post' action='javascript:void(0);'>
+    <input type='hidden' name='reviewno' value='${reviewno }'>
+    <input type='hidden' name='id' value='${id }'>
+    <input type='hidden' name='reply' value='${reply }'>
+    <input type='hidden' name='passwd' value='${passwd }'>
 			<div style="margin: 20px 20px 5px 20px;">
 				<span style="color: #228B22; font-size: 19px;">리뷰 댓글</span>
 			</div>
@@ -152,7 +156,7 @@
 						style='float: center; font-size: 13px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;'
 						onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';">
 					<button type='submit' class="btn btn-outline-warning btn-sm"
-						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;">댓글 등록</button>
+						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;" onclick="submitComment();">댓글 등록</button>
 				</c:if>
 				<c:if test="${not isMember }">
 					<div style="margin-top: 50px; text-align: center;">
@@ -168,7 +172,7 @@
 				<div style='float: right;'>
 					<a href="#" class="R_menu_link:link" style="color: #696969; font-size: 14px;">댓글 수정</a>
 					<span class='menu_divide'>│</span>
-					<a href="javascript:confirmDelete(${replyVO.replyno});"
+					<a href="#" onclick="deleteAndReload(${replyVO.replyno}, '${replyVO.passwd}');"
 						style="color: #696969; font-size: 14px; margin-right: 15px;">댓글 삭제</a>
 				</div>
 			</c:if>
@@ -184,32 +188,63 @@
 
 		</c:forEach>
     
-   <script>
-      function confirmDelete(replyno) {
-          var result = confirm("댓글을 삭제하시겠습니까?");
-          if (result) {
-              // 사용자가 확인을 눌렀을 때의 동작
-              console.log("--> reply delete 1");
-              deleteAndReload(replyno);
-          } else {
-              // 사용자가 취소를 눌렀을 때의 동작
-              window.close(); // 현재 창 닫기
-              window.opener.location.reload(); // 부모 창 새로고침
+    <script>
+      //댓글 등록 함수
+      function submitComment() {
+          var reply = document.getElementById('reply').value;
+          var passwd = document.getElementById('passwd').value;
+  
+          // AJAX를 사용하여 댓글 등록
+          $.ajax({
+              type: "POST",
+              url: "../freview_reply/create.do",
+              data: {
+                  reviewno: '${reviewno }',
+                  id: '${id }',
+                  reply: reply,
+                  passwd: passwd
+              },
+              success: function(response) {
+                  // 등록 성공 시의 동작 (예: 새로고침)
+                  location.reload();
+              },
+              error: function(error) {
+                  console.error("Error:", error);
+              }
+          });
+      }
+  
+      //댓글 삭제 함수
+      function deleteAndReload(replyno, passwd) {
+          var isPasswd = prompt("댓글을 삭제하려면 비밀번호를 입력하세요.");
+          if (isPasswd !== null) {
+              // 입력된 비밀번호와 삭제 대상 댓글의 비밀번호 비교
+              if (isPasswd === passwd) {
+                  var result = confirm("댓글을 삭제하시겠습니까?");
+                  if (result) {
+                      $.ajax({
+                          type: "POST",
+                          url: "../freview_reply/delete.do",
+                          data: {
+                              replyno: replyno,
+                              passwd: passwd
+                          },
+                          success: function(response) {
+                        	    alert("댓글이 삭제되었습니다.");
+                              location.reload(); // 현재 페이지 새로고침
+                          },
+                          error: function(error) {
+                              console.error("Error:", error);
+                          }
+                      });
+                  }
+              } else {
+                  alert("비밀번호가 일치하지 않습니다.");
+              }
           }
       }
+    </script>
 
-      function deleteAndReload(replyno) {
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "../freview_reply/delete.do?replyno=" + replyno, true);
-          xhr.onreadystatechange = function () {
-              if (xhr.readyState === 4 && xhr.status === 200) {
-                  // 삭제가 완료된 후의 동작
-                  location.reload(); // 현재 페이지 새로고침
-              }
-          };
-          xhr.send();
-      }
-  </script>
 
 	</fieldset>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />

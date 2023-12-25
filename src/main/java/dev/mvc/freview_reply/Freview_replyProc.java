@@ -1,6 +1,7 @@
 package dev.mvc.freview_reply;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,12 @@ public class Freview_replyProc implements Freview_replyProcInter {
     ArrayList<Freview_replyVO> list = this.freview_replyDAO.list_by_reviewno(reviewno);
     return list;
   }
+  
+  @Override
+  public ArrayList<Freview_replyVO> list_by_id(String id) {
+    ArrayList<Freview_replyVO> list = this.freview_replyDAO.list_by_id(id);
+    return list;
+  }
 
   @Override
   public Freview_replyVO read(int replyno) {
@@ -41,8 +48,26 @@ public class Freview_replyProc implements Freview_replyProcInter {
   }
 
   @Override
-  public int delete(int replyno) {
-    int cnt = this.freview_replyDAO.delete(replyno);
+//  public int delete(int replyno, String passwd) {
+  public int delete(HashMap<String, Object> map) {
+    //int cnt = this.freview_replyDAO.delete(replyno, passwd);
+    int cnt = this.freview_replyDAO.delete(map);
     return cnt;
+  }
+  
+  @Override
+  public boolean passwdCheck(int replyno, String passwd) {
+    Freview_replyVO replyVO = this.freview_replyDAO.read(replyno);
+    boolean isPasswd = false;
+    
+    System.out.println("--> passwdCheck replyVO: " + replyVO);
+    
+    if(passwd.equals(replyVO.getPasswd())) {
+      isPasswd = true;
+    } else {
+      isPasswd = false;
+    }
+    
+    return isPasswd;
   }
 }

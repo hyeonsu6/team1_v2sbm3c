@@ -1,24 +1,26 @@
 package dev.mvc.freview_reply;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
-import dev.mvc.answer.AnswerVO;
-import dev.mvc.fcate.FcateVO;
 import dev.mvc.freview.FreviewProcInter;
 import dev.mvc.member.MemberProcInter;
-import dev.mvc.question.QuestionVO;
+import dev.mvc.tool.Tool;
 
+@Controller
 public class Freview_replyCont {
   @Autowired
-  @Qualifier("dev.mvc.member.Freview_reply")
+  @Qualifier("dev.mvc.freview_reply.Freview_replyProc")
   private Freview_replyProcInter freview_replyProc;
   
   @Autowired
@@ -75,8 +77,6 @@ public class Freview_replyCont {
   public ModelAndView create(HttpServletRequest request, HttpSession session, Freview_replyVO freview_replyVO) {
     ModelAndView mav = new ModelAndView();
     
-    System.out.println("--> reply create");
-    
     int memberno = 0;
     if(memberProc.isMember(session)) { // 로그인 한 경우
       memberno = (int)session.getAttribute("memberno");
@@ -103,28 +103,32 @@ public class Freview_replyCont {
     return mav;
   }
   
-  
   /**
-   * 파일 삭제 폼 http://localhost:9093/freview_reply/delete.do?questno=17
-   * 
+   * 조회
+   * @param replyno
    * @return
    */
-  @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.GET)
-  public ModelAndView delete(HttpSession session, int replyno) {
+  @RequestMapping(value = "/freview_reply/read.do", method = RequestMethod.GET)
+  public ModelAndView read(int replyno) {
     ModelAndView mav = new ModelAndView();
-
-    if (memberProc.isMember(session)) { // 회원 로그인 경우
-      Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
-      mav.addObject("freview_replyVO", freview_replyVO);
-
-      mav.setViewName("/freview_reply/delete"); // /WEB-INF/views/question/delete.jsp
-
-    } else {
-      mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
-      mav.setViewName("redirect:/freview_reply/msg.do");
-    }
-
-    return mav; // forward
+    
+    Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
+    
+    String id = freview_replyVO.getId();
+    String reply = freview_replyVO.getReply();
+    String passwd = freview_replyVO.getPasswd();
+    
+    id = Tool.convertChar(id);
+    reply = Tool.convertChar(reply);
+    passwd = Tool.convertChar(passwd);
+    
+    freview_replyVO.setId(id);
+    freview_replyVO.setReply(reply);
+    freview_replyVO.setPasswd(passwd);
+    
+    mav.addObject("freview_replyVO", freview_replyVO);
+    
+    return mav;
   }
 
   /**
@@ -133,23 +137,40 @@ public class Freview_replyCont {
    * @return
    */
   @RequestMapping(value = "/freview_reply/delete.do", method = RequestMethod.POST)
-  public ModelAndView delete(int replyno) {
+  public ModelAndView delete(int replyno, String passwd) {
     //public ModelAndView delete(Freview_replyVO freview_replyVO) {
     
     System.out.println("--> reply delete");
+    System.out.println("--> replyno: " + replyno);
+    System.out.println("--> passwd: " + passwd);
     
     ModelAndView mav = new ModelAndView();
     
-    Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno); 
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+    hashMap.put("replyno", replyno);
+    hashMap.put("passwd", passwd);
     
-    // QuestionVO questionVO_read = questionProc.read(questionVO.getQuestno());
-    this.freview_replyProc.delete(freview_replyVO.getReplyno()); // DBMS 삭제
+    Freview_replyVO freview_replyVO = this.freview_replyProc.read(replyno);
+    System.out.println("-> replyVO" + freview_replyVO);
+    
+    boolean isPasswd = this.freview_replyProc.passwdCheck(replyno, passwd);
+    int cnt = 0;
+    System.out.println("--> isPasswd: " + isPasswd);
+    
+    if(isPasswd) {
+      //cnt = this.freview_replyProc.delete(replyno, passwd); // DBMS 삭제
+      cnt = this.freview_replyProc.delete(hashMap); // DBMS 삭제
+      System.out.println("--> cnt: " + cnt);
+      if(cnt == 1) {
+        mav.addObject("code", "reply_delete_success");
+      } else {
+        mav.addObject("code", "reply_delete_fail");
+      }
+    } else {
+      mav.addObject("code", "reply_passwd_fail");
+    }
 
     mav.addObject("replyno", freview_replyVO.getReplyno());
-
-    // mav.addObject("now_page", now_page);
-    // mav.setViewName("redirect:/question/list_by_tcateno.do");
-
     mav.setViewName("redirect:/freview/read.do?reviewno=" + freview_replyVO.getReviewno());
     
     return mav;

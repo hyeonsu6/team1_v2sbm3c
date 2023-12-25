@@ -55,7 +55,7 @@ UPDATE FREVIEW_REPLY SET REPLY = '리뷰보고 다녀왔는데 너무 재밌었�
 
 
 -- DELETE
-DELETE FROM FREVIEW_REPLY WHERE REPLY = 1;
+DELETE FROM FREVIEW_REPLY WHERE REPLYNO = 8 AND PASSWD = '1234';
 
 
 /*******************************************************************************/
