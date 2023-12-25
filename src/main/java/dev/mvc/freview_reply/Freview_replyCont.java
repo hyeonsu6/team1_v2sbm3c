@@ -1,6 +1,8 @@
 package dev.mvc.freview_reply;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.freview.FreviewProcInter;
+import dev.mvc.freview.FreviewVO;
 import dev.mvc.member.MemberProcInter;
 import dev.mvc.tool.Tool;
 
@@ -98,6 +101,52 @@ public class Freview_replyCont {
     } else {
       mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
       mav.setViewName("redirect:/freview_reply/msg.do");
+    }
+
+    return mav;
+  }
+  
+  /**
+   * 회원별 댓글 목록
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/freview_reply/list_by_id.do", method = RequestMethod.GET)
+  public ModelAndView list_by_id(HttpSession session, String id) {
+    System.out.println("--> list_by_id");
+    ModelAndView mav = new ModelAndView();
+
+    boolean isMember = memberProc.isMember(session); 
+    if(isMember) {
+      mav.setViewName("/freview_reply/list_by_id"); // /WEB-INF/views/freview_reply/list_by_id.jsp
+
+      ArrayList<Freview_replyVO> list = this.freview_replyProc.list_by_id(id);
+      List<String> titles = new ArrayList<>(); //댓글 별 리뷰 제목 저장
+      
+      // for문을 사용하여 객체를 추출, Call By Reference 기반의 원본 객체 값 변경
+      for (Freview_replyVO freview_replyVO : list) {
+        String getid = freview_replyVO.getId();
+        String reply = freview_replyVO.getReply();
+        String rdate = freview_replyVO.getRdate();
+        
+        FreviewVO freviewVO = freviewProc.read(freview_replyVO.getReviewno());
+        String title = freviewVO.getTitle();
+
+        getid = Tool.convertChar(getid); // 특수 문자 처리
+        reply = Tool.convertChar(reply);
+        rdate = Tool.convertChar(rdate);
+        title = Tool.convertChar(title);
+
+        freview_replyVO.setId(getid);
+        freview_replyVO.setReply(reply);
+        freview_replyVO.setRdate(rdate);
+        
+        titles.add(title);
+      }
+      mav.addObject("titles", titles);
+      mav.addObject("list", list);
+    } else {
+      mav.setViewName("/member/login_need");
     }
 
     return mav;

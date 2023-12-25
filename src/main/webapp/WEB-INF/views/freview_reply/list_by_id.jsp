@@ -15,117 +15,29 @@
 
 <body>
 	<c:import url="/menu/top.do" />
+	
+  <br>
+  <div class='content_line'></div>
+    <form name='frm' id='frm' method='get' action='/freview_reply/list_by_id.do'>
+      <div style="margin: 20px 20px 5px 20px;">
+        <span style="color: #228B22; font-size: 19px;">내가 쓴 댓글</span>
+      </div>
+    </form>
 
-	<div class='title_line'>
-		${fcateVO.name } 질문 목록
-		<c:if test="${param.quest.length() > 0 }">
-      > 「${param.quest }」 검색 ${search_count } 건
-    </c:if>
-	</div>
-
-	<aside class="aside_right">
-		<a href="./create.do?fcateno=${fcateVO.fcateno }">질문 등록</a>
-		<span class='menu_divide'>│</span>
-		<a href="javascript:location.reload();">새로고침</a>
-		<span class='menu_divide'>│</span>
-		<a
-			href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">목록형</a>
-		<span class='menu_divide'>│</span>
-		<a
-			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&quest=${param.quest }">갤러리형</a>
-	</aside>
-	<br>
-	<div style="text-align: right; clear: both;">
-		<form name='frm' id='frm' method='get' action='./list_by_fcateno.do'>
-			<input type='hidden' name='fcateno' value='${param.fcateno }'>
-			<%-- 게시판의 구분 --%>
-			<c:choose>
-				<c:when test="${param.quest != '' }">
-					<%-- 검색하는 경우 --%>
-					<input type='text' name='quest' id='quest' value='${param.quest }' class='input_word'>
-				</c:when>
-				<c:otherwise>
-					<%-- 검색하지 않는 경우 --%>
-					<input type='text' name='quest' id='quest' value='' class='input_word'>
-				</c:otherwise>
-			</c:choose>
-			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
-			<c:if test="${param.quest.length() > 0 }">
-				<button type='button' class="btn btn-outline-warning btn-sm"
-					style="height: 30px; margin-bottom: 5px;background-color: #B8860B;"
-					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
-			</c:if>
-		</form>
-	</div>
-
-	<div class="menu_line"></div>
-	<br>
-
-	<table>
-		<colgroup>
-			<col style="width: 10%;"></col>
-			<col style="width: 20%;"></col>
-			<col style="width: 45%;"></col>
-			<col style="width: 15%;"></col>
-			<col style="width: 10%;"></col>
-		</colgroup>
-
-		<thead>
-			<tr style="text-align: center;">
-				<th>질문 번호</th>
-				<th>질문 제목</th>
-				<th>질문 내용</th>
-				<th>등록일</th>
-				<th>비고</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<c:forEach var="questionVO" items="${list }" varStatus="info">
-				<c:set var="questno" value="${questionVO.questno }" />
-				<c:set var="title" value="${questionVO.title }" />
-				<tr style="cursor: pointer; text-align: center;">
-					<td>${questionVO.questno }
-					<td>
-						<a
-							href="./read.do?questno=${questno}&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }">${questionVO.title }</a>
-					</td>
-
-					<td>
-						<c:choose>
-							<c:when test="${questionVO.quest.length() > 160 }">${questionVO.quest.substring(0, 160) }...</c:when>
-							<c:otherwise>${questionVO.quest }</c:otherwise>
-						</c:choose>
-					</td>
-
-					<td>${questionVO.rdate.substring(0, 10) }</td>
-
-					<td>
-						<c:if test="${isAdmin}">
-							<a href="../answer/create.do?questno=${questno }&now_page=${param.now_page}" title="답변 등록">
-								<img src="/question/images/create.png" class="icon">
-							</a>
-						</c:if>
-						<c:if test="${questionVO.memberno eq sessionScope.memberno}">
-							<a href="/question/update_quest.do?questno=${questno }&fcateno=${fcateno}&now_page=${param.now_page}" title="수정">
-								<img src="/question/images/update.png" class="icon">
-							</a>
-							<a href="/question/delete.do?questno=${questno }&fcateno=${fcateno}&now_page=${param.now_page}" title="삭제">
-								<img src="/question/images/delete.png" class="icon">
-							</a>
-						</c:if>
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-
-	</table>
-
-	<!-- 페이지 목록 출력 부분 시작 -->
-	<DIV class='bottom_menu'>${paging }</DIV>
-	<%-- 페이지 리스트 --%>
-	<!-- 페이지 목록 출력 부분 종료 -->
+    <c:forEach var="replyVO" items="${list}" varStatus="status">
+      <div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
+      <div style='float: center; font-size: 16px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px;'>
+        ${replyVO.id}
+        <span style='float: center; color: #B6BBC4; font-size: 12px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>(${replyVO.rdate})</span>
+      </div>
+      <div id = "reply_${replyVO.replyno}" style='float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
+        <a href="/freview/read.do?reviewno=${replyVO.reviewno }">
+        ㄴ ${replyVO.reply}
+        </a>
+      </div>
+      <div id = "${replyVO.reviewno}" style='color: #B6BBC4; float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
+      ${titles[status.index]}</div>
+    </c:forEach>
 
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>

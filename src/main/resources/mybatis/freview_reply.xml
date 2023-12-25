@@ -26,8 +26,7 @@
   
   <!-- 회원 별 댓글 -->
   <select id="list_by_id" resultType="dev.mvc.freview_reply.Freview_replyVO" parameterType ="String" >
-    SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE
-    FROM FREVIEW_REPLY
+    SELECT REPLYNO, reviewno, id, REPLY, PASSWD, RDATE FROM FREVIEW_REPLY
     WHERE id = #{id}
     ORDER BY REPLYNO ASC
   </select>
