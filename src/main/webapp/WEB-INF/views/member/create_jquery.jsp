@@ -1,15 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html> 
-<html lang="ko"> 
-<head> 
-<meta charset="UTF-8"> 
-<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
-<title>Festival world</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" />
+<title>Festival Blog Member</title>
 <link rel="shortcut icon" href="/images/festival.png" />
-<link href="/css/style.css" rel="Stylesheet" type="text/css"> <!-- /static 기준 -->
+<link href="/css/style.css" rel="Stylesheet" type="text/css">
 
 <script type="text/javascript">
   window.onload = function() {
@@ -150,88 +150,102 @@
     document.getElementById('frm').submit(); // required="required" 작동 안됨.
   }  
 </script>
-</head> 
+</head>
 
 
 <body>
-<c:import url="/menu/top.do" />
+	<c:import url="/menu/top.do" />
 
-  <DIV class='title_line'>회원 가입(*: 필수)</DIV>
+	<div class='title_line'>회원 가입 (*: 필수)</div>
 
-  <ASIDE class="aside_right">
-    <A href="javascript:location.reload();">새로고침</A>
-    <span class='menu_divide' >│</span> 
-    <A href='./create.do'>회원 가입</A>
-    <span class='menu_divide' >│</span> 
-    <A href='./list.do'>목록</A>
-  </ASIDE> 
+	<aside class="aside_right">
+		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+		<a href='./create.do'>회원 가입</a>
+		<span class='menu_divide'>│</span>
+	</aside>
 
-  <div class='menu_line'></div>
-  
-  <div style="width: 60%; margin: 0px auto ">
-  <form name='frm' id='frm' method='POST' action='./create.do' class="">
-  
-    <div class="form-group">
-      <label>아이디*:
-        <input type='text' class="form-control form-control-sm" name='id' id='id' value='user1@gmail.com' required="required" placeholder="아이디" autofocus="autofocus">
-      </label>
-      <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-primary btn-sm">중복확인</button>
-      <span id='id_msg'></span>
-    </div>   
-                
-    <div class="form-group">
-      <label>패스워드*: 
-        <input type='password' class="form-control form-control-sm" name='passwd' id='passwd' value='1234' required="required" placeholder="패스워드">
-      </label>
-    </div>   
+	<div class='menu_line'></div>
 
-    <div class="form-group">
-      <label>패스워드 확인*: 
-        <input type='password' class="form-control form-control-sm" name='passwd2' id='passwd2' value='1234' required="required" placeholder="패스워드 확인">
-      </label>
-      <span id='passwd2_msg'></span>
-    </div>   
-    
-    <div class="form-group">
-      <label>성명*:
-        <input type='text' class="form-control form-control-sm" name='mname' id='mname' value='하정우' required="required" placeholder="성명">
-      </label>
-      <span id='mname_msg'></span>
-    </div>   
+	<div style="width: 60%; margin: 0px auto">
+		<form name='frm' id='frm' method='POST' action='./create.do' class="">
 
-    <div class="form-group">
-      <label>전화 번호:
-        <input type='text' class="form-control form-control-sm" name='tel' id='tel' value='010-0000-0000' required="required" placeholder="전화번호">
-      </label>
-      예) 010-0000-0000
-    </div>   
+			<div class="form-group">
+				<label>
+					아이디*:
+					<input type='text' class="form-control form-control-sm" name='id' id='id' value='user1@gmail.com'
+						required="required" placeholder="아이디" autofocus="autofocus">
+				</label>
+				<button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-primary btn-sm">중복확인</button>
+				<span id='id_msg'></span>
+			</div>
 
-    <div class="form-group"> 
-      <label>우편 번호:
-        <input type='text' class="form-control form-control-sm" name='zipcode' id='zipcode' value='' placeholder="우편번호">
-      </label>
-      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-primary btn-sm">우편번호 찾기</button>
-    </div>  
+			<div class="form-group">
+				<label>
+					패스워드*:
+					<input type='password' class="form-control form-control-sm" name='passwd' id='passwd' value='1234'
+						required="required" placeholder="패스워드">
+				</label>
+			</div>
 
-    <div class="form-group">
-      <label style="width: 100%;">주소:</label> <%-- label의 크기를 변경하여 주소를 많이 입력받는 패턴 --%>
-      <input type='text' class="form-control form-control-sm" name='address1' id='address1' value='' placeholder="주소">
-    </div>   
+			<div class="form-group">
+				<label>
+					패스워드 확인*:
+					<input type='password' class="form-control form-control-sm" name='passwd2' id='passwd2' value='1234'
+						required="required" placeholder="패스워드 확인">
+				</label>
+				<span id='passwd2_msg'></span>
+			</div>
 
-    <div class="form-group">
-      <label style="width: 100%;">상세 주소:</label>
-      <input type='text' class="form-control form-control-sm" name='address2' id='address2' value='' placeholder="상세 주소">
-    </div>   
+			<div class="form-group">
+				<label>
+					성명*:
+					<input type='text' class="form-control form-control-sm" name='mname' id='mname' value='하정우' required="required"
+						placeholder="성명">
+				</label>
+				<span id='mname_msg'></span>
+			</div>
 
-    <div>
+			<div class="form-group">
+				<label>
+					전화 번호:
+					<input type='text' class="form-control form-control-sm" name='tel' id='tel' value='010-0000-0000'
+						required="required" placeholder="전화번호">
+				</label>
+				예) 010-0000-0000
+			</div>
 
-<!-- ------------------------------ DAUM 우편번호 API 시작 ------------------------------ -->
-<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-</div>
+			<div class="form-group">
+				<label>
+					우편 번호:
+					<input type='text' class="form-control form-control-sm" name='zipcode' id='zipcode' value='' placeholder="우편번호">
+				</label>
+				<button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-primary btn-sm">우편번호 찾기</button>
+			</div>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+			<div class="form-group">
+				<label style="width: 100%;">주소:</label>
+				<%-- label의 크기를 변경하여 주소를 많이 입력받는 패턴 --%>
+				<input type='text' class="form-control form-control-sm" name='address1' id='address1' value='' placeholder="주소">
+			</div>
+
+			<div class="form-group">
+				<label style="width: 100%;">상세 주소:</label>
+				<input type='text' class="form-control form-control-sm" name='address2' id='address2' value='' placeholder="상세 주소">
+			</div>
+
+			<div>
+
+				<!-- ------------------------------ DAUM 우편번호 API 시작 ------------------------------ -->
+				<div id="wrap"
+					style="display: none; border: 1px solid; width: 500px; height: 300px; margin: 5px 0; position: relative">
+					<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+						style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1" onclick="foldDaumPostcode()"
+						alt="접기 버튼">
+				</div>
+
+				<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+				<script>
     // 우편번호 찾기 찾기 화면을 넣을 element
     var element_wrap = document.getElementById('wrap');
 
@@ -310,18 +324,17 @@
         element_wrap.style.display = 'block';
     }
 </script>
-<!-- ------------------------------ DAUM 우편번호 API 종료 ------------------------------ -->
+				<!-- ------------------------------ DAUM 우편번호 API 종료 ------------------------------ -->
 
-    </div>
-    
-    <div class="bottom_menu">
-      <button type="button" id='btn_send' onclick="send()" class="btn btn-primary btn-sm">가입</button>
-      <button type="button" onclick="history.back()" class="btn btn-primary btn-sm">취소</button>
-    </div>   
-  </form>
-  </div>
- 
-<jsp:include page="../menu/bottom.jsp" flush='false' />
+			</div>
+
+			<div class="bottom_menu">
+				<button type="button" id='btn_send' onclick="send()" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">회원 가입</button>
+				<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">가입 취소</button>
+			</div>
+		</form>
+	</div>
+	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 
 </html>

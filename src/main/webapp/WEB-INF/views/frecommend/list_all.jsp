@@ -11,7 +11,7 @@
 <title>Festival Blog Recommend</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
-</head>
+</head> 
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>추천 페스티벌</div>

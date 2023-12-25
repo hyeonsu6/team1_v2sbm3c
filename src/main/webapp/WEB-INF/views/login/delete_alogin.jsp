@@ -8,19 +8,20 @@
 <c:set var="logindate" value="${aloginVO.logindate }" />
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"> 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Admin Login List</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
 
 <body>
 	<c:import url="/menu/top.do" />
-	<div class='title_line'>회원 로그인 내역 삭제</div>
+	
+	<div class='title_line'>관리자 로그인 내역 삭제</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -34,15 +35,14 @@
 			<li class="li_none">
 
 				<div style='text-align: center; width: 100%;'>
-
-					<br>
 					<form name='frm' method='post' action='./delete_alogin.do'>
 						<input type='hidden' name='aloginno' value='${aloginno}'> <br> <br>
 						<div style='text-align: center; margin: 10px auto;'>
 							<span class="span_success" style="color: #800000; font-weight: bold;"> 삭제를 진행 하시겠습니까? </span>
-							<br> <br> <br> <br>
-							<button type="submit" class="btn btn-dark btn-sm">삭제하기</button>
-							<button type="button" onclick="history.back()" class="btn btn-dark btn-sm">취소</button>
+							<br> <br>
+							<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">삭제하기</button>
+							<button type="button" onclick="history.back()" class="btn btn-outline-warning btn-sm"
+								style="background-color: #B8860B;">삭제취소</button>
 						</div>
 					</form>
 				</div>

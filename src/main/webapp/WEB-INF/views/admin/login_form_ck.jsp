@@ -45,6 +45,7 @@
 						</label>
 					</div>
 					<div class="login_bottom_menu">
+						<br>
 						<button type="submit" class="btn btn-outline-warning btn-sm">로그인</button>
 					</div>
 				</form>

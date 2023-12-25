@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Admin Login List</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -23,7 +23,7 @@
 	</aside>
 	<div class="menu_line"></div>
 
-	<table class="table table-hover">
+	<table>
 		<colgroup>
 			<col style='width: 15%;' />
 			<col style='width: 15%;' />
@@ -31,31 +31,39 @@
 			<col style='width: 20%;' />
 			<col style='width: 20%;' />
 		</colgroup>
+		
 		<thead>
-			<tr>
-				<th class="th_bs">로그인 번호</th>
-				<th class="th_bs">관리자 번호</th>
-				<th class="th_bs">IP 주소</th>
-				<th class="th_bs">로그인 일자</th>
-				<th class="th_bs">삭제</th>
+			<tr style="text-align: center;">
+				<th>로그인 번호</th>
+				<th>관리자 번호</th>
+				<th>IP 주소</th>
+				<th>로그인 일자</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
+		
 		<tbody>
 			<c:forEach var="aloginVO" items="${list }" varStatus="info">
 				<c:set var="aloginno" value="${aloginVO.aloginno }" />
 				<c:set var="adminno" value="${aloginVO.adminno }" />
 				<c:set var="ip" value="${aloginVO.ip }" />
 				<c:set var="logindate" value="${aloginVO.logindate }" />
-				<tr>
-					<td class="td_bs">${aloginno }</td>
-					<td class="td_bs">${adminno }</td>
-					<td class="td_bs">${ip }</td>
-					<td class="td_bs">${logindate.substring(0,16) }</td>
-					<td class="td_bs">
+				
+				<tr style="text-align: center;">
+					<td>${aloginno }</td>
+					
+					<td>${adminno }</td>
+					
+					<td>${ip }</td>
+					
+					<td>${logindate.substring(0,16) }</td>
+					
+					<td>
 						<a href="./delete_alogin.do?aloginno=${aloginno}">
 							<img src='/login/images/delete.png' title='삭제' class="icon">
 						</a>
 					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

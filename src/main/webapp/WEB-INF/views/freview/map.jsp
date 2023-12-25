@@ -6,9 +6,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" />
-<title>Festival world</title>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" />
+<title>Festival Blog Festival Review</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -17,9 +16,8 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		<a
-			href="/festival/list_by_contentsno.do?fcateno=${festivalVO.contentsno }"
-			class="title_link">${festivalVO.title }</a> > 지도 등록/수정/삭제
+		<a href="/festival/list_by_contentsno.do?fcateno=${festivalVO.contentsno }" class="title_link">${festivalVO.title }</a>
+		> 리뷰 지도🧭 등록|수정|삭제
 	</div>
 
 	<aside class="aside_right">
@@ -27,29 +25,26 @@
 	</aside>
 
 	<div style="text-align: right; clear: both;">
-		<form name='frm' id='frm' method='get'
-			action='./list_by_contentsno.do'>
-			<input type='hidden' name='contentsno'
-				value='${festivalVO.contentsno }'>
+		<form name='frm' id='frm' method='get' action='./list_by_contentsno.do'>
+			<input type='hidden' name='contentsno' value='${festivalVO.contentsno }'>
 			<%-- 게시판의 구분 --%>
 
 			<c:choose>
 				<c:when test="${param.word != '' }">
 					<%-- 검색하는 경우 --%>
-					<input type='text' name='word' id='word' value='${param.word }'
-						class='input_word'>
+					<input type='text' name='word' id='word' value='${param.word }' class='input_word'>
 				</c:when>
 				<c:otherwise>
 					<%-- 검색하지 않는 경우 --%>
-					<input type='text' name='word' id='word' value=''
-						class='input_word'>
+					<input type='text' name='word' id='word' value='' class='input_word'>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm'>검색</button>
-			<c:if test="${param.word.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
-					onclick="location.href='./list_by_contentsno.do?contentsno=${festivalVO.contentsno}&word='">검색
-					취소</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
+			<c:if test="${param.quest.length() > 0 }">
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
@@ -61,32 +56,26 @@
 
 		<div>
 			<label>지도 스크립트</label>
-			<textarea name='map' class="form-control" rows="12"
-				style='width: 100%;'>${freviewVO.map }</textarea>
+			<textarea name='map' class="form-control" rows="3" style='width: 100%;'>${freviewVO.map }</textarea>
 		</div>
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-dark btn-sm">저장</button>
-			<button type="button"
-				onclick="frm_map.map.value=''; frm_map.submit();"
-				class="btn btn-dark btn-sm">지도 삭제</button>
-			<button type="button" onclick="history.back();"
-				class="btn btn-dark btn-sm">취소</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">지도 저장</button>
+			<button type="button" onclick="frm_map.map.value=''; frm_map.submit();" class="btn btn-outline-warning btn-sm"
+				style="background-color: #B8860B;">지도 삭제</button>
+			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
+				style="background-color: #B8860B;">취소</button>
 		</div>
-
 	</form>
 
-	<hr>
-	<div style="text-align: center;">
-		<H4>[참고] 다음 지도의 등록 방법</H4>
-		<img src='/festival/images/map01.jpg' style='width: 60%;'> <br>
-		<br> <img src='/festival/images/map02.jpg' style='width: 60%;'>
-		<br> <br> <img src='/festival/images/map03.jpg'
-			style='width: 60%;'> <br> <br> <img
-			src='/festival/images/map04.jpg' style='width: 60%;'> <br>
-		<br> <img src='/festival/images/map05.jpg' style='width: 60%;'>
-		<br>
+	<div class="content_line"></div>
+	<div style="text-align: center; font-size: 20px;">
+	<div style="margin: 10px; color: #228B22;">[참고] 다음 지도의 등록 방법<br></div>
+		<img src='/festival/images/map01.jpg' style='width: 50%;'>
+		<img src='/festival/images/map02.jpg' style='width: 50%;'>
+		<img src='/festival/images/map03.jpg' style='width: 50%;'>
+		<img src='/festival/images/map04.jpg' style='width: 50%;'>
+		<img src='/festival/images/map05.jpg' style='width: 50%;'>
 	</div>
-
 	<jsp:include page="../menu/bottom.jsp" />
 </body>
 

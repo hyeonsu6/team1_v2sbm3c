@@ -23,7 +23,7 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<DIV class='title_line'>${fcateVO.name } > ${title } > 콘텐츠 삭제</DIV>
+	<div class='title_line'>${fcateVO.name }>${title }>콘텐츠 삭제</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
@@ -77,12 +77,11 @@
 
 				<div style='text-align: center; width: 100%; margin-top: 10px;'>
 					<br>
-					<span style='font-size: 1.5em;'> 콘텐츠 이름: ${title} </span>
-					<br> <br>
+					<span style='font-size: 1.5em;'> 콘텐츠 이름: "${title}" </span>
+					<br>
 					<c:if test="${size1 > 0 }">
 						삭제되는 파일: ${file1 }
 						</c:if>
-					<br>
 					<form name='frm' method='post' action='./delete.do'>
 						<input type='hidden' name='contentsno' value='${contentsno}'>
 						<input type='hidden' name='fcateno' value='${fcateno}'>

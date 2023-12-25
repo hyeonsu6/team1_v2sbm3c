@@ -13,7 +13,7 @@
 	margin: 0px;
 	padding: 0px;
 	color: #555555;
-	font-size: 16px;
+	font-size: 17px;
 	font-family: 'WarhavenB', sans-serif; /* WarhavenB 폰트를 사용하도록 추가 */
 }
 
@@ -148,7 +148,7 @@
 
 /* ASIDE 메뉴 세로 구분선 */
 .menu_divide { /* 서브 메뉴의 세로 구분선 */
-	color: #777777;
+	color: #696969;
 	font-size: 0.8em; /* 부모 글자 크기에 비해서 80%로 출력 */
 	vertical-align: 10%; /* 0%는 bottom 기준 */
 }
@@ -227,32 +227,30 @@
 	text-align: left;
 	width: 100%;
 	margin: 20px auto;
-	font-size: 21px;
 	font-weight: 700;
 	border-bottom: 5px solid #CD853F;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	font-size: 21px;
 }
 
 .title_link:link { /* 방문전 상태 */
-	font-size: 20px;
 	text-decoration: none; /* 밑줄 삭제 */
+	font-size: 20px;
 }
 
 .title_link:visited { /* 방문후 상태 */
-	font-size: 20px;
 	text-decoration: none; /* 밑줄 삭제 */
+	font-size: 20px;
 }
 
 .title_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	font-size: 20px;
 	text-decoration: none; /* 밑줄 삭제 */
+	font-size: 23px;
 }
 
 .title_link:active { /* A 태그를 클릭한 상태 */
-	font-size: 20px;
 	text-decoration: none; /* 밑줄 삭제 */
+	font-size: 23px;
 }
 
 .sub_menu {
@@ -594,7 +592,7 @@ a:active { /* A 태그를 클릭한 상태 */
 
 body {
 	padding: 0.5em;
-	background: #f5f5f5;
+	background: #F8F8FF;
 }
 
 table {
@@ -608,11 +606,11 @@ table {
 }
 
 th {
-	color: #FFFAFA;
+	color: #F8F8FF;
+	font-size: 16px;
 }
 
 thead {
-	font-weight: bold;
 	color: #F8F8FF;
 	background: #73685d;
 }
@@ -620,15 +618,18 @@ thead {
 td, th {
 	padding: 0.8em 0.5em;
 	vertical-align: middle;
+	font-size: 15px;
 }
 
 td {
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
-	background: #FFFAFA;
+	background: #F8F8FF;
+	font-size: 15px;
 }
 
 a {
 	color: #73685d;
+	font-size: 15px;
 }
 
 @media all and (max-width: 768px) {
@@ -665,4 +666,24 @@ a {
 	td {
 		border-bottom: 1px solid #e5e5e5;
 	}
+}
+
+.R_menu_link:link { /* 방문전 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #A9A9A9;
+}
+
+.R_menu_link:visited { /* 방문후 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #A9A9A9;
+}
+
+.R_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
+}
+
+.R_menu_link:active { /* A 태그를 클릭한 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
 }

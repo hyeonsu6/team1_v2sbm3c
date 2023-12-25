@@ -16,7 +16,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line' style="text-align: left; font-size: 30px;">로그인</div>
+	<div class='title_line'>로그인</div>
 	<div class='message'>
 		<fieldset class='fieldset_basic'>
 			<ul>

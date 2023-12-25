@@ -91,14 +91,14 @@
 				</c:forEach>
 
 				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">전체 카테고리 목록</a>
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
 				</li>
 
 
 				<li class="nav-item dropdown">
 					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 						style="color: #800000;">회원</a>
-					<div class="dropdown-menu" style="font-size: 14px;">
+					<div class="dropdown-menu" style="font-size: 17px;">
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
 								<a class="dropdown-item" href="/member/create.do">회원 가입</a>

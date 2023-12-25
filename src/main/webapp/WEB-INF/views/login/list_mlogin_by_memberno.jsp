@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <meta name="viewport"
 	content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Member Login List</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -23,7 +23,7 @@
 	</aside>
 	<div class="menu_line"></div>
 
-	<table class="table table-hover">
+	<table>
 		<colgroup>
 			<col style='width: 15%;' />
 			<col style='width: 15%;' />
@@ -31,31 +31,39 @@
 			<col style='width: 20%;' />
 			<col style='width: 20%;' />
 		</colgroup>
+
 		<thead>
-			<tr>
-				<th class="th_bs">로그인 번호</th>
-				<th class="th_bs">회원 번호</th>
-				<th class="th_bs">IP 주소</th>
-				<th class="th_bs">로그인 일자</th>
-				<th class="th_bs">삭제</th>
+			<tr style="text-align: center;">
+				<th>로그인 번호</th>
+				<th>회원 번호</th>
+				<th>IP 주소</th>
+				<th>로그인 일자</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
+
 		<tbody>
 			<c:forEach var="mloginVO" items="${list }" varStatus="info">
 				<c:set var="mloginno" value="${mloginVO.mloginno }" />
 				<c:set var="memberno" value="${mloginVO.memberno }" />
 				<c:set var="ip" value="${mloginVO.ip }" />
 				<c:set var="logindate" value="${mloginVO.logindate }" />
-				<tr>
-					<td class="td_bs">${mloginno }</td>
-					<td class="td_bs">${memberno }</td>
-					<td class="td_bs">${ip }</td>
-					<td class="td_bs">${logindate.substring(0,16) }</td>
-					<td class="td_bs">
+
+				<tr style="text-align: center;">
+					<td>${mloginno }</td>
+					
+					<td>${memberno }</td>
+					
+					<td>${ip }</td>
+					
+					<td>${logindate.substring(0,16) }</td>
+					
+					<td>
 						<a href="./delete_mlogin.do?mloginno=${mloginno}">
 							<img src='/login/images/delete.png' title='삭제' class="icon">
 						</a>
 					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

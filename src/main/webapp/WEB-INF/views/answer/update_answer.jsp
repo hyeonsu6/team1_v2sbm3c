@@ -25,7 +25,7 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>${title }>답변 수정</div>
-	<aside class="aside_right">
+	<aside class="aside_right"> 
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
 	<div class='menu_line'></div>

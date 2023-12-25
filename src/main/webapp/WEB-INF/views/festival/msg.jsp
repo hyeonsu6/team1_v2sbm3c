@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Festival Blog Message</title>
+<title>Festival Blog Festival Contents Message</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 <!-- /static 기준 -->
@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>알림</div>
+	<div class='title_line'>페스티벌 콘텐츠 알림</div>
 
 	<c:set var="code" value="${param.code }" />
 	<%--mav.addObject("code", "create_success"); --%>
@@ -70,7 +70,8 @@
 				</c:choose>
 				<li class='li_none'><br> <c:choose>
 						<c:when test="${cnt == 0 }">
-							<button type='button' onclick="history.back()" class="btn btn-primary btn-sm">다시 시도</button>
+							<button type='button' onclick="history.back()" class="btn btn-outline-warning btn-sm"
+								style="background-color: #B8860B;">다시 시도</button>
 						</c:when>
 					</c:choose>
 

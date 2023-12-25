@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-<title>Festival world</title>
+<title>Festival Blog Festival Review</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
@@ -21,11 +21,9 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<DIV class='title_line'>${festivalVO.title }> ${title } > 리뷰 수정</DIV>
+	<div class='title_line'>${festivalVO.title }>${title }> 리뷰 수정</div>
 
 	<aside class="aside_right">
-		<a href="./create.do?contentsno=${contentsno }">등록</a>
-		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
 	</aside>
 
@@ -44,11 +42,12 @@
 					<input type='text' name='word' id='word' value='' class='input_word'>
 				</c:otherwise>
 			</c:choose>
-			<button type='submit' class='btn btn-dark btn-sm' style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색</button>
+			<button type='submit' class="btn btn-outline-warning btn-sm"
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
-				<button type='button' class='btn btn-dark btn-sm'
-					onclick="location.href='./list_by_contentsno.do?contentsno=${festivalVO.contentsno}&word='"
-					style="padding: 2px 8px 3px 8px; margin: 0px 0px 2px 0px;">검색 취소</button>
+				<button type='button' class="btn btn-outline-warning btn-sm"
+					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
+					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
 			</c:if>
 		</form>
 	</div>
@@ -56,35 +55,36 @@
 	<div class='menu_line'></div>
 
 	<form name='frm' method='post' action='./update_text.do'>
-		<input type="hidden" name="contentsno" value="${contentsno }"> 
-		<input type="hidden" name="reviewno" value="${reviewno }"> 
+		<input type="hidden" name="contentsno" value="${contentsno }">
+		<input type="hidden" name="reviewno" value="${reviewno }">
 		<input type="hidden" name="now_page" value="${param.now_page }">
+
 		<div>
-			<label>제목</label> <input type='text' name='title' value='${title }' required="required" autofocus="autofocus"
-				class="form-control" style='width: 100%;'>
+			<label style="margin-bottom: 15px;">제목</label>
+			<input type='text' name='title' value='${title }' required="required" autofocus="autofocus" class="form-control"
+				style='width: 100%;'>
 		</div>
 		<div>
-			<label>내용</label>
+			<label style="margin-bottom: 15px;">내용</label>
 			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'>${content }</textarea>
 		</div>
 		<div>
-			<label>검색어</label> <input type='text' name='word' value="${word }" required="required" class="form-control"
-				style='width: 100%;'>
+			<label style="margin-bottom: 15px;">검색어</label>
+			<input type='text' name='word' value="${word }" required="required" class="form-control" style='width: 100%;'>
 		</div>
 
 		<div>
-			<label>패스워드</label> <input type='password' name='pwd' value='' required="required" class="form-control"
-				style='width: 50%;'>
+			<label style="margin-bottom: 15px;">패스워드</label>
+			<input type='password' name='pwd' value='' required="required" class="form-control" style='width: 50%;'>
 		</div>
 
 		<div class="content_body_bottom">
-			<button type="submit" class="btn btn-dark btn-sm">저장</button>
-			<button type="button" onclick="history.back();" class="btn btn-dark btn-sm">취소</button>
+			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">리뷰 수정</button>
+			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
+				style="background-color: #B8860B;">수정 취소</button>
 		</div>
 
-	</FORM>
-
-
+	</form>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 

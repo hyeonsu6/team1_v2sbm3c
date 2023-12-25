@@ -13,7 +13,7 @@
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
 
-<body>
+<body> 
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>[관리자 모드] 페스티벌 카테고리 수정</div>
