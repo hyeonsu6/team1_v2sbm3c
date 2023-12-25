@@ -134,79 +134,9 @@
 				</div>
 			</li>
 		</ul>
-
-<<<<<<< HEAD
     
-    <br><div class='menu_line'></div>
-    <form name='frm' id='frm' method='post' action='<%=request.getContextPath() %>/freview_reply/create.do'>
-      <div><span style="font-size: 20px; font-weight: bold;">댓글</span></div>
-      <div style='height: 150px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #B6BBC4; border-radius: 10px;'>
-                  
-        <c:if test="${isMember}">
-          <div style='margin-left: 10px; font-size: 20px; '>${id }</div>
-          <input type='text' name='reply' id='reply' placeholder='댓글을 남겨보세요'
-                 style='float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 90%; ' 
-                 onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';" >
-          <input type='text' name='passwd' id='passwd' placeholder='패스워드'
-                 style='float: center; margin: 0.1%; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;' 
-                 onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';" >
-          <button type='submit' class='btn btn-secondary btn-sm' style="float: right; margin-right: 6px; margin-top: 15px;">등록</button>
-        </c:if>
-        <c:if test="${not isMember }">
-          <div style='margin-top: 35px; color: #B6BBC4; text-align: center; font-size: 18px;'>로그인하여 댓글을 남겨보세요</div>
-        </c:if>
-      </div>
-    </form>
-      
-      <c:forEach var="replyVO" items="${list}">
-          <div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
-          <c:if test="${replyVO.id eq id}">
-            <div style='float: right;'>
-              <a href="">수정</a>
-              <span class='menu_divide'>│</span>
-              <a href="javascript:confirmDelete(${replyVO.replyno});">삭제</a>
-            </div>
-          </c:if>
-          <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; font-weight: bold;'>
-              ${replyVO.id}
-          </div>
-          <div style='float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; margin-left: 10px;'>
-              ${replyVO.reply}
-          </div>
-          <div style='color: #B6BBC4; font-size: 13px; float: center; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-right: 90px; margin-left: 10px;'>
-              ${replyVO.rdate}
-          </div>
-      </c:forEach>
-
-      <script>
-          function confirmDelete(replyno) {
-              var result = confirm("댓글을 삭제하시겠습니까?");
-              if (result) {
-                  // 사용자가 확인을 눌렀을 때의 동작
-                  console.log("--> reply delete 1");
-            	    deleteAndReload(replyno);
-              } else {
-                  // 사용자가 취소를 눌렀을 때의 동작
-                  window.close(); // 현재 창 닫기
-                  window.opener.location.reload(); // 부모 창 새로고침
-              }
-          }
-
-          function deleteAndReload(replyno) {
-              var xhr = new XMLHttpRequest();
-              xhr.open("POST", "../freview_reply/delete.do?replyno=" + replyno, true);
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4 && xhr.status === 200) {
-                      // 삭제가 완료된 후의 동작
-                      location.reload(); // 현재 페이지 새로고침
-                  }
-              };
-              xhr.send();
-          }
-      </script>
-=======
-		<div class='content_line'></div>
-		<form name='frm' id='frm' method='post' action='<%=request.getContextPath()%>/freview_reply/create.do'>
+    <br><div class='content_line'></div>
+		<form name='frm' id='frm' method='post' action='../freview_reply/create.do'>
 			<div style="margin: 20px 20px 5px 20px;">
 				<span style="color: #228B22; font-size: 19px;">리뷰 댓글</span>
 			</div>
@@ -238,7 +168,7 @@
 				<div style='float: right;'>
 					<a href="#" class="R_menu_link:link" style="color: #696969; font-size: 14px;">댓글 수정</a>
 					<span class='menu_divide'>│</span>
-					<a href="../freview_reply/delete.do?reviewno=${reviewno}" class="R_menu_link:link"
+					<a href="javascript:confirmDelete(${replyVO.replyno});"
 						style="color: #696969; font-size: 14px; margin-right: 15px;">댓글 삭제</a>
 				</div>
 			</c:if>
@@ -253,7 +183,34 @@
 				ㄴ ${replyVO.reply}</div>
 
 		</c:forEach>
->>>>>>> 2bb77df103745c673858bdc39072a526a8acb194
+    
+   <script>
+      function confirmDelete(replyno) {
+          var result = confirm("댓글을 삭제하시겠습니까?");
+          if (result) {
+              // 사용자가 확인을 눌렀을 때의 동작
+              console.log("--> reply delete 1");
+              deleteAndReload(replyno);
+          } else {
+              // 사용자가 취소를 눌렀을 때의 동작
+              window.close(); // 현재 창 닫기
+              window.opener.location.reload(); // 부모 창 새로고침
+          }
+      }
+
+      function deleteAndReload(replyno) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "../freview_reply/delete.do?replyno=" + replyno, true);
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // 삭제가 완료된 후의 동작
+                  location.reload(); // 현재 페이지 새로고침
+              }
+          };
+          xhr.send();
+      }
+  </script>
+
 	</fieldset>
 	<jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
