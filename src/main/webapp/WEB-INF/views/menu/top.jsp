@@ -13,15 +13,13 @@
 .top_menu_link:link, .top_menu_link:visited {
 	text-decoration: none;
 	color: #800000;
-	font-weight: bold;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 .top_menu_link:hover {
 	text-decoration: blink;
-	color: black;
-	font-weight: bold;
-	font-size: 14.5px;
+	color: #2F4F4F;
+	font-size: 16px;
 }
 
 .navbar-brand img {
@@ -61,11 +59,21 @@
 </script>
 
 <div class='container_main'>
-	<div class='top_img'>
-		<div class="top_menu_label">Festival Blog version 4.0</div>
+	<div style="text-align: right; margin-top: 10px; margin-right: 5px; margin-bottom: 5px;">
+		<!-- <span class="top_menu_label" style="margin-right: 1085px;">Festival Blog Version 4.0</span> -->
+		<c:choose>
+			<c:when test="${sessionScope.id == null}">
+				<a class="nav-link top_menu_link" href="/member/login.do" style="display: inline-block;">로그인 |</a>
+				<a class="nav-link top_menu_link" href="/member/create.do" style="display: inline-block;">회원가입</a>
+			</c:when>
+			<c:otherwise>
+				<a class="nav-link top_menu_link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
-	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #FFF5EE; border: 2px solid #8B4513;">
+	<nav class="navbar navbar-expand-md navbar-dark"
+		style="background-color: #FFF5EE; padding-left: 52px; border: 2px solid #8B4513; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
 				class='icon_n'>
@@ -140,17 +148,6 @@
 						</li>
 					</c:otherwise>
 				</c:choose>
-
-				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <c:choose>
-						<c:when test="${sessionScope.id == null}">
-							<a class="nav-link top_menu_link" href="/member/login.do">회원 로그인</a>
-						</c:when>
-						<c:otherwise>
-							<a class="nav-link top_menu_link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
-						</c:otherwise>
-					</c:choose>
-				</li>
 			</ul>
 		</div>
 	</nav>

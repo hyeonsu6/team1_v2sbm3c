@@ -26,6 +26,7 @@
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 </head>
+
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
@@ -98,24 +99,13 @@
 		<ul>
 			<li class="li_none">
 				<div style="width: 100%; word-break: break-all;">
-					<c:choose>
-						<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
-							<%-- /static/festival/storage/ --%>
-							<img src="/festival/storage/${file1saved }" style='width: 45%; float: left; margin-top: 0.5%; margin-right: 5%;'>
-						</c:when>
-						<c:otherwise>
-							<!-- 기본 이미지 출력 -->
-							<img src="/festival/images/none1.png" style='width: 35%; float: left; margin-top: 0.5%; margin-right: 5%;'>
-						</c:otherwise>
-					</c:choose>
 
-					<span style="font-size: 1.2em; margin-right: 5px;">🟡 ${title}</span>
-					<span style="font-size: 0.6em;">🔔 등록일: (${rdate.substring(0, 10)})</span>
+					<span style="font-size: 28px; margin-right: 5px;">🟡 ${title}</span>
+					<span style="font-size: 0.6em; margin-right: 50px;">| 🔔 등록일: (${rdate.substring(0, 10)})</span>
 					<!-- 좋아요 버튼 -->
 					<button id="likeBtn" class="btn btn-outline-warning btn-sm"
-						style="margin-left: 100px; padding: 5px 30px 5px 30px;">
-						🩵
-						<div id="totalLikeCount" style="color: black;"></div>
+						style="margin-bottom: 10px; padding: 5px 25px 5px 25px;">
+						<div id="totalLikeCount" style="color: black;">🩵 추천해요!</div>
 					</button>
 
 					<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -123,7 +113,14 @@
 						$(document)
 								.ready(
 										function() {
-											var contentsno = ${contentsno}; // 콘텐츠 번호는 적절하게 수정
+											var contentsno = $
+											{
+												contentsno
+											}
+											{
+												contentsno
+											}
+											; // 콘텐츠 번호는 적절하게 수정
 
 											// 페이지 로딩 시 좋아요 상태 확인 및 총 좋아요 개수 가져오기
 											getLikeCount();
@@ -150,18 +147,18 @@
 																	$(
 																			"#likeBtn")
 																			.text(
-																					"좋아요 취소");
+																					"🩵 추천해요 취소");
 																} else {
 																	// 좋아요가 안 눌려있는 상태
 																	$(
 																			"#likeBtn")
 																			.text(
-																					"좋아요");
+																					"🩵 추천해요");
 																}
 															},
 															error : function() {
 																console
-																		.error("좋아요 상태 확인 에러");
+																		.error("🩵 추천해요 상태 확인 에러");
 															}
 														});
 											}
@@ -183,7 +180,7 @@
 															},
 															error : function() {
 																console
-																		.error("좋아요 실행 에러");
+																		.error("🩵 추천해요 실행 에러");
 															}
 														});
 											}
@@ -203,27 +200,43 @@
 																$(
 																		"#totalLikeCount")
 																		.text(
-																				""
-																						+ data);
+																				"🩵 추천해요! ("
+																						+ data
+																						+ ")");
 															},
 															error : function() {
 																console
-																		.error("총 좋아요 개수 확인 에러");
+																		.error("총 🩵 추천해요 개수 확인 에러");
 															}
 														});
 											}
 										});
 					</script>
 					<br> <br>
-					<span style="font-size: 0.8em;">${content}</span>
+					<span style="font-size: 15px; margin-bottom: 10px;">${content}</span>
 				</div>
 			</li>
 
-			<c:if test="${youtube.trim().length() > 0 }">
-				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;"><br>
+			<c:choose>
+				<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
+					<%-- /static/festival/storage/ --%>
+					<div style="text-align: center; margin-bottom: 10px;">
+						<img src="/festival/storage/${file1saved }"
+							style='width: 35%; margin: 0 auto; margin-top: 0.5%; margin-right: 5%;'>
+					</div>
+
+				</c:when>
+				<c:otherwise>
+					<!-- 기본 이미지 출력 -->
+					<img src="/festival/images/none1.png"
+						style='width: 35%; display: block; margin: 0 auto; margin-top: 0.5%; margin-right: 5%;'>
+				</c:otherwise>
+			</c:choose>
+
+			<%-- <c:if test="${youtube.trim().length() > 0 }">
+				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
 					<div style="text-align: center;">${youtube }</div></li>
 			</c:if>
-
 			<c:if test="${map.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 10px;"><br>
 					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div></li>
@@ -234,7 +247,18 @@
 					<br> <br> <br> <br>
 					<span style="font-size: 0.4em;">검색어(키워드): ${word }</span>
 				</div>
-			</li>
+			</li> --%>
+
+			<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;"><c:if
+					test="${youtube.trim().length() > 0 }">
+					<div style="text-align: center; margin-right: 10px;">${youtube }
+						<c:if test="${map.trim().length() > 0 }">
+							<div style="text-align: center; margin-right: 10px;">${map }</div>
+						</c:if>
+					</div>
+				</c:if></li>
+
+			<li class="li_none" style="clear: both;"><br> <span style="font-size: 0.4em;">검색어(키워드): ${word }</span></li>
 
 			<li class="li_none">
 				<div>

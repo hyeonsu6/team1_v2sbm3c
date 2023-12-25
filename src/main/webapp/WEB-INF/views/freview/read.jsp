@@ -120,6 +120,7 @@
 			<li class="li_none" style="clear: both;"><br> <span style="font-size: 0.4em;">검색어(키워드): ${word }</span></li>
 
 			<li class="li_none">
+
 				<div>
 					<span style="font-size: 0.4em;">
 						<c:if test="${file1.trim().length() > 0 }">
@@ -145,10 +146,10 @@
 				style='height: 150px; float: center; margin: 0.5%; padding: 0.5%; border: 1px solid #8B4513; border-radius: 10px;'>
 				<c:if test="${isMember}">
 					<div style='font-size: 16px; margin-left: 20px;'>${id }</div>
-					<input type='text' name='reply' id='reply' placeholder='댓글을 남겨보세요' autofocus="autofocus"
+					<input type='text' name='reply' id='reply' placeholder='댓글을 남겨보세요'
 						style='float: center; font-size: 14px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 90%;'
 						onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';">
-					<input type='text' name='passwd' id='passwd' placeholder='패스워드' autofocus="autofocus"
+					<input type='text' name='passwd' id='passwd' placeholder='패스워드'
 						style='float: center; font-size: 13px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;'
 						onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';">
 					<button type='submit' class="btn btn-outline-warning btn-sm"

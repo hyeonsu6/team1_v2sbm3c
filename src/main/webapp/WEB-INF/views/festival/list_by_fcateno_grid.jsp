@@ -117,7 +117,7 @@
 	</div>
 	<a href="https://korean.visitkorea.or.kr/main/main.do" class="b_menu_link">정보 제공 : 한국관광공사</a>
 	<!-- 페이지 목록 출력 부분 시작 -->
-	<div class='bottom_menu'>${paging }</DIV>
+	<div class='bottom_menu'>${paging }</div>
 	<%-- 페이지 리스트 --%>
 	<!-- 페이지 목록 출력 부분 종료 -->
 	<jsp:include page="../menu/bottom.jsp" flush='false' />

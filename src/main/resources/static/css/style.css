@@ -1,5 +1,13 @@
 /* ver 2.0 */
 /* 모든 태그에 적용 */
+* {
+	margin: 0px;
+	padding: 0px;
+	color: black;
+	font-size: 17px;
+	font-family: 'WarhavenB', sans-serif; /* WarhavenB 폰트를 사용하도록 추가 */
+}
+
 @font-face {
 	font-family: 'WarhavenB';
 	src:
@@ -9,31 +17,20 @@
 	font-weight: 700;
 }
 
-* {
-	margin: 0px;
-	padding: 0px;
-	color: #555555;
-	font-size: 17px;
-	font-family: 'WarhavenB', sans-serif; /* WarhavenB 폰트를 사용하도록 추가 */
-}
-
 .container_main {
 	width: 90%;
 	margin: 10px auto;
 }
 
-/* 이미지 사용시 경로 지정
-  /css/images/top_image_1920.jpg
-  Spring Boot: /static/css/images/top_image_1920.jpg
-  */
 .top_img {
 	width: 100%;
 	height: 150px;
 	background-image: url('/css/images/top_img.png');
-	background-position: center; /* 이미지를 가운데로 정렬 */
-	margin-bottom: 2px;
+	background-position: center;
+	/* margin-bottom: 2px; */
 	text-align: center;
 	border: 2px solid #8B4513;
+	border-radius: 10px;
 }
 
 .top_menu_label {
@@ -43,7 +40,6 @@
 	color: #E09F3E;
 	text-align: left;
 	font-size: 10px;
-	font-weight: 800px;
 }
 
 .top_menu {
@@ -76,13 +72,6 @@
 	clear: both;
 }
 
-.content_line {
-	width: 100%;
-	border-bottom: 1px solid #2F4F4F;
-	margin: 10px 0; /* 상단과 하단만 지정 */
-	clear: both;
-}
-
 .left_menu {
 	width: 15%;
 	float: left;
@@ -91,6 +80,13 @@
 .content {
 	width: 90%;
 	margin: 10px auto;
+}
+
+.content_line {
+	width: 100%;
+	border-bottom: 1px solid #2F4F4F;
+	margin: 10px 0; /* 상단과 하단만 지정 */
+	clear: both;
 }
 
 .content_body {
@@ -345,6 +341,65 @@ a:active { /* A 태그를 클릭한 상태 */
 	color: white;
 }
 
+.b_menu_link:link { /* 방문전 상태 */
+	text-decoration: none;
+	color: #5A7696;
+	font-size: 15px;
+}
+
+.b_menu_link:visited { /* 방문후 상태 */
+	text-decoration: none;
+	color: #5A7696;
+	font-size: 15px;
+}
+
+.b_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #5A7696;
+	font-size: 15px;
+}
+
+.Q_menu_link:link { /* 방문전 상태 */
+	text-decoration: underline; /* 밑줄 삭제 */
+	color: #556B2F;
+	font-size: 15px;
+	text-align: center;
+}
+
+.Q_menu_link:visited { /* 방문후 상태 */
+	text-decoration: underline; /* 밑줄 삭제 */
+	color: #556B2F;
+	font-size: 15px;
+	text-align: center;
+}
+
+.Q_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #556B2F;
+	font-size: 17px;
+	text-align: center;
+}
+
+.R_menu_link:link { /* 방문전 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #A9A9A9;
+}
+
+.R_menu_link:visited { /* 방문후 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #A9A9A9;
+}
+
+.R_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
+}
+
+.R_menu_link:active { /* A 태그를 클릭한 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
+}
+
 .recom_link:link { /* 방문전 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
 	color: #555555;
@@ -418,7 +473,6 @@ a:active { /* A 태그를 클릭한 상태 */
 
 /* 기타 메시지 */
 .message {
-	font-weight: bold;
 	width: 70%;
 	border: none;
 	margin: 30px auto;
@@ -437,7 +491,6 @@ a:active { /* A 태그를 클릭한 상태 */
 
 /* 주의 메시지 */
 .span_alert {
-	font-weight: bold;
 	color: #ffffff;
 	background-color: rgba(0, 0, 200, 0.6);
 	padding: 2px;
@@ -446,7 +499,6 @@ a:active { /* A 태그를 클릭한 상태 */
 
 /* 경고 메시지 */
 .span_warning {
-	font-weight: bold;
 	color: #FFFFFF;
 	background-color: rgba(255, 0, 0, 0.6);
 	padding: 2px;
@@ -454,7 +506,6 @@ a:active { /* A 태그를 클릭한 상태 */
 }
 
 .msg_warning {
-	font-weight: bold;
 	color: #FFFFFF;
 	background-color: #FF4500;
 	padding: 3px;
@@ -466,7 +517,6 @@ a:active { /* A 태그를 클릭한 상태 */
 
 /* 처리 성공 메시지 */
 .span_success {
-	font-weight: bold;
 	background: url('/css/images/url5.png') left center no-repeat;
 	background-size: 10px;
 	padding-top: 0px;
@@ -476,7 +526,6 @@ a:active { /* A 태그를 클릭한 상태 */
 
 /* 처리 실패 메시지 */
 .span_fail {
-	font-weight: bold;
 	background: url('/css/images/url8.png') left center no-repeat;
 	background-size: 10px;
 	padding-top: 0px;
@@ -522,16 +571,19 @@ a:active { /* A 태그를 클릭한 상태 */
 	display: flex;
 	align-items: center; /* 이미지와 폼을 수직 가운데 정렬합니다. */
 	background-color: #73685d;
+	border-radius: 10px;
 }
 
 .login_image {
 	flex: 1; /* 이미지 영역이 화면 폭의 1/2를 차지하도록 합니다. */
 	text-align: center; /* 이미지 내용을 가운데 정렬합니다. */
 	max-width: 50%; /* 이미지의 최대 너비를 50%로 제한합니다. */
+	border-radius: 10px;
 }
 
 .login_image img {
 	width: 100%; /* 이미지 너비를 100%로 설정하여 부모 요소의 크기에 맞게 조절됩니다. */
+	border-radius: 10px;
 }
 
 .login_bottom_menu {
@@ -543,51 +595,6 @@ a:active { /* A 태그를 클릭한 상태 */
 	text-align: center;
 	width: 150px; /* 원하는 폭으로 조절하세요 */
 	height: 40px; /* 원하는 높이로 조절하세요 */
-}
-
-.b_menu_link:link { /* 방문전 상태 */
-	text-decoration: none;
-	color: #5A7696;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.b_menu_link:visited { /* 방문후 상태 */
-	text-decoration: none;
-	color: #5A7696;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.b_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	text-decoration: underline; /* 밑줄 출력 */
-	color: #5A7696;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.Q_menu_link:link { /* 방문전 상태 */
-	text-decoration: underline; /* 밑줄 삭제 */
-	color: #556B2F;
-	font-weight: bold;
-	font-size: 18px;
-	text-align: center;
-}
-
-.Q_menu_link:visited { /* 방문후 상태 */
-	text-decoration: underline; /* 밑줄 삭제 */
-	color: #556B2F;
-	font-weight: bold;
-	font-size: 18px;
-	text-align: center;
-}
-
-.Q_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	text-decoration: underline; /* 밑줄 출력 */
-	color: #556B2F;
-	font-weight: bold;
-	font-size: 19px;
-	text-align: center;
 }
 
 body {
@@ -666,24 +673,4 @@ a {
 	td {
 		border-bottom: 1px solid #e5e5e5;
 	}
-}
-
-.R_menu_link:link { /* 방문전 상태 */
-	text-decoration: none; /* 밑줄 삭제 */
-	color: #A9A9A9;
-}
-
-.R_menu_link:visited { /* 방문후 상태 */
-	text-decoration: none; /* 밑줄 삭제 */
-	color: #A9A9A9;
-}
-
-.R_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
-	text-decoration: underline; /* 밑줄 출력 */
-	color: #1E90FF;
-}
-
-.R_menu_link:active { /* A 태그를 클릭한 상태 */
-	text-decoration: underline; /* 밑줄 출력 */
-	color: #1E90FF;
 }
