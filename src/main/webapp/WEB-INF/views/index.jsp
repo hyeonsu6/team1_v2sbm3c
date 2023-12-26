@@ -38,16 +38,42 @@ th {
 }
 
 .colToday {
-    text-decoration: underline;
-    font-size: 22px;
-    color: #006400;
+	text-decoration: underline;
+	font-size: 22px;
+	color: #006400;
+	border: 2px solid #800000;
+}
+
+.index_img {
+	max-width: 100%;
+	max-height: 50%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 </style>
 </head>
 
 <body>
-	<div class='top_img' style="width: 90%; margin-left: 75px; margin-bottom: 0px;"></div>
 	<c:import url="/menu/top.do" />
+
+	<script>
+    const images = ["/images/index_img1.jpg", "/images/index_img2.png", "/images/index_img3.png"];
+    let currentImageIndex = 0;
+
+    function changeImage() {
+        const imgElement = document.getElementById("slideshow");
+        imgElement.src = images[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+
+    setInterval(changeImage, 3000); // 3초마다 changeImage 함수 호출
+	</script>
+
+	<div style="text-align: center;">
+		<img src="/images/index_img.jpg" alt="메인 이미지" class="index_img" id="slideshow">
+	</div>
+
 	<script>
         $(function(){
             var today = new Date();
@@ -106,8 +132,6 @@ th {
                 }
             }
             buildCalendar();
-
-
         })
     </script>
 </head>

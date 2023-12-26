@@ -73,7 +73,7 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFFAFA; padding-left: 52px; border-top : 2px solid #2F4F4F; border-bottom : 2px solid #2F4F4F; border-radius : 10px;">
+		style="background-color: #FFF5EE; padding-left: 52px; border-top: 2px solid #2F4F4F; border-bottom: 2px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
 				class='icon_n'>
@@ -122,7 +122,7 @@
 								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
 								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 탈퇴</a>
 								<a class="dropdown-item" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
-                <a class="dropdown-item" href="/freview_reply/list_by_id.do?id=${sessionScope.id}">[회원] 내가 쓴 댓글</a>
+								<a class="dropdown-item" href="/freview_reply/list_by_id.do?id=${sessionScope.id}">[회원] 내가 쓴 댓글</a>
 							</c:otherwise>
 						</c:choose>
 					</div>
