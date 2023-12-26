@@ -94,7 +94,7 @@ th {
             })
 
 
-            function buildCalendar() {
+            function buildCalendar() {   
                 
                 nowYear = today.getFullYear();
                 nowMonth = today.getMonth();
