@@ -58,7 +58,7 @@ th {
 	<c:import url="/menu/top.do" />
 
 	<script>
-    const images = ["/images/index_img1.jpg", "/images/index_img2.png", "/images/index_img3.png"];
+    const images = ["/images/index_img1.png", "/images/index_img2.png", "/images/index_img3.png", "/images/index_img4.png"];
     let currentImageIndex = 0;
 
     function changeImage() {
@@ -71,7 +71,7 @@ th {
 	</script>
 
 	<div style="text-align: center;">
-		<img src="/images/index_img.jpg" alt="메인 이미지" class="index_img" id="slideshow">
+		<img src="/images/index_img1.png" alt="메인 이미지" class="index_img" id="slideshow">
 	</div>
 
 	<script>
