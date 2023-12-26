@@ -73,7 +73,7 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding-left: 52px; border: 2px solid #8B4513; border-radius: 10px;">
+		style="background-color: #FFFAFA; padding-left: 52px; border-top : 2px solid #2F4F4F; border-bottom : 2px solid #2F4F4F; border-radius : 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
 				class='icon_n'>

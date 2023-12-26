@@ -28,6 +28,7 @@ th, td {
 	border: 1px solid #800000;
 	padding: 8px;
 	text-align: center;
+	color: #696969;
 }
 
 th {
@@ -37,8 +38,9 @@ th {
 }
 
 .colToday {
-    background-color: #FAEBD7; 
-    border: 1px solid #800000;
+    text-decoration: underline;
+    font-size: 22px;
+    color: #006400;
 }
 </style>
 </head>
@@ -108,7 +110,6 @@ th {
 
         })
     </script>
-
 </head>
 <body>
 	<table id="calendar" style="margin-top: 20px;">
@@ -136,4 +137,5 @@ th {
 		</tbody>
 	</table>
 	<jsp:include page="./menu/bottom.jsp" flush='false' />
-</body></html>
+</body>
+</html>
