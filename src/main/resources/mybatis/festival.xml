@@ -4,15 +4,18 @@
 <mapper namespace="dev.mvc.festival.FestivalDAOInter">
 	<!-- 등록한 레코드 갯수 1 리턴, #{adminno}: public int getAdminno() 호출됨 -->
 	<insert id="create" parameterType="dev.mvc.festival.FestivalVO">
-		INSERT INTO festival(contentsno, adminno, fcateno, title, content, passwd, word,
+		INSERT INTO festival(contentsno, adminno, fcateno, title, content,
+		passwd, word,
 		file1, file1saved, thumb1, size1, rdate)
-		VALUES(contents_seq.nextval, #{adminno}, #{fcateno}, #{title}, #{content}, #{passwd}, #{word},
+		VALUES(contents_seq.nextval, #{adminno}, #{fcateno},
+		#{title}, #{content}, #{passwd}, #{word},
 		#{file1}, #{file1saved}, #{thumb1}, #{size1}, sysdate)
 	</insert>
 
 	<!-- 모든 카테고리의 등록된 글목록 -->
 	<select id="list_all" resultType="dev.mvc.festival.FestivalVO">
-		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, passwd, word, rdate,
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt,
+		replycnt, passwd, word, rdate,
 		file1, file1saved, thumb1, size1
 		FROM festival
 		ORDER BY contentsno DESC
@@ -20,7 +23,8 @@
 
 	<!-- 특정 카테고리의 등록된 글목록 -->
 	<select id="list_by_fcateno" resultType="dev.mvc.festival.FestivalVO" parameterType="int">
-		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate,
+		SELECT contentsno,
+		adminno, fcateno, title, content, recom, cnt, replycnt, rdate,
 		file1, file1saved, thumb1, size1
 		FROM festival
 		WHERE fcateno = #{fcateno}
@@ -29,8 +33,10 @@
 
 	<!-- 일반적인 조회 -->
 	<select id="read" resultType="dev.mvc.festival.FestivalVO" parameterType="int">
-		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, passwd, word, rdate,
-		file1, file1saved, thumb1, size1, map, youtube
+		SELECT contentsno, adminno,
+		fcateno, title, content, recom, cnt, replycnt, passwd, word, rdate,
+		file1, file1saved, thumb1, size1, map,
+		youtube
 		FROM festival
 		WHERE contentsno = #{contentsno}
 	</select>
@@ -42,13 +48,15 @@
 
 	<!-- Youtube 등록, 수정, 삭제, HashMap: VO 클래스는 변수가 너무 많아서 메모리 낭비가 발생함으로, 보통 3개 이하의 적은 변수만 전달하는 경우 HashMap 사용 권장 -->
 	<update id="youtube" parameterType="HashMap">
-		UPDATE festival SET youtube=#{youtube} WHERE contentsno=#{contentsno}
+		UPDATE festival SET youtube=#{youtube} WHERE
+		contentsno=#{contentsno}
 	</update>
 
 	<!-- 카테고리별 검색 목록 -->
 	<select id="list_by_fcateno_search" resultType="dev.mvc.festival.FestivalVO" parameterType="HashMap">
 		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, word, rdate,
-		file1, file1saved, thumb1, size1, map, youtube
+		file1, file1saved,
+		thumb1, size1, map, youtube
 		FROM festival
 		<choose>
 			<when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
@@ -56,7 +64,8 @@
 			</when>
 			<otherwise> <!-- 검색하는 경우 -->
 				WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%'
-				OR UPPER(content) LIKE '%' || UPPER(#{word}) || '%'
+				OR UPPER(content) LIKE '%' ||
+				UPPER(#{word}) || '%'
 				OR UPPER(word) LIKE '%' || UPPER(#{word}) || '%')
 			</otherwise>
 		</choose>
@@ -73,7 +82,8 @@
 			</when>
 			<otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
 				WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%'
-				OR UPPER(content) LIKE '%' || UPPER(#{word}) || '%'
+				OR UPPER(content) LIKE '%' ||
+				UPPER(#{word}) || '%'
 				OR UPPER(word) LIKE '%' || UPPER(#{word}) || '%')
 			</otherwise>
 		</choose>
@@ -85,10 +95,12 @@
 		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
 		size1, map, youtube, r
 		FROM (
-		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt,
+		rdate, file1, file1saved, thumb1,
 		size1, map, youtube, rownum as r
 		FROM (
-		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
+		SELECT contentsno, adminno, fcateno,
+		title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
 		size1, map, youtube
 		FROM festival
 		<choose>
@@ -97,7 +109,8 @@
 			</when>
 			<otherwise>
 				WHERE fcateno=#{fcateno} AND (UPPER(title) LIKE '%' || UPPER(#{word}) || '%'
-				OR UPPER(content) LIKE '%' || UPPER(#{word}) || '%'
+				OR UPPER(content)
+				LIKE '%' || UPPER(#{word}) || '%'
 				OR UPPER(word) LIKE '%' || UPPER(#{word}) || '%')
 			</otherwise>
 		</choose>
@@ -113,13 +126,15 @@
 	<select id="password_check" resultType="int" parameterType="HashMap">
 		SELECT COUNT(*) as cnt
 		FROM festival
-		WHERE contentsno = #{contentsno} AND passwd=#{passwd}
+		WHERE
+		contentsno = #{contentsno} AND passwd=#{passwd}
 	</select>
 
 	<!-- 글 수정 -->
 	<update id="update_text" parameterType="dev.mvc.festival.FestivalVO">
 		UPDATE festival
-		SET title=#{title}, content=#{content}, word=#{word}
+		SET title=#{title}, content=#{content},
+		word=#{word}
 		WHERE contentsno = #{contentsno}
 	</update>
 
@@ -127,20 +142,24 @@
 	<!-- 파일 수정 -->
 	<update id="update_file" parameterType="dev.mvc.festival.FestivalVO">
 		UPDATE festival
-		SET file1=#{file1}, file1saved=#{file1saved}, thumb1=#{thumb1}, size1=#{size1}
+		SET file1=#{file1}, file1saved=#{file1saved},
+		thumb1=#{thumb1}, size1=#{size1}
 		WHERE contentsno = #{contentsno}
 	</update>
 
+	<!-- 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM festival
-		WHERE contentsno=#{contentsno}
+		WHERE
+		contentsno=#{contentsno}
 	</delete>
 
 	<!-- 특정 카테고리에 속한 레코드 갯수를 리턴 -->
-	<select id="count_by_fcateno" resultType="int" parameterType="int">
+	<select id="count_by_fcateno" parameterType="int">
 		SELECT COUNT(*) as cnt
 		FROM festival
-		WHERE fcateno=#{fcateno}
+		WHERE
+		fcateno=#{fcateno}
 	</select>
 
 	<!-- 특정 카테고리에 속한 모든 레코드 삭제 -->
@@ -149,8 +168,6 @@
 		WHERE fcateno=#{fcateno}
 	</delete>
 
-	<!-- ============================================================== -->	
-	
 </mapper> 
 
 

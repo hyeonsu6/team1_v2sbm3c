@@ -51,26 +51,26 @@
 				<td>${recommendVO.memberno}</td>
 				<td>
 					<c:choose>
-						<c:when test="${recommendVO.fcateno eq 1}">
+						<c:when test="${recommendVO.fcateno eq 2}">
 							<a href="../festival/list_by_fcateno.do?fcateno=2" style="display: block;">음식(국내/해외) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 2}">
+						<c:when test="${recommendVO.fcateno eq 3}">
 							<a href="../festival/list_by_fcateno.do?fcateno=3" style="display: block;">계절(겨울) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 3}">
+						<c:when test="${recommendVO.fcateno eq 4}">
 							<a href="../festival/list_by_fcateno.do?fcateno=4" style="display: block;">문화관광(지역) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 4}">
+						<c:when test="${recommendVO.fcateno eq 5}">
 							<a href="../festival/list_by_fcateno.do?fcateno=5" style="display: block;">예술(춤/무용/전통공연) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 5}">
+						<c:when test="${recommendVO.fcateno eq 6}">
 							<a href="../festival/list_by_fcateno.do?fcateno=6" style="display: block;">체험(과학/스포츠) 페스티벌</a>
+						</c:when>
+						<c:when test="${recommendVO.fcateno eq 8}">
+							<a href="../festival/list_by_fcateno.do?fcateno=8" style="display: block;">뮤직(재즈, K-POP) 페스티벌</a>
 						</c:when>
 						<c:when test="${recommendVO.fcateno eq 7}">
 							<a href="../festival/list_by_fcateno.do?fcateno=7" style="display: block;">인생샷(꽃/빛) 페스티벌</a>
-						</c:when>
-						<c:when test="${recommendVO.fcateno eq 6}">
-							<a href="../festival/list_by_fcateno.do?fcateno=8" style="display: block;">뮤직(재즈, K-POP) 페스티벌</a>
 						</c:when>
 					</c:choose>
 				</td>
@@ -78,11 +78,6 @@
 				<td>${recommendVO.rdate.substring(0, 16)}</td>
 				<td></td>
 
-				<%-- <td class="td_bs">
-					<a href="./delete.do?recommendno=${recommendno}" title="삭제">
-						<img src="/frecommend/images/delete.png" class="icon">
-					</a>
-				</td> --%>
 			</tr>
 		</c:forEach>
 		</tbody>

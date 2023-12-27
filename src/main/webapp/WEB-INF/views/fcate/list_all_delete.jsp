@@ -22,7 +22,7 @@
 		style='margin: 20px auto; padding: 10px 0px 10px 0px; background-color: #FFFAFA; width: 100%; text-align: center;'>
 
 		<form name='frm_delete' id='frm_delete' method='post' action='./delete.do'>
-			<input type="hidden" name="fcateno" value="${param.fcateno }">
+			<input type="hidden" name="fcateno" value="${fcateVO.fcateno }">
 			<%-- 삭제할 카테고리 번호 --%>
 			<c:choose>
 				<c:when test="${count_by_fcateno >= 1 }">

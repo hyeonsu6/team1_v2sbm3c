@@ -31,10 +31,10 @@ public class FcateCont {
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc") // "dev.mvc.admin.AdminProc"라고 명명된 클래스
 	private AdminProcInter adminProc; // AdminProcInter를 구현한 AdminProc 클래스의 객체를 자동으로 생성하여 할당
-	
+
 	@Autowired
-	  @Qualifier("dev.mvc.festival.FestivalProc") // @Component("dev.mvc.festival.FestivalProc")
-	  private FestivalProcInter festivalProc;
+	@Qualifier("dev.mvc.festival.FestivalProc") // @Component("dev.mvc.festival.FestivalProc")
+	private FestivalProcInter festivalProc;
 
 	public FcateCont() {
 		System.out.println("-> FcateCont created.");
@@ -104,14 +104,14 @@ public class FcateCont {
 	public ModelAndView list_all_member() {
 		ModelAndView mav = new ModelAndView();
 
-			mav.setViewName("/fcate/list_all_member"); // /WEB-INF/views/fcate/list_all_member.jsp
+		mav.setViewName("/fcate/list_all_member"); // /WEB-INF/views/fcate/list_all_member.jsp
 
-			ArrayList<FcateVO> list = this.fcateProc.list_all_member();
-			mav.addObject("list", list);
+		ArrayList<FcateVO> list = this.fcateProc.list_all_member();
+		mav.addObject("list", list);
 
 		return mav;
 	}
-	
+
 	/**
 	 * 조회 http://localhost:9093/fcate/read.do?fcateno=1
 	 * 
@@ -228,8 +228,6 @@ public class FcateCont {
 	 */
 	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.POST)
 	public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
-		// System.out.println("-> fcateno: " + fcateVO.getCateno());
-		// System.out.println("-> name: " + fcateVO.getName());
 
 		ModelAndView mav = new ModelAndView();
 
@@ -253,14 +251,14 @@ public class FcateCont {
 
 			this.festivalProc.delete_by_fcateno(fcateno); // 자식 레코드 삭제
 
-			int cnt = this.fcateProc.delete(fcateno); // 카테고리 삭제
+			int cnt = this.festivalProc.delete(fcateno); // 카테고리 삭제
 
 			if (cnt == 1) {
 				mav.setViewName("redirect:/fcate/list_all.do"); // 자동 주소 이동, Spring 재호출
 
 			} else {
 				mav.addObject("code", "delete_fail");
-				mav.setViewName("/fcate/msg"); // /WEB-INF/views/fcate/msg.jsp
+				mav.setViewName("/fcate/msg"); // /WEB-INF/views/topic/msg.jsp
 			}
 
 			mav.addObject("cnt", cnt);
@@ -271,7 +269,7 @@ public class FcateCont {
 
 		return mav;
 	}
-	 
+
 	/**
 	 * 우선 순위 높임, 10 등 -> 1 등,
 	 * http://localhost:9093/fcate/update_seqno_forward.do?fcateno=1

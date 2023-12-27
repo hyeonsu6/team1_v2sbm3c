@@ -34,7 +34,6 @@ CREATE SEQUENCE FCATE_SEQ
 -- INSERT INTO FCATE(FCATEno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '테마별', 0, sysdate); 
 -- INSERT INTO FCATE(FCATEno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '지역별', 0, sysdate); 
 
-INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '추천 테스트', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '지역 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '계절(겨울) 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '문화관광 페스티벌', 0, sysdate); 
@@ -42,6 +41,7 @@ INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '예술(�
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '체험 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '인생샷(꽃/빛) 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '뮤직(재즈, K-POP) 페스티벌', 0, sysdate); 
+INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '추천 테스트', 0, sysdate); 
 
 ALTER TABLE FCATE MODIFY (NAME VARCHAR2(100));
 COMMIT;
@@ -58,7 +58,7 @@ SELECT fcateno, name, cnt, rdate FROM FCATE WHERE fcateno=1;
 UPDATE FCATE SET name='전라도', cnt=1 WHERE FCATEno=1;
 
 -- DELETE
-DELETE FROM FCATE WHERE fcateno=7;
+DELETE FROM FCATE WHERE fcateno=1;
 DELETE FROM FCATE WHERE fcateno >= 10;
 
 COMMIT;
