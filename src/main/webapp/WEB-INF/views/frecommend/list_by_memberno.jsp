@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>추천 페스티벌</div>
- 
+
 	<aside class="aside_right">
 		<button type="submit" class="btn btn-outline-warning btn-sm" onclick="javascript:location.reload();"
 			style="background-color: #8B0000;">🔃 새로고침</button>
@@ -66,15 +66,12 @@
 						<c:when test="${recommendVO.fcateno eq 5}">
 							<a href="../festival/list_by_fcateno.do?fcateno=6" style="display: block;">체험(과학/스포츠) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 6}">
+						<c:when test="${recommendVO.fcateno eq 7}">
 							<a href="../festival/list_by_fcateno.do?fcateno=7" style="display: block;">인생샷(꽃/빛) 페스티벌</a>
 						</c:when>
-						<c:when test="${recommendVO.fcateno eq 7}">
+						<c:when test="${recommendVO.fcateno eq 6}">
 							<a href="../festival/list_by_fcateno.do?fcateno=8" style="display: block;">뮤직(재즈, K-POP) 페스티벌</a>
 						</c:when>
-						<c:otherwise>
-							<a href="./read.do?recommendno=${recommendno}" style="display: block;">${recommendVO.fcateno}</a>
-						</c:otherwise>
 					</c:choose>
 				</td>
 
