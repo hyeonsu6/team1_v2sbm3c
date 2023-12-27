@@ -43,14 +43,14 @@ public class FreviewCont {
 	@Autowired
 	@Qualifier("dev.mvc.member.MemberProc") // @Component("dev.mvc.member.MemberProc")
 	private MemberProcInter memberProc;
-	
-  @Autowired
-  @Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
-  private AdminProcInter adminProc;
-  
-  @Autowired
-  @Qualifier("dev.mvc.freview_reply.Freview_replyProc")
-  private Freview_replyProcInter freview_replyProc;
+
+	@Autowired
+	@Qualifier("dev.mvc.admin.AdminProc") // @Component("dev.mvc.admin.AdminProc")
+	private AdminProcInter adminProc;
+
+	@Autowired
+	@Qualifier("dev.mvc.freview_reply.Freview_replyProc")
+	private Freview_replyProcInter freview_replyProc;
 
 	public FreviewCont() {
 		System.out.println("-> FreviewCont created.");
@@ -80,13 +80,13 @@ public class FreviewCont {
 	@RequestMapping(value = "/freview/create.do", method = RequestMethod.GET)
 	public ModelAndView create(HttpSession session, int contentsno) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		if (memberProc.isMember(session)) {
 			FestivalVO festivalVO = this.festivalProc.read(contentsno); // create.jsp에 카테고리 정보를 출력하기위한 목적
 			mav.addObject("festivalVO", festivalVO);
 
 			mav.setViewName("/freview/create"); // /webapp/WEB-INF/views/freview/create.jsp
-			
+
 		} else {
 			mav.setViewName("/member/login_need"); // /WEB-INF/views/admin/login_need.jsp
 
@@ -290,7 +290,8 @@ public class FreviewCont {
 	 * @return
 	 */
 	@RequestMapping(value = "/freview/read.do", method = RequestMethod.GET)
-	public ModelAndView read(HttpSession session, int reviewno) { // int reviewno = (int)request.getParameter("reviewno");
+	public ModelAndView read(HttpSession session, int reviewno) { // int reviewno =
+																	// (int)request.getParameter("reviewno");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/freview/read"); // /WEB-INF/views/freview/read.jsp
 
@@ -316,41 +317,41 @@ public class FreviewCont {
 
 		FestivalVO festivalVO = this.festivalProc.read(freviewVO.getContentsno());
 		mav.addObject("festivalVO", festivalVO);
-		
+
 		String memberid = "";
 		// 회원 로그인 -> 댓글 등록 가능
-    if(memberProc.isMember(session)) { // 로그인 한 경우
-      boolean isMember = memberProc.isMember(session);
-      mav.addObject("isMember", isMember);
-      
-      int memberno = (int) session.getAttribute("memberno");
-      
-      MemberVO memberVO = this.memberProc.read(memberno);
-      memberid = memberVO.getId();
-      
-      mav.addObject("id", memberVO.getId());
-    }
-    
-    // 등록된 댓글
-    ArrayList<Freview_replyVO> list = this.freview_replyProc.list_by_reviewno(reviewno);
-    
-    for (Freview_replyVO replyVO : list) {   
-      String id = replyVO.getId();
-      String reply = replyVO.getReply();
-      String rdate = replyVO.getRdate();
-      
-      id = Tool.convertChar(id);
-      reply = Tool.convertChar(reply); // 특수 문자 처리
-      rdate = Tool.convertChar(rdate);
-      
-      replyVO.setId(id);
-      replyVO.setReply(reply);
-      replyVO.setRdate(rdate);
-      
-      //mav.addObject("replyVO", replyVO);
-    }
-    mav.addObject("list", list);
-    
+		if (memberProc.isMember(session)) { // 로그인 한 경우
+			boolean isMember = memberProc.isMember(session);
+			mav.addObject("isMember", isMember);
+
+			int memberno = (int) session.getAttribute("memberno");
+
+			MemberVO memberVO = this.memberProc.read(memberno);
+			memberid = memberVO.getId();
+
+			mav.addObject("id", memberVO.getId());
+		}
+
+		// 등록된 댓글
+		ArrayList<Freview_replyVO> list = this.freview_replyProc.list_by_reviewno(reviewno);
+
+		for (Freview_replyVO replyVO : list) {
+			String id = replyVO.getId();
+			String reply = replyVO.getReply();
+			String rdate = replyVO.getRdate();
+
+			id = Tool.convertChar(id);
+			reply = Tool.convertChar(reply); // 특수 문자 처리
+			rdate = Tool.convertChar(rdate);
+
+			replyVO.setId(id);
+			replyVO.setReply(reply);
+			replyVO.setRdate(rdate);
+
+			// mav.addObject("replyVO", replyVO);
+		}
+		mav.addObject("list", list);
+
 		return mav;
 	}
 
@@ -575,7 +576,7 @@ public class FreviewCont {
 
 		return mav; // forward
 	}
-	
+
 	/**
 	 * 파일 삭제 폼 http://localhost:9093/freview/delete.do?reviewno=1
 	 * 
@@ -593,6 +594,8 @@ public class FreviewCont {
 			mav.addObject("festivalVO", festivalVO);
 
 			mav.setViewName("/freview/delete"); // /WEB-INF/views/freview/delete.jsp
+
+			
 
 		} else {
 			mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
@@ -619,7 +622,6 @@ public class FreviewCont {
 
 		String file1saved = freviewVO.getFile1saved();
 		String thumb1 = freviewVO.getThumb1();
-		
 
 		String uploadDir = Freview.getUploadDir();
 		Tool.deleteFile(uploadDir, file1saved); // 실제 저장된 파일삭제

@@ -24,7 +24,7 @@ COMMENT ON COLUMN FCATE.VISIBLE is '출력 모드';
 DROP SEQUENCE FCATE_SEQ;
 
 CREATE SEQUENCE FCATE_SEQ
-  START WITH 1         -- 시작 번호
+  START WITH 1        -- 시작 번호
   INCREMENT BY 1       -- 증가값
   MAXVALUE 9999999999  -- 최대값: 9999999999 --> NUMBER(10) 대응
   CACHE 2              -- 2번은 메모리에서만 계산

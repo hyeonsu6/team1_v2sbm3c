@@ -708,7 +708,7 @@ public class FestivalCont {
 	public ModelAndView delete(HttpSession session, int contentsno) {
 		ModelAndView mav = new ModelAndView();
 
-		if (adminProc.isAdmin(session)) { // 관리자로 로그인한경우
+		if (adminProc.isAdmin(session) == true) { // 관리자로 로그인한경우
 			FestivalVO festivalVO = this.festivalProc.read(contentsno);
 			mav.addObject("festivalVO", festivalVO);
 
@@ -716,6 +716,10 @@ public class FestivalCont {
 			mav.addObject("fcateVO", fcateVO);
 
 			mav.setViewName("/festival/delete"); // /WEB-INF/views/festival/delete.jsp
+
+			// 특정 컨텐츠에 속한 리뷰 레코드 갯수를 리턴
+			int count_by_contentsno = this.freviewProc.count_by_contentsno(contentsno);
+			mav.addObject("count_by_contentsno", count_by_contentsno);
 
 		} else {
 			mav.addObject("url", "/admin/login_need"); // /WEB-INF/views/admin/login_need.jsp

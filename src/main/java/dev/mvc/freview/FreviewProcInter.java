@@ -113,7 +113,15 @@ public interface FreviewProcInter {
 	 * @return 삭제된 레코드 갯수
 	 */
 	public int delete(int reviewno);
-	
+
+	/**
+	 * FK contentsno 값이 같은 레코드 갯수 산출
+	 * 
+	 * @param contentsno
+	 * @return
+	 */
+	public int count_by_contentsno(int contentsno);
+
 	/**
 	 * 특정 카테고리에 속한 모든 레코드 삭제
 	 * 

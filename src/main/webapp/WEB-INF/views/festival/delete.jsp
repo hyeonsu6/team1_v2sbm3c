@@ -23,7 +23,7 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<div class='title_line'>${fcateVO.name }>${title }>콘텐츠 삭제</div>
+	<div class='title_line'>${fcateVO.name }>${title }>콘텐츠삭제</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>

@@ -261,6 +261,12 @@ public class FreviewProc implements FreviewProcInter {
 		int cnt = this.freviewDAO.delete(reviewno);
 		return cnt;
 	}
+	
+	@Override
+	public int count_by_contentsno(int contentsno) {
+		int cnt = this.freviewDAO.count_by_contentsno(contentsno);
+		return cnt;
+	}
 
 	@Override
 	public int delete_by_contentsno(int contentsno) {

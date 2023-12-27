@@ -228,6 +228,8 @@ public class FcateCont {
 	 */
 	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.POST)
 	public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
+		// System.out.println("-> fcateno: " + fcateVO.getCateno());
+		// System.out.println("-> name: " + fcateVO.getName());
 
 		ModelAndView mav = new ModelAndView();
 
@@ -251,14 +253,14 @@ public class FcateCont {
 
 			this.festivalProc.delete_by_fcateno(fcateno); // 자식 레코드 삭제
 
-			int cnt = this.festivalProc.delete(fcateno); // 카테고리 삭제
+			int cnt = this.fcateProc.delete(fcateno); // 카테고리 삭제
 
 			if (cnt == 1) {
 				mav.setViewName("redirect:/fcate/list_all.do"); // 자동 주소 이동, Spring 재호출
 
 			} else {
 				mav.addObject("code", "delete_fail");
-				mav.setViewName("/fcate/msg"); // /WEB-INF/views/topic/msg.jsp
+				mav.setViewName("/fcate/msg"); // /WEB-INF/views/fcate/msg.jsp
 			}
 
 			mav.addObject("cnt", cnt);
