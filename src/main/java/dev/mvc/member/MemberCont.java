@@ -850,7 +850,7 @@ public class MemberCont {
       MailTool mailTool = new MailTool();
       String from = "a94365196@gmail.com"; // 관리자 메일 주소
       String title = "Festival Blog 비밀번호";
-      String content = mname + "님의 등록된 비밀번호는 [" + passwd + "] 입니다.";
+      String content = mname + "님의 등록된 비밀번호는 [" + passwd + "] 입니다." + "\n" + "비밀번호를 변경해주세요.";
       int cnt = mailTool.send(email, from, title, content); // 메일 전송
       
       if(cnt == 1) {
