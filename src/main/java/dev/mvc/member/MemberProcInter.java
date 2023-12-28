@@ -44,6 +44,23 @@ public interface MemberProcInter {
   public MemberVO readById(String id);
   
   /**
+   * 회원 정보 찾기
+   * @param name
+   * @param tel
+   * @return
+   */
+  public MemberVO findId(HashMap<String, Object> map);
+  
+  /**
+   * 회원 정보 찾기
+   * @param name
+   * @param tel
+   * @param id
+   * @return
+   */
+  public MemberVO findPasswd(HashMap<String, Object> map);
+  
+  /**
    * 로그인된 회원 계정인지 검사합니다.
    * @param session
    * @return true: 사용자

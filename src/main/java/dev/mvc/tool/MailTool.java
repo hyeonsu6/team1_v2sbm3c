@@ -24,7 +24,8 @@ public class MailTool {
    * @param title 제목
    * @param content 전송 내용
    */
-  public void send(String receiver, String from, String title, String content) {
+  public int send(String receiver, String from, String title, String content) {
+    int cnt = 0;
     Properties props = new Properties();
     props.put("mail.smtp.host", "smtp.gmail.com");
     props.put("mail.smtp.port", "587");
@@ -49,8 +50,11 @@ public class MailTool {
         message.setContent(content, "text/html; charset=utf-8");
 
         Transport.send(message);
+        cnt = 1;
+        return cnt;
     } catch (Exception e) {
         e.printStackTrace();
+        return cnt;
     }    
   }
   

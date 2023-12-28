@@ -110,8 +110,8 @@
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
 								<a class="dropdown-item" href="/member/create.do">회원 가입</a>
-								<a class="dropdown-item" href="#">아이디 찾기</a>
-								<a class="dropdown-item" href="#">비밀번호 찾기</a>
+								<a class="dropdown-item" href="/member/findId.do">아이디 찾기</a>
+								<a class="dropdown-item" href="/member/findPasswd.do">비밀번호 찾기</a>
 							</c:when>
 							<c:otherwise>
 								<a class="dropdown-item" href="javascript: chatbot();">[문의] 챗봇</a>

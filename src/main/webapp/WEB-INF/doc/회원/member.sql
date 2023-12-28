@@ -112,6 +112,10 @@ WHERE memberno = 1;
 SELECT memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade
 FROM member
 WHERE id = 'user1@gmail.com';
+
+SELECT memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade
+FROM member
+WHERE mname = '왕눈이' AND tel = '000-0000-0000';
     
 4. 수정
 UPDATE member 

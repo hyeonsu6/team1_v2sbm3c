@@ -49,6 +49,23 @@ public interface MemberDAOInter {
    * @return
    */
   public MemberVO readById(String id);
+  
+  /**
+   * 회원 정보 찾기
+   * @param name
+   * @param tel
+   * @return
+   */
+  public MemberVO findId(HashMap<String, Object> map);
+  
+  /**
+   * 회원 정보 찾기
+   * @param name
+   * @param tel
+   * @param id
+   * @return
+   */
+  public MemberVO findPasswd(HashMap<String, Object> map);
 
   /**
    * 수정 처리

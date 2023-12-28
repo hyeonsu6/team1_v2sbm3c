@@ -50,6 +50,18 @@ public class MemberProc implements MemberProcInter {
 		MemberVO memberVO = this.memberDAO.readById(id);
 		return memberVO;
 	}
+	
+	@Override
+	public MemberVO findId(HashMap<String, Object> map) {
+	  MemberVO memberVO = this.memberDAO.findId(map);
+	  return memberVO;
+	}
+	
+	 @Override
+	  public MemberVO findPasswd(HashMap<String, Object> map) {
+	    MemberVO memberVO = this.memberDAO.findPasswd(map);
+	    return memberVO;
+	  }
 
 	@Override
 	public boolean isMember(HttpSession session) {

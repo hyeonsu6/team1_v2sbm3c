@@ -148,6 +148,32 @@
 						<%-- Java if --%>
 						<li class='li_none'><span class="span_fail">패스워드가 일치하지 않습니다.</span></li>
 					</c:when>
+          
+          <c:when test="${param.code == 'mail_success'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_success">메일을 성공적으로 보냈습니다.</span></li>
+            <li class='li_none'><br>
+            <button type='button' onclick="location.href='/'" class="btn btn-outline-warning btn-sm"
+                    style="background-color: #B8860B;">확인</button></li>
+          </c:when>
+          
+          <c:when test="${param.code == 'mail_fail'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_fail">메일 발송에 실패했습니다.</span></li>
+            <li class='li_none'><br>
+            <button type='button' onclick="location.href='/'" class="btn btn-outline-warning btn-sm"
+                    style="background-color: #B8860B;">확인</button></li>
+          </c:when>
+          
+          <c:when test="${param.code == 'no_member'}">
+            <%-- Java if --%>
+            <li class='li_none'><span class="span_fail">등록된 회원이 아닙니다.</span></li>
+            <li class='li_none'><br>
+            <button type='button' onclick="location.href='/member/create.do'" class="btn btn-outline-warning btn-sm"
+                    style="background-color: #B8860B;">회원가입</button>
+            <button type='button' onclick="location.href='/'" class="btn btn-outline-warning btn-sm"
+                    style="background-color: #B8860B;">확인</button></li>
+          </c:when>
 
 					<c:otherwise>
 						<li class='li_none_left'><span class="span_fail">알 수 없는 에러로 작업에 실패했습니다.</span></li>

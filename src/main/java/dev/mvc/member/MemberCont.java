@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dev.mvc.admin.AdminProcInter;
 import dev.mvc.mlogin.MloginProcInter;
 import dev.mvc.mlogin.MloginVO;
+import dev.mvc.tool.MailTool;
 
 @Controller
 public class MemberCont {
@@ -744,5 +745,125 @@ public class MemberCont {
     }
     
     return mav;
+  }
+  
+  // http://localhost:9093/member/findId.do
+  /**
+   * 아이디 찾기 폼
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/member/findId.do", method = RequestMethod.GET)
+  public ModelAndView findId() {
+    ModelAndView mav = new ModelAndView();
+    mav.setViewName("/member/findId"); // /WEB-INF/views/member/create.jsp
+
+    return mav; // forward
+  }
+  
+  // http://localhost:9093/member/findId.do
+  /**
+   * 아이디 찾기
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/member/findId.do", method = RequestMethod.POST)
+  public ModelAndView findId(String mname, String tel, String email) {
+    ModelAndView mav = new ModelAndView();
+    mav.setViewName("/member/findId"); // /WEB-INF/views/member/create.jsp
+    
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("mname", mname);
+    map.put("tel", tel);
+    
+    MemberVO memberVO = this.memberProc.findId(map);
+    if(memberVO == null) {
+      mav.addObject("code", "no_member");
+      
+      mav.addObject("url", "/member/msg");
+      mav.setViewName("redirect:/member/msg.do");
+    } else {
+      String id = memberVO.getId();
+      mav.addObject("id", id);
+      
+      MailTool mailTool = new MailTool();
+      String from = "a94365196@gmail.com"; // 관리자 메일 주소
+      String title = "Festival Blog 아이디";
+      String content = mname + "님의 등록된 아이디는 [" + id + "] 입니다.";
+      int cnt = mailTool.send(email, from, title, content); // 메일 전송
+      
+      if(cnt == 1) {
+        mav.addObject("code", "mail_success");
+      } else {
+        mav.addObject("code", "mail_fail");
+      }
+      mav.addObject("cnt", cnt);
+    }
+    
+    mav.addObject("url", "/member/msg");
+    mav.setViewName("redirect:/member/msg.do");
+    
+    return mav; // forward
+  }
+  
+  // http://localhost:9093/member/findPasswd.do
+  /**
+   * 비밀번호 찾기 폼
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/member/findPasswd.do", method = RequestMethod.GET)
+  public ModelAndView findPasswd() {
+    ModelAndView mav = new ModelAndView();
+    mav.setViewName("/member/findPasswd"); // /WEB-INF/views/member/create.jsp
+
+    return mav; // forward
+  }
+  
+  // http://localhost:9093/member/findPasswd.do
+  /**
+   * 비밀번호 찾기 폼
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/member/findPasswd.do", method = RequestMethod.POST)
+  public ModelAndView findPasswd(String mname, String tel, String id, String email) {
+    ModelAndView mav = new ModelAndView();
+    mav.setViewName("/member/findPasswd"); // /WEB-INF/views/member/create.jsp
+    
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("mname", mname);
+    map.put("tel", tel);
+    map.put("id", id);
+    
+    MemberVO memberVO = this.memberProc.findPasswd(map);
+    
+    if(memberVO == null) {
+      mav.addObject("code", "no_member");
+      
+      mav.addObject("url", "/member/msg");
+      mav.setViewName("redirect:/member/msg.do");
+    } else {
+      String passwd = memberVO.getPasswd();
+      mav.addObject("passwd", passwd);
+      
+      MailTool mailTool = new MailTool();
+      String from = "a94365196@gmail.com"; // 관리자 메일 주소
+      String title = "Festival Blog 비밀번호";
+      String content = mname + "님의 등록된 비밀번호는 [" + passwd + "] 입니다.";
+      int cnt = mailTool.send(email, from, title, content); // 메일 전송
+      
+      if(cnt == 1) {
+        mav.addObject("code", "mail_success");
+      } else {
+        mav.addObject("code", "mail_fail");
+      }
+      mav.addObject("cnt", cnt);
+    }
+    
+    mav.addObject("url", "/member/msg");
+    mav.setViewName("redirect:/member/msg.do");
+    
+    return mav; // forward
   }
 }

@@ -33,6 +33,18 @@
 		FROM member
 		WHERE id = #{id}
 	</select>
+  
+  <select id="findId" resultType="dev.mvc.member.MemberVO" parameterType="HashMap">
+    SELECT memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade
+    FROM member
+    WHERE mname = #{mname} AND tel = #{tel}
+  </select>
+  
+  <select id="findPasswd" resultType="dev.mvc.member.MemberVO" parameterType="HashMap">
+    SELECT memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate, grade
+    FROM member
+    WHERE mname = #{mname} AND tel = #{tel} AND id = #{id}
+  </select>
 
 	<update id="update" parameterType="dev.mvc.member.MemberVO">
 		UPDATE member
