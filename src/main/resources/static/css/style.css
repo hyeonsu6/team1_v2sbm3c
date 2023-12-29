@@ -67,7 +67,7 @@
 
 .menu_line {
 	width: 100%;
-	border-bottom: 1px dotted #4682B4;
+	border-bottom: 3px dotted #4682B4;
 	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
@@ -118,7 +118,7 @@
 
 .bottom_line {
 	width: 100%;
-	border-bottom: 2px dotted #4682B4;
+	border-bottom: 3px dotted #4682B4;
 	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
@@ -224,6 +224,7 @@
 	width: 100%;
 	margin: 20px auto;
 	font-weight: 700;
+	font-size:22px;
 	border-bottom: 5px solid #CD853F;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
