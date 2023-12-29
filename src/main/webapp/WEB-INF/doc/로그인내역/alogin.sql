@@ -13,7 +13,7 @@ CREATE TABLE alogin(
 
 COMMENT ON TABLE alogin is '로그인 내역';
 COMMENT ON COLUMN alogin.aloginno is '로그인 번호';
-COMMENT ON COLUMN alogin.adminno is '회원 번호';
+COMMENT ON COLUMN alogin.adminno is '관리자 번호';
 COMMENT ON COLUMN alogin.ip is '접속 IP';
 COMMENT ON COLUMN alogin.logindate is '로그인 날짜';
 

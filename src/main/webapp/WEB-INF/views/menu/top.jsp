@@ -74,7 +74,7 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding-left: 15px; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
+		style="background-color: #FFF5EE; padding: 5px 65px; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
 				class='icon_n'>
@@ -137,8 +137,8 @@
 								<a class="dropdown-item top_menu_link" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
 								<a class="dropdown-item top_menu_link" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
 								<a class="dropdown-item top_menu_link" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
-								<a class="dropdown-item top_menu_link" href='/calendar/create.do'>[관리자] Calendar 등록</a>
-								<a class="dropdown-item top_menu_link" href='/calendar/list_all.do'>[관리자] Calendar 목록</a>
+								<a class="dropdown-item top_menu_link" href='/calendar/create.do'>[관리자] 📅 Calendar 등록</a>
+								<a class="dropdown-item top_menu_link" href='/calendar/list_all.do'>[관리자] 📅 Calendar 목록</a>
 								<a class="dropdown-item top_menu_link" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
 								<a class="dropdown-item top_menu_link" href='/member/list.do'>[관리자] 회원 목록</a>
 								<a class="dropdown-item top_menu_link" href='/freview/list_all.do'>[관리자] 모든 리뷰</a>
