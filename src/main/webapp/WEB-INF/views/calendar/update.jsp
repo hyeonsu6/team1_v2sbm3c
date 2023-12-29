@@ -44,12 +44,12 @@
 		<input type="hidden" name="calno" value="${calno }">
 
 		<div>
-			<label style="font-size: 18px; margin-top: 10px; margin-left: 20%;">일정</label>
+			<label style="font-size: 18px; margin-top: 10px; margin-left: 20%;">페스티벌 일정</label>
 			<input type='text' name='title' value='${title}' required="required" autofocus="autofocus" class="form-control"
 				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'>
 
 
-			<label style="margin-left: 20%;">Memo</label>
+			<label style="margin-left: 20%;">페스티벌 요약</label>
 			<textarea name='memo' required="required" class="form-control" rows="6"
 				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'>${memo}</textarea>
 		</div>

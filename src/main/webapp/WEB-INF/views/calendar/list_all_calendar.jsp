@@ -62,7 +62,7 @@
    	 		</c:forEach>
 		];
 
-	    var isManager = ${sessionScope.admin_id != null}; // 관리자 여부 확인
+	    var isAdmin = ${sessionScope.admin_id != null}; // 관리자 여부 확인
 
 	    var calendar = new FullCalendar.Calendar(calendarEl, {
 	        initialView: 'dayGridMonth',
@@ -109,7 +109,7 @@
 	    });
 
 	    calendar.setOption('dateClick', function(info) {
-	        if (!isManager) {
+	        if (!isAdmin) {
 	            console.log('Clicked on: ' + info.dateStr);
 	        } else {
 	            window.location.href = './create.do';

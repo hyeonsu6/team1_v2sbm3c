@@ -78,7 +78,7 @@
    	 		</c:forEach>
 		];
 
-	    var isManager = ${sessionScope.admin_id != null}; // 관리자 여부 확인
+	    var isAdmin = ${sessionScope.admin_id != null}; // 관리자 여부 확인
 
 	    var calendar = new FullCalendar.Calendar(calendarEl, {
 	        initialView: 'dayGridMonth',
@@ -120,12 +120,12 @@
 	        
 	        eventClick: function(info) {
 	            var calno = info.event.id; // 일정의 고유 식별자로 사용할 수 있는 값
-	            window.location.href = '../calendarread.do?calno=' + calno;
+	            window.location.href = '../calendar/read.do?calno=' + calno;
 	        },
 	    });
 
 	    calendar.setOption('dateClick', function(info) {
-	        if (!isManager) {
+	        if (!isAdmin) {
 	            console.log('Clicked on: ' + info.dateStr);
 	        } else {
 	            window.location.href = '../calendar/create.do';
@@ -138,4 +138,3 @@
 	<jsp:include page="./menu/bottom.jsp" flush='false' />
 </body>
 </html>
-

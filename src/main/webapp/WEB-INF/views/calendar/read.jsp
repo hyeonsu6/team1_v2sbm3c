@@ -49,15 +49,18 @@
 
 	<fieldset class="fieldset_basic">
 		<div style="width: 100%; word-break: break-all; text-align: center;">
-			<span style="font-size: 24px; margin-right: 5px; color: #583E26"">🎈페스티벌 이름 : ${title}</span>
-			<br> <br>
-			<span style="font-size: 18px; margin-right: 5px; color: #A78B71">${memo}</span>
-			<br> <br>
-			<span style="font-size: 16px; margin-right: 5px; text-decoration: underline;">📅시작일 : ${calstart}</span>
+			<span style="font-size: 22px; margin-right: 5px; color: #583E26;">🎈페스티벌 이름 : ${title}</span>
+			<br>
+			<br>
+			<span style="font-size: 16px; margin-right: 5px; color: #A78B71;">${memo.replaceAll("\\n", "<br>")}</span>
+			<br>
+			<br>
+			<span style="font-size: 14px; margin-right: 5px; text-decoration: underline;">📅시작일 : ${calstart}</span>
 			~
-			<span style="font-size: 16px; margin-right: 5px; text-decoration: underline;">📅종료일 : ${calend}</span>
+			<span style="font-size: 14px; margin-right: 5px; text-decoration: underline;">📅종료일 : ${calend}</span>
+			<br>
+			<br>
 		</div>
-		<br>
 		<div style="text-align: center;">
 			<button type="button" onclick="window.location.href='./list_all_calendar.do'" class="btn btn-outline-warning btn-sm"
 				style="background-color: #B8860B;">확인</button>
