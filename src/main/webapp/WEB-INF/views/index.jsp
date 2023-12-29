@@ -10,40 +10,13 @@
 <title>Festival Blog</title>
 <link rel="shortcut icon" href="/images/festival.png">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+
 <style type="text/css">
-#calendar {
-	border: 2px solid #333;
-	padding: 10px;
-	border-radius: 10px;
-	background-color: #f0f0f0;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-th, td {
-	border: 1px solid #800000;
-	padding: 8px;
-	text-align: center;
-	color: #696969;
-}
-
-th {
-	background-color: #FFF5EE;
-	color: #800000;
-	text-align: center;
-}
-
-.colToday {
-	text-decoration: underline;
-	font-size: 22px;
-	color: #006400;
-	border: 2px solid #800000;
-}
-
 .index_img {
 	max-width: 100%;
 	max-height: 50%;
@@ -73,93 +46,96 @@ th {
 	<div style="text-align: center;">
 		<img src="/images/index_img1.png" alt="메인 이미지" class="index_img" id="slideshow">
 	</div>
+	<br>
 
-	<script>
-        $(function(){
-            var today = new Date();
-            var date = new Date();           
+	<div class="menu_line" style="margin-top: -15px;"></div>
 
-            $("input[name=preMon]").click(function() { // 이전달
-                $("#calendar > tbody > td").remove();
-                $("#calendar > tbody > tr").remove();
-                today = new Date ( today.getFullYear(), today.getMonth()-1, today.getDate());
-                buildCalendar();
-            })
-            
-            $("input[name=nextMon]").click(function(){ //다음달
-                $("#calendar > tbody > td").remove();
-                $("#calendar > tbody > tr").remove();
-                today = new Date ( today.getFullYear(), today.getMonth()+1, today.getDate());
-                buildCalendar();
-            })
+	<div id='calendar'></div>
 
+	<script type="text/javascript">
+	function getRandomColor() {
+	    var letters = '0123456789ABCDEF';
+	    var color = '#';
 
-            function buildCalendar() {   
-                
-                nowYear = today.getFullYear();
-                nowMonth = today.getMonth();
-                firstDate = new Date(nowYear,nowMonth,1).getDate();
-                firstDay = new Date(nowYear,nowMonth,1).getDay(); //1st의 요일
-                lastDate = new Date(nowYear,nowMonth+1,0).getDate();
+	    for (var i = 0; i < 6; i++) {
+	        color += letters[Math.floor(Math.random() * 16)];
+	    }
+	    return color;
+	}
 
-                if((nowYear%4===0 && nowYear % 100 !==0) || nowYear%400===0) { //윤년 적용
-                    lastDate[1]=29;
-                }
+	document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('calendar');
+	    // 서버에서 받아온 이벤트 데이터(JSON 형식)
+	    var events = [
+		    <c:forEach var="event" items="${list}" varStatus="loop">
+		    {
+            	title: '<c:out value="${event.title}"/>',
+            	start: '<c:out value="${event.calstart}"/>T00:00:00',
+            	end: '<c:out value="${event.calend}"/>T23:59:59',
+            	color: getRandomColor(),
+            	id: '<c:out value="${event.calno}"/>' // calno를 id로 추가
+        	}	<c:if test="${!loop.last}">,</c:if>
+   	 		</c:forEach>
+		];
 
-                $(".year_mon").text(nowYear+"년 "+(nowMonth+1)+"월");
+	    var isManager = ${sessionScope.admin_id != null}; // 관리자 여부 확인
 
-                for (i=0; i<firstDay; i++) { //이전월 빈칸 처리
-                    $("#calendar tbody:last").append("<td></td>");
-                }
-                for (i=1; i <=lastDate; i++){ // 날짜 채우기
-                    plusDate = new Date(nowYear,nowMonth,i).getDay();
-                    if (plusDate==0) {
-                        $("#calendar tbody:last").append("<tr></tr>");
-                    }
+	    var calendar = new FullCalendar.Calendar(calendarEl, {
+	        initialView: 'dayGridMonth',
+	        headerToolbar: {
+	            left: 'customPrev,customNext today',
+	            center: 'title',
+	            right: 'dayGridMonth,dayGridWeek,dayGridDay',
+	        },
 
-                    // 날짜가 오늘인 경우 colToday 클래스 추가
-                    var todayClass = "";
-                    if(nowYear==date.getFullYear() && nowMonth==date.getMonth() && i==date.getDate()) {
-                        todayClass = 'colToday';
-                    }
+	        customButtons: {
+	            customPrev: {
+	                text: '<',
+	                click: function() {
+	                    calendar.prev();
+	                }
+	            },
+	            customNext: {
+	                text: '>',
+	                click: function() {
+	                    calendar.next();
+	                }
+	            },
+	        },
 
-                    $("#calendar tbody:last").append("<td class='date " + todayClass + "'>"+ i +"</td>");
-                }
-                if($("#calendar > tbody > td").length%7!=0) { //다음원 빈칸 처리
-                    for(i=1; i<= $("#calendar > tbody > td").length%7; i++) {
-                        $("#calendar tbody:last").append("<td></td>");
-                    }
-                }
-            }
-            buildCalendar();
-        })
-    </script>
-</head>
-<body>
-	<table id="calendar" style="margin-top: 20px;">
-		<thead>
-			<tr style="text-align: center;">
-				<th>
-					<input name="preMon" type="button" value="<">
-				</th>
-				<th colspan="5" class="year_mon"></th>
-				<th>
-					<input name="nextMon" type="button" value=">">
-				</th>
-			</tr>
-			<tr style="text-align: center;">
-				<th>일</th>
-				<th>월</th>
-				<th>화</th>
-				<th>수</th>
-				<th>목</th>
-				<th>금</th>
-				<th>토</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
+	        titleFormat: function(date) {
+	            return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+	        },
+	        selectable: true,
+	        droppable: true,
+	        editable: true,
+	        nowIndicator: true,
+	        locale: 'ko',
+	        contentHeight: 'auto',
+	        events: events,
+	        eventContent: function(arg) {
+	            var title = arg.event.title;
+	            return { html: '<div style="font-size: 10px; margin-left: 10px; color: #FF8C00;">' + title + '</div>' };
+	        },
+	        
+	        eventClick: function(info) {
+	            var calno = info.event.id; // 일정의 고유 식별자로 사용할 수 있는 값
+	            window.location.href = '../calendarread.do?calno=' + calno;
+	        },
+	    });
+
+	    calendar.setOption('dateClick', function(info) {
+	        if (!isManager) {
+	            console.log('Clicked on: ' + info.dateStr);
+	        } else {
+	            window.location.href = '../calendar/create.do';
+	        }
+	    });
+
+	    calendar.render();
+	});
+	</script>
 	<jsp:include page="./menu/bottom.jsp" flush='false' />
 </body>
 </html>
+

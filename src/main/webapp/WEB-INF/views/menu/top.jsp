@@ -13,14 +13,14 @@
 .top_menu_link:link, .top_menu_link:visited {
 	text-decoration: none;
 	color: #800000;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .top_menu_link:hover {
 	text-decoration: blink;
 	/* color: #2F4F4F; */
 	color: #EC9704;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .navbar-brand img {
