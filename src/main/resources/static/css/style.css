@@ -639,6 +639,10 @@ a {
 	font-size: 15px;
 }
 
+label {
+	margin-bottom: 3px;
+}
+
 @media all and (max-width: 768px) {
 	table, thead, tbody, th, td, tr {
 		display: block;

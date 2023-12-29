@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 .icon_n {
-	width: 28px;
+	width: 30px;
 }
 
 .top_menu_link:link, .top_menu_link:visited {
@@ -18,7 +18,8 @@
 
 .top_menu_link:hover {
 	text-decoration: blink;
-	color: #2F4F4F;
+	/* color: #2F4F4F; */
+	color: #EC9704;
 	font-size: 16px;
 }
 
@@ -60,10 +61,10 @@
 
 <div class='container_main'>
 	<div style="text-align: right; margin-top: 10px; margin-right: 5px; margin-bottom: 5px;">
-		<!-- <span class="top_menu_label" style="margin-right: 1085px;">Festival Blog Version 4.0</span> -->
 		<c:choose>
 			<c:when test="${sessionScope.id == null}">
-				<a class="nav-link top_menu_link" href="/member/login.do" style="display: inline-block;">로그인 |</a>
+				<a class="nav-link top_menu_link" href="/member/login.do" style="display: inline-block;">로그인</a>
+				<span style="color: #2F4F4F;">|</span>
 				<a class="nav-link top_menu_link" href="/member/create.do" style="display: inline-block;">회원가입</a>
 			</c:when>
 			<c:otherwise>
@@ -73,7 +74,7 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding-left: 52px; border-top: 2px solid #2F4F4F; border-bottom: 2px solid #2F4F4F; border-radius: 10px;">
+		style="background-color: #FFF5EE; padding-left: 15px; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
 				class='icon_n'>
@@ -98,31 +99,27 @@
 					</li>
 				</c:forEach>
 
-				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
-				</li>
-
-
 				<li class="nav-item dropdown">
 					<%-- 회원 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-						style="color: #800000;">회원</a>
-					<div class="dropdown-menu" style="font-size: 17px;">
+						style="color: #EC9704;">회원</a>
+					<div class="dropdown-menu top_menu_link">
 						<c:choose>
 							<c:when test="${sessionScope.id == null }">
-								<a class="dropdown-item" href="/member/create.do">회원 가입</a>
-								<a class="dropdown-item" href="/member/findId.do">아이디 찾기</a>
-								<a class="dropdown-item" href="/member/findPasswd.do">비밀번호 찾기</a>
+								<a class="dropdown-item top_menu_link" href="/member/create.do">회원 가입</a>
+								<a class="dropdown-item top_menu_link" href="/member/findId.do">아이디 찾기</a>
+								<a class="dropdown-item top_menu_link" href="/member/findPasswd.do">비밀번호 찾기</a>
 							</c:when>
 							<c:otherwise>
-								<a class="dropdown-item" href="javascript: chatbot();">[문의] 챗봇</a>
-								<a class="dropdown-item" href="javascript: recommend();">[추천] 관심분야 등록하고 추천받기</a>
-								<a class="dropdown-item" href='/frecommend/list_by_memberno.do'>[회원] 나의 관심 페스티벌 목록</a>
-								<a class="dropdown-item" href="/member/read.do">[회원] 가입 정보</a>
-								<a class="dropdown-item" href="/member/read.do">[회원] 정보 수정</a>
-								<a class="dropdown-item" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
-								<a class="dropdown-item" href="/member/unsubscribe.do">[회원] 탈퇴</a>
-								<a class="dropdown-item" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
-								<a class="dropdown-item" href="/freview_reply/list_by_id.do?id=${sessionScope.id}">[회원] 내가 쓴 댓글</a>
+								<a class="dropdown-item top_menu_link" href="javascript: chatbot();">[문의] 챗봇</a>
+								<a class="dropdown-item top_menu_link" href="javascript: recommend();">[추천] 관심분야 등록하고 추천받기</a>
+								<a class="dropdown-item top_menu_link" href='/frecommend/list_by_memberno.do'>[회원] 나의 관심 페스티벌 목록</a>
+								<a class="dropdown-item top_menu_link" href="/member/read.do">[회원] 가입 정보</a>
+								<a class="dropdown-item top_menu_link" href="/member/read.do">[회원] 정보 수정</a>
+								<a class="dropdown-item top_menu_link" href="/member/passwd_update.do">[회원] 비밀번호 변경</a>
+								<a class="dropdown-item top_menu_link" href="/member/unsubscribe.do">[회원] 탈퇴</a>
+								<a class="dropdown-item top_menu_link" href="/login/list_mlogin_by_memberno.do">[회원] 로그인 내역</a>
+								<a class="dropdown-item top_menu_link" href="/freview_reply/list_by_id.do?id=${sessionScope.id}">[회원] 내가 쓴
+									댓글</a>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -135,20 +132,30 @@
 					<c:otherwise>
 						<li class="nav-item dropdown">
 							<%-- 관리자 서브 메뉴 --%> <a class="nav-link top_menu_link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-								style="color: #800000;">관리자</a>
-							<div class="dropdown-menu" style="font-size: 14px;">
-								<a class="dropdown-item" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
-								<a class="dropdown-item" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
-								<a class="dropdown-item" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
-								<a class="dropdown-item" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
-								<a class="dropdown-item" href='/member/list.do'>[관리자] 회원 목록</a>
-								<a class="dropdown-item" href='/freview/list_all.do'>[관리자] 모든 리뷰</a>
-								<a class="dropdown-item" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
-								<a class="dropdown-item" href='/admin/logout.do'>[관리자] '${sessionScope.admin_id }' 로그아웃</a>
+								style="color: #EC9704;">관리자</a>
+							<div class="dropdown-menu top_menu_link">
+								<a class="dropdown-item top_menu_link" href='/fcate/list_all.do'>[관리자] 전체 카테고리 목록</a>
+								<a class="dropdown-item top_menu_link" href='/festival/list_all.do'>[관리자] 전체 컨텐츠 목록</a>
+								<a class="dropdown-item top_menu_link" href="/festival/list_all_gallery.do">[관리자] 🖼️ 컨텐츠 갤러리</a>
+								<a class="dropdown-item top_menu_link" href='/calendar/create.do'>[관리자] Calendar 등록</a>
+								<a class="dropdown-item top_menu_link" href='/calendar/list_all.do'>[관리자] Calendar 목록</a>
+								<a class="dropdown-item top_menu_link" href='/frecommend/list_all.do'>[관리자] 회원 관심 페스티벌 목록</a>
+								<a class="dropdown-item top_menu_link" href='/member/list.do'>[관리자] 회원 목록</a>
+								<a class="dropdown-item top_menu_link" href='/freview/list_all.do'>[관리자] 모든 리뷰</a>
+								<a class="dropdown-item top_menu_link" href='/login/list_all_alogin.do'>[관리자] 로그인 내역</a>
+								<a class="dropdown-item top_menu_link" href='/admin/logout.do'>[관리자] '${sessionScope.admin_id }' 로그아웃</a>
 							</div>
 						</li>
 					</c:otherwise>
 				</c:choose>
+
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
+				</li>
+
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/calendar/list_all_calendar.do">📅Calendar</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
