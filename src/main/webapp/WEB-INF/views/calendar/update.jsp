@@ -28,7 +28,7 @@
 	</div>
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
-		<c:if test="${sessionScope.manager_id != null }">
+		<c:if test="${sessionScope.admin_id != null }">
 			<span class='menu_divide'>│</span>
 			<a href="./create.do">일정 등록</a>
 			<span class='menu_divide'>│</span>
@@ -44,14 +44,14 @@
 		<input type="hidden" name="calno" value="${calno }">
 
 		<div>
-			<label style="font-size: 18px; margin-top: 10px; margin-left: 26%;">일정</label>
+			<label style="font-size: 18px; margin-top: 10px; margin-left: 20%;">일정</label>
 			<input type='text' name='title' value='${title}' required="required" autofocus="autofocus" class="form-control"
-				style='width: 50%; margin-left: 25%; margin-bottom: 15px;'>
+				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'>
 
 
-			<label style="margin-left: 26%;">Memo</label>
-			<textarea name='memo' required="required" class="form-control" rows="2"
-				style='width: 50%; margin-left: 25%; margin-bottom: 15px;'>${memo}</textarea>
+			<label style="margin-left: 20%;">Memo</label>
+			<textarea name='memo' required="required" class="form-control" rows="6"
+				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'>${memo}</textarea>
 		</div>
 
 		<div style="text-align: center;">

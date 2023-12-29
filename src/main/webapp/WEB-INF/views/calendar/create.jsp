@@ -31,14 +31,14 @@
 
 	<form name='frm' method='post' action='./create.do' enctype="multipart/form-data">
 		<div>
-			<label style="font-size: 18px; margin-top: 10px; margin-left: 26%;">페스티벌 이름</label>
+			<label style="font-size: 18px; margin-top: 10px; margin-left: 20%;">페스티벌 이름</label>
 			<input type='text' name='title' value='' required="required" autofocus="autofocus" class="form-control"
-				style='width: 50%; margin-left: 25%; margin-bottom: 15px;'>
+				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'>
 
 
-			<label style="margin-left: 26%;">페스티벌 요약</label>
-			<textarea name='memo' required="required" class="form-control" rows="5"
-				style='width: 50%; margin-left: 25%; margin-bottom: 15px;'></textarea>
+			<label style="margin-left: 20%;">페스티벌 요약</label>
+			<textarea name='memo' required="required" class="form-control" rows="6"
+				style='width: 70%; margin-left: 20%; margin-bottom: 15px;'></textarea>
 		</div>
 
 		<div style="text-align: center;">

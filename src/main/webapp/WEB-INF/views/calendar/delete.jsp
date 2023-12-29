@@ -25,7 +25,7 @@
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
-		<c:if test="${sessionScope.manager_id != null }">
+		<c:if test="${sessionScope.admin_id != null }">
 			<span class='menu_divide'>│</span>
 			<a href="./list_all.do">목록형</a>
 			<span class='menu_divide'>│</span>
