@@ -461,9 +461,6 @@ public class FestivalCont {
 	@RequestMapping(value = "/festival/map.do", method = RequestMethod.POST)
 	public ModelAndView map_update(int contentsno, String map) {
 		ModelAndView mav = new ModelAndView();
-		if (map.trim().length() > 0) { // 삭제 중인지 확인, 삭제가 아니면 youtube 크기 변경
-			map = Tool.youtubeResize(map, 240); // youtube 영상의 크기를 width 기준 640 px로 변경
-		}
 
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		hashMap.put("contentsno", contentsno);
@@ -801,8 +798,7 @@ public class FestivalCont {
 	}
 
 	/**
-	 * http://localhost:9093/festival/delete_by_fcateno.do?fcateno=1
-	 * 파일 삭제 -> 레코드 삭제
+	 * http://localhost:9093/festival/delete_by_fcateno.do?fcateno=1 파일 삭제 -> 레코드 삭제
 	 * 
 	 * @param fcateno
 	 * @return

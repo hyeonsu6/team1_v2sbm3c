@@ -102,7 +102,7 @@
 
 					<span style="font-size: 28px; margin-right: 5px;">🟡 ${title}</span>
 					<span style="font-size: 0.6em; margin-right: 50px;">| 🔔 등록일: (${rdate.substring(0, 10)})</span>
-					<br><br>
+					<br> <br>
 					<!-- 좋아요 버튼 -->
 					<button id="likeBtn" class="btn btn-outline-warning btn-sm"
 						style="margin-bottom: 10px; padding: 5px 25px 5px 25px;">
@@ -114,7 +114,10 @@
 						$(document)
 								.ready(
 										function() {
-											var contentsno = ${contentsno}
+											var contentsno = $
+											{
+												contentsno
+											}
 											{
 												contentsno
 											}
@@ -225,8 +228,7 @@
 				<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 					<%-- /static/festival/storage/ --%>
 					<div style="text-align: center; margin-bottom: 10px;">
-						<img src="/festival/storage/${file1saved }"
-							style='width: 50%; margin: 0 auto; margin-top: 0.5%; margin-right: 5%;'>
+						<img src="/festival/storage/${file1saved }" style='width: 60%; margin: 0 auto; margin-top: 0.5%;'>
 					</div>
 
 				</c:when>
@@ -237,30 +239,21 @@
 				</c:otherwise>
 			</c:choose>
 
-			<%-- <c:if test="${youtube.trim().length() > 0 }">
+			<c:if test="${youtube.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<div style="text-align: center;">${youtube }</div></li>
+					<div style="text-align: center;">${youtube }</div>
+				</li>
 			</c:if>
+
 			<c:if test="${map.trim().length() > 0 }">
-				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 10px;"><br>
-					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div></li>
+				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
+					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div>
+				</li>
+				<br>
+				<br>
+				<br>
 			</c:if>
 
-			<li class="li_none" style="clear: both;">
-				<div style='text-decoration: none;'>
-					<br> <br> <br> <br>
-					<span style="font-size: 0.4em;">검색어(키워드): ${word }</span>
-				</div>
-			</li> --%>
-
-			<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;"><c:if
-					test="${youtube.trim().length() > 0 }">
-					<div style="text-align: center; margin-right: 10px;">${youtube }
-						<c:if test="${map.trim().length() > 0 }">
-							<div style="text-align: center; margin-right: 10px;">${map }</div>
-						</c:if>
-					</div>
-				</c:if></li>
 
 			<li class="li_none" style="clear: both;"><br> <span style="font-size: 0.4em;">검색어(키워드): ${word }</span></li>
 

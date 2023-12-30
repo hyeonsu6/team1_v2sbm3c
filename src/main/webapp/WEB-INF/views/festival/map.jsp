@@ -41,7 +41,7 @@
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
 				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
-			<c:if test="${param.quest.length() > 0 }">
+			<c:if test="${param.word.length() > 0 }">
 				<button type='button' class="btn btn-outline-warning btn-sm"
 					style="height: 30px; margin-bottom: 5px; background-color: #B8860B;"
 					onclick="location.href='./list_by_fcateno.do?fcateno=${fcateVO.fcateno}&word='">검색 취소</button>
@@ -56,7 +56,7 @@
 
 		<div>
 			<label>지도 스크립트</label>
-			<textarea name='map' class="form-control" rows="3" style='width: 100%;'>${festivalVO.map }</textarea>
+			<textarea name='map' class="form-control" rows="8" style='width: 100%;'>${festivalVO.map }</textarea>
 		</div>
 		
 		<div class="content_body_bottom">
