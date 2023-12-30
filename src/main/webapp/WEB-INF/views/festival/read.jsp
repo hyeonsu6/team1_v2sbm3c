@@ -107,13 +107,16 @@
 						style="margin-bottom: 10px; padding: 5px 25px 5px 25px;">
 						<div id="totalLikeCount" style="color: black;">🩵 추천해요!</div>
 					</button>
-
+					<span style="font-size: 17px; color: #1E90FF; margin-left: 10px;">👈 추천은 힘이 됩니다🚀</span>
 					<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 					<script>
 						$(document)
 								.ready(
 										function() {
-											var contentsno = ${contentsno}
+											var contentsno = $
+											{
+												contentsno
+											}
 											{
 												contentsno
 											}
