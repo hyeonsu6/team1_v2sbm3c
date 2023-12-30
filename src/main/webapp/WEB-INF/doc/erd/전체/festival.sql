@@ -1,5 +1,5 @@
 /**********************************/
-/* Table Name: 축제/행사 데이터 */
+/* Table Name: 페스티벌 콘텐츠       */
 /**********************************/
 DROP TABLE festival CASCADE CONSTRAINTS; -- 자식 무시하고 삭제 가능
 CREATE TABLE festival(

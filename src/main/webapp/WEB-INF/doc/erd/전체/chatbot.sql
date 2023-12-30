@@ -1,21 +1,21 @@
-/* Table name: CHATTING 
-*/
+/**********************************/
+/* Table Name: 챗봇                */
+/**********************************/
 DROP TABLE CHATTING;
 
 CREATE TABLE CHATTING(
-    CHATTINGNO      NUMBER(10)      NOT NULL,
-    MEMBERNO        NUMBER(10)      NOT NULL,   -- FK
-    MSG             VARCHAR(500)    NOT NULL,
-    RDATE           DATE            NOT NULL,
-    FOREIGN KEY (MEMBERNO) REFERENCES member (MEMBERNO),
-    PRIMARY KEY (CHATTINGNO)
+    chattingno      NUMBER(10)      NOT NULL PRIMARY KEY,
+    memberno        NUMBER(10)      NOT NULL,   -- FK
+    msg             VARCHAR(500)    NOT NULL,
+    rdate           DATE            NOT NULL,
+    FOREIGN KEY (memberno) REFERENCES MEMBER (memberno)
 );
 
 COMMENT ON TABLE CHATTING is '응답';
-COMMENT ON COLUMN CHATTING.CHATTINGNO is '채팅 번호';
-COMMENT ON COLUMN CHATTING.MEMBERNO is '회원 번호';
-COMMENT ON COLUMN CHATTING.MSG is '채팅 메시지';
-COMMENT ON COLUMN CHATTING.RDATE is '등록일';
+COMMENT ON COLUMN CHATTING.chattingno is '채팅 번호';
+COMMENT ON COLUMN CHATTING.memberno is '회원 번호';
+COMMENT ON COLUMN CHATTING.msg is '채팅 메시지';
+COMMENT ON COLUMN CHATTING.rdate is '등록일';
 
 DROP SEQUENCE CHATTING_SEQ;
 
@@ -31,18 +31,18 @@ commit;
 
 ------------------------------------------------------------------------------------
 -- GPT ChatBot용 관리자 계정 추가
-INSERT INTO member(memberno, id, passwd, mname, tel, zipcode,
+INSERT INTO MEMBER(memberno, id, passwd, mname, tel, zipcode,
                                  address1, address2, mdate, grade)
-VALUES (member_seq.nextval, 'gpt', '1234', 'Chatting 관리자', '000-0000-0000', '12345',
+VALUES (MEMBER_SEQ.NEXTVAL, 'gpt', '1234', 'Chatting 관리자', '000-0000-0000', '12345',
              '서울시 종로구', '관철동', sysdate, 1);
 
 COMMIT;
 
-INSERT INTO chatting(chattingno, memberno, msg, rdate)
-VALUES(chatting_seq.nextval, 3, '안녕하세요.',sysdate);
+INSERT INTO CHATTING(chattingno, memberno, msg, rdate)
+VALUES(CHATTING_SEQ.NEXTVAL, 3, '안녕하세요.',sysdate);
 
-INSERT INTO chatting(chattingno, memberno, msg, rdate)
-VALUES(chatting_seq.nextval, 1, '네 안녕하세요, 저는 챗봇입니다.',sysdate);
+INSERT INTO CHATTING(chattingno, memberno, msg, rdate)
+VALUES(CHATTING_SEQ.NEXTVAL, 1, '네 안녕하세요, 저는 챗봇입니다.',sysdate);
 
 COMMIT;
 ------------------------------------------------------------------------------------
@@ -50,43 +50,41 @@ COMMIT;
 -- 조회
 -- 2023-11-24일자 채팅만 출력
 SELECT chattingno, memberno, msg, rdate
-FROM chatting
+FROM CHATTING
 WHERE memberno=1 and SUBSTR(rdate, 1, 10) = '2023-12-16';
 
 -- 시분초 일치하지 않음, 조회안됨
 SELECT chattingno, memberno, msg, rdate
-FROM chatting
+FROM CHATTING
 WHERE memberno=1 and rdate = TO_DATE('2023-12-16', 'YYYY-MM-DD');
 
 -- 문열로 변경하는 가능함
 SELECT chattingno, memberno, msg, rdate
-FROM chatting
+FROM CHATTING
 WHERE memberno=1 and TO_CHAR(rdate, 'YYYY-MM-DD') = '2023-12-16';
 
 -- LIKE
 SELECT chattingno, memberno, msg, rdate
-FROM chatting
+FROM CHATTING
 WHERE memberno=1 and msg LIKE '%안녕%';
 
-
-UPDATE chatting
+-- UPDATE, 수정
+UPDATE CHATTING
 SET msg='반가워요~'
 WHERE chattingno=2;
 
 COMMIT;
 
-SELECT chattingno, memberno, msg, rdate FROM chatting ORDER BY chattingno DESC;
+-- READ: List, 목록
+SELECT chattingno, memberno, msg, rdate FROM CHATTING ORDER BY chattingno DESC;
 
-DELETE FROM chatting
+-- DELETE, 삭제
+DELETE FROM CHATTING
 WHERE chattingno=1;
 
-DELETE FROM chatting;
+DELETE FROM CHATTING;
 
-SELECT chattingno, memberno, msg, rdate FROM chatting ORDER BY chattingno DESC;
+-- READ, 조회   
+SELECT chattingno, memberno, msg, rdate FROM CHATTING ORDER BY chattingno DESC;
 
 COMMIT;
-
-
-
-
-

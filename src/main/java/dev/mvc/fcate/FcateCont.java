@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
@@ -17,10 +16,6 @@ import dev.mvc.festival.Festival;
 import dev.mvc.festival.FestivalProcInter;
 import dev.mvc.festival.FestivalVO;
 import dev.mvc.tool.Tool;
-
-/*
- * 관리자 테이블 들어오면 2차 업데이트 해야함
- */
 
 @Controller
 public class FcateCont {
@@ -40,7 +35,11 @@ public class FcateCont {
 		System.out.println("-> FcateCont created.");
 	}
 
-	// FORM 출력, http://localhost:9093/fcate/create.do
+	/**
+	 * 카테고리 등록 FORM 출력, http://localhost:9093/fcate/create.do
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/fcate/create.do", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView mav = new ModelAndView();
@@ -49,7 +48,12 @@ public class FcateCont {
 		return mav;
 	}
 
-	// FORM 데이터 처리, http://localhost:9093/fcate/create.do
+	/**
+	 * 카테고리 등록 FORM 데이터 처리, http://localhost:9093/fcate/create.do
+	 * 
+	 * @param fcateVO
+	 * @return
+	 */
 	@RequestMapping(value = "/fcate/create.do", method = RequestMethod.POST)
 	public ModelAndView create(FcateVO fcateVO) { // 자동으로 fcateVO 객체가 생성되고 폼의 값이 할당됨
 		ModelAndView mav = new ModelAndView();
@@ -58,8 +62,6 @@ public class FcateCont {
 		System.out.println("-> cnt: " + cnt);
 
 		if (cnt == 1) {
-			// mav.addObject("code", "create_success"); // 키, 값
-			// mav.addObject("name", fcateVO.getName()); // 카테고리 이름 jsp로 전송
 			mav.setViewName("redirect:/fcate/list_all.do"); // 주소 자동 이동
 		} else {
 			mav.addObject("code", "create_fail");
@@ -67,14 +69,14 @@ public class FcateCont {
 		}
 
 		mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt);
-//	    mav.addObject("cnt", 0); // request.setAttribute("cnt", cnt);
 
 		return mav;
 	}
 
 	/**
-	 * 전체 목록 http://localhost:9093/fcate/list_all.do
+	 * 출력 모드 적용한 전체 목록 http://localhost:9093/fcate/list_all.do
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/list_all.do", method = RequestMethod.GET)
@@ -96,7 +98,7 @@ public class FcateCont {
 	}
 
 	/**
-	 * 전체 목록 http://localhost:9093/fcate/list_all_member.do
+	 * 회원 전용 전체 목록 http://localhost:9093/fcate/list_all_member.do
 	 * 
 	 * @return
 	 */
@@ -113,8 +115,9 @@ public class FcateCont {
 	}
 
 	/**
-	 * 조회 http://localhost:9093/fcate/read.do?fcateno=1
+	 * 특정 카테고리 조회 http://localhost:9093/fcate/read.do?fcateno=1
 	 * 
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/read.do", method = RequestMethod.GET)
@@ -129,8 +132,10 @@ public class FcateCont {
 	}
 
 	/**
-	 * 수정폼 http://localhost:9093/fcate/update.do?fcateno=1
+	 * 카테고리 수정 폼 http://localhost:9093/fcate/update.do?fcateno=1
 	 * 
+	 * @param session
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/update.do", method = RequestMethod.GET)
@@ -157,9 +162,9 @@ public class FcateCont {
 	}
 
 	/**
-	 * 수정 처리, http://localhost:9093/fcate/update.do
+	 * 카테고리 수정 처리 http://localhost:9093/fcate/update.do?fcateno=1
 	 * 
-	 * @param fcateVO 수정할 내용
+	 * @param fcateVO
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/update.do", method = RequestMethod.POST)
@@ -186,8 +191,10 @@ public class FcateCont {
 	}
 
 	/**
-	 * 삭제폼 http://localhost:9093/fcate/delete.do?fcateno=1
+	 * 카테고리 삭제 폼 http://localhost:9093/fcate/delete.do?fcateno=1
 	 * 
+	 * @param session
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.GET)
@@ -217,19 +224,16 @@ public class FcateCont {
 		return mav;
 	}
 
-	// 삭제 처리, 수정 처리를 복사하여 개발
-	// 자식 테이블 레코드 삭제 -> 부모 테이블 레코드 삭제
 	/**
-	 * 카테고리 삭제
+	 * 카테고리 삭제 처리 http://localhost:9093/fcate/delete.do?fcateno=1 삭제 처리, 수정 처리를 복사하여
+	 * 개발 자식 테이블 레코드 삭제 -> 부모 테이블 레코드 삭제
 	 * 
 	 * @param session
-	 * @param fcateno 삭제할 카테고리 번호
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/delete.do", method = RequestMethod.POST)
 	public ModelAndView delete_proc(HttpSession session, int fcateno) { // <form> 태그의 값이 자동으로 저장됨
-		// System.out.println("-> fcateno: " + fcateVO.getCateno());
-		// System.out.println("-> name: " + fcateVO.getName());
 
 		ModelAndView mav = new ModelAndView();
 
@@ -276,7 +280,7 @@ public class FcateCont {
 	 * 우선 순위 높임, 10 등 -> 1 등,
 	 * http://localhost:9093/fcate/update_seqno_forward.do?fcateno=1
 	 * 
-	 * @param fcateVO 수정할 내용
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/update_seqno_forward.do", method = RequestMethod.GET)
@@ -304,7 +308,7 @@ public class FcateCont {
 	 * 우선 순위 낮춤, 1 등 -> 10 등,
 	 * http://localhost:9093/fcate/update_seqno_backward.do?fcateno=1
 	 * 
-	 * @param fcateno 수정할 레코드 PK 번호
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/update_seqno_backward.do", method = RequestMethod.GET)
@@ -323,7 +327,6 @@ public class FcateCont {
 		}
 
 		mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt);
-//	    mav.addObject("cnt", 0); // request.setAttribute("cnt", cnt);
 
 		return mav;
 	}
@@ -331,7 +334,7 @@ public class FcateCont {
 	/**
 	 * 카테고리 공개 설정, http://localhost:9093/fcate/update_visible_y.do?fcateno=1
 	 * 
-	 * @param fcateno 수정할 레코드 PK 번호
+	 * @param fcateno
 	 * @return
 	 */
 	@RequestMapping(value = "/fcate/update_visible_y.do", method = RequestMethod.GET)

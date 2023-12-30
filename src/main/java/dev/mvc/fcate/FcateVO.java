@@ -1,24 +1,23 @@
 package dev.mvc.fcate;
 
 /*  
- * CREATE TABLE festivalcate(
-		festivalcateno    NUMBER(10)    NOT NULL   PRIMARY KEY,
-		festivalcatename  VARCHAR2(25)  NOT NULL,
-		festivalcatecnt   NUMBER(10)    NOT NULL,
-		festivalcaterdate DATE          NOT NULL,
-        SEQNO                 NUMBER(5),
-        VISIBLE               CHAR(1)
-	);
+    fcateno         NUMBER(10)      NOT NULL PRIMARY KEY,
+    name            VARCHAR2(100)   NOT NULL,
+    cnt             NUMBER(7)       DEFAULT 0 NOT NULL,
+    rdate           DATE            NOT NULL,
+    seqno           NUMBER(5)       DEFAULT 1 NOT NULL,
+    visible         CHAR(1)         DEFAULT 'N' NOT NULL  
  */
 
 public class FcateVO {
 
 	private int fcateno;
-	private String name;
+	private String name = "";
 	private int cnt;
-	private String rdate;
+	private String rdate = "";
 	private int seqno; 
-	private String visible;
+	private String visible = "";
+	
 	public int getFcateno() {
 		return fcateno;
 	}
@@ -55,6 +54,7 @@ public class FcateVO {
 	public void setVisible(String visible) {
 		this.visible = visible;
 	}
+	
 	@Override
 	public String toString() {
 		return "FcateVO [fcateno=" + fcateno + ", name=" + name + ", cnt=" + cnt + ", rdate=" + rdate + ", seqno="

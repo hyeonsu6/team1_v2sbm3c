@@ -12,7 +12,7 @@
 		#{file1}, #{file1saved}, #{thumb1}, #{size1})
 	</insert>
 
-	<!-- 모든 컨텐츠의 등록된 리뷰 목록 -->
+	<!-- 모든 콘텐츠의 등록된 리뷰 목록 -->
 	<select id="list_all" resultType="dev.mvc.freview.FreviewVO">
 		SELECT reviewno, contentsno, memberno, nickname, title, content, pwd, rdate, cnt, word,
 		file1, file1saved,
@@ -21,7 +21,7 @@
 		ORDER BY reviewno DESC
 	</select>
 
-	<!-- 특정 컨텐츠의 등록된 리뷰 목록 -->
+	<!-- 특정 콘텐츠의 등록된 리뷰 목록 -->
 	<select id="list_by_contentsno" resultType="dev.mvc.freview.FreviewVO" parameterType="int">
 		SELECT reviewno, contentsno, memberno, nickname, title,
 		content, pwd, rdate, cnt, word,
@@ -45,7 +45,7 @@
 		UPDATE freview SET map=#{map} WHERE reviewno=#{reviewno}
 	</update>
 
-	<!-- 컨텐츠별 검색 목록 -->
+	<!-- 콘텐츠별 검색 목록 -->
 	<select id="list_by_contentsno_search" resultType="dev.mvc.freview.FreviewVO" parameterType="HashMap">
 		SELECT reviewno, contentsno, memberno, nickname, title, content, pwd, rdate, cnt, word,
 		file1, file1saved, thumb1, size1, map

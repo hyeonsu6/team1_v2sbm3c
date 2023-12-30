@@ -4,25 +4,25 @@
 <!-- 자식 XML 태그들은 dev.mvc.festival_likes.Festival_likeDAOInter.java interface와 연결됨 -->
 <mapper namespace="dev.mvc.festival_likes.Festival_likeDAOInter">
 
-	<!-- 좋아요 등록 -->
+	<!-- 추천해요 등록 -->
 	<insert id="do_like">
 		INSERT INTO FESTIVAL_LIKES(likesno, memberno, contentsno, likescheck, rdate)
 		VALUES (FESTIVAL_LIKES_SEQ.NEXTVAL, ${memberno}, ${contentsno}, 1, sysdate)
 	</insert>
 
-	<!-- 좋아요가 눌렸는지 아닌지의 상태 -->
+	<!-- 추천해요가 눌렸는지 아닌지의 상태 -->
 	<select id="get_likecount" resultType="int">
 		SELECT likescheck FROM FESTIVAL_LIKES
 		WHERE contentsno = ${contentsno} AND memberno = ${memberno}
 	</select>
 
-	<!-- 좋아요 취소 -->
+	<!-- 추천해요 취소 -->
 	<delete id="delete_like">
 		DELETE FROM FESTIVAL_LIKES
 		WHERE contentsno = ${contentsno} AND memberno = ${memberno}
 	</delete>
 
-	<!-- 좋아요 총 갯수 -->
+	<!-- 추천해요 총 갯수 -->
 	<select id="get_total_likecount" resultType="int">
 		SELECT count(*) FROM FESTIVAL_LIKES
 		WHERE contentsno = ${contentsno}

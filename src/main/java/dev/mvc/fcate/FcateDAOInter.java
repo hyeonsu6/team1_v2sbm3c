@@ -3,9 +3,8 @@ package dev.mvc.fcate;
 import java.util.ArrayList;
 
 public interface FcateDAOInter {
-
 	/** 
-	 * 등록, 추상 메소드 -> Spring Boot이 구현함.
+	 * 카테고리 등록, 추상 메소드 -> Spring Boot이 구현함.
 	 * 
 	 * @param fcateVO 객체
 	 * @return 등록된 레코드 갯수
@@ -13,21 +12,21 @@ public interface FcateDAOInter {
 	public int create(FcateVO fcateVO);
 
 	/**
-	 * 전체 목록
+	 * 출력 모드 적용한 전체 목록
 	 * 
 	 * @return
 	 */
 	public ArrayList<FcateVO> list_all();
 	
 	/**
-	 * 전체 목록
+	 * 회원 전용 전체 목록
 	 * 
 	 * @return
 	 */
 	public ArrayList<FcateVO> list_all_member();
 
 	/**
-	 * 조회
+	 * 특정 카테고리 조회
 	 * 
 	 * @param fcateno
 	 * @return
@@ -35,7 +34,7 @@ public interface FcateDAOInter {
 	public FcateVO read(int fcateno);
 
 	/**
-	 * 수정
+	 * 카테고리 수정
 	 * 
 	 * @param fcateVO
 	 * @return 수정된 레코드 갯수
@@ -43,7 +42,7 @@ public interface FcateDAOInter {
 	public int update(FcateVO fcateVO);
 
 	/**
-	 * 삭제
+	 * 카테고리 삭제
 	 * 
 	 * @param fcateno 삭제할 레코드 PK 번호
 	 * @return 삭제된 레코드 갯수
@@ -51,7 +50,7 @@ public interface FcateDAOInter {
 	public int delete(int fcateno);
 
 	/**
-	 * 우선 순위 높임, 10 등 -> 1 등
+	 * 카테고리 우선 순위 높임, 10 등 -> 1 등
 	 * 
 	 * @param fcateno
 	 * @return 수정된 레코드 갯수
@@ -59,7 +58,7 @@ public interface FcateDAOInter {
 	public int update_seqno_forward(int fcateno);
 
 	/**
-	 * 우선 순위 낮춤, 1 등 -> 10 등
+	 * 카테고리 우선 순위 낮춤, 1 등 -> 10 등
 	 * 
 	 * @param fcateno
 	 * @return 수정된 레코드 갯수

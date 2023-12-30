@@ -2,16 +2,17 @@ package dev.mvc.festival_likes;
 
 public class Festival_likeVO {
 	/*
-	 * likesno NUMBER(10) NOT NULL PRIMARY KEY, contentsno NUMBER(10) NULL ,
-	 * memberno NUMBER(10) NULL , likescheck NUMBER DEFAULT 0 NOT NULL, replyno
-	 * NUMBER(10) NOT NULL, rdate DATE NOT NULL,
+	 likesno           NUMBER(10)         NOT NULL         PRIMARY KEY,
+     memberno          NUMBER(10)         NULL ,   -- FK
+     contentsno        NUMBER(10)         NULL ,   -- FK       
+     rdate             DATE         NOT NULL,
 	 */
 
 	private int likesno;
 	private int memberno;
 	private int contentsno;
 	private int likescheck; // 좋아요 상태를 나타내는 필드 추가
-	private String rdate;
+	private String rdate = "";
 
 	public int getLikesno() {
 		return likesno;

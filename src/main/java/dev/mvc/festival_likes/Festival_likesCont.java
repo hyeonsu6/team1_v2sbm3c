@@ -32,26 +32,34 @@ public class Festival_likesCont {
 
 	/**
 	 * 좋아요 및 좋아요 취소
+	 * 
+	 * @param session
+	 * @param festival_likeVO
+	 * @return
 	 */
 	@RequestMapping(value = "/festival_likes/do_like.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String do_like(HttpSession session, Festival_likeVO festival_likeVO) {
-		// 사용자가 로그인한 경우
-		if (memberProc.isMember(session)) {
-			int memberno = (int) session.getAttribute("memberno");
+	    // 사용자가 로그인한 경우
+	    if (memberProc.isMember(session)) {
+	        int memberno = (int) session.getAttribute("memberno");
 
-			// 좋아요 등록
-			festival_likeVO.setMemberno(memberno);
-			int cnt = festival_likeProc.do_like(festival_likeVO);
+	        // 좋아요 등록
+	        festival_likeVO.setMemberno(memberno);
+	        int count = festival_likeProc.do_like(festival_likeVO);
 
-			return "success";
-		} else {
-			return "login_required";
-		}
+	        return "success";
+	    } else {
+	        return "login_required";
+	    }
 	}
 
 	/**
 	 * 좋아요가 눌렸는지 아닌지의 상태
+	 * 
+	 * @param session
+	 * @param festival_likeVO
+	 * @return
 	 */
 	@RequestMapping(value = "/festival_likes/get_likecount.do", method = RequestMethod.POST)
 	@ResponseBody
@@ -61,9 +69,9 @@ public class Festival_likesCont {
 			int memberno = (int) session.getAttribute("memberno");
 
 			// 해당 게시글에 대한 좋아요 상태 확인
-			int isLiked = festival_likeProc.get_likecount(festival_likeVO);
+			int likeCount = festival_likeProc.get_likecount(festival_likeVO);
 
-			return Integer.toString(isLiked);
+			return Integer.toString(likeCount);
 		} else {
 			return "login_required";
 		}
@@ -71,6 +79,10 @@ public class Festival_likesCont {
 
 	/**
 	 * 좋아요 취소
+	 * 
+	 * @param session
+	 * @param festival_likeVO
+	 * @return
 	 */
 	@RequestMapping(value = "/festival_likes/delete_like.do", method = RequestMethod.POST)
 	@ResponseBody
@@ -82,18 +94,26 @@ public class Festival_likesCont {
 			// 좋아요 취소
 			int result = festival_likeProc.delete_like(festival_likeVO);
 
-			return "success";
+			if (result > 0) {
+				return "success"; // 좋아요 취소 성공
+			} else {
+				return "fail"; // 좋아요 취소 실패
+			}
 		} else {
-			return "login_required";
+			return "login_required"; // 로그인 필요
 		}
 	}
 
 	/**
 	 * 좋아요 총 갯수
+	 * 
+	 * @param contentsno
+	 * @return
 	 */
 	@RequestMapping(value = "/festival_likes/get_total_likecount.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String get_total_likecount(int contentsno) {
+		
 		// 총 좋아요 개수 가져오기
 		int totalLikeCount = festival_likeProc.get_total_likecount(contentsno);
 

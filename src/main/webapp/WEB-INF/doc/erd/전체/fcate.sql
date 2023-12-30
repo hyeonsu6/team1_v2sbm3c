@@ -1,16 +1,15 @@
 /**********************************/
-/* Table Name: 축제/행사 카테고리 */
+/* Table Name: 페스티벌 카테고리     */
 /**********************************/
-
 DROP TABLE FCATE;
 
 CREATE TABLE FCATE(
-		FCATENO                        		NUMBER(10)		 NOT NULL PRIMARY KEY,
-		NAME                          		VARCHAR2(100)	 NOT NULL,
-		CNT                           		NUMBER(7)		 DEFAULT 0 NOT NULL,
-		RDATE                         		DATE		     NOT NULL,
-    SEQNO                               NUMBER(5)        DEFAULT 1 NOT NULL,
-    VISIBLE                             CHAR(1)          DEFAULT 'N' NOT NULL  
+    fcateno         NUMBER(10)      NOT NULL PRIMARY KEY,
+    name            VARCHAR2(100)   NOT NULL,
+    cnt             NUMBER(7)       DEFAULT 0 NOT NULL,
+    rdate           DATE            NOT NULL,
+    seqno           NUMBER(5)       DEFAULT 1 NOT NULL,
+    visible         CHAR(1)         DEFAULT 'N' NOT NULL  
 );
 --
 --COMMENT ON TABLE FCATE is '카테고리';
@@ -30,10 +29,9 @@ CREATE SEQUENCE FCATE_SEQ
   CACHE 2              -- 2번은 메모리에서만 계산
   NOCYCLE;             -- 다시 1부터 생성되는 것을 방지
   
--- CREATE
+-- INSERT, 데이터 삽입
 -- INSERT INTO FCATE(FCATEno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '테마별', 0, sysdate); 
 -- INSERT INTO FCATE(FCATEno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '지역별', 0, sysdate); 
-
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '지역 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '계절(겨울) 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '문화관광 페스티벌', 0, sysdate); 
@@ -43,21 +41,17 @@ INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '인생�
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '뮤직(재즈, K-POP) 페스티벌', 0, sysdate); 
 INSERT INTO FCATE(fcateno, name, cnt, rdate) VALUES(FCATE_seq.nextval, '추천 테스트', 0, sysdate); 
 
-ALTER TABLE FCATE MODIFY (NAME VARCHAR2(100));
-COMMIT;
-
-
--- READ: LIST
+-- READ: LIST, 전체 목록
 SELECT * FROM FCATE;
 SELECT FCATEno, name, cnt, rdate, seqno, visible FROM FCATE ORDER BY fcateno ASC;
 
--- READ
+-- READ, 특정 카테고리 조회
 SELECT fcateno, name, cnt, rdate FROM FCATE WHERE fcateno=1;
         
--- UPDATE
+-- UPDATE, 수정
 UPDATE FCATE SET name='전라도', cnt=1 WHERE FCATEno=1;
 
--- DELETE
+-- DELETE, 삭제
 DELETE FROM FCATE WHERE fcateno=1;
 DELETE FROM FCATE WHERE fcateno >= 10;
 
@@ -74,7 +68,7 @@ SELECT fcateno, name, cnt, rdate, seqno FROM FCATE ORDER BY fcateno ASC;
 UPDATE FCATE SET seqno = seqno + 1 WHERE fcateno=1;
 SELECT fcateno, name, cnt, rdate, seqno FROM FCATE ORDER BY fcateno ASC;
 
--- READ: LIST
+-- READ: List, 목록
 SELECT fcateno, name, cnt, rdate, seqno FROM FCATE ORDER BY seqno ASC;
 
 COMMIT;
@@ -94,12 +88,4 @@ SELECT fcateno, name, cnt, rdate, seqno, visible
 FROM FCATE 
 WHERE visible='Y'
 ORDER BY seqno ASC;
-
-
-         
-
-
-
-
-
 
