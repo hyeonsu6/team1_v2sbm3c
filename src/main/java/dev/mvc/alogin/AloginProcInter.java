@@ -2,8 +2,6 @@ package dev.mvc.alogin;
 
 import java.util.ArrayList;
 
-import dev.mvc.mlogin.MloginVO;
-
 public interface AloginProcInter {
 	/**
 	 * 로그인 내역 등록
@@ -14,16 +12,14 @@ public interface AloginProcInter {
 	public int create(AloginVO aloginVO);
 
 	/**
-	 * 로그인 내역
+	 * 전체 목록, 관리자 로그인 내역
 	 * 
 	 * @return
 	 */
-	// AloginVO aloginVO
-
 	public ArrayList<AloginVO> list_all_alogin(int adminno);
-	
+
 	/**
-	 * 조회
+	 * 특정 관리자 로그인 내역 조회
 	 * 
 	 * @param aloginno
 	 * @return
@@ -31,7 +27,7 @@ public interface AloginProcInter {
 	public AloginVO read_alogin(int aloginno);
 
 	/**
-	 * 로그인 내역 삭제
+	 * 관리자 로그인 내역 삭제
 	 * 
 	 * @param aloginno
 	 * @return

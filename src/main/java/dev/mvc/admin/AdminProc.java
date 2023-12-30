@@ -44,7 +44,6 @@ public class AdminProc implements AdminProcInter {
     return adminVO;
   }
   
-  
 }
 
 

@@ -1,11 +1,18 @@
 package dev.mvc.cal;
 
 public class CalVO {
+	/*
+	 calno 		NUMBER 			NOT NULL 	PRIMARY KEY,     -- 일정 번호
+     title 		VARCHAR2(200) 	NOT NULL,          			 -- 일정 제목
+     memo 		CLOB 			NULL,                        -- 상세 내용
+     calstart 	VARCHAR2(10) 	NOT NULL,        			 -- 시작일
+     calend 	VARCHAR2(10) 	NULL               			 -- 종료일
+	 */
 	private int calno;
-	private String title;
-	private String memo;
-	private String calstart;
-	private String calend;
+	private String title = "";
+	private String memo = "";
+	private String calstart = "";
+	private String calend = "";
 
 	public int getCalno() {
 		return calno;

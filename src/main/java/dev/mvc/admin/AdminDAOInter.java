@@ -2,21 +2,24 @@ package dev.mvc.admin;
 
 public interface AdminDAOInter {
   /**
-   * 로그인
+   * 관리자 로그인
+   * 
    * @param AdminVO
    * @return
    */
   public int login(AdminVO adminVO);
   
   /**
-   * 회원 정보
+   * 관리자 정보 조회
+   * 
    * @param String
    * @return
    */
   public AdminVO read_by_id(String id);
   
   /**
-   * 회원 정보 조회
+   * 특정 관리자 정보
+   * 
    * @param admino
    * @return
    */

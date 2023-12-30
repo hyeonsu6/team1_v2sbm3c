@@ -3,13 +3,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dev.mvc.alogin.AloginDAOInter">
-	<!-- return: 등록한 레코드 갯수를 1을 리턴, parameterType: 전달받는 데이터 -->
+	<!-- return: 등록한 레코드 갯수 1을 리턴, parameterType: 전달받는 데이터 -->
 	<insert id="create" parameterType="dev.mvc.mlogin.MloginVO">
 		INSERT INTO alogin(aloginno, adminno, ip, logindate)
 		VALUES(alogin_seq.nextval, #{adminno}, #{ip}, sysdate)
 	</insert>
 
-	<!-- 관리자 로그인 내역 -->
+	<!-- 전체 목록, 관리자 로그인 내역 -->
 	<select id="list_all_alogin" resultType="dev.mvc.alogin.AloginVO">
 		SELECT aloginno, adminno, ip, logindate
 		FROM alogin
@@ -17,14 +17,14 @@
 		aloginno DESC
 	</select>
 
-	<!-- 조회 -->
+	<!-- 특정 관리자 로그인 내역 조회 -->
 	<select id="read_alogin" resultType="dev.mvc.alogin.AloginVO" parameterType="int">
 		SELECT aloginno, adminno, ip, logindate
 		FROM alogin
 		WHERE aloginno =#{aloginno}
 	</select>
 
-	<!-- 삭제 -->
+	<!-- 관리자 로그인 내역 삭제 -->
 	<delete id="delete_alogin" parameterType="int">
 		DELETE FROM alogin
 		WHERE aloginno=#{aloginno}

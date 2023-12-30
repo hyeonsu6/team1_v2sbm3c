@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
-import dev.mvc.mlogin.MloginVO;
 
 @Controller
 public class AloginCont {
@@ -29,8 +28,9 @@ public class AloginCont {
 	}
 
 	/**
-	 * 전체 목록 http://localhost:9093/login/list_all_alogin.do
+	 * 전체 목록, 관리자 로그인 내역 http://localhost:9093/login/list_all_alogin.do
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/login/list_all_alogin.do", method = RequestMethod.GET)
@@ -53,8 +53,9 @@ public class AloginCont {
 	}
 
 	/**
-	 * 조회 http://localhost:9093/login/read_alogin.do?aloginno=1
+	 * 특정 관리자 로그인 내역 조회 http://localhost:9093/login/read_alogin.do?aloginno=1
 	 * 
+	 * @param aloginno
 	 * @return
 	 */
 	@RequestMapping(value = "/login/read_alogin.do", method = RequestMethod.GET)
@@ -69,8 +70,10 @@ public class AloginCont {
 	}
 
 	/**
-	 * 로그인 내역 삭제 폼 http://localhost:9093/login/delete_alogin.do?aloginno=1
+	 * 관리자 로그인 내역 삭제 폼 http://localhost:9093/login/delete_alogin.do?aloginno=1
 	 * 
+	 * @param session
+	 * @param aloginVO
 	 * @return
 	 */
 	@RequestMapping(value = "/login/delete_alogin.do", method = RequestMethod.GET)
@@ -93,8 +96,9 @@ public class AloginCont {
 	}
 
 	/**
-	 * 삭제 처리 http://localhost:9093/login/delete_alogin.do
+	 * 관리자 로그인 내역 삭제 처리 http://localhost:9093/login/delete_alogin.do
 	 * 
+	 * @param aloginVO
 	 * @return
 	 */
 	@RequestMapping(value = "/login/delete_alogin.do", method = RequestMethod.POST)

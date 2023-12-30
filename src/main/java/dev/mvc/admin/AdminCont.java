@@ -24,15 +24,14 @@ public class AdminCont {
 
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc") // "dev.mvc.admin.AdminProc"라고 명명된 클래스
-	private AdminProcInter adminProc; // AdminProcInter를 구현한 AdminProc 클래스의 객체를 자동으로 생성하여 할당
+	private AdminProcInter adminProc;     // AdminProcInter를 구현한 AdminProc 클래스의 객체를 자동으로 생성하여 할당
 
 	public AdminCont() {
 		System.out.println("-> AdminCont created.");
 	}
 
 	/**
-	 * POST 요청시 JSP 페이지에서 JSTL 호출 기능 지원, 새로고침 방지, EL에서 param으로 접근 POST → url → GET →
-	 * 데이터 전송
+	 * POST 요청시 JSP 페이지에서 JSTL 호출 기능 지원, 새로고침 방지, EL에서 param으로 접근 POST → url → GET → 데이터 전송
 	 * 
 	 * @return
 	 */
@@ -54,6 +53,7 @@ public class AdminCont {
 	@RequestMapping(value = "/admin/logout.do", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
 		session.invalidate(); // 모든 session 변수 삭제
 
 		mav.setViewName("redirect:/index.do");
@@ -95,6 +95,7 @@ public class AdminCont {
 
 		String ip = request.getRemoteAddr();
 		System.out.println("-> ip: " + ip);
+		
 		ModelAndView mav = new ModelAndView();
 
 		int cnt = adminProc.login(adminVO);

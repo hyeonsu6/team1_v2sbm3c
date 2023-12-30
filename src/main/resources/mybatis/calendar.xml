@@ -2,44 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dev.mvc.cal.CalDAOInter">
-	<!-- 등록 -->
+	<!-- 일정 등록 -->
 	<insert id="create" parameterType="dev.mvc.cal.CalVO">
 		INSERT INTO CALENDAR (calno, title, memo, calstart, calend)
-		VALUES
-		(CALENDAR_SEQ.NEXTVAL, #{title},
-		#{memo}, #{calstart}, #{calend})
+		VALUES (CALENDAR_SEQ.NEXTVAL, #{title}, #{memo}, #{calstart}, #{calend})
 	</insert>
 
-	<!-- 전체 목록 -->
+	<!-- 전체 일정 목록 (목록형) -->
 	<select id="list_all" resultType="dev.mvc.cal.CalVO">
 		SELECT * FROM CALENDAR
 	</select>
 
-	<!-- 전체 목록 (달력형) -->
+	<!-- 전체 일정 목록 (달력형) -->
 	<select id="list_all_calendar" resultType="dev.mvc.cal.CalVO">
 		SELECT * FROM CALENDAR
 	</select>
 
-	<!-- 조회 -->
+	<!-- 특정 일정에 대한 조회 -->
 	<select id="read" resultType="dev.mvc.cal.CalVO" parameterType="int">
-		SELECT calno, title, memo, calstart,
-		calend
+		SELECT calno, title, memo, calstart, calend
 		FROM CALENDAR
 		WHERE calno=#{calno}
 	</select>
 
-	<!-- 수정 -->
+	<!-- 일정 수정 -->
 	<update id="update" parameterType="dev.mvc.cal.CalVO">
 		UPDATE CALENDAR
-		SET title = #{title}, memo = #{memo},
-		calstart =
-		#{calstart},
-		calend = #{calend}
+		SET title = #{title}, memo = #{memo}, calstart = #{calstart}, calend = #{calend}
 		WHERE calno = #{calno}
 	</update>
 
-	<!-- 삭제 -->
+	<!-- 일정 삭제 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM CALENDAR WHERE calno = #{calno}
+		DELETE FROM CALENDAR 
+		WHERE calno = #{calno}
 	</delete>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

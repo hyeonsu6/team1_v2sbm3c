@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dev.mvc.mlogin.MloginVO;
-
 @Component("dev.mvc.alogin.AloginProc")
 public class AloginProc implements AloginProcInter {
 	@Autowired
@@ -35,5 +33,4 @@ public class AloginProc implements AloginProcInter {
 		int cnt = this.aloginDAO.delete_alogin(aloginno);
 		return cnt;
 	}
-
 }

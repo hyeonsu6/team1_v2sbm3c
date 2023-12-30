@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
-import dev.mvc.festival.FestivalVO;
 
 @Controller
 public class CalCont {
@@ -30,7 +29,7 @@ public class CalCont {
 	}
 
 	/**
-	 * 등록 폼 FORM 출력, http://localhost:9092/calendar/create.do
+	 * 일정 등록 FORM 출력, http://localhost:9092/calendar/create.do
 	 * 
 	 * @return
 	 */
@@ -44,8 +43,9 @@ public class CalCont {
 	}
 
 	/**
-	 * 등록 처리 FORM 데이터 처리, http://localhost:9092/calendar/create.do
+	 * 일정 등록 처리 FORM 데이터 처리, http://localhost:9092/calendar/create.do
 	 * 
+	 * @param calVO
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/create.do", method = RequestMethod.POST)
@@ -68,8 +68,9 @@ public class CalCont {
 	}
 
 	/**
-	 * 전체 목록 http://localhost:9092/calendar/list_all.do
+	 * 전체 일정 목록 (목록형) http://localhost:9092/calendar/list_all.do
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/list_all.do", method = RequestMethod.GET)
@@ -87,10 +88,11 @@ public class CalCont {
 
 		return mav;
 	}
-
+	
 	/**
-	 * 전체 목록 http://localhost:9092/calendar/list_all_calendar.do 달력형
+	 * 전체 일정 목록 (달력형) http://localhost:9092/calendar/list_all_calendar.do 
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/list_all_calendar.do", method = RequestMethod.GET)
@@ -106,8 +108,9 @@ public class CalCont {
 	}
 
 	/**
-	 * 조회 http://localhost:9092/calendar/read.do?calno=1
+	 * 특정 일정에 대한 조회 http://localhost:9092/calendar/read.do?calno=1
 	 * 
+	 * @param calno
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/read.do", method = RequestMethod.GET)
@@ -123,8 +126,10 @@ public class CalCont {
 	}
 
 	/**
-	 * 수정폼 http://localhost:9092/calendar/update.do?calno=1
+	 * 일정 수정 폼 http://localhost:9092/calendar/update.do?calno=1
 	 * 
+	 * @param session
+	 * @param calno
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/update.do", method = RequestMethod.GET)
@@ -144,8 +149,10 @@ public class CalCont {
 	}
 
 	/**
-	 * 수정 처리 http://localhost:9092/calendar/update.do?calno=1
+	 * 일정 수정 처리 http://localhost:9092/calendar/update.do?calno=1
 	 * 
+	 * @param session
+	 * @param calVO
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/update.do", method = RequestMethod.POST)
@@ -176,8 +183,10 @@ public class CalCont {
 	}
 
 	/**
-	 * 삭제폼 http://localhost:9092/calendar/delete.do?calno=1
+	 * 일정 삭제 폼 http://localhost:9092/calendar/delete.do?calno=1
 	 * 
+	 * @param session
+	 * @param calno
 	 * @return
 	 */
 	@RequestMapping(value = "/calendar/delete.do", method = RequestMethod.GET)
@@ -201,10 +210,10 @@ public class CalCont {
 	}
 
 	/**
-	 * 삭제 처리, http://localhost:9092/calendar/delete.do?calno=1
-	 * 
-	 * @param calno 삭제할 레코드 번호
-	 * @return ModelAndView
+	 * 일정 삭제 처리 http://localhost:9092/calendar/delete.do?calno=1
+	 * @param session
+	 * @param calno
+	 * @return
 	 */
 	@RequestMapping(value = "/calendar/delete.do", method = RequestMethod.POST)
 	public ModelAndView delete_proc(HttpSession session, int calno) { // <form> 태그의 값이 자동으로 저장됨

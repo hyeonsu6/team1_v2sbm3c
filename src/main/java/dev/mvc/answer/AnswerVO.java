@@ -1,15 +1,16 @@
 package dev.mvc.answer;
 
-/*CREATE TABLE ANSWER(
-    ANSNO       NUMBER(10)      NOT NULL,
-    QNANO       NUMBER(10)      NOT NULL,   -- FK
-    ANS         VARCHAR(300)    NOT NULL,
-    ADMINNO     NUMBER(5)       NOT NULL,   -- FK
-    RDATE       DATE            NOT NULL,
-    PRIMARY KEY (ANSNO)
-);*/
-
 public class AnswerVO {
+	/*
+ 	ansno       NUMBER(10)      NOT NULL,
+    questno     NUMBER(10)      NOT NULL,  -- FK
+    ans         VARCHAR(300)    NOT NULL,
+    adminno     NUMBER(5)       NOT NULL,  -- FK
+    rdate       DATE            NOT NULL,
+    FOREIGN KEY (questno) REFERENCES QUESTION (questno),
+    FOREIGN KEY (adminno) REFERENCES ADMIN (adminno),
+    PRIMARY KEY (ansno)
+	 */
   private int ansno;
   private int questno;
   private String ans = "";
