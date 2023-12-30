@@ -113,7 +113,7 @@
 						$(document)
 								.ready(
 										function() {
-											var contentsno = $
+											var contentsno = ${contentsno}
 											{
 												contentsno
 											}
