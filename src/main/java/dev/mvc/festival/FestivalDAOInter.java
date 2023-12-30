@@ -131,4 +131,12 @@ public interface FestivalDAOInter {
 	 * @return 삭제된 레코드 갯수
 	 */
 	public int delete_by_fcateno(int fcateno);
+
+	/**
+	 * 특정 카테고리 지정 추천해요와 연결
+	 * 
+	 * @param fcateno
+	 * @return
+	 */
+	ArrayList<FestivalVO> recom_like_new(int fcateno);
 }

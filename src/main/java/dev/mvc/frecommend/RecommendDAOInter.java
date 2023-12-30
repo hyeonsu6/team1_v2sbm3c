@@ -51,5 +51,12 @@ public interface RecommendDAOInter {
 	 * @return
 	 */
 	public ArrayList<FestivalVO> recom_like(int fcateno);
+	
+	/**
+	 * 특정 카테고리 지정 추천해요
+	 *  
+	 * @return
+	 */
+	public ArrayList<FestivalVO> recom_like_new(int fcateno);
 
 }

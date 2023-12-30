@@ -175,7 +175,8 @@ public class FestivalProc implements FestivalProcInter {
 		str.append("  #paging {text-align: center; margin-top: 5px; font-size: 1em; border-radius: 10px;}");
 		str.append("  #paging A:link {text-decoration:none; color:black; font-size: 1em;}");
 		str.append("  #paging A:hover{text-decoration:none; background-color: #FFFFFF; color:black; font-size: 1em;}");
-		str.append("  #paging A:visited {text-decoration:none;color:#FFFFFF; font-size: 1em;}");
+		str.append(
+				"  #paging A:visited {text-decoration:none; background-color: #FFFFFF; color:black; font-size: 1em;}");
 		str.append("  .span_box_1{");
 		str.append("    text-align: center;");
 		str.append("    font-size: 1em;");
@@ -280,4 +281,8 @@ public class FestivalProc implements FestivalProcInter {
 		return cnt;
 	}
 
+	public ArrayList<FestivalVO> recom_like_new(int fcateno) {
+		ArrayList<FestivalVO> list = this.festivalDAO.recom_like_new(fcateno);
+		return list;
+	}
 }

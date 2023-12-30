@@ -54,6 +54,29 @@
 		)
 		)
 		WHERE r BETWEEN 1
-		AND 5>
+		AND 5
+	</select>
+	
+	<!-- 관심분야의 카테고리 1번 컨텐츠 중 recom(추천수) 컬럼의 내림차순 정렬후 페스티벌 목록 5건을 출력 -->
+	<select id="recom_like_new" resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
+		SELECT contentsno,
+		adminno,
+		fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
+		size1, r
+		FROM (
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1,
+		file1saved, thumb1,
+		size1,
+		rownum AS r
+		FROM (
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt,
+		replycnt, rdate,
+		file1, file1saved, thumb1, size1
+		FROM festival
+		WHERE fcateno=#{fcateno}
+		ORDER BY recom DESC
+		)
+		)
+		WHERE r BETWEEN 1 AND 3
 	</select>
 </mapper>

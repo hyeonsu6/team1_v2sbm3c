@@ -24,7 +24,7 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	
+
 	<a href="#" id="imageLink">
 		<img src="/images/index_img1.png" id="slideshow" alt="Slideshow Image" class="index_img">
 	</a>
@@ -36,7 +36,7 @@
 				"http://localhost:9093/festival/read.do?contentsno=13&word=&now_page=1&fcateno=11",
 				"http://localhost:9093/festival/read.do?contentsno=14&word=&now_page=1&fcateno=3",
 				"http://localhost:9093/festival/read.do?contentsno=15&word=&now_page=1&fcateno=7" ];
-		
+
 		let currentImageIndex = 0;
 
 		function changeImage() {
@@ -62,6 +62,10 @@
 				<%-- /static/images/resort01.jpg --%>
 				<img src='/images/index_img.jpg' style='width: 100%;'>
 			</div>
+			<div style='width: 70%; margin: 10px auto; text-align: center;'>
+				<h4>2024 갑진년 새해 추천 페스티벌 TOP 5</h4>
+				<c:import url="/frecommend/recom_like_new.do" />
+			</div>
 		</c:when>
 		<c:otherwise>
 			<div style='width: 100%; margin: 30px auto; text-align: center;'>
@@ -75,8 +79,15 @@
 					<div style="clear: both; height: 20px;"></div>
 
 					<div style='width: 70%; margin: 10px auto; text-align: center;'>
-						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌</h4>
+						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌 TOP 5</h4>
 						<c:import url="/frecommend/recom_like.do" />
+					</div>
+
+					<div style="clear: both; height: 20px;"></div>
+
+					<div style='width: 70%; margin: 10px auto; text-align: center;'>
+						<h4>2024 갑진년 새해 추천 페스티벌 TOP 5</h4>
+						<c:import url="/frecommend/recom_like_new.do" />
 					</div>
 				</c:if>
 			</div>

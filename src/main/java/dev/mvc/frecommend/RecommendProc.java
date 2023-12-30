@@ -47,5 +47,11 @@ public class RecommendProc implements RecommendProcInter {
 		ArrayList<FestivalVO> list = this.recommendDAO.recom_like(fcateno);
 		return list;
 	}
+	
+	@Override
+	public ArrayList<FestivalVO> recom_like_new(int fcateno) {
+		ArrayList<FestivalVO> list = this.recommendDAO.recom_like_new(fcateno);
+		return list;
+	}
 
 }

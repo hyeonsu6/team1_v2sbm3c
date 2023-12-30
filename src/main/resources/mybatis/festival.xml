@@ -90,8 +90,7 @@
 	</select>
 
 	<!-- 카테고리별 검색 + 페이징 목록 -->
-	<select id="list_by_fcateno_search_paging" resultType="dev.mvc.festival.FestivalVO"
-		parameterType="dev.mvc.festival.FestivalVO">
+	<select id="list_by_fcateno_search_paging" resultType="dev.mvc.festival.FestivalVO" parameterType="dev.mvc.festival.FestivalVO">
 		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
 		size1, map, youtube, r
 		FROM (
@@ -168,6 +167,13 @@
 		WHERE fcateno=#{fcateno}
 	</delete>
 
+	<!-- 특정 카테고리 지정 추천해요와 연결 -->
+	<select id="recom_like_new" resultType="dev.mvc.festival.FestivalVO" parameterType="int">
+		SELECT *
+		FROM festival
+		WHERE fcateno = #{fcateno}
+		ORDER BY recom DESC, rdate DESC
+	</select>
 </mapper> 
 
 

@@ -183,4 +183,43 @@ public class RecommendCont {
 		}
 		return mav;
 	}
+
+	/**
+	 * 특정 카테고리 지정 추천해요 http://localhost:9093/frecommend/recom_like_new.do
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/recom_like_new.do", method = RequestMethod.GET)
+	public ModelAndView recom_like_new(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("/frecommend/recom_like_new");
+
+		int memberno = (int) session.getAttribute("memberno");
+		mav.addObject("memberno", memberno);
+
+		RecommendVO recommendVO = this.recommendProc.read(memberno);
+
+		// 원하는 카테고리 번호 (예: 11)
+		int fcateno_new = 11;
+
+		if (recommendVO != null) {
+			int fcateno = recommendVO.getFcateno();
+			// 기존 코드에서 사용된 fcateno 대신 원하는 값으로 설정
+			ArrayList<FestivalVO> list = this.recommendProc.recom_like_new(fcateno_new);
+			if (list.size() > 5) {
+				list = new ArrayList<>(list.subList(0, 5));
+			}
+			mav.addObject("list", list);
+		} else {
+			// recommendVO가 null인 경우에도 원하는 카테고리 번호로 설정
+			ArrayList<FestivalVO> list = this.festivalProc.recom_like_new(fcateno_new);
+			if (list.size() > 5) {
+				list = new ArrayList<>(list.subList(0, 5));
+			}
+			mav.addObject("list", list);
+		}
+		return mav;
+	}
+
 }
