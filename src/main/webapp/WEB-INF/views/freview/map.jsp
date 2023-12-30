@@ -2,6 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<c:set var="title" value="${festivalVO.title }" />
+
+<c:set var="contentsno" value="${freviewVO.contentsno }" />
+<c:set var="reviewno" value="${freviewVO.reviewno }" />
+<c:set var="thumb1" value="${freviewVO.thumb1 }" />
+<c:set var="file1saved" value="${freviewVO.file1saved }" />
+<c:set var="title" value="${freviewVO.title }" />
+<c:set var="content" value="${freviewVO.content }" />
+<c:set var="nickname" value="${freviewVO.nickname }" />
+<c:set var="rdate" value="${freviewVO.rdate }" />
+<c:set var="map" value="${freviewVO.map }" />
+<c:set var="file1" value="${freviewVO.file1 }" />
+<c:set var="size1_label" value="${freviewVO.size1_label }" />
+<c:set var="word" value="${freviewVO.word }" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,12 +31,18 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		<a href="/festival/list_by_contentsno.do?fcateno=${festivalVO.contentsno }" class="title_link">${festivalVO.title }</a>
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
+		>
+		<a
+			href="./read.do?reviewno=${reviewno}&word=${word }&now_page=${now_page == null ? 1 : now_page }&contentsno=${contentsno }"
+			class='title_link'>${freviewVO.title }</a>
 		> 리뷰 지도🧭 등록|수정|삭제
 	</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+		<a href="./list_by_contentsno.do?contentsno=${contentsno }">📰 리뷰 목록</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
@@ -69,7 +90,9 @@
 
 	<div class="content_line"></div>
 	<div style="text-align: center; font-size: 20px;">
-	<div style="margin: 10px; color: #228B22;">[참고] 다음 지도의 등록 방법<br></div>
+		<div style="margin: 10px; color: #228B22;">
+			[참고] 다음 지도의 등록 방법<br>
+		</div>
 		<img src='/festival/images/map01.jpg' style='width: 50%;'>
 		<img src='/festival/images/map02.jpg' style='width: 50%;'>
 		<img src='/festival/images/map03.jpg' style='width: 50%;'>

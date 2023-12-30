@@ -16,7 +16,8 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		<a href="/festival/list_by_contentsno.do?fcateno=${festivalVO.contentsno }" class="title_link">${festivalVO.title }</a>
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		> <a href="./read.do?contentsno=${festivalVO.contentsno }" class="title_link"> ${festivalVO.title }</a>
 		> 콘텐츠 지도🧭 등록|수정|삭제
 	</div>
 

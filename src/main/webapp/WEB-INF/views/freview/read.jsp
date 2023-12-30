@@ -30,8 +30,12 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
-		<a href="./list_by_contentsno.do?contentsno=${festivalVO.contentsno }" class='title_link'>${festivalVO.title }</a>
-		> 리뷰
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
+		>
+		<a
+			href="./read.do?reviewno=${reviewno}&word=${word }&now_page=${now_page == null ? 1 : now_page }&contentsno=${contentsno }"
+			class='title_link'>${freviewVO.title }</a>
+		> 리뷰(후기)
 	</div>
 
 	<aside class="aside_left">
@@ -135,13 +139,14 @@
 				</div>
 			</li>
 		</ul>
-    
-    <br><div class='content_line'></div>
+
+		<br>
+		<div class='content_line'></div>
 		<form name='frm' id='frm' method='post' action='javascript:void(0);'>
-    <input type='hidden' name='reviewno' value='${reviewno }'>
-    <input type='hidden' name='id' value='${id }'>
-    <input type='hidden' name='reply' value='${reply }'>
-    <input type='hidden' name='passwd' value='${passwd }'>
+			<input type='hidden' name='reviewno' value='${reviewno }'>
+			<input type='hidden' name='id' value='${id }'>
+			<input type='hidden' name='reply' value='${reply }'>
+			<input type='hidden' name='passwd' value='${passwd }'>
 			<div style="margin: 20px 20px 5px 20px;">
 				<span style="color: #228B22; font-size: 19px;">리뷰 댓글</span>
 			</div>
@@ -157,7 +162,8 @@
 						style='float: center; font-size: 13px; margin: 0.1%; margin-left: 20px; padding: 0.5%; border: 1px solid #FFFFFF; border-radius: 10px; width: 15%;'
 						onfocus="this.style.outlineColor='rgba(182, 187, 196, 0)';">
 					<button type='submit' class="btn btn-outline-warning btn-sm"
-						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;" onclick="submitReply();">댓글 등록</button>
+						style="background-color: #B8860B; float: right; margin-right: 10px; margin-top: 35px;" onclick="submitReply();">댓글
+						등록</button>
 				</c:if>
 				<c:if test="${not isMember }">
 					<div style="margin-top: 50px; text-align: center;">
@@ -171,8 +177,8 @@
 			<div style='width: 100%; border-bottom: solid 1px #D0D4CA; margin: 20px 0px 10px 0px; clear: both;'></div>
 			<c:if test="${replyVO.id eq id}">
 				<div style='float: right;'>
-					<a href="#" onclick="editReply(${replyVO.replyno}, '${replyVO.reply}');"
-            style="color: #696969; font-size: 14px;">댓글 수정</a>
+					<a href="#" onclick="editReply(${replyVO.replyno}, '${replyVO.reply}');" style="color: #696969; font-size: 14px;">댓글
+						수정</a>
 					<span class='menu_divide'>│</span>
 					<a href="#" onclick="deleteReply(${replyVO.replyno}, '${replyVO.passwd}');"
 						style="color: #696969; font-size: 14px; margin-right: 15px;">댓글 삭제</a>
@@ -184,13 +190,13 @@
 				<span
 					style='float: center; color: #B6BBC4; color: #B6BBC4; font-size: 12px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>(${replyVO.rdate})</span>
 			</div>
-			<div
-				id = "reply_${replyVO.replyno}" style='float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
+			<div id="reply_${replyVO.replyno}"
+				style='float: center; font-size: 14px; margin: 0.1%; padding: 0.3%; border: 1px solid #FFFFFF; border-radius: 10px; margin-left: 10px;'>
 				ㄴ ${replyVO.reply}</div>
 
 		</c:forEach>
-    
-    <script>
+
+		<script>
       //댓글 등록 함수
       function submitReply() {
           var reply = document.getElementById('reply').value;

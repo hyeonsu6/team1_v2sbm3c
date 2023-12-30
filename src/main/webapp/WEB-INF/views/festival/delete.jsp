@@ -23,7 +23,12 @@
 
 <body>
 	<c:import url="/menu/top.do" />
-	<div class='title_line'>${fcateVO.name }>${title }>콘텐츠삭제</div>
+	<div class='title_line'>
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		>
+		<a href="./read.do?contentsno=${festivalVO.contentsno }" class="title_link"> ${festivalVO.title }</a>
+		>콘텐츠삭제
+	</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>

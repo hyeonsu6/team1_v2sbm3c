@@ -40,18 +40,18 @@ public class Festival_likesCont {
 	@RequestMapping(value = "/festival_likes/do_like.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String do_like(HttpSession session, Festival_likeVO festival_likeVO) {
-	    // 사용자가 로그인한 경우
-	    if (memberProc.isMember(session)) {
-	        int memberno = (int) session.getAttribute("memberno");
+		// 사용자가 로그인한 경우
+		if (memberProc.isMember(session)) {
+			int memberno = (int) session.getAttribute("memberno");
 
-	        // 좋아요 등록
-	        festival_likeVO.setMemberno(memberno);
-	        int count = festival_likeProc.do_like(festival_likeVO);
+			// 좋아요 등록
+			festival_likeVO.setMemberno(memberno);
+			int count = festival_likeProc.do_like(festival_likeVO);
 
-	        return "success";
-	    } else {
-	        return "login_required";
-	    }
+			return "success";
+		} else {
+			return "login_required";
+		}
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class Festival_likesCont {
 	@RequestMapping(value = "/festival_likes/get_total_likecount.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String get_total_likecount(int contentsno) {
-		
+
 		// 총 좋아요 개수 가져오기
 		int totalLikeCount = festival_likeProc.get_total_likecount(contentsno);
 

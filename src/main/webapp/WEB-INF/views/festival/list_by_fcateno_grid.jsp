@@ -11,13 +11,18 @@
 <title>Festival Blog Festival Contents</title>
 <link rel="shortcut icon" href="/images/festival.png" />
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
+<style>
+.rounded-image {
+	border-radius: 5%;
+}
+</style>
 </head>
 
 <body>
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		${fcateVO.name }
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
 		<c:if test="${param.word.length() > 0 }">
       > 「${param.word }」 검색 ${search_count } 건
     </c:if>
@@ -60,7 +65,7 @@
 				</c:otherwise>
 			</c:choose>
 			<button type='submit' class="btn btn-outline-warning btn-sm"
-				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;" >검색</button>
+				style="height: 30px; margin-bottom: 5px; background-color: #B8860B;">검색</button>
 			<c:if test="${param.word.length() > 0 }">
 				<%-- 검색 상태하면 '검색 취소' 버튼을 출력 --%>
 				<button type='button' class="btn btn-outline-warning btn-sm"
@@ -86,17 +91,18 @@
 			<!-- 5기준 하나의 이미지, 19.2 * 5 = 96% -->
 			<div
 				onclick="location.href='./read.do?contentsno=${contentsno}&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }&fcateno=${param.fcateno }'"
-				style='width: 15%; height: 200px; float: left; margin: 0.5%; padding: 0.5%; background-color: #FFF8DC; text-align: center; color: #556B2F; font-size: 14px; cursor: pointer; border: 3px solid #8B4513; border-radius: 10px;'>
+				style='width: 15%; height: 200px; margin: 0.5%; padding: 0.5%; font-size: 14px; background-color: #FFF8DC; text-align: center; color: #556B2F; display: inline-block; vertical-align: top; border: 3px solid #8B4513; border-radius: 10px;'>
 
 				<c:choose>
 					<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 						<%-- 이미지인지 검사 --%>
 						<%-- registry.addResourceHandler("/festival/storage/**").addResourceLocations("file:///" +  Contents.getUploadDir()); --%>
-						<img src="/festival/storage/${thumb1 }" style="width: 100%; height: 120px;">
+						<img src="/festival/storage/${thumb1 }" style="width: 100%; height: 120px; object-fit: cover;"
+							class="rounded-image">
 					</c:when>
 					<c:otherwise>
 						<!-- 이미지가 없는 경우 기본 이미지 출력: /static/festival/images/none1.png -->
-						<IMG src="/festival/images/none1.png" style="width: 100%; height: 120px;">
+						<img src="/festival/images/none1.png" style="width: 100%; height: 120px; object-fit: cover;" class="rounded-image">
 					</c:otherwise>
 				</c:choose>
 				<br> <br> ${title }
@@ -105,7 +111,7 @@
 
 			<%-- 하나의 행에 이미지를 5개씩 출력후 행 변경, index는 0부터 시작 --%>
 			<c:if test="${status.count % 5 == 0}">
-				<HR class='menu_line'>
+				<hr class='menu_line'>
 				<%-- 줄바꿈 --%>
 			</c:if>
 

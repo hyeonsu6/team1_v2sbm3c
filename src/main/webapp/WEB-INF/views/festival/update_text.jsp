@@ -22,7 +22,10 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${fcateVO.name } > ${title } > 콘텐츠 수정</div>
+	<div class='title_line'><a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		>
+		<a href="./read.do?contentsno=${festivalVO.contentsno }" class="title_link"> ${festivalVO.title }</a>
+		> 콘텐츠 수정</div>
 
 	<aside class="aside_right">
 		<a href="./create.do?fcateno=${fcateno }">콘텐츠 등록</a>

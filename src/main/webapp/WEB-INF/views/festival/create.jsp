@@ -15,7 +15,7 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class='title_link'>${fcateVO.name }</a>
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
 		> 콘텐츠 등록
 	</div>
 
@@ -24,9 +24,11 @@
 		<span class='menu_divide'>│</span>
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
-		<a href="./list_by_fcateno_search_paging.do?fcateno=${fcateVO.fcateno }">기본 목록형</a>
+		<a
+			href="./list_by_fcateno.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }">목록형</a>
 		<span class='menu_divide'>│</span>
-		<a href="./list_by_fcateno_grid.do?fcateno=${fcateVO.fcateno }">갤러리형</a>
+		<a
+			href="./list_by_fcateno_grid.do?fcateno=${param.fcateno }&now_page=${param.now_page == null ? 1 : param.now_page }&word=${param.word }">갤러리형</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
@@ -70,11 +72,13 @@
 		</div>
 		<div>
 			<label>검색어</label>
-			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%; margin-bottom: 15px;''>
+			<input type='text' name='word' value='' required="required" class="form-control"
+				style='width: 100%; margin-bottom: 15px;''>
 		</div>
 		<div>
 			<label>이미지</label>
-			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택" style="margin-bottom: 15px;">
+			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택"
+				style="margin-bottom: 15px;">
 		</div>
 		<div>
 			<label>패스워드</label>

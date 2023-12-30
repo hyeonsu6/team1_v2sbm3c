@@ -21,10 +21,19 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${festivalVO.title }>${title }> 리뷰 수정</div>
+	<div class='title_line'>
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
+		>
+		<a
+			href="./read.do?reviewno=${reviewno}&word=${word }&now_page=${now_page == null ? 1 : now_page }&contentsno=${contentsno }"
+			class='title_link'>${freviewVO.title }</a>
+		> 리뷰 수정
+	</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
+		<span class='menu_divide'>│</span>
+		<a href="./list_by_contentsno.do?contentsno=${contentsno }">📰 리뷰 목록</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">

@@ -24,10 +24,11 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
-		<a href="../festival/list_by_fcateno.do?fcateno=${festivalVO.fcateno }" class='title_link'>${festivalVO.title }</a>
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
 		>
-		<a href="./list_by_contentsno.do?reviewno=${reviewno }&now_page=${freviewVO.now_page}&contentsno=${contentsno}"
-			class='title_link'>${title }</a>
+		<a
+			href="./read.do?reviewno=${reviewno}&word=${word }&now_page=${now_page == null ? 1 : now_page }&contentsno=${contentsno }"
+			class='title_link'>${freviewVO.title }</a>
 		> 리뷰 삭제
 	</div>
 

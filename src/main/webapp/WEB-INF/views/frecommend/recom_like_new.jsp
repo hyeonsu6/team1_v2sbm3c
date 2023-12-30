@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<style>
+.rounded-image {
+	border-radius: 5%;
+}
+</style>
 
 <div style='width: 100%;'>
 	<c:forEach var="festivalVO" items="${list }" varStatus="status">
@@ -14,28 +19,28 @@
 		<div
 			onclick="location.href='/festival/read.do?contentsno=${contentsno }&word=${param.word }&now_page=${param.now_page == null ? 1 : param.now_page }'"
 			class='title_link'
-			style='width: 16%; height: 168px; margin: 0.5%; padding: 0.1%; background-color: #EC9704; text-align: center; display: inline-block; vertical-align: top;'>
+			style='width: 18%; height: 190px; margin: 0.5%; padding: 0.3%; font-size: 16px; background-color: #FFA07A; text-align: center; 
+			display: inline-block; vertical-align: top; border-radius: 15px; border: 7px #FF6347 ridge;'>
 
 			<c:choose>
 				<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 					<img src="/festival/storage/${thumb1}?width=100&amp;height=140"
-						style="max-width: 100%; max-height: 140px; object-fit: cover;">
+						style="max-width: 100%; max-height: 140px; object-fit: cover;" class="rounded-image">
 				</c:when>
 				<c:otherwise>
-					<img src="/festival/images/none1.png" style="max-width: 100%; max-height: 140px; object-fit: cover;">
+					<img src="/festival/images/none1.png" style="max-width: 100%; max-height: 140px; object-fit: cover;"
+						class="rounded-image">
 				</c:otherwise>
 			</c:choose>
 
-			<span style="font-size: 0.8em; color: #800000;">
-				<c:choose>
-					<c:when test="${title.length() > 20 }">
-                ${title.substring(0, 20)}...
-            </c:when>
-					<c:when test="${title.length() <= 20 }">
-                ${title}
-            </c:when>
-				</c:choose>
-			</span>
+			<div style="margin-top: 10px;">
+				<span style="font-size: 0.8em; color: #FFF8DC;">
+					<c:choose>
+						<c:when test="${title.length() > 12 }"> ${title.substring(0, 12)}...</c:when>
+						<c:when test="${title.length() <= 15 }">${title}</c:when>
+					</c:choose>
+				</span>
+			</div>
 		</div>
 	</c:forEach>
 </div>

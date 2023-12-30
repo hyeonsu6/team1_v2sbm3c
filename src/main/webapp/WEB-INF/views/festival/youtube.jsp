@@ -14,8 +14,10 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
-		<a href="/festival/list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
-		> ${festivalVO.title } > Youtube 등록|수정|삭제
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		>
+		<a href="./read.do?contentsno=${festivalVO.contentsno }" class="title_link"> ${festivalVO.title }</a>
+		> Youtube 등록|수정|삭제
 	</div>
 
 	<aside class="aside_right">
@@ -66,9 +68,10 @@
 		</div>
 		<div class="content_body_bottom">
 			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">유튜브 저장</button>
-			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">유튜브
-				삭제</button>
-			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">삭제 취소</button>
+			<button type="button" onclick="frm_youtube.youtube.value=''; frm_youtube.submit();"
+				class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">유튜브 삭제</button>
+			<button type="button" onclick="history.back();" class="btn btn-outline-warning btn-sm"
+				style="background-color: #B8860B;">삭제 취소</button>
 		</div>
 
 	</form>

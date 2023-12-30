@@ -30,7 +30,9 @@
 <body>
 	<c:import url="/menu/top.do" />
 	<div class='title_line'>
-		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class='title_link'>${fcateVO.name }</a>
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
+		>
+		<a href="./read.do?contentsno=${festivalVO.contentsno }" class="title_link"> ${festivalVO.title }</a>
 	</div>
 
 	<aside class="aside_left">
@@ -95,6 +97,8 @@
 		</form>
 	</div>
 
+	<div class="menu_line"></div>
+
 	<fieldset class="fieldset_basic">
 		<ul>
 			<li class="li_none">
@@ -109,27 +113,24 @@
 						<div id="totalLikeCount" style="color: black;">🩵 추천해요!</div>
 					</button>
 					<span style="font-size: 17px; color: #1E90FF; margin-left: 10px;">👈 추천은 힘이 됩니다🚀</span>
+
+					<!-- jQuery 추가 -->
 					<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 					<script>
+						// 페이지 로드 시 실행되는 부분
 						$(document)
 								.ready(
 										function() {
-											var contentsno = $
-											{
-												contentsno
-											}
-											{
-												contentsno
-											}
-											{
-												contentsno
-											}
-											{
-												contentsno
-											}
-											; // 콘텐츠 번호는 적절하게 수정
+											// 콘텐츠 번호 설정
+											var contentsno = "${contentsno}";
 
-											// 페이지 로딩 시 좋아요 상태 확인 및 총 좋아요 개수 가져오기
+											{
+												contentsno
+											}
+											; // 적절한 방법으로 콘텐츠 번호 설정
+
+											// 페이지 로드 시 좋아요 상태 확인 및 총 좋아요 개수 가져오기
 											getLikeCount();
 											getTotalLikeCount();
 

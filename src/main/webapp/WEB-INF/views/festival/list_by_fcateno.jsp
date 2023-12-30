@@ -17,7 +17,7 @@
 	<c:import url="/menu/top.do" />
 
 	<div class='title_line'>
-		${fcateVO.name }
+		<a href="./list_by_fcateno.do?fcateno=${fcateVO.fcateno }" class="title_link">${fcateVO.name }</a>
 		<c:if test="${param.word.length() > 0 }">
       > 「${param.word }」 검색 ${search_count } 건
     </c:if>
@@ -72,8 +72,6 @@
 		</form>
 	</div>
 
-	<div class="menu_line"></div>
-
 	<table>
 		<colgroup>
 			<col style="width: 10%;"></col>
@@ -90,7 +88,7 @@
 				<th></th>
 			</tr>
 		</thead>
-		
+
 		<tbody>
 			<c:forEach var="festivalVO" items="${list }" varStatus="info">
 				<c:set var="contentsno" value="${festivalVO.contentsno }" />

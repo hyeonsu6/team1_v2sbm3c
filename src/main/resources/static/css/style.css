@@ -18,7 +18,7 @@
 }
 
 .container_main {
-	width: 95%;
+	width: 97%;
 	margin: 10px auto;
 }
 
@@ -67,7 +67,7 @@
 
 .menu_line {
 	width: 100%;
-	border-bottom: 3px dotted #4682B4;
+	border-bottom: 2px dashed #4682B4;
 	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
@@ -82,9 +82,16 @@
 	margin: 10px auto;
 }
 
+.content_line_new {
+	width: 100%;
+	border-bottom: 3px solid #8B4513;
+	clear: both;
+	margin: 10px 0;
+}
+
 .content_line {
 	width: 100%;
-	border-bottom: 1px solid #2F4F4F;
+	border-bottom: 1px dashed #2F4F4F;
 	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
@@ -118,7 +125,7 @@
 
 .bottom_line {
 	width: 100%;
-	border-bottom: 3px dotted #4682B4;
+	border-bottom: 3px dashed #4682B4;
 	margin: 10px 0; /* 상단과 하단만 지정 */
 	clear: both;
 }
@@ -224,7 +231,7 @@
 	width: 100%;
 	margin: 20px auto;
 	font-weight: 700;
-	font-size:22px;
+	font-size: 22px;
 	border-bottom: 5px solid #CD853F;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -232,22 +239,26 @@
 
 .title_link:link { /* 방문전 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 23px;
+	font-size: 22px;
+	color: #4B0082;
 }
 
 .title_link:visited { /* 방문후 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 23px;
+	font-size: 22px;
+	color: #4B0082;
 }
 
 .title_link:hover { /* A 태그에 마우스가 올라간 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
 	font-size: 24px;
+	color: #F4A460;
 }
 
 .title_link:active { /* A 태그를 클릭한 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
 	font-size: 24px;
+	color: #F4A460;
 }
 
 .sub_menu {
@@ -397,6 +408,26 @@ a:active { /* A 태그를 클릭한 상태 */
 }
 
 .R_menu_link:active { /* A 태그를 클릭한 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
+}
+
+.I_menu_link:link { /* 방문전 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #228B22;
+}
+
+.I_menu_link:visited { /* 방문후 상태 */
+	text-decoration: none; /* 밑줄 삭제 */
+	color: #228B22;
+}
+
+.I_menu_link:hover { /* A 태그에 마우스가 올라간 상태 */
+	text-decoration: underline; /* 밑줄 출력 */
+	color: #1E90FF;
+}
+
+.I_menu_link:active { /* A 태그를 클릭한 상태 */
 	text-decoration: underline; /* 밑줄 출력 */
 	color: #1E90FF;
 }
@@ -570,32 +601,42 @@ a:active { /* A 태그를 클릭한 상태 */
 
 .login_container {
 	display: flex;
-	align-items: center; /* 이미지와 폼을 수직 가운데 정렬합니다. */
+	align-items: center; 
 	background-color: #73685d;
 	border-radius: 10px;
 }
 
 .login_image {
-	flex: 1; /* 이미지 영역이 화면 폭의 1/2를 차지하도록 합니다. */
-	text-align: center; /* 이미지 내용을 가운데 정렬합니다. */
-	max-width: 50%; /* 이미지의 최대 너비를 50%로 제한합니다. */
+	flex: 1; 
+	text-align: center; 
+	max-width: 50%; 
 	border-radius: 10px;
 }
 
 .login_image img {
-	width: 100%; /* 이미지 너비를 100%로 설정하여 부모 요소의 크기에 맞게 조절됩니다. */
+	width: 100%; 
 	border-radius: 10px;
 }
 
 .login_bottom_menu {
 	margin-left: 50px;
-	justify-content: center; /* 가로 중앙 정렬을 위한 추가 속성 */
+	justify-content: center; 
 }
 
 .login_bottom_menu button {
 	text-align: center;
-	width: 150px; /* 원하는 폭으로 조절하세요 */
-	height: 40px; /* 원하는 높이로 조절하세요 */
+	width: 150px;
+	height: 40px;
+}
+
+.index_img {
+	max-width: 100%;
+	max-height: 50%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	border-radius: 5px;
+	border: 0.2px #FFD700 solid;
 }
 
 body {

@@ -207,15 +207,15 @@ public class RecommendCont {
 			int fcateno = recommendVO.getFcateno();
 			// 기존 코드에서 사용된 fcateno 대신 원하는 값으로 설정
 			ArrayList<FestivalVO> list = this.recommendProc.recom_like_new(fcateno_new);
-			if (list.size() > 5) {
-				list = new ArrayList<>(list.subList(0, 5));
+			if (list.size() > 3) {
+				list = new ArrayList<>(list.subList(0, 3));
 			}
 			mav.addObject("list", list);
 		} else {
 			// recommendVO가 null인 경우에도 원하는 카테고리 번호로 설정
 			ArrayList<FestivalVO> list = this.festivalProc.recom_like_new(fcateno_new);
-			if (list.size() > 5) {
-				list = new ArrayList<>(list.subList(0, 5));
+			if (list.size() > 3) {
+				list = new ArrayList<>(list.subList(0, 3));
 			}
 			mav.addObject("list", list);
 		}

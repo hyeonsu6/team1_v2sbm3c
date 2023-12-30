@@ -16,7 +16,8 @@
 <body>
 	<c:import url="/menu/top.do" />
 
-	<div class='title_line'>${festivalVO.title }
+	<div class='title_line'>
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
 		<c:if test="${param.word.length() > 0}">
         > 「${param.word}」 검색 ${search_count } 건
     </c:if>
@@ -54,8 +55,6 @@
 			</c:if>
 		</form>
 	</div>
-
-	<div class="menu_line"></div>
 
 	<table>
 		<colgroup>

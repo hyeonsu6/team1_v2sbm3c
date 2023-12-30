@@ -17,14 +17,14 @@
 
 	<div class='title_line'>
 		🟡
-		<a href="../festival/list_by_fcateno.do?fcateno=${festivalVO.fcateno }" class='title_link'>${festivalVO.title }</a>
+		<a href="../festival/read.do?contentsno=${festivalVO.contentsno}" class='title_link'>${festivalVO.title }</a>
 		> 리뷰 등록하기
 	</div>
 
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
-		<a href="./list_by_contentsno.do?contentsno=${param.contentsno}">리뷰 목록</a>
+		<a href="./list_by_contentsno.do?contentsno=${contentsno }">📰 리뷰 목록</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
@@ -64,8 +64,8 @@
 		</div>
 		<div>
 			<label style="margin-bottom: 15px;">제목</label>
-			<input type='text' name='title' value='' required="required" placeholder="축제 이름을 적어주세요!" autofocus="autofocus" class="form-control"
-				style='width: 100%; color: #8B4513; margin-bottom: 15px;'>
+			<input type='text' name='title' value='' required="required" placeholder="축제 이름을 적어주세요!" autofocus="autofocus"
+				class="form-control" style='width: 100%; color: #8B4513; margin-bottom: 15px;'>
 		</div>
 		<div>
 			<label style="margin-bottom: 15px;">리뷰(후기)</label>
@@ -83,8 +83,7 @@
 		</div>
 		<div>
 			<label style="margin-bottom: 15px;">패스워드</label>
-			<input type='password' name='pwd' value='' required="required" class="form-control"
-				style='width: 50%;'>
+			<input type='password' name='pwd' value='' required="required" class="form-control" style='width: 50%;'>
 		</div>
 		<div class="content_body_bottom">
 			<button type="submit" class="btn btn-outline-warning btn-sm" style="background-color: #B8860B;">등록하기</button>

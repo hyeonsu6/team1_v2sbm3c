@@ -10,16 +10,6 @@
 <title>Festival Blog</title>
 <link rel="shortcut icon" href="/images/festival.png">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-
-<style type="text/css">
-.index_img {
-	max-width: 100%;
-	max-height: 50%;
-	height: auto;
-	display: block;
-	margin: 0 auto;
-}
-</style>
 </head>
 
 <body>
@@ -58,35 +48,33 @@
 	<c:choose>
 		<c:when test="${sessionScope.id == null}">
 			<%-- 로그인 안된 경우 기본 이미지만 출력 --%>
-			<div style='width: 100%; margin: 10px auto; text-align: center;'>
-				<%-- /static/images/resort01.jpg --%>
-				<img src='/images/index_img.jpg' style='width: 100%;'>
-			</div>
-			<div style='width: 70%; margin: 10px auto; text-align: center;'>
-				<h4>2024 갑진년 새해 추천 페스티벌 TOP 5</h4>
-				<c:import url="/frecommend/recom_like_new.do" />
+			<div style='width: 70%; margin: 10px auto; text-align: center; color: #8B008B;'>
+				<img src='/images/index_img.jpg' style='width: 100%; border-radius: 10px;'>
 			</div>
 		</c:when>
+
 		<c:otherwise>
 			<div style='width: 100%; margin: 30px auto; text-align: center;'>
 				<%-- 로그인된 경우 추천 --%>
 				<c:if test="${sessionScope.id != null}">
-					<div style='width: 70%; margin: 10px auto; text-align: center;'>
+					<div style='width: 60%; margin: 10px auto; text-align: center; color: #2e4e26;'>
 						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌 카테고리</h4>
 						<c:import url="/frecommend/list_by_memberno_index.do" />
 					</div>
 
 					<div style="clear: both; height: 20px;"></div>
 
-					<div style='width: 70%; margin: 10px auto; text-align: center;'>
+					<div style='width: 80%; margin: 10px auto; text-align: center; color: #1E90FF;'>
 						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌 TOP 5</h4>
 						<c:import url="/frecommend/recom_like.do" />
 					</div>
 
-					<div style="clear: both; height: 20px;"></div>
+					<div style="clear: both; height: 10px;"></div>
+					<div class="content_line_new"></div>
+					<div style="clear: both; height: 10px;"></div>
 
-					<div style='width: 70%; margin: 10px auto; text-align: center;'>
-						<h4>2024 갑진년 새해 추천 페스티벌 TOP 5</h4>
+					<div style='width: 80%; margin: 10px auto; text-align: center; color: #FF6347;'>
+						<h4>[${sessionScope.mname}]님을 위한 2024 갑진년 새해 추천 페스티벌 TOP 3</h4>
 						<c:import url="/frecommend/recom_like_new.do" />
 					</div>
 				</c:if>
