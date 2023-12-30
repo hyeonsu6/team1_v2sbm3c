@@ -27,7 +27,7 @@
 
 	<script>
 		const images = [ "/images/index_img1.png", "/images/index_img2.png",
-				"/images/index_img3.png", "/images/index_img4.png" ];
+				"/images/index_img3.png" ];
 		let currentImageIndex = 0;
 
 		function changeImage() {
@@ -36,7 +36,7 @@
 			currentImageIndex = (currentImageIndex + 1) % images.length;
 		}
 
-		setInterval(changeImage, 3000); // 3초마다 changeImage 함수 호출
+		setInterval(changeImage, 2000); // 2초마다 changeImage 함수 호출
 	</script>
 
 	<div style="text-align: center;">
@@ -49,24 +49,24 @@
 	<c:choose>
 		<c:when test="${sessionScope.id == null}">
 			<%-- 로그인 안된 경우 기본 이미지만 출력 --%>
-			<div style='width: 100%; margin: 30px auto; text-align: center;'>
+			<div style='width: 100%; margin: 10px auto; text-align: center;'>
 				<%-- /static/images/resort01.jpg --%>
-				<IMG src='/images/index_img.jpg' style='width: 60%;'>
+				<img src='/images/index_img.jpg' style='width: 100%;'>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div style='width: 100%; margin: 30px auto; text-align: center;'>
 				<%-- 로그인된 경우 추천 --%>
 				<c:if test="${sessionScope.id != null}">
-					<div style='width: 70%; margin: 10px auto; text-align: left;'>
-						<h4>${sessionScope.mname}님을 위한 추천 페스티벌</h4>
+					<div style='width: 70%; margin: 10px auto; text-align: center;'>
+						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌 카테고리</h4>
 						<c:import url="/frecommend/list_by_memberno_index.do" />
 					</div>
 
 					<div style="clear: both; height: 20px;"></div>
 
-					<div style='width: 70%; margin: 10px auto; text-align: left;'>
-						<h4>${sessionScope.mname}님을 위한 추천 페스티벌 카테고리</h4>
+					<div style='width: 70%; margin: 10px auto; text-align: center;'>
+						<h4>[${sessionScope.mname}]님을 위한 추천 페스티벌</h4>
 						<c:import url="/frecommend/recom_like.do" />
 					</div>
 				</c:if>
