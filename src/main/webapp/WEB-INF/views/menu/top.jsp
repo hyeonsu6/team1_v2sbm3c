@@ -20,7 +20,7 @@
 	text-decoration: blink;
 	/* color: #2F4F4F; */
 	color: #EC9704;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .navbar-brand img {
@@ -74,9 +74,9 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding: 5px 65px; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
+		style="background-color: #FFF5EE; padding-left: 3%; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
-			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 15px; padding-left: 3px;'
+			<img src='/css/images/home.png' title="시작페이지" style='display: block; margin-left: 5px; padding-left: 3px;'
 				class='icon_n'>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -86,9 +86,6 @@
 
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">Q&A 🐚</a>
-				</li>
 				<%-- 게시판 목록 출력 --%>
 				<c:forEach var="fcateVO" items="${list_top}">
 					<c:set var="fcateno" value="${fcateVO.fcateno }" />
@@ -151,6 +148,10 @@
 
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
+				</li>
+
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/question/list_all.do">Q&A 🐚</a>
 				</li>
 
 				<li class="nav-item">

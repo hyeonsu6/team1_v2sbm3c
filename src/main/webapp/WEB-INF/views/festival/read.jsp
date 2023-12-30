@@ -102,6 +102,7 @@
 
 					<span style="font-size: 28px; margin-right: 5px;">🟡 ${title}</span>
 					<span style="font-size: 0.6em; margin-right: 50px;">| 🔔 등록일: (${rdate.substring(0, 10)})</span>
+					<br><br>
 					<!-- 좋아요 버튼 -->
 					<button id="likeBtn" class="btn btn-outline-warning btn-sm"
 						style="margin-bottom: 10px; padding: 5px 25px 5px 25px;">
@@ -225,7 +226,7 @@
 					<%-- /static/festival/storage/ --%>
 					<div style="text-align: center; margin-bottom: 10px;">
 						<img src="/festival/storage/${file1saved }"
-							style='width: 35%; margin: 0 auto; margin-top: 0.5%; margin-right: 5%;'>
+							style='width: 50%; margin: 0 auto; margin-top: 0.5%; margin-right: 5%;'>
 					</div>
 
 				</c:when>

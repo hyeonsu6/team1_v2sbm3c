@@ -232,22 +232,22 @@
 
 .title_link:link { /* 방문전 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 20px;
+	font-size: 23px;
 }
 
 .title_link:visited { /* 방문후 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 20px;
+	font-size: 23px;
 }
 
 .title_link:hover { /* A 태그에 마우스가 올라간 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 23px;
+	font-size: 24px;
 }
 
 .title_link:active { /* A 태그를 클릭한 상태 */
 	text-decoration: none; /* 밑줄 삭제 */
-	font-size: 23px;
+	font-size: 24px;
 }
 
 .sub_menu {

@@ -24,24 +24,33 @@
 
 <body>
 	<c:import url="/menu/top.do" />
+	
+	<a href="#" id="imageLink">
+		<img src="/images/index_img1.png" id="slideshow" alt="Slideshow Image" class="index_img">
+	</a>
 
 	<script>
 		const images = [ "/images/index_img1.png", "/images/index_img2.png",
 				"/images/index_img3.png" ];
+		const links = [
+				"http://localhost:9093/festival/read.do?contentsno=13&word=&now_page=1&fcateno=11",
+				"http://localhost:9093/festival/read.do?contentsno=14&word=&now_page=1&fcateno=3",
+				"http://localhost:9093/festival/read.do?contentsno=15&word=&now_page=1&fcateno=7" ];
+		
 		let currentImageIndex = 0;
 
 		function changeImage() {
 			const imgElement = document.getElementById("slideshow");
+			const linkElement = document.getElementById("imageLink");
+
 			imgElement.src = images[currentImageIndex];
+			linkElement.href = links[currentImageIndex];
+
 			currentImageIndex = (currentImageIndex + 1) % images.length;
 		}
 
 		setInterval(changeImage, 2000); // 2초마다 changeImage 함수 호출
 	</script>
-
-	<div style="text-align: center;">
-		<img src="/images/index_img1.png" alt="메인 이미지" class="index_img" id="slideshow">
-	</div>
 	<br>
 
 	<div class="menu_line" style="margin-top: -15px;"></div>

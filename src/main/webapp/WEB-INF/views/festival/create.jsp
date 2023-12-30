@@ -60,24 +60,24 @@
 		<input type="hidden" name="fcateno" value="${param.fcateno }">
 
 		<div>
-			<label style="margin-bottom: 15px;">제목</label>
+			<label>제목</label>
 			<input type='text' name='title' value='' required="required" autofocus="autofocus" class="form-control"
-				style='width: 100%;'>
+				style='width: 100%; margin-bottom: 15px;'>
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">내용</label>
-			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%;'></textarea>
+			<label>내용</label>
+			<textarea name='content' required="required" class="form-control" rows="12" style='width: 100%; margin-bottom: 15px;''></textarea>
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">검색어</label>
-			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%;'>
+			<label>검색어</label>
+			<input type='text' name='word' value='' required="required" class="form-control" style='width: 100%; margin-bottom: 15px;''>
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">이미지</label>
-			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
+			<label>이미지</label>
+			<input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택" style="margin-bottom: 15px;">
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">패스워드</label>
+			<label>패스워드</label>
 			<input type='password' name='passwd' value='' required="required" class="form-control" style='width: 50%;'>
 		</div>
 		<div class="content_body_bottom">

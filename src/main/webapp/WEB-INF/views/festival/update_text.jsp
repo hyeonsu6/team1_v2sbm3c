@@ -67,24 +67,24 @@
 		<input type="hidden" name="now_page" value="${param.now_page }">
 
 		<div>
-			<label style="margin-bottom: 15px;">제목</label>
+			<label>제목</label>
 			<input type='text' name='title' value='${title }' required="required" autofocus="autofocus" class="form-control"
 				style='width: 100%;'>
 			<br>
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">내용</label>
-			<textarea name='content' required="required" class="form-control" rows="25" style='width: 100%;'>${content }</textarea>
+			<label>내용</label>
+			<textarea name='content' required="required" class="form-control" rows="25" style='width: 100%; margin-bottom: 15px;''>${content }</textarea>
 			<br>
 		</div>
 		<div>
-			<label style="margin-bottom: 15px;">검색어</label>
-			<input type='text' name='word' value="${word }" required="required" class="form-control" style='width: 100%;'>
+			<label>검색어</label>
+			<input type='text' name='word' value="${word }" required="required" class="form-control" style='width: 100%; margin-bottom: 15px;''>
 			<br>
 		</div>
 
 		<div>
-			<label style="margin-bottom: 15px;">패스워드</label>
+			<label>패스워드</label>
 			<input type='password' name='passwd' value='' required="required" class="form-control" style='width: 50%;'>
 
 		</div>
