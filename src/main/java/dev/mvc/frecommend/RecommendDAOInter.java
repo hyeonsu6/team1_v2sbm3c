@@ -3,6 +3,7 @@ package dev.mvc.frecommend;
 import java.util.ArrayList;
 
 import dev.mvc.fcate.FcateVO;
+import dev.mvc.festival.FestivalVO;
 import dev.mvc.mlogin.MloginVO;
 
 public interface RecommendDAOInter {
@@ -22,6 +23,14 @@ public interface RecommendDAOInter {
 	public ArrayList<RecommendVO> list_by_memberno(int memberno);
 
 	/**
+	 * 회원을 이용한 조회 - 메인페이지에 사용
+	 * 
+	 * @param memberno
+	 * @return
+	 */
+	public ArrayList<RecommendVO> list_by_memberno_index(int memberno);
+
+	/**
 	 * 전체 조회
 	 * 
 	 * @param recommendno
@@ -30,11 +39,17 @@ public interface RecommendDAOInter {
 	public RecommendVO read(int recommendno);
 
 	/**
-	 * 삭제
+	 * 전체 목록 + 페이징
 	 * 
-	 * @param recommendno
-	 * @return 삭제된 레코드 개수
+	 * @return
 	 */
-	public int delete(int recommendno);
+	public ArrayList<RecommendVO> list_recom(FestivalVO festivalVO);
+
+	/**
+	 * 추천해요
+	 *  
+	 * @return
+	 */
+	public ArrayList<FestivalVO> recom_like(int fcateno);
 
 }

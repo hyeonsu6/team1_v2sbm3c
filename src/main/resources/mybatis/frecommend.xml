@@ -17,6 +17,14 @@
 		WHERE memberno = #{memberno}
 	</select>
 
+	<!-- 회원 번호를 이용한 조회 인덱스에 사용 -->
+	<select id="list_by_memberno_index" resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
+		SELECT
+		recommendno, memberno, fcateno, seq, rdate
+		FROM frecommend
+		WHERE memberno = #{memberno}
+	</select>
+
 	<!-- 추천 조회 -->
 	<select id="read" resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
 		SELECT recommendno,
@@ -25,10 +33,27 @@
 		WHERE recommendno =#{recommendno}
 	</select>
 
-	<!-- 추천 삭제 -->
-	<delete id="delete" parameterType="int">
-		DELETE FROM frecommend
-		WHERE recommendno = #{recommendno}
-	</delete>
-
+	<!-- 관심분야의 카테고리 1번 컨텐츠 중 recom(추천수) 컬럼의 내림차순 정렬후 페스티벌 목록 5건을 출력 -->
+	<select id="recom_like" resultType="dev.mvc.frecommend.RecommendVO" parameterType="int">
+		SELECT contentsno,
+		adminno,
+		fcateno, title, content, recom, cnt, replycnt, rdate, file1, file1saved, thumb1,
+		size1, r
+		FROM (
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt, replycnt, rdate, file1,
+		file1saved, thumb1,
+		size1,
+		rownum AS r
+		FROM (
+		SELECT contentsno, adminno, fcateno, title, content, recom, cnt,
+		replycnt, rdate,
+		file1, file1saved, thumb1, size1
+		FROM festival
+		WHERE fcateno=#{fcateno}
+		ORDER BY recom DESC
+		)
+		)
+		WHERE r BETWEEN 1
+		AND 5>
+	</select>
 </mapper>

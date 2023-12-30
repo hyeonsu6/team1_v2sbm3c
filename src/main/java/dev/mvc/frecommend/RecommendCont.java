@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.admin.AdminProcInter;
+import dev.mvc.festival.FestivalProcInter;
+import dev.mvc.festival.FestivalVO;
 import dev.mvc.member.MemberProcInter;
 
 @Controller
@@ -29,6 +31,10 @@ public class RecommendCont {
 	@Autowired
 	@Qualifier("dev.mvc.admin.AdminProc")
 	private AdminProcInter adminProc;
+
+	@Autowired
+	@Qualifier("dev.mvc.festival.FestivalProc")
+	private FestivalProcInter festivalProc;
 
 	public RecommendCont() {
 		System.out.println("-> RecommendCont created.");
@@ -87,9 +93,9 @@ public class RecommendCont {
 
 		if (this.memberProc.isMember(session)) {
 			mav.setViewName("/frecommend/list_by_memberno"); // /WEB-INF/views/frecommend/list_by_memberno.jsp
-			
+
 			int memberno = (int) session.getAttribute("memberno");
-			
+
 			ArrayList<RecommendVO> list = this.recommendProc.list_by_memberno(memberno);
 			mav.addObject("list", list);
 
@@ -101,62 +107,80 @@ public class RecommendCont {
 		return mav;
 	}
 
-//	/**
-//	 * 전체 조회 http://localhost:9093/frecommend/read.do?recommendno=7
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/frecommend/read.do", method = RequestMethod.GET)
-//	public ModelAndView read(int recommendno) {
-//		System.out.println("-> read");
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("/frecommend/read");
-//
-//		RecommendVO recommendVO = this.recommendProc.read(recommendno);
-//		mav.addObject("recommendVO", recommendVO);
-//
-//		return mav;
-//	}
+	/**
+	 * 회원을 이용한 목록
+	 * http://localhost:9093/frecommend/list_by_memberno_index.do?memberno=3
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/list_by_memberno_index.do", method = RequestMethod.GET)
+	public ModelAndView list_by_memberno_index(HttpSession session) {
+		System.out.println("-> list_by_memberno_index");
+		ModelAndView mav = new ModelAndView();
 
-//	/**
-//	 * 추천 삭제 폼 http://localhost:9093/frecommend/delete.do?recommendno=1
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.GET)
-//	public ModelAndView delete(HttpSession session, int recommendno) {
-//		ModelAndView mav = new ModelAndView();
-//
-//		if (memberProc.isMember(session)) {
-//			RecommendVO recommendVO = this.recommendProc.read(recommendno);
-//			mav.addObject("recommendVO", recommendVO);
-//
-//			mav.setViewName("/frecommend/delete");
-//
-//		} else {
-//			mav.addObject("url", "/member/login_need");
-//			mav.setViewName("redirect:/member/msg.do");
-//		}
-//
-//		return mav;
-//	}
-//
-//	/**
-//	 * 추천 삭제 처리 http://localhost:9093/frecommend/delete.do
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/frecommend/delete.do", method = RequestMethod.POST)
-//	public ModelAndView delete(RecommendVO recommendVO) {
-//		ModelAndView mav = new ModelAndView();
-//
-//		RecommendVO recommendVO_read = this.recommendProc.read(recommendVO.getRecommendno());
-//		this.recommendProc.delete(recommendVO.getRecommendno()); // DBMS 삭제
-//
-//		mav.addObject("recommendno", recommendVO.getRecommendno());
-//		mav.setViewName("redirect:/frecommend/list_all.do");
-//
-//		return mav;
-//	}
+		if (this.memberProc.isMember(session)) {
+			mav.setViewName("/frecommend/list_by_memberno_index"); // /WEB-INF/views/frecommend/list_by_memberno_index.jsp
 
+			int memberno = (int) session.getAttribute("memberno");
+
+			ArrayList<RecommendVO> list = this.recommendProc.list_by_memberno_index(memberno);
+			mav.addObject("list", list);
+
+		} else {
+			mav.setViewName("/member/login_need"); // /WEB-INF/views/member/login_need.jsp
+
+		}
+
+		return mav;
+	}
+
+	/**
+	 * 전체 조회 http://localhost:9093/frecommend/read.do?recommendno=7
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/read.do", method = RequestMethod.GET)
+	public ModelAndView read(int recommendno) {
+		System.out.println("-> read");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/frecommend/read");
+
+		RecommendVO recommendVO = this.recommendProc.read(recommendno);
+		mav.addObject("recommendVO", recommendVO);
+
+		return mav;
+	}
+
+	/**
+	 * 추천해요 http://localhost:9093/frecommend/recom_like.do
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/frecommend/recom_like.do", method = RequestMethod.GET)
+	public ModelAndView recom_like(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("/frecommend/recom_like");
+
+		int memberno = (int) session.getAttribute("memberno");
+		mav.addObject("memberno", memberno);
+
+		RecommendVO recommendVO = this.recommendProc.read(memberno);
+
+		if (recommendVO != null) {
+			int fcateno = recommendVO.getFcateno();
+			ArrayList<FestivalVO> list = this.recommendProc.recom_like(fcateno);
+			if (list.size() > 5) {
+				list = new ArrayList<>(list.subList(0, 5));
+			}
+			mav.addObject("list", list);
+		} else {
+			ArrayList<FestivalVO> list = this.festivalProc.list_all();
+			if (list.size() > 5) {
+				list = new ArrayList<>(list.subList(0, 5));
+			}
+			mav.addObject("list", list);
+		}
+		return mav;
+	}
 }

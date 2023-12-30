@@ -46,7 +46,33 @@
 
 	<div class="menu_line" style="margin-top: -15px;"></div>
 
+	<c:choose>
+		<c:when test="${sessionScope.id == null}">
+			<%-- 로그인 안된 경우 기본 이미지만 출력 --%>
+			<div style='width: 100%; margin: 30px auto; text-align: center;'>
+				<%-- /static/images/resort01.jpg --%>
+				<IMG src='/images/index_img.jpg' style='width: 60%;'>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div style='width: 100%; margin: 30px auto; text-align: center;'>
+				<%-- 로그인된 경우 추천 --%>
+				<c:if test="${sessionScope.id != null}">
+					<div style='width: 70%; margin: 10px auto; text-align: left;'>
+						<h4>${sessionScope.mname}님을 위한 추천 페스티벌</h4>
+						<c:import url="/frecommend/list_by_memberno_index.do" />
+					</div>
 
+					<div style="clear: both; height: 20px;"></div>
+
+					<div style='width: 70%; margin: 10px auto; text-align: left;'>
+						<h4>${sessionScope.mname}님을 위한 추천 페스티벌 카테고리</h4>
+						<c:import url="/frecommend/recom_like.do" />
+					</div>
+				</c:if>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	<jsp:include page="./menu/bottom.jsp" flush='false' />
 </body>
 </html>
