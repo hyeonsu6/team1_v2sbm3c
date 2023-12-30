@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +18,6 @@ import dev.mvc.admin.AdminProcInter;
 import dev.mvc.fcate.FcateProcInter;
 import dev.mvc.fcate.FcateVO;
 import dev.mvc.festival_likes.Festival_likeProcInter;
-import dev.mvc.festival_likes.Festival_likeVO;
 import dev.mvc.freview.FreviewProcInter;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
@@ -88,6 +86,9 @@ public class FestivalCont {
 	/**
 	 * 등록 처리 http://localhost:9093/festival/create.do
 	 * 
+	 * @param request
+	 * @param session
+	 * @param festivalVO
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/create.do", method = RequestMethod.POST)
@@ -179,6 +180,7 @@ public class FestivalCont {
 	/**
 	 * 전체 목록, 관리자만 사용 가능 http://localhost:9093/festival/list_all.do
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/list_all.do", method = RequestMethod.GET)
@@ -397,6 +399,7 @@ public class FestivalCont {
 	/**
 	 * 조회 http://localhost:9093/festival/read.do?contentsno=17
 	 * 
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/read.do", method = RequestMethod.GET)
@@ -430,6 +433,7 @@ public class FestivalCont {
 	/**
 	 * 맵 등록/수정/삭제 폼 http://localhost:9093/festival/map.do?contentsno=1
 	 * 
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/map.do", method = RequestMethod.GET)
@@ -448,9 +452,10 @@ public class FestivalCont {
 	}
 
 	/**
-	 * MAP 등록/수정/삭제 처리 http://localhost:9093/festival/map.do
+	 * 맵 등록/수정/삭제 처리 http://localhost:9093/festival/map.do
 	 * 
-	 * @param festivalVO
+	 * @param contentsno
+	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/map.do", method = RequestMethod.POST)
@@ -475,6 +480,7 @@ public class FestivalCont {
 	/**
 	 * Youtube 등록/수정/삭제 폼 http://localhost:9093/festival/map.do?contentsno=1
 	 * 
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/youtube.do", method = RequestMethod.GET)
@@ -493,10 +499,10 @@ public class FestivalCont {
 	}
 
 	/**
-	 * Youtube 등록/수정/삭제 처리 http://localhost:9093/festival/map.do
+	 * Youtube 등록/수정/삭제 폼 http://localhost:9093/festival/map.do?contentsno=1
 	 * 
-	 * @param contentsno 글 번호
-	 * @param youtube    Youtube url의 소스 코드
+	 * @param contentsno
+	 * @param youtube
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/youtube.do", method = RequestMethod.POST)
@@ -520,8 +526,10 @@ public class FestivalCont {
 	}
 
 	/**
-	 * 수정 폼 http://localhost:9093/festival/update_text.do?contentsno=1
+	 * 콘텐츠 수정 폼 http://localhost:9093/festival/update_text.do?contentsno=1
 	 * 
+	 * @param session
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/update_text.do", method = RequestMethod.GET)
@@ -548,8 +556,10 @@ public class FestivalCont {
 	}
 
 	/**
-	 * 수정 처리 http://localhost:9093/festival/update_text.do?contentsno=1
+	 * 콘텐츠 수정 처리 http://localhost:9093/festival/update_text.do?contentsno=1
 	 * 
+	 * @param session
+	 * @param festivalVO
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/update_text.do", method = RequestMethod.POST)
@@ -594,6 +604,8 @@ public class FestivalCont {
 	/**
 	 * 파일 수정 폼 http://localhost:9093/festival/update_file.do?contentsno=1
 	 * 
+	 * @param session
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/update_file.do", method = RequestMethod.GET)
@@ -620,6 +632,8 @@ public class FestivalCont {
 	/**
 	 * 파일 수정 처리 http://localhost:9093/festival/update_file.do
 	 * 
+	 * @param session
+	 * @param festivalVO
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/update_file.do", method = RequestMethod.POST)
@@ -702,6 +716,8 @@ public class FestivalCont {
 	/**
 	 * 파일 삭제 폼 http://localhost:9093/festival/delete.do?contentsno=1
 	 * 
+	 * @param session
+	 * @param contentsno
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/delete.do", method = RequestMethod.GET)
@@ -732,6 +748,7 @@ public class FestivalCont {
 	/**
 	 * 삭제 처리 http://localhost:9093/festival/delete.do
 	 * 
+	 * @param festivalVO
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/delete.do", method = RequestMethod.POST)
@@ -783,8 +800,13 @@ public class FestivalCont {
 		return mav;
 	}
 
-	// http://localhost:9093/festival/delete_by_fcateno.do?fcateno=1
-	// 파일 삭제 -> 레코드 삭제
+	/**
+	 * http://localhost:9093/festival/delete_by_fcateno.do?fcateno=1
+	 * 파일 삭제 -> 레코드 삭제
+	 * 
+	 * @param fcateno
+	 * @return
+	 */
 	@RequestMapping(value = "/festival/delete_by_fcateno.do", method = RequestMethod.GET)
 	public String delete_by_fcateno(int fcateno) {
 		ArrayList<FestivalVO> list = this.festivalProc.list_by_fcateno(fcateno);
@@ -814,6 +836,7 @@ public class FestivalCont {
 	/**
 	 * Gallery 전체 이미지 출력 http://localhost:9093/festival/list_all_gallery.do
 	 * 
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/festival/list_all_gallery.do", method = RequestMethod.GET)

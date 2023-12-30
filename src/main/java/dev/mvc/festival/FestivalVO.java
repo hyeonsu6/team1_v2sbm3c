@@ -58,7 +58,7 @@ public class FestivalVO {
 	// 파일 업로드 관련
 	// -----------------------------------------------------------------------------------
 	/**
-	 * 이미지 파일
+	 * 이미지 파일 
 	 * <input type='file' class="form-control" name='file1MF' id='file1MF' value=''
 	 * placeholder="파일 선택">
 	 */

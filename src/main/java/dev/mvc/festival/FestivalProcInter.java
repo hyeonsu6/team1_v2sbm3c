@@ -2,12 +2,11 @@ package dev.mvc.festival;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * 개발자가 구현합니다.
  * 
- * @author soldesk
+ * @author 
  *
  */
 public interface FestivalProcInter {
