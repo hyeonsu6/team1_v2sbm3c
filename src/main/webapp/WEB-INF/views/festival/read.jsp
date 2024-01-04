@@ -229,7 +229,7 @@
 				<c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
 					<%-- /static/festival/storage/ --%>
 					<div style="text-align: center; margin-bottom: 10px;">
-						<img src="/festival/storage/${file1saved }" style='width: 60%; margin: 0 auto; margin-top: 0.5%;'>
+						<img src="/festival/storage/${file1saved }" style='width: 30%; margin: 0 auto; margin-top: 0.5%;'>
 					</div>
 
 				</c:when>
