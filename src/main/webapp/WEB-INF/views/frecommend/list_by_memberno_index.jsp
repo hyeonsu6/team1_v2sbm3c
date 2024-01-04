@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div
-		style="text-align: center; margin: 0px auto; border: 10px #9ACD32 outset; border-radius: 10px; background-color: #FFFFF0; padding: 5px;">
+		style="text-align: center; margin: 0px auto; border: 10px #9ACD32 outset; border-radius: 10px; background-color: white; padding: 5px;">
 
 		<c:forEach var="recommendVO" items="${list }" varStatus="info">
 			<tr>
