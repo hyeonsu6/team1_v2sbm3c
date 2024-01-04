@@ -17,9 +17,7 @@
 	<c:import url="/menu/top.do" />
 
 	<form name='frm' id='frm' method='get' action='/freview_reply/list_by_id.do'>
-		<div class='title_line'>
-			<span style="color: #228B22; font-size: 19px;">내가 쓴 댓글</span>
-		</div>
+		<div class='title_line'>내가 쓴 댓글</div>
 
 		<aside class="aside_right">
 			<a href="javascript:location.reload();">새로고침</a>
