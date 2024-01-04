@@ -15,6 +15,22 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+<style>
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+th {
+	background-color: #EEE8AA;
+}
+</style>
 </head>
 
 <body>
@@ -37,16 +53,18 @@
 	<div id='calendar'></div>
 
 	<script type="text/javascript">
-	function getRandomColor() {
+	function getRandomPastelColor() {
 	    var letters = '0123456789ABCDEF';
 	    var color = '#';
 
+	    // 더 연한 톤을 위해 9보다 큰 값을 추가
 	    for (var i = 0; i < 6; i++) {
-	        color += letters[Math.floor(Math.random() * 16)];
+	        color += letters[Math.floor(Math.random() * 7) + 9]; // 9 이상의 값을 사용하여 연한 톤 생성
 	    }
+
 	    return color;
 	}
-
+	
 	document.addEventListener('DOMContentLoaded', function() {
 	    var calendarEl = document.getElementById('calendar');
 	    // 서버에서 받아온 이벤트 데이터(JSON 형식)
@@ -56,7 +74,7 @@
             	title: '<c:out value="${event.title}"/>',
             	start: '<c:out value="${event.calstart}"/>T00:00:00',
             	end: '<c:out value="${event.calend}"/>T23:59:59',
-            	color: getRandomColor(),
+            	color: getRandomPastelColor(),
             	id: '<c:out value="${event.calno}"/>' // calno를 id로 추가
         	}	<c:if test="${!loop.last}">,</c:if>
    	 		</c:forEach>
@@ -99,7 +117,7 @@
 	        events: events,
 	        eventContent: function(arg) {
 	            var title = arg.event.title;
-	            return { html: '<div style="font-size: 10px; margin-left: 10px; color: #FF8C00;">' + title + '</div>' };
+	            return { html: '<div style="font-size: 11px; margin-left: 30px; color: #4B0082; margin-bottom: 5px;">' + title + '</div>' };
 	        },
 	        
 	        eventClick: function(info) {
