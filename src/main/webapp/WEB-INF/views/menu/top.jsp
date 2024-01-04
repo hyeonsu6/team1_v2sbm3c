@@ -74,7 +74,7 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding-left: 7%; padding-right: 7%; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
+		style="background-color: #FFF5EE; padding-left: 4%; padding-right: 3%; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
 			<img src='/css/images/home.png' title="시작페이지" style='display: block; padding-left: 10px;' class='icon_New'>
 		</a>
@@ -144,6 +144,10 @@
 						</li>
 					</c:otherwise>
 				</c:choose>
+				
+				<li class="nav-item">
+					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="http://localhost:3000/issue/find_all">📣공지사항</a>
+				</li>
 
 				<li class="nav-item">
 					<%-- 서브 메뉴가 없는 독립메뉴 --%> <a class="nav-link top_menu_link" href="/fcate/list_all_member.do">카테고리</a>
