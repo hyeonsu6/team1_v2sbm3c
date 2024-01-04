@@ -20,6 +20,10 @@
 		<div class='title_line'>
 			<span style="color: #228B22; font-size: 19px;">내가 쓴 댓글</span>
 		</div>
+
+		<aside class="aside_right">
+			<a href="javascript:location.reload();">새로고침</a>
+		</aside>
 	</form>
 
 	<c:forEach var="replyVO" items="${list}" varStatus="status">
