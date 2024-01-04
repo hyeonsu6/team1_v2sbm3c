@@ -242,13 +242,13 @@
 
 			<c:if test="${youtube.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<div style="text-align: center;">${youtube }</div>
+					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${youtube }</DIV>
 				</li>
 			</c:if>
 
 			<c:if test="${map.trim().length() > 0 }">
 				<li class="li_none" style="clear: both; padding-top: 5px; padding-bottom: 5px;">
-					<div style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</div>
+					<DIV style='text-align: center; width: 640px; height: 360px; margin: 0px auto;'>${map }</DIV>
 				</li>
 				<br>
 				<br>
