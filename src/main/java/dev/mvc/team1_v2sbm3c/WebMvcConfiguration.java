@@ -20,9 +20,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		// ▶ file:////home/ubuntu/deploy/resort_v2sbm3c_blog/contents/storage
 
 		// JSP 인식되는 경로: http://localhost:9093/contents/storage";
-//		registry.addResourceHandler("/festival/storage/**").addResourceLocations("file:///" + Festival.getUploadDir());
+		registry.addResourceHandler("/festival/storage/**").addResourceLocations("file:///" + Festival.getUploadDir());
 //		// JSP 인식되는 경로: http://localhost:9093/contents/storage";
-//		registry.addResourceHandler("/freview/storage/**").addResourceLocations("file:///" + Freview.getUploadDir());
+		registry.addResourceHandler("/freview/storage/**").addResourceLocations("file:///" + Freview.getUploadDir());
 
 		// JSP 인식되는 경로: http://localhost:9091/attachfile/storage";
 		// registry.addResourceHandler("/contents/storage/**").addResourceLocations("file:///"
