@@ -74,10 +74,9 @@
 	</div>
 
 	<nav class="navbar navbar-expand-md navbar-dark"
-		style="background-color: #FFF5EE; padding-left: 7%; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
+		style="background-color: #FFF5EE; padding-left: 7%; padding-right: 7%; border-top: 2px solid #2F4F4F; border-bottom: 3px solid #2F4F4F; border-radius: 10px;">
 		<a class="navbar-brand" href="/">
-			<img src='/css/images/home.png' title="시작페이지" style='display: block; padding-left: 3px;'
-				class='icon_n'>
+			<img src='/css/images/home.png' title="시작페이지" style='display: block; padding-left: 10px;' class='icon_New'>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
 			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
