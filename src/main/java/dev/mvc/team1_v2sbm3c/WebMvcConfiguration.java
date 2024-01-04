@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import dev.mvc.festival.Festival;
 import dev.mvc.freview.Freview;
-import dev.mvc.tool.Tool;
 
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
