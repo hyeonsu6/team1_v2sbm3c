@@ -649,7 +649,7 @@ a:active { /* A 태그를 클릭한 상태 */
 
 body {
 	padding: 0.5em;
-	background: #F8F8FF;
+	background: white;
 }
 
 table {
