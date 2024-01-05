@@ -487,10 +487,10 @@
         </java.beans.PropertyChangeSupport>
       </listeners>
       <constraint>
-        <height>707</height>
+        <height>611</height>
         <width>976</width>
         <x>176</x>
-        <y>38</y>
+        <y>77</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>

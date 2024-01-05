@@ -3,5 +3,5 @@
 <!-- content_body 내용 종료 -->
 <div class='bottom_menu'>
 	<div class='bottom_line'></div>
-	10조 Festival Blog </div>
+	Copyright K Digital, Festival Us 이효진 변현수 All rights reserved. </div>
 <!-- container_main 종료 -->
