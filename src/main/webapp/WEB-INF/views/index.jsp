@@ -48,8 +48,8 @@
 	<c:choose>
 		<c:when test="${sessionScope.id == null}">
 			<%-- 로그인 안된 경우 기본 이미지만 출력 --%>
-			<div style='width: 80%; margin: 10px auto; text-align: center; color: #8B008B;'>
-				<img src='/images/index2.png' style='width: 100%; border-radius: 10px;'>
+			<div style='width: 90%; margin: 10px auto; text-align: center; color: #8B008B;'>
+				<img src='/images/index2.png' style='width: 100%; border-radius: 10px; '>
 			</div>
 		</c:when>
 
