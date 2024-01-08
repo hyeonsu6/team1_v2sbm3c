@@ -24,7 +24,7 @@
 	<aside class="aside_right">
 		<a href="javascript:location.reload();">새로고침</a>
 		<span class='menu_divide'>│</span>
-		<a href="./list_by_contentsno.do?contentsno=${contentsno }">📰 리뷰 목록</a>
+		<a href="./list_by_contentsno.do?contentsno=${festivalVO.contentsno }">📰 리뷰 목록</a>
 	</aside>
 
 	<div style="text-align: right; clear: both;">
