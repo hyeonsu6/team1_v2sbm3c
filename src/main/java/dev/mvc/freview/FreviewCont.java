@@ -178,6 +178,7 @@ public class FreviewCont {
 				mav.addObject("url", "/freview/msg"); // msg.jsp, redirect parameter 적용
 				mav.setViewName("redirect:/freview/msg.do"); // Post -> Get - param...
 			}
+			mav.addObject("contentsno", freviewVO.getContentsno());
 		} else {
 			mav.addObject("url", "/member/login_need"); // /WEB-INF/views/member/login_need.jsp
 			mav.setViewName("redirect:/freview/msg.do");
